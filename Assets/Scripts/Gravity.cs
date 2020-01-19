@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Gravity : MonoBehaviour
@@ -15,7 +16,14 @@ public class Gravity : MonoBehaviour
     {
         try
         {
-            _gravityObjects = GameObject.FindGameObjectsWithTag("GravityObject");
+            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
+            {
+                var go = (GameObject) o;
+                if (go.tag.Contains("|GravityObject|"))
+                {
+                    _gravityObjects.Append(go);
+                }
+            }
         }
         catch (UnityException)
         {
