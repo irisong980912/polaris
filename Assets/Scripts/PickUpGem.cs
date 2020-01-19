@@ -6,12 +6,12 @@ using UnityEngine;
 public class PickUpGem : MonoBehaviour
 {
     public GameObject star;
-    private bool _canPickUp;
+    private bool _canInteract;
     
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown("e")) //&& _canPickUp
+        if (Input.GetKeyDown("e") && _canInteract) //&& _canPickUp
         {
             DestroyItem();
         }
@@ -19,15 +19,15 @@ public class PickUpGem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
-        _canPickUp = true;
+        if (!other.gameObject.CompareTag("GravityObject")) return;
+        _canInteract = true;
         print("ok");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
-        _canPickUp = false;
+        if (!other.gameObject.CompareTag("GravityObject")) return;
+        _canInteract = false;
         print("out");
     }
 
