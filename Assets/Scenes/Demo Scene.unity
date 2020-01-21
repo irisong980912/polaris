@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.13296545, g: 0.19145328, b: 0.33962262, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 280542b274ae15b4a8862e720471607c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.13647552, g: 0.080446206, b: 0.12633276, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -453,12 +453,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525585773}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3db20a0893a120c488f8fb6f372f4983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityStrength: 0
+  gravityStrength: 50
   gravityRadius: 10
 --- !u!114 &525585779
 MonoBehaviour:
@@ -636,7 +636,7 @@ PrefabInstance:
     - target: {fileID: 6531615861321420866, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
       propertyPath: m_TagString
-      value: GravityObject
+      value: '|GravityObject|Player|'
       objectReference: {fileID: 0}
     - target: {fileID: 6531615861321420869, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
@@ -667,6 +667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531615862673594639, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
+        type: 3}
+      propertyPath: gravityStrength
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7985132234686685556, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
@@ -1015,10 +1020,8 @@ MonoBehaviour:
   boost: 3.5
   positionLerpTime: 0.2
   mouseSensitivityCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 0
+    - time: 0
       value: 0.5
       inSlope: 0
       outSlope: 5
@@ -1026,8 +1029,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 1
+    - time: 1
       value: 2.5
       inSlope: 0
       outSlope: 0
@@ -1050,7 +1052,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

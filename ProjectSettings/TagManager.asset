@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GravityObject
   - '|GravityObject|'
+  - '|GravityObject|Player|'
   layers:
   - Default
   - TransparentFX
