@@ -16,15 +16,15 @@ public class Gravity : MonoBehaviour
     {
         try
         {
-            List<GameObject> GOList = new List<GameObject>();
+            var goList = new List<GameObject>();
             foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
             {
                 var go = (GameObject) o;
                 if (go.tag.Contains("|GravityObject|"))
                 {
-                    GOList.Add(go);
+                    goList.Add(go);
                 }
-                _gravityObjects = GOList.ToArray();
+                _gravityObjects = goList.ToArray();
             }
         }
         catch (UnityException)
