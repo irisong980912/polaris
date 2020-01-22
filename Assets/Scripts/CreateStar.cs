@@ -12,6 +12,7 @@ public class CreateStar : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             FormStar();
+            print("create" + star.name);
         }
     }
 

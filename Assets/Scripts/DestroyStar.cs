@@ -14,6 +14,7 @@ public class DestroyStar : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             ScatterStar();
+            print("destroy" + star.name);
         }
     }
 
