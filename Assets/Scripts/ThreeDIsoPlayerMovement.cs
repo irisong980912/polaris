@@ -5,9 +5,9 @@ using UnityEngine;
 public class ThreeDIsoPlayerMovement : MonoBehaviour
 {
 
-    private float speed = 100f;
-    private float walkSpeed = 0.5f;
-    private float runSpeed = 1f;
+    private float _speed = 100f;
+    private float _walkSpeed = 0.5f;
+    private float _runSpeed = 1f;
  
  
     private float gravity = 8;
@@ -48,17 +48,17 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
         // left controll is speed up, delete this code 
         if (Input.GetButton("Fire1"))
         {
-            percent = runSpeed * direction.magnitude;
-            speed = 200f;
+            percent = _runSpeed * direction.magnitude;
+            _speed = 200f;
         }
         else
         {
-            percent = walkSpeed * direction.magnitude;
-            speed = 100f;
+            percent = _walkSpeed * direction.magnitude;
+            _speed = 100f;
         }
  
         //CONVERT direction from local to world relative to camera
-        body.velocity = Camera.main.transform.TransformDirection(direction) * speed * Time.deltaTime;
+        body.velocity = Camera.main.transform.TransformDirection(direction) * _speed * Time.deltaTime;
     }
  
     public void HandleRotation()
