@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.20825139, g: 0.20825139, b: 0.20825139, a: 1}
+  m_IndirectSpecularColor: {r: 0.17681752, g: 0.14891896, b: 0.23946032, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -731,6 +731,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6531615862118822350, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
+        type: 3}
+      propertyPath: gravityStrength
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 6531615862118822357, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
       propertyPath: m_TagString
@@ -769,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 6531615862673594639, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
       propertyPath: gravityStrength
-      value: 0.1
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7985132234686685556, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
@@ -1240,8 +1245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 327742530}
-  cameraSpeed: 10
-  freeMoveRadius: 15
+  cameraSpeed: 30
+  freeMoveRadius: 20
 --- !u!45 &1687258588
 Skybox:
   m_ObjectHideFlags: 0
