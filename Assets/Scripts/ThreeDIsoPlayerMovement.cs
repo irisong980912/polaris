@@ -4,32 +4,74 @@ using UnityEngine;
 
 public class ThreeDIsoPlayerMovement : MonoBehaviour
 {
-    public float speed;
 
-    // Update is called once per frame
-    private void Update()
+    private float speed = 100f;
+    private float walkSpeed = 0.5f;
+    private float runSpeed = 1f;
+ 
+ 
+    private float gravity = 8;
+ 
+    private Rigidbody body;
+    private Animator anim;
+ 
+    private Vector3 direction;
+    float percent;
+ 
+    private void Awake()
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
-        var zAxisPlus = Input.GetKey("q");
-        var zAxisMinus = Input.GetKey("space");
-
-        var zAxis = 0.0f;
-
-        if (zAxisPlus)
-        {
-            zAxis = 1.0f;
-        }
-        else if (zAxisMinus)
-        {
-            zAxis = -1.0f;
-        }
-        
-        var playerMovement = new Vector3(
-                                 horizontal,
-                                 vertical,
-                                 zAxis
-                                 ).normalized * (speed * Time.deltaTime);
-        transform.Translate(playerMovement, Space.Self);
+        body = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
+ 
+    private void FixedUpdate()
+    {
+        Move();
+ 
+        if (direction != Vector3.zero)
+        {
+           HandleRotation();
+        }
+
+    }
+ 
+    public void Move()
+    {
+        float xAxis = Input.GetAxisRaw("Horizontal");
+        float yAxis = Input.GetAxisRaw("Vertical");
+        var zAxis = Input.GetAxis("Jump");
+ 
+        direction = new Vector3(xAxis, yAxis, zAxis);
+ 
+        direction = direction.normalized;
+     
+        // left controll is speed up, delete this code 
+        if (Input.GetButton("Fire1"))
+        {
+            percent = runSpeed * direction.magnitude;
+            speed = 200f;
+        }
+        else
+        {
+            percent = walkSpeed * direction.magnitude;
+            speed = 100f;
+        }
+ 
+        //CONVERT direction from local to world relative to camera
+        body.velocity = Camera.main.transform.TransformDirection(direction) * speed * Time.deltaTime;
+    }
+ 
+    public void HandleRotation()
+    {
+        float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+        Quaternion lookAt = Quaternion.Slerp(transform.rotation,
+                                      Quaternion.Euler(0,targetRotation,0),
+                                      0.5f);
+        body.rotation = lookAt;
+ 
+    }
+ 
+
+
+
 }
