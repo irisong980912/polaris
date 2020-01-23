@@ -7,6 +7,7 @@ using UnityEngine;
 public class DestroyStar : MonoBehaviour
 {
     public GameObject star;
+    public Material destroyTexture;
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
@@ -15,6 +16,7 @@ public class DestroyStar : MonoBehaviour
         {
             ScatterStar();
             print("destroy" + star.name);
+            ChangeMaterial();
         }
     }
 
@@ -25,5 +27,11 @@ public class DestroyStar : MonoBehaviour
         star.GetComponent<Gravity>().enabled = false;
         star.GetComponent<CreateStar>().enabled = true;
         star.GetComponent<DestroyStar>().enabled = false;
+    }
+    
+    // creates a new material instance that looks like the old material
+    void ChangeMaterial()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = destroyTexture;
     }
 }

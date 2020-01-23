@@ -7,6 +7,8 @@ TagManager:
   - GravityObject
   - '|GravityObject|'
   - '|GravityObject|Player|'
+  - Star1
+  - Star
   layers:
   - Default
   - TransparentFX

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.20825139, g: 0.20825139, b: 0.20825139, a: 1}
+  m_IndirectSpecularColor: {r: 0.13642912, g: 0.080416925, b: 0.12623723, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 48658325}
+  newTexture: {fileID: 0}
 --- !u!1 &50230344 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 81a9e14ddd98e404fb3e3175cdc65954,
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 50230344}
+  newTexture: {fileID: 0}
 --- !u!1 &170171480
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +448,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 911676218}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &525585774
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525585773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &525585778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 525585773}
+  newTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +709,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6531615862118822357, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Star
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531615862673594634, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Star
+      objectReference: {fileID: 0}
     - target: {fileID: 6531615862673594635, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
       propertyPath: m_IsTrigger
@@ -837,6 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1255733587}
+  newTexture: {fileID: 0}
 --- !u!1 &1458322688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1570863512}
+  newTexture: {fileID: 0}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1332,6 @@ GameObject:
   - component: {fileID: 1809518780}
   - component: {fileID: 1809518777}
   - component: {fileID: 1809518781}
-  - component: {fileID: 1809518782}
   m_Layer: 0
   m_Name: Camera Wrapper
   m_TagString: Untagged
@@ -1367,8 +1394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a98005778b70479a92fd2247a31ecdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  sphere: {fileID: 0}
 --- !u!23 &1809518781
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1407,20 +1432,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1809518782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809518776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a98005778b70479a92fd2247a31ecdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  sphere: {fileID: 0}
 --- !u!1001 &1836934471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1691,6 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 2067052089}
+  newTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
 --- !u!114 &2067052096
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreateStar : MonoBehaviour
 {
     public GameObject star;
+    public Material newTexture;
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
@@ -15,13 +16,24 @@ public class CreateStar : MonoBehaviour
             print("create" + star.name);
         }
     }
-
-    //TODO: Consume stardust, change star material.
-    //TODO: Later, call animation to create star, play SFX.
+    
     private void FormStar()
     {
         star.GetComponent<Gravity>().enabled = true;
         star.GetComponent<DestroyStar>().enabled = true;
         star.GetComponent<CreateStar>().enabled = false;
+        ChangeMaterial();
     }
+
+    // creates a new material instance that looks like the old material
+    void ChangeMaterial()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = newTexture;
+    }
+    
+
+    //TODO: Consume stardust, change star material.
+    
+    //TODO: Later, call animation to create star, play SFX.
+    
 }
