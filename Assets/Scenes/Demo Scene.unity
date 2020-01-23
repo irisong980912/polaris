@@ -1036,7 +1036,6 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
-  - component: {fileID: 1687258583}
   - component: {fileID: 1687258587}
   - component: {fileID: 1687258588}
   - component: {fileID: 1687258589}
@@ -1055,18 +1054,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_Enabled: 1
---- !u!114 &1687258583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687258581}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5f14cfee674cb30b491fb72b09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -1197,8 +1184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 327742530}
-  cameraSpeed: 30
-  freeMoveRadius: 10
+  cameraSpeed: 10
+  freeMoveRadius: 15
 --- !u!45 &1687258588
 Skybox:
   m_ObjectHideFlags: 0
@@ -1380,6 +1367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a98005778b70479a92fd2247a31ecdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
+  sphere: {fileID: 0}
 --- !u!23 &1809518781
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1430,6 +1419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a98005778b70479a92fd2247a31ecdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
+  sphere: {fileID: 0}
 --- !u!1001 &1836934471
 PrefabInstance:
   m_ObjectHideFlags: 0
