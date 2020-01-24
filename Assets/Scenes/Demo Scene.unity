@@ -734,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 6531615862118822350, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
       propertyPath: gravityStrength
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6531615862118822357, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
@@ -774,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 6531615862673594639, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
       propertyPath: gravityStrength
-      value: 70
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7985132234686685556, guid: 0f56c850eaf58e44d9e1acfd0a9875dd,
         type: 3}
