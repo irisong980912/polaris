@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dark Star
-  m_Shader: {fileID: -6465566751694194690, guid: ac895616b884b4105a6ba40e0d5f814a,
+  m_Name: Star 10
+  m_Shader: {fileID: -6465566751694194690, guid: f0ab395c4909f064683947d21e3145d5,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -49,6 +49,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_321BE34D: 0
+    - Vector1_671E59BA: 100
+    - Vector1_7DE72576: 2.84
+    - Vector1_D5C0D32A: 0
+    - Vector1_E1E52BFB: 150
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -71,21 +76,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_FCE76847: {r: 0.04903882, g: 0.09324619, b: 0.3584906, a: 0}
+    - Color_72F3439F: {r: 12.413593, g: 1.018221, b: 0, a: 0}
+    - Color_91D9D606: {r: 1.396457, g: 0.7477802, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
---- !u!114 &8317901114889156962
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
