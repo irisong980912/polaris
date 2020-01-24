@@ -17,7 +17,7 @@ public class DestroyStar : MonoBehaviour
         {
             onTrigger = !onTrigger;
         }
-    }
+    }   
 
     //TODO: Scatter stardust, change star material.
     //TODO: Later, call animation to destroy star, play SFX.
