@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Stardust
-  m_Shader: {fileID: -6465566751694194690, guid: 07c136e2f0b48a641a3b8e31e2e3afdc,
+  m_Shader: {fileID: -6465566751694194690, guid: 6a34ae29ab35b4df4ae3771d2ca2d882,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
