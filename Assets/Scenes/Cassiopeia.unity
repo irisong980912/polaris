@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.17730984, g: 0.14918086, b: 0.23960419, a: 1}
+  m_IndirectSpecularColor: {r: 0.17681752, g: 0.14891896, b: 0.23946032, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1215,9 +1215,9 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
-  - component: {fileID: 1687258587}
   - component: {fileID: 1687258588}
   - component: {fileID: 1687258589}
+  - component: {fileID: 1687258583}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1233,6 +1233,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_Enabled: 1
+--- !u!114 &1687258583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7374ed9979d57477b8137899c7bd99da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 6531615861483619197}
+  camTransform: {fileID: 0}
+  Y_ANGLE_MIN: -80
+  Y_ANGLE_MAX: 80
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -1350,21 +1366,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &1687258587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687258581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b151a0c2e0f844a98bcf16bd11cdb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 6531615861483619197}
-  cameraSpeed: 30
-  freeMoveRadius: 20
 --- !u!45 &1687258588
 Skybox:
   m_ObjectHideFlags: 0
@@ -2403,6 +2404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc5d47244b46a64fb17a6654ab9defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 200
+  runSpeed: 300
 --- !u!1 &6531615862298790448
 GameObject:
   m_ObjectHideFlags: 0
