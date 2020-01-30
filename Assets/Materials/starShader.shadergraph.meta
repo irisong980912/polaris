@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Materials/starShader.shadergraph.meta
 guid: f0ab395c4909f064683947d21e3145d5
+=======
+guid: acb2140dfeaca466982b8c476c6fff74
+>>>>>>> fdfbb8d58fd8cd48333ac5e6b06d51a0cd6bd3bc:Assets/Materials & Shaders/Stardust/Stardust 2.shadergraph.meta
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}

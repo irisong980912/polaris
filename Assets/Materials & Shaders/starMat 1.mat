@@ -7,11 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Assets/Materials/Star 1.mat
-  m_Name: Star 1
-=======
-  m_Name: starMat
->>>>>>> fdfbb8d58fd8cd48333ac5e6b06d51a0cd6bd3bc:Assets/Materials & Shaders/starMat.mat
+  m_Name: starMat 1
   m_Shader: {fileID: -6465566751694194690, guid: f0ab395c4909f064683947d21e3145d5,
     type: 3}
   m_ShaderKeywords: 
@@ -56,11 +52,7 @@ Material:
     - Vector1_321BE34D: 0
     - Vector1_671E59BA: 100
     - Vector1_7DE72576: 2.84
-<<<<<<< HEAD:Assets/Materials/Star 1.mat
     - Vector1_D5C0D32A: 0
-=======
-    - Vector1_D5C0D32A: 1
->>>>>>> fdfbb8d58fd8cd48333ac5e6b06d51a0cd6bd3bc:Assets/Materials & Shaders/starMat.mat
     - Vector1_E1E52BFB: 150
     - _AlphaClip: 0
     - _Blend: 0
