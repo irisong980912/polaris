@@ -5,11 +5,10 @@ using UnityEngine;
 public class ThreeDIsoPlayerMovement : MonoBehaviour
 {
 
-    private float _speed = 100f;
-    private float _walkSpeed = 0.5f;
-    private float _runSpeed = 1f;
+    public float speed = 200f;
+    public float runSpeed = 300f;
 
- 
+
     private Rigidbody _body;
  
     private Vector3 direction;
@@ -34,11 +33,14 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
  
     public void Move()
     {
+
+        // x is left and right
+        // y is in and out
         float xAxis = Input.GetAxisRaw("Horizontal");
         float yAxis = Input.GetAxisRaw("Vertical");
-        var zAxis = Input.GetAxis("Jump");
+        // var zAxis = Input.GetAxis("Jump");
  
-        direction = new Vector3(xAxis, yAxis, zAxis);
+        direction = new Vector3(xAxis, 0f, yAxis);
  
         direction = direction.normalized;
 
@@ -47,15 +49,12 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
         /// left controll is speed up, delete this code 
         if (Input.GetButton("Fire1"))
         {
-            _speed = 200f;
-        }
-        else
-        {
-            _speed = 100f;
+            speed = runSpeed;
         }
  
+ 
         /// CONVERT direction from local to world relative to camera
-        _body.velocity = Camera.main.transform.TransformDirection(direction) * _speed * Time.deltaTime;
+        _body.velocity = Camera.main.transform.TransformDirection(direction) * speed * Time.deltaTime;
     }
  
     public void HandleRotation()
