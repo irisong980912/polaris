@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public Transform lookAt;
-    public Transform camTransform;
-
-    private Camera _cam;
+    public Transform lookAt;       // the player to lookat
+    public Transform cam; // camera itself
 
     // set the min and max camera angle on X and Y axis
     public float Y_ANGLE_MIN = -80.0f;  // bottom degree
@@ -17,13 +14,6 @@ public class ThirdPersonCamera : MonoBehaviour
     private float _distance = 5.0f;
     private float _currentX = 0.0f;
     private float _currentY = 0.0f;
-
-    private void Start()
-    {
-        camTransform = transform;
-        _cam = Camera.main;
-        
-    }
 
     private void Update()
     {
@@ -41,9 +31,9 @@ public class ThirdPersonCamera : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(_currentY, _currentX, 0);
         // transform camera position
-        camTransform.position = lookAt.position + rotation * dir;
+        cam.position = lookAt.position + rotation * dir;
         // keep the lookAt target at the center of the camera (camera follows target)
-        camTransform.LookAt(lookAt.position);
+        cam.LookAt(lookAt.position);
     }
 
 }

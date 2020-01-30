@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 6531615861483619197}
-  camTransform: {fileID: 0}
+  cam: {fileID: 1687258585}
   Y_ANGLE_MIN: -80
   Y_ANGLE_MAX: 80
 --- !u!20 &1687258584
