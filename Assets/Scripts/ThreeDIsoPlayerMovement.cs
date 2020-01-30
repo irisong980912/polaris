@@ -4,8 +4,6 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
 {
 
     public float speed = 200f;
-    public float runSpeed = 300f;
-
 
     private Rigidbody _body;
  
