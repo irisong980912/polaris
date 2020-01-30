@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ThreeDIsoPlayerMovement : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
 
     private Rigidbody _body;
  
-    private Vector3 direction;
+    private Vector3 _direction;
  
     private void Awake()
     {
@@ -22,46 +20,37 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
     {
         Move();
  
-        /// if the mc is not at the same location as the camera, 
-        /// handle camera rotation
-        if (direction != Vector3.zero)
+        // if the mc is not at the same location as the camera, 
+        // handle camera rotation
+        if (_direction != Vector3.zero)
         {
            HandleRotation();
         }
 
     }
- 
-    public void Move()
+
+    private void Move()
     {
 
         // x is left and right
         // y is in and out
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        float yAxis = Input.GetAxisRaw("Vertical");
+        var xAxis = Input.GetAxisRaw("Horizontal");
+        var yAxis = Input.GetAxisRaw("Vertical");
         // var zAxis = Input.GetAxis("Jump");
  
-        direction = new Vector3(xAxis, 0f, yAxis);
+        _direction = new Vector3(xAxis, 0f, yAxis);
  
-        direction = direction.normalized;
+        _direction = _direction.normalized;
 
-        /// _body.AddForce(direction * _speed);
-     
-        /// left controll is speed up, delete this code 
-        if (Input.GetButton("Fire1"))
-        {
-            speed = runSpeed;
-        }
- 
- 
-        /// CONVERT direction from local to world relative to camera
-        _body.velocity = Camera.main.transform.TransformDirection(direction) * speed * Time.deltaTime;
+        // CONVERT direction from local to world relative to camera
+        _body.velocity = Camera.main.transform.TransformDirection(_direction) * (speed * Time.deltaTime);
     }
- 
-    public void HandleRotation()
+
+    private void HandleRotation()
     {
-        /// determines which angle that the camera is looking at
-        float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-        Quaternion lookAt = Quaternion.Slerp(transform.rotation,
+        // determines which angle that the camera is looking at
+        var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+        var lookAt = Quaternion.Slerp(transform.rotation,
                                       Quaternion.Euler(0,targetRotation,0),
                                       0.5f);
         _body.rotation = lookAt;
