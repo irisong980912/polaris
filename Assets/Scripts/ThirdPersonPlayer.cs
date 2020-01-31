@@ -1,26 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
 
     public float speed = 200f;
-    public float runSpeed = 300f;
-    public float circle_radius = 1f;
+    public float circleRadius = 1f;
 
     public Transform cam; // camera itself
-    public Transform star; // camera itself
 
     private Rigidbody _body;
  
-    private Vector3 direction;
+    private Vector3 _direction;
 
-    private Collision starCol = null;
-    private float xTimeCounter = 0;
-    private float yTimeCounter = Mathf.PI;
+    private Collision _starCol;
+    private float _xTimeCounter;
+    private float _yTimeCounter = Mathf.PI;
 
-    private bool isCollide = false;
+    private bool _isCollide;
  
     private void Awake()
     {
@@ -31,26 +27,26 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         //testOrbit();
 
-        if (isCollide)
+        if (_isCollide)
         {
-            startOrbit(starCol);
+            StartOrbit(_starCol);
 
         }
         if (Input.GetKey(KeyCode.R))
         {
             Debug.Log("KeyCode down: R" );
-            isCollide = false;
+            _isCollide = false;
 
-            cam.GetComponent<ThirdPersonCamera>().BreakFree(starCol);
+            cam.GetComponent<ThirdPersonCamera>().BreakFree(_starCol);
 
         }
             
 
         Move();
 
-        /// if the mc is not at the same location as the camera, 
-        /// handle camera rotation
-        if (direction != Vector3.zero)
+        // if the mc is not at the same location as the camera,
+        // handle camera rotation
+        if (_direction != Vector3.zero)
         {
             HandleRotation();
         }
@@ -58,35 +54,29 @@ public class ThirdPersonPlayer : MonoBehaviour
         // if collide 
 
     }
- 
-    public void Move()
+
+    private void Move()
     {
         // x is left and right
         // y is in and out
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        float yAxis = Input.GetAxisRaw("Vertical");
+        var xAxis = Input.GetAxisRaw("Horizontal");
+        var yAxis = Input.GetAxisRaw("Vertical");
         // var zAxis = Input.GetAxis("Jump");
  
-        direction = new Vector3(xAxis, 0f, yAxis);
+        _direction = new Vector3(xAxis, 0f, yAxis);
  
-        direction = direction.normalized;
-     
-        /// left controll is speed up, delete this code 
-        if (Input.GetButton("Fire1"))
-        {
-            speed = runSpeed;
-        }
-
-        /// Camera.main to cam
-        /// Convert direction from local to world relative to camera
-        _body.velocity = cam.transform.TransformDirection(direction) * speed * Time.deltaTime;
+        _direction = _direction.normalized;
+        
+        // Camera.main to cam
+        // Convert direction from local to world relative to camera
+        _body.velocity = cam.transform.TransformDirection(_direction) * (speed * Time.deltaTime);
 
     }
- 
-    public void HandleRotation()
+
+    private void HandleRotation()
     {
-        /// determines which angle that the camera is looking at
-        float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+        // determines which angle that the camera is looking at
+        var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
         Quaternion lookAt = Quaternion.Slerp(transform.rotation,
                                       Quaternion.Euler(0,targetRotation,0),
                                       0.5f);
@@ -96,37 +86,35 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.name == "starOrbit")
-        {
-            starCol = col;
-            isCollide = true;
-            Debug.Log("collide");
-            //startOrbit(col);
+        if (col.gameObject.name != "starOrbit") return;
+        _starCol = col;
+        _isCollide = true;
+        Debug.Log("collide");
+        //startOrbit(col);
 
 
-            cam.GetComponent<ThirdPersonCamera>().CollisionDetected(starCol);
-        }
+        cam.GetComponent<ThirdPersonCamera>().CollisionDetected(_starCol);
     }
 
-    public void startOrbit(Collision col)
+    private void StartOrbit(Collision col)
     {
 
-        Vector3 starPos = col.transform.position;
-        Vector3 playerPos = transform.position;
+        var starPos = col.transform.position;
+        var playerPos = transform.position;
 
         // get the camera position in world axis
         //Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-        Vector3 dir = playerPos - starPos;
+        var dir = playerPos - starPos;
 
-        circle_radius = Vector3.Distance(playerPos, starPos);
+        circleRadius = Vector3.Distance(playerPos, starPos);
 
 
         //float x = starPos.x + dir.normalized.x ;
         //float y = starPos.y + dir.normalized.y ;
         //float z = starPos.z + dir.normalized.z;
-        float x = starPos.x + (Mathf.Cos(yTimeCounter)) * circle_radius;
-        float y = starPos.y + (Mathf.Sin(xTimeCounter)) * circle_radius;
-        float z = starPos.z + dir.normalized.z;
+        var x = starPos.x + (Mathf.Cos(_yTimeCounter)) * circleRadius;
+        var y = starPos.y + (Mathf.Sin(_xTimeCounter)) * circleRadius;
+        var z = starPos.z + dir.normalized.z;
 
 
         //float x = starPos.x + Mathf.Cos(timeCounter) * circle_radius;
@@ -138,14 +126,14 @@ public class ThirdPersonPlayer : MonoBehaviour
         //float y = Mathf.Sin(timeCounter) * starPos.y;
         //float z = starPos.z;
 
-        Vector3 timePos = new Vector3(x, y, z);
+        var timePos = new Vector3(x, y, z);
 
         //Vector3 new_pos = starPos + (dir.normalized * Mathf.Cos(timeCounter));
-        Vector3 new_pos = timePos;
-        transform.position = new_pos;
+        var newPos = timePos;
+        transform.position = newPos;
 
-        xTimeCounter += Time.deltaTime;
-        yTimeCounter += Time.deltaTime;
+        _xTimeCounter += Time.deltaTime;
+        _yTimeCounter += Time.deltaTime;
 
        
 
