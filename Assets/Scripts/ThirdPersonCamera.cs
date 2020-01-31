@@ -13,8 +13,8 @@ public class ThirdPersonCamera : MonoBehaviour
     private float _currentX;
     private float _currentY;
 
-    private Collision starCol = null;
-    private bool isCollide = false;
+    private Collision _starCol = null;
+    private bool _isCollide = false;
 
 
     private void Update()
@@ -29,11 +29,11 @@ public class ThirdPersonCamera : MonoBehaviour
     private void LateUpdate()
     {
         
-        if (isCollide)
+        if (_isCollide)
         {
             Debug.Log("collide cam true");
 
-            cam.LookAt(starCol.transform.position);
+            cam.LookAt(_starCol.transform.position);
 
         } else
         {
@@ -54,8 +54,8 @@ public class ThirdPersonCamera : MonoBehaviour
     public void CollisionDetected(Collision col)
     {
     
-        starCol = col;
-        isCollide = true;
+        _starCol = col;
+        _isCollide = true;
         Debug.Log("collide cam");
      
     }
@@ -63,8 +63,8 @@ public class ThirdPersonCamera : MonoBehaviour
     public void BreakFree(Collision col)
     {
 
-        starCol = col;
-        isCollide = false;
+        _starCol = col;
+        _isCollide = false;
         Debug.Log("collide cam");
 
     }
