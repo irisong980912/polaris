@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-=======
-﻿using System.Collections.Generic;
->>>>>>> 707d3100aa10e1ce9b4a475c2a58e706d0c39755
+
 using UnityEngine;
 
 public class Gravity : MonoBehaviour
@@ -15,11 +13,6 @@ public class Gravity : MonoBehaviour
     private GameObject[] _gravityObjects;
     public float gravityStrength;
     public float gravityRadius;
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 707d3100aa10e1ce9b4a475c2a58e706d0c39755
     private void Start()
     {
         try
