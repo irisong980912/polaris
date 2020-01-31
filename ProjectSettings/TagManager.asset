@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GravityObject
   - '|GravityObject|'
   - '|GravityObject|Player|'
-  - Star1
   - Star
+  - '|Planet|'
+  - '|PlanetCore|'
+  - '|Star|'
   layers:
   - Default
   - TransparentFX
