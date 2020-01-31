@@ -41,6 +41,8 @@ public class ThirdPersonPlayer : MonoBehaviour
             Debug.Log("KeyCode down: R" );
             isCollide = false;
 
+            cam.GetComponent<ThirdPersonCamera>().BreakFree(starCol);
+
         }
             
 
