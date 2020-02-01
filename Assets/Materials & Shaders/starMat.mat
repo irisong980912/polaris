@@ -7,11 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Assets/Materials/Star 1.mat
   m_Name: Star 1
-=======
-  m_Name: starMat
->>>>>>> fdfbb8d58fd8cd48333ac5e6b06d51a0cd6bd3bc:Assets/Materials & Shaders/starMat.mat
   m_Shader: {fileID: -6465566751694194690, guid: f0ab395c4909f064683947d21e3145d5,
     type: 3}
   m_ShaderKeywords: 

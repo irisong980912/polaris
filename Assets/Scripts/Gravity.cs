@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
 
 public class Gravity : MonoBehaviour
@@ -8,7 +13,6 @@ public class Gravity : MonoBehaviour
     private GameObject[] _gravityObjects;
     public float gravityStrength;
     public float gravityRadius;
-
     private void Start()
     {
         try
@@ -21,7 +25,6 @@ public class Gravity : MonoBehaviour
                 {
                     goList.Add(go);
                 }
-
                 _gravityObjects = goList.ToArray();
             }
         }
