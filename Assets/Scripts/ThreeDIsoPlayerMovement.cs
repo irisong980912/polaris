@@ -9,6 +9,7 @@ public class ThreeDIsoPlayerMovement : MonoBehaviour
     private float _walkSpeed = 0.5f;
     private float _runSpeed = 1f;
 
+    public int stardust = 0;
  
     private Rigidbody _body;
  
