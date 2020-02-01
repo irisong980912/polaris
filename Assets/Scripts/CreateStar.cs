@@ -15,7 +15,7 @@ public class CreateStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider collision)
     {
-        ThreeDIsoPlayerMovement player = collision.GetComponent<ThreeDIsoPlayerMovement>();
+        ThrirdPersonPlayer player = collision.GetComponent<ThrirdPersonPlayer>();
         if (Input.GetKeyDown("e") && player.stardust > 0)
         {
             onTrigger = !onTrigger;
