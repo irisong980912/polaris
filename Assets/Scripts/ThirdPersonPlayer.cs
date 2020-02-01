@@ -10,6 +10,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public Transform cam; // camera itself
 
+    public int stardust = 0;
+ 
     private Rigidbody _body;
  
     private Vector3 direction;
