@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.67822236, g: 0.67822236, b: 0.67822236, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 6531615862819988207}
-  destroyTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
   onTrigger: 1
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &48658332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 6531615862819988207}
-  newTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
   onTrigger: 1
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!135 &48658333
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -182,8 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 50230344}
-  destroyTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &50230349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 50230344}
-  newTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!1 &170171480
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,8 +533,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 6531615861041958034}
-  destroyTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &525585780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,8 +549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 6531615861041958034}
-  newTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,8 +668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 809724680}
-  newTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &809724682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,8 +684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 809724680}
-  destroyTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &809724683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,8 +965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1255733587}
-  destroyTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &1255733592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,8 +981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1255733587}
-  newTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!1001 &1443677540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1087,8 +1097,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1443677541}
-  newTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &1443677543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,8 +1113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1443677541}
-  destroyTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!1 &1458322688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,8 +1290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1570863512}
-  destroyTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &1570863517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,8 +1306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1570863512}
-  newTexture: {fileID: 0}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,8 +1819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1856672854}
-  newTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &1856672856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,8 +1835,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 1856672854}
-  destroyTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &1856672857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,8 +2041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 2048419880}
-  newTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &2048419882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,8 +2057,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 2048419880}
-  destroyTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
   onTrigger: 0
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &2048419883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,8 +2173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 6531615862298790448}
-  newTexture: {fileID: 2100000, guid: fe652ef3d86774201b10a47dbf9cbdd0, type: 2}
   onTrigger: 1
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!114 &2067052096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,8 +2189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   star: {fileID: 6531615862298790448}
-  destroyTexture: {fileID: 2100000, guid: f71c9e2c0ecba9b4095d4e1ce91c4234, type: 2}
   onTrigger: 1
+  StarAnimationController: {fileID: 0}
+  StarVFX: {fileID: 0}
 --- !u!135 &2067052097
 SphereCollider:
   m_ObjectHideFlags: 0
