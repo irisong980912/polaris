@@ -10,7 +10,7 @@ public class StardustPickup : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        ThrirdPersonPlayer player = collision.GetComponent<ThrirdPersonPlayer>();
+        ThirdPersonPlayerControl player = collision.GetComponent<ThirdPersonPlayerControl>();
 
         if(player != null)
         {
