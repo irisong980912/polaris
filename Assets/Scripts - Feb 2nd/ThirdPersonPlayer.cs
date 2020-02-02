@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
@@ -6,10 +8,14 @@ public class ThirdPersonPlayer : MonoBehaviour
     public float speed = 200f;
     public float circleRadius = 1f;
 
+    public int stardust = 0;
+
+    public List<GameObject> inventory = new List<GameObject>();
+
     public Transform cam; // camera itself
 
     private Rigidbody _body;
- 
+
     private Vector3 _direction;
 
     private Collision _starCol;
@@ -17,7 +23,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     private float _yTimeCounter = Mathf.PI;
 
     private bool _isCollide;
- 
+
+
     private void Awake()
     {
         _body = GetComponent<Rigidbody>();

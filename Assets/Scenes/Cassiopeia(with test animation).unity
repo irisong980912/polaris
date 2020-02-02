@@ -420,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   star: {fileID: 459369773}
   usedStardust: []
-  active: 1
+  active: 0
   shader: {fileID: 2100000, guid: bc8f83af892e00843aabb43e679aacae, type: 2}
   speed: 1
 --- !u!1001 &479144358
