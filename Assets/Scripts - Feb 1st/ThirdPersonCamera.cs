@@ -13,6 +13,10 @@ public class ThirdPersonCamera : MonoBehaviour
     private float _currentX;
     private float _currentY;
 
+    private Collision _starCol = null;
+    private bool _isCollide = false;
+
+
     private void Update()
     {
         // move the camera angle by mouse
@@ -24,15 +28,45 @@ public class ThirdPersonCamera : MonoBehaviour
     }
     private void LateUpdate()
     {
-        // position the camera behind the player by "distance"
-        var dir = new Vector3(0, 0, -Distance);
+        
+        if (_isCollide)
+        {
+            Debug.Log("collide cam true");
 
-        var rotation = Quaternion.Euler(_currentY, _currentX, 0);
-        // transform camera position
-        var position = lookAt.position;
-        cam.position = position + rotation * dir;
-        // keep the lookAt target at the center of the camera (camera follows target)
-        cam.LookAt(position);
+            cam.LookAt(_starCol.transform.position);
+
+        } else
+        {
+            // position the camera behind the player by "distance"
+            var dir = new Vector3(0, 0, -Distance);
+
+            var rotation = Quaternion.Euler(_currentY, _currentX, 0);
+            // transform camera position
+            var position = lookAt.position;
+            cam.position = position + rotation * dir;
+            // keep the lookAt target at the center of the camera (camera follows target)
+
+            cam.LookAt(position);
+        }
+            
+    }
+
+    public void CollisionDetected(Collision col)
+    {
+    
+        _starCol = col;
+        _isCollide = true;
+        Debug.Log("collide cam");
+     
+    }
+
+    public void BreakFree(Collision col)
+    {
+
+        _starCol = col;
+        _isCollide = false;
+        Debug.Log("collide cam");
+
     }
 
 }
