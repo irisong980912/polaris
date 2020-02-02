@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.6523439, g: 0.6523439, b: 0.6523439, a: 1}
+  m_IndirectSpecularColor: {r: 0.17036033, g: 0.14358078, b: 0.23059358, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -394,6 +394,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a9e14ddd98e404fb3e3175cdc65954, type: 3}
+--- !u!4 &356142790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5011825466097251541, guid: fb44204b6819a954d9aa106b8b155865,
+    type: 3}
+  m_PrefabInstance: {fileID: 69560034825718373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &479144358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1214,6 +1220,7 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
+  - component: {fileID: 1687258587}
   - component: {fileID: 1687258588}
   - component: {fileID: 1687258589}
   - component: {fileID: 1687258583}
@@ -1244,7 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7374ed9979d57477b8137899c7bd99da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAt: {fileID: 6531615861483619197}
+  lookAt: {fileID: 356142790}
   cam: {fileID: 1687258585}
   yAngleMin: -80
   yAngleMax: 80
@@ -1365,6 +1372,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1687258587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b151a0c2e0f844a98bcf16bd11cdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 356142790}
+  cameraSpeed: 30
+  freeMoveRadius: 20
 --- !u!45 &1687258588
 Skybox:
   m_ObjectHideFlags: 0
@@ -2037,6 +2059,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69560035517957291, guid: fb44204b6819a954d9aa106b8b155865,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1687258585}
     - target: {fileID: 5011825466097251541, guid: fb44204b6819a954d9aa106b8b155865,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2368,12 +2395,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &6531615861483619197 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1365006269541327042, guid: b6502f376db4d824d8d2965440455db2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5212230462507377599}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6531615862298790448
 GameObject:
   m_ObjectHideFlags: 0
