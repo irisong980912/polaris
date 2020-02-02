@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
 
     public float speed = 200f;
     public float circleRadius = 1f;
-    
-    public int stardust = 0;
 
-    public List<GameObject> inventory = new List<GameObject>();
-    
     public Transform cam; // camera itself
 
     private Rigidbody _body;
@@ -31,7 +25,23 @@ public class ThirdPersonPlayer : MonoBehaviour
  
     private void FixedUpdate()
     {
+        //testOrbit();
+
+        if (_isCollide)
+        {
+            StartOrbit(_starCol);
+
+        }
+        if (Input.GetKey(KeyCode.R))
+        {
+            Debug.Log("KeyCode down: R" );
+            _isCollide = false;
+
+            cam.GetComponent<ThirdPersonCamera>().BreakFree(_starCol);
+
+        }
             
+
         Move();
 
         // if the mc is not at the same location as the camera,
@@ -73,5 +83,64 @@ public class ThirdPersonPlayer : MonoBehaviour
         _body.rotation = lookAt;
  
     }
+
+    public void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name != "starOrbit") return;
+        _starCol = col;
+        _isCollide = true;
+        Debug.Log("collide");
+        //startOrbit(col);
+
+
+        cam.GetComponent<ThirdPersonCamera>().CollisionDetected(_starCol);
+    }
+
+    private void StartOrbit(Collision col)
+    {
+
+        var starPos = col.transform.position;
+        var playerPos = transform.position;
+
+        // get the camera position in world axis
+        //Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        var dir = playerPos - starPos;
+
+        circleRadius = Vector3.Distance(playerPos, starPos);
+
+
+        //float x = starPos.x + dir.normalized.x ;
+        //float y = starPos.y + dir.normalized.y ;
+        //float z = starPos.z + dir.normalized.z;
+        var x = starPos.x + (Mathf.Cos(_yTimeCounter)) * circleRadius;
+        var y = starPos.y + (Mathf.Sin(_xTimeCounter)) * circleRadius;
+        var z = starPos.z + dir.normalized.z;
+
+
+        //float x = starPos.x + Mathf.Cos(timeCounter) * circle_radius;
+        //float y = starPos.y + Mathf.Sin(timeCounter) * circle_radius;
+        //float z = starPos.z;
+
+
+        //float x = Mathf.Cos(timeCounter) * starPos.x;
+        //float y = Mathf.Sin(timeCounter) * starPos.y;
+        //float z = starPos.z;
+
+        var timePos = new Vector3(x, y, z);
+
+        //Vector3 new_pos = starPos + (dir.normalized * Mathf.Cos(timeCounter));
+        var newPos = timePos;
+        transform.position = newPos;
+
+        _xTimeCounter += Time.deltaTime;
+        _yTimeCounter += Time.deltaTime;
+
+       
+
+
+
+    }
+
+
 
 }
