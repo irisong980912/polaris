@@ -11,12 +11,30 @@
 public class Orbit : MonoBehaviour
 {
     public float speed;
-    
-    private void FixedUpdate()
+    private Collider _player;
+    private Transform _self;
+
+    private void Start()
     {
-        transform.Rotate(transform.up, speed);
+        _self = transform;
     }
 
+    private void FixedUpdate()
+    {
+        _self.Rotate(_self.up, speed);
+    }
+
+    /// <summary>
+    /// Sometimes the player will not orbit cleanly around the planet, instead circling a "halo" path around it.
+    /// This method will adjust the spinning planet core to realign the player's orbit around the planet.
+    /// </summary>
+    private void AdjustRotation()
+    {
+        _player.gameObject.transform.SetParent(null);
+        _self.forward = _player.transform.position - _self.position;
+        _player.gameObject.transform.SetParent(_self);
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (gameObject.tag.Contains("|Star|"))
@@ -29,13 +47,20 @@ public class Orbit : MonoBehaviour
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
-            other.transform.forward = other.transform.position - transform.position;
-            other.gameObject.transform.SetParent(transform);
+            _player = other;
+            _self.forward = other.transform.position - transform.position;
+            other.gameObject.transform.SetParent(_self);
+            InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
+            
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         other.gameObject.transform.SetParent(null);
+        if (other.gameObject.tag.Contains("|Player|"))
+        {
+            CancelInvoke(nameof(AdjustRotation));
+        }
     }
 }
