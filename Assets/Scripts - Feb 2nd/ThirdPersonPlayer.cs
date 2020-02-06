@@ -18,12 +18,27 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private Vector3 _direction;
 
+    public AudioSource collectDustSound;
+
+    public GameObject collectDustSoundContainer;
+
     private void Awake()
     {
         _body = GetComponent<Rigidbody>();
+        collectDustSound = collectDustSoundContainer.GetComponent<AudioSource>();
     }
- 
-    private void FixedUpdate()
+
+    public void OnTriggerEnter(Collider collision)
+    {
+        if(collision.tag == "|Dust|")
+        {
+            collectDustSound.Play();
+        }
+        
+
+    }
+
+        private void FixedUpdate()
     {
 
         Move();

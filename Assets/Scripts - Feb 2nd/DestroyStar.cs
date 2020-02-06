@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class DestroyStar : MonoBehaviour
 {
+    public AudioSource destroySound;
+
+    public GameObject destroySoundContainer;
+
+    public AudioSource disperseDustSound;
+
+    public GameObject disperseDustSoundContainer;
 
     private Collider _other = null;
 
@@ -12,6 +19,13 @@ public class DestroyStar : MonoBehaviour
 
     [SerializeField] private Animator StarAnimationController;
     [SerializeField] private Animator StarVFX;
+
+
+    private void Start()
+    {
+        destroySound = destroySoundContainer.GetComponent<AudioSource>();
+        disperseDustSound = disperseDustSoundContainer.GetComponent<AudioSource>();
+    }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
@@ -33,6 +47,9 @@ public class DestroyStar : MonoBehaviour
 
     private void ScatterStar()
     {
+        destroySound.Play();
+        disperseDustSound.Play();
+
         GameObject stardust = usedStardust[0];
         stardust.SetActive(true);
         usedStardust.RemoveAt(0);

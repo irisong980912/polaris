@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+///  TODO: when scattering the stardustm implement the transition animation that stardust
+///  is being distributed from the core
+/// </summary>
 public class StardustPickup : MonoBehaviour
 {
     public int stardustValue = 1;
@@ -10,10 +15,15 @@ public class StardustPickup : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        ThirdPersonPlayer player = collision.GetComponent<ThirdPersonPlayer>();
+        
 
-        if(player != null)
+        ThirdPersonPlayer player = collision.GetComponent<ThirdPersonPlayer>();
+        Debug.Log("pickup");
+        
+
+        if (player != null)
         {
+            Debug.Log("pickup add");
             player.stardust += stardustValue;
             player.inventory.Add(stardust);
             //Destroy(gameObject);
@@ -24,6 +34,7 @@ public class StardustPickup : MonoBehaviour
     void Start()
     {
         
+
     }
 
     // Update is called once per frame

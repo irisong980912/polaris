@@ -5,6 +5,11 @@ using UnityEngine.Experimental.VFX;
 
 public class CreateStar : MonoBehaviour
 {
+    public AudioSource createSound;
+    public AudioSource gravitySound;
+
+    public GameObject createSoundContainer;
+    public GameObject gravitySoundContainer;
 
     public Transform character;
     private Collider _other = null;
@@ -12,6 +17,14 @@ public class CreateStar : MonoBehaviour
 
     [SerializeField] private Animator StarAnimationController;
     [SerializeField] private Animator StarVFX;
+
+
+    private void Start()
+    {
+
+        createSound = createSoundContainer.GetComponent<AudioSource>();
+        gravitySound = gravitySoundContainer.GetComponent<AudioSource>();
+    }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
@@ -37,6 +50,10 @@ public class CreateStar : MonoBehaviour
 
         if (player.stardust > 0)
         {
+            createSound.Play();
+
+            gravitySound.Play();
+
             print("!!!!!!!!!!!!!! has star dust");
             GameObject stardust = player.inventory[0];
             GetComponent<DestroyStar>().usedStardust.Add(stardust);
@@ -83,6 +100,7 @@ public class CreateStar : MonoBehaviour
     {
         if (onTrigger && _other)
         {
+            
             FormStar();
 
         }

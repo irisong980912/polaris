@@ -13,6 +13,7 @@ TagManager:
   - '|PlanetCore|'
   - '|Planet|'
   - '|Star|'
+  - '|Dust|'
   layers:
   - Default
   - TransparentFX

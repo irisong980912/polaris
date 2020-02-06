@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
+
     // Update is called once per frame
 
     private GameObject[] _gravityObjects;
@@ -11,6 +12,7 @@ public class Gravity : MonoBehaviour
 
     private void Start()
     {
+
         try
         {
             var goList = new List<GameObject>();
@@ -33,6 +35,7 @@ public class Gravity : MonoBehaviour
 
     private void Update()
     {
+        
         foreach (var gravityObject in _gravityObjects)
         {
             if (gameObject.tag.Contains("|Star|"))
@@ -52,6 +55,8 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity(GameObject gravityObject)
     {
+
+
         gravityObject.GetComponent<Rigidbody>().AddExplosionForce(
             -gravityStrength,
             transform.position,
