@@ -6,7 +6,9 @@ using UnityEngine.Experimental.VFX;
 public class CreateStar : MonoBehaviour
 {
     public GameObject star;
-    //public Material newTexture;
+
+    public Transform character;
+    private Collider _other = null;
     public bool onTrigger;
 
     [SerializeField] private Animator StarAnimationController;
@@ -15,23 +17,51 @@ public class CreateStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && enabled)
         {
-            onTrigger = !onTrigger;
+            
+            if (other.CompareTag("|Player|"))
+            {
+                // only trigger if the other is player
+                onTrigger = true;
+                _other = other;
+                print("player trigger create");
+
+            }
         }
     }
 
     private void FormStar()
     {
-        star.GetComponent<Gravity>().enabled = true;
-        star.GetComponent<DestroyStar>().enabled = true;
-        star.GetComponent<CreateStar>().enabled = false;
-        GetComponent<Orbit>().enabled = true;
 
-        // ch
-        //star.GetComponent<DestroyStar>().onTrigger = true;
+        ThirdPersonPlayer player = _other.GetComponent<ThirdPersonPlayer>();
 
-        ActivateAnimations();
+        if (player.stardust > 0)
+        {
+            print("!!!!!!!!!!!!!! has star dust");
+            GameObject stardust = player.inventory[0];
+            GetComponent<DestroyStar>().usedStardust.Add(stardust);
+            player.inventory.RemoveAt(0);
+
+            player.stardust -= 1;
+
+            GetComponent<Orbit>().enabled = true;
+            star.GetComponent<Gravity>().enabled = true;
+
+            star.GetComponent<DestroyStar>().enabled = true;
+            star.GetComponent<CreateStar>().enabled = false;
+
+            onTrigger = false;
+
+            ActivateAnimations();
+
+        } else
+        {
+            onTrigger = false;
+        }
+
+
+
     }
 
     //Trigger animation clips from animation controller
@@ -43,11 +73,10 @@ public class CreateStar : MonoBehaviour
 
     private void Update()
     {
-        if (onTrigger == true)
+        if (onTrigger && _other)
         {
             FormStar();
-            print(star.GetComponent<Gravity>().enabled);
-            print("create" + star.name);
+
         }
 
     }

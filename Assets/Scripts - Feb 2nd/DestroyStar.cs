@@ -6,7 +6,12 @@ using UnityEngine;
 
 public class DestroyStar : MonoBehaviour
 {
+
+    private Collider _other = null;
+
     public bool onTrigger;
+
+    public List<GameObject> usedStardust = new List<GameObject>();
 
     [SerializeField] private Animator StarAnimationController;
     [SerializeField] private Animator StarVFX;
@@ -14,37 +19,38 @@ public class DestroyStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && enabled)
         {
-            onTrigger = !onTrigger;
-        }
-    }   
+            
+            if (other.CompareTag("|Player|"))
+            {
+                onTrigger = true;
+                _other = other;
+                print("player trigger destroy");
 
-    //TODO: Scatter stardust, change star material.
-    //TODO: Later, call animation to destroy star, play SFX.
+            }
+
+        }
+    }
+
+
     private void ScatterStar()
     {
-        GetComponent<Gravity>().enabled = false;
-        GetComponent<DestroyStar>().enabled = false;
-
-        GetComponent<CreateStar>().enabled = true;
+        GameObject stardust = usedStardust[0];
+        stardust.SetActive(true);
+        usedStardust.RemoveAt(0);
 
         GetComponent<Orbit>().enabled = false;
+        GetComponent<Gravity>().enabled = false;
 
+        GetComponent<DestroyStar>().enabled = false;
+        GetComponent<CreateStar>().enabled = true;
 
-        //star.GetComponent<CreateStar>().enabled = true;
-        //ChangeMaterial();
+        onTrigger = false;
 
         ActivateAnimations();
     }
 
-    // creates a new material instance that looks like the old material
-    /*
-    void ChangeMaterial()
-    {
-        //this.gameObject.GetComponent<MeshRenderer>().material = destroyTexture;
-    }
-    */
 
     //Trigger animation clips from animation controller
     void ActivateAnimations()
@@ -55,12 +61,13 @@ public class DestroyStar : MonoBehaviour
 
     private void Update()
     {
-        if (onTrigger == false){
+        if (onTrigger && _other)
+        {
+
             ScatterStar();
-            print(GetComponent<Gravity>().enabled);
-            print("destroy" + name);
-        }
         
+        }
+
     }
 
 }
