@@ -5,7 +5,6 @@ using UnityEngine.Experimental.VFX;
 
 public class CreateStar : MonoBehaviour
 {
-    public GameObject star;
 
     public Transform character;
     private Collider _other = null;
@@ -46,14 +45,14 @@ public class CreateStar : MonoBehaviour
             player.stardust -= 1;
 
             GetComponent<Orbit>().enabled = true;
-            star.GetComponent<Gravity>().enabled = true;
-
-            star.GetComponent<DestroyStar>().enabled = true;
-            star.GetComponent<CreateStar>().enabled = false;
-
+            GetComponent<Gravity>().enabled = true;
+            GetComponent<CreateStar>().enabled = false;
+            
             onTrigger = false;
 
             ActivateAnimations();
+
+            Invoke("StartDestroy", 4);
 
         } else
         {
@@ -62,6 +61,15 @@ public class CreateStar : MonoBehaviour
 
 
 
+    }
+
+    /// <summary>
+    /// Will be called by Invoke to set a timeout.
+    /// </summary>
+    void StartDestroy()
+    {
+        Debug.Log("StartDestroy");
+        GetComponent<DestroyStar>().enabled = true;
     }
 
     //Trigger animation clips from animation controller

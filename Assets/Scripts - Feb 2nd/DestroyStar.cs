@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyStar : MonoBehaviour
@@ -42,15 +39,23 @@ public class DestroyStar : MonoBehaviour
 
         GetComponent<Orbit>().enabled = false;
         GetComponent<Gravity>().enabled = false;
-
         GetComponent<DestroyStar>().enabled = false;
-        GetComponent<CreateStar>().enabled = true;
 
         onTrigger = false;
 
         ActivateAnimations();
+
+        Invoke("StartCreate", 4);
     }
 
+    /// <summary>
+    /// Will be called by Invoke to set a timeout.
+    /// </summary>
+    void StartCreate()
+    {
+        Debug.Log("StartCreate");
+        GetComponent<CreateStar>().enabled = true;
+    }
 
     //Trigger animation clips from animation controller
     void ActivateAnimations()
