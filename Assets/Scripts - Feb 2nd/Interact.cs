@@ -16,13 +16,17 @@ public class Interact : MonoBehaviour
 
     private float startTime;
 
+    // animators
+    [SerializeField] private Animator StarAnimationController;
+    [SerializeField] private Animator StarVFX;
+
     private void OnTriggerStay(Collider collision)
     {
         ThirdPersonPlayer player = collision.GetComponent<ThirdPersonPlayer>();
         
         if (Input.GetKeyDown("e")) //&& player.stardust > 0
         {
-            if (active == false){
+            if (active == false){ // lit up
                 if (player.stardust > 0){
                     active = !active;
                     GameObject stardust = player.inventory[0];
@@ -32,9 +36,15 @@ public class Interact : MonoBehaviour
                     if(shader.GetFloat("Vector1_D5C0D32A") == 0){
                         startTime = Time.time;
                     }
+
+                    ActivateAnimations();
+                    GetComponent<Orbit>().enabled = false;
                 }
+
+           
             }
-            else if (active == true){
+
+            else if (active == true){ // destroy
                 GameObject stardust = usedStardust[0];
                 stardust.SetActive(true);
                 usedStardust.RemoveAt(0);
@@ -42,9 +52,26 @@ public class Interact : MonoBehaviour
                 if(shader.GetFloat("Vector1_D5C0D32A") == 1){
                     startTime = Time.time;
                 }
+
+                DeactivateAnimations();
+                GetComponent<Orbit>().enabled = false;
             }
         }
     }
+
+    void ActivateAnimations()
+    {
+        StarAnimationController.SetTrigger("playCreateStar");
+        StarVFX.SetTrigger("playActivateStarVFX");
+    }
+
+    void DeactivateAnimations()
+    {
+        StarAnimationController.SetTrigger("playDeactivateStar");
+        StarVFX.SetTrigger("playDeactivateStarVFX");
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
