@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class DestroyStar : MonoBehaviour
 {
-    public GameObject star;
-    //public Material destroyTexture;
     public bool onTrigger;
 
     [SerializeField] private Animator StarAnimationController;
@@ -26,9 +24,15 @@ public class DestroyStar : MonoBehaviour
     //TODO: Later, call animation to destroy star, play SFX.
     private void ScatterStar()
     {
-        star.GetComponent<Gravity>().enabled = false;
-        star.GetComponent<CreateStar>().enabled = true;
-        star.GetComponent<DestroyStar>().enabled = false;
+        GetComponent<Gravity>().enabled = false;
+        GetComponent<DestroyStar>().enabled = false;
+
+        GetComponent<CreateStar>().enabled = true;
+
+        GetComponent<Orbit>().enabled = false;
+
+
+        //star.GetComponent<CreateStar>().enabled = true;
         //ChangeMaterial();
 
         ActivateAnimations();
@@ -53,9 +57,10 @@ public class DestroyStar : MonoBehaviour
     {
         if (onTrigger == false){
             ScatterStar();
-            print(star.GetComponent<Gravity>().enabled);
-            print("destroy" + star.name);
+            print(GetComponent<Gravity>().enabled);
+            print("destroy" + name);
         }
         
     }
+
 }

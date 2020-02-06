@@ -11,6 +11,7 @@
 public class Orbit : MonoBehaviour
 {
     public float speed;
+    public Camera cam;
     private Collider _player;
     private Transform _self;
 
@@ -22,6 +23,10 @@ public class Orbit : MonoBehaviour
     private void FixedUpdate()
     {
         _self.Rotate(_self.up, speed);
+
+
+
+
     }
 
     /// <summary>
@@ -34,19 +39,27 @@ public class Orbit : MonoBehaviour
         _self.forward = _player.transform.position - _self.position;
         _player.gameObject.transform.SetParent(_self);
     }
-    
+
+    // need to check if the star is lit or not
+    // check if create star or destroy star is on trigger
     private void OnTriggerEnter(Collider other)
     {
+
+
         if (gameObject.tag.Contains("|Star|"))
         {
+
             if (other.gameObject.tag.Contains("|Planet|"))
             {
+               
                 other.gameObject.transform.SetParent(transform);
             }
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
+
+            cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
             _player = other;
             _self.forward = other.transform.position - transform.position;
             other.gameObject.transform.SetParent(_self);
@@ -60,6 +73,7 @@ public class Orbit : MonoBehaviour
         other.gameObject.transform.SetParent(null);
         if (other.gameObject.tag.Contains("|Player|"))
         {
+            cam.GetComponent<ThirdPersonCamera>().CancelFocus();
             CancelInvoke(nameof(AdjustRotation));
         }
     }

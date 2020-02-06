@@ -26,18 +26,13 @@ public class CreateStar : MonoBehaviour
         star.GetComponent<Gravity>().enabled = true;
         star.GetComponent<DestroyStar>().enabled = true;
         star.GetComponent<CreateStar>().enabled = false;
-        //ChangeMaterial();
+        GetComponent<Orbit>().enabled = true;
+
+        // ch
+        //star.GetComponent<DestroyStar>().onTrigger = true;
 
         ActivateAnimations();
     }
-
-    // creates a new material instance that looks like the old material
-    /*
-    void ChangeMaterial()
-    {
-        this.gameObject.GetComponent<MeshRenderer>().material = newTexture;
-    }
-    */
 
     //Trigger animation clips from animation controller
     void ActivateAnimations()
