@@ -5,6 +5,9 @@
 /// and forces provided |GravityObject| to orbit around it.
 /// The speed of the orbit is determined by the speed variable.
 /// </summary>
+/// <remarks>
+/// Orbits are achieved by attaching orbiting objects as children to transform, and then rotating transform.
+/// </remarks>
 /// <param>
 /// speed: determines how quickly the attached objects rotate.
 /// </param>
@@ -20,13 +23,12 @@ public class Orbit : MonoBehaviour
         _self = transform;
     }
 
+    /// <summary>
+    /// Rotates _self, which causes any children to orbit.
+    /// </summary>
     private void FixedUpdate()
     {
         _self.Rotate(_self.up, speed);
-
-
-
-
     }
 
     /// <summary>
@@ -40,41 +42,47 @@ public class Orbit : MonoBehaviour
         _player.gameObject.transform.SetParent(_self);
     }
 
+    //TODO: mark these comments as a TODO item, add them to documentation, or delete them.
     // need to check if the star is lit or not
     // check if create star or destroy star is on trigger
+    /// <summary>
+    /// When an object capable of orbiting enters the collider, it becomes a child of _self.
+    /// </summary>
+    /// <remarks>
+    /// Since players can move, we need to regularly call AdjustRotation() to keep a player orbiting
+    /// all the way around the player
+    /// </remarks>
+    /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerEnter(Collider other)
     {
-
-
         if (gameObject.tag.Contains("|Star|"))
         {
-
             if (other.gameObject.tag.Contains("|Planet|"))
             {
-               
                 other.gameObject.transform.SetParent(transform);
             }
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
-
             cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
             _player = other;
             _self.forward = other.transform.position - transform.position;
             other.gameObject.transform.SetParent(_self);
             InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
-            
         }
     }
 
+    /// <summary>
+    /// When objects leave their orbits, they cease to be children of _self, so they stop rotating when _self spins.
+    /// </summary>
+    /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerExit(Collider other)
     {
         other.gameObject.transform.SetParent(null);
-        if (other.gameObject.tag.Contains("|Player|"))
-        {
-            cam.GetComponent<ThirdPersonCamera>().CancelFocus();
-            CancelInvoke(nameof(AdjustRotation));
-        }
+        
+        if (!other.gameObject.tag.Contains("|Player|")) return;
+        cam.GetComponent<ThirdPersonCamera>().CancelFocus();
+        CancelInvoke(nameof(AdjustRotation));
     }
 }
