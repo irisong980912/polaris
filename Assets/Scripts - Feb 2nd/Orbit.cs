@@ -31,8 +31,8 @@ public class Orbit : MonoBehaviour
     private void FixedUpdate()
     {
         _self.Rotate(_self.up, speed);
-        
-        if (!Input.GetButton("Fire1")) return;
+
+        if (!Input.GetButton("Fire1") || _player.transform.parent != _self) return;
         if (!_launchBegan)
         {
             SlingshotStart();
@@ -41,6 +41,7 @@ public class Orbit : MonoBehaviour
         {
             Slingshot();
         }
+
     }
 
     /// <summary>
