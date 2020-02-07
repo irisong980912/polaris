@@ -10,25 +10,37 @@
 /// </remarks>
 /// <param>
 /// speed: determines how quickly the attached objects rotate.
+/// cam: the main camera of the scene.
 /// </param>
 public class Orbit : MonoBehaviour
 {
     public float speed;
     public Camera cam;
+    private float _normalSpeed;
     private Collider _player;
     private Transform _self;
+    private bool _launchBegan;
+    private bool _launchReady;
 
     private void Start()
     {
         _self = transform;
+        _normalSpeed = speed;
     }
-
-    /// <summary>
-    /// Rotates _self, which causes any children to orbit.
-    /// </summary>
+    
     private void FixedUpdate()
     {
         _self.Rotate(_self.up, speed);
+        
+        if (!Input.GetButton("Fire1")) return;
+        if (!_launchBegan)
+        {
+            SlingshotStart();
+        }
+        else
+        {
+            Slingshot();
+        }
     }
 
     /// <summary>
@@ -85,4 +97,53 @@ public class Orbit : MonoBehaviour
         cam.GetComponent<ThirdPersonCamera>().CancelFocus();
         CancelInvoke(nameof(AdjustRotation));
     }
+
+    /// <summary>
+    /// Begins the process of launching the player out of orbit.
+    /// </summary>
+    /// <remarks>
+    /// The player will complete at least one orbit before launching, and speed up at a constant rate
+    /// throughout this final rotation.
+    /// </remarks>
+    private void SlingshotStart()
+    {
+        _launchBegan = true;
+        CancelInvoke(nameof(AdjustRotation));
+        _self.forward = cam.transform.forward;
+        InvokeRepeating(nameof(SpeedUp), 0, 0.02f); // 0.02 seconds is consistent with FixedUpdate.
+    }
+    
+    /// <summary>
+    /// Launches the player after they have gained enough speed.
+    /// </summary>
+    private void Slingshot()
+    {
+        if (!(Vector3.Angle(cam.transform.forward, _self.forward) < 5)) return;
+        if (!_launchReady) return;
+        _launchReady = false;
+        _launchBegan = false;
+        _player.gameObject.transform.SetParent(null);
+        speed = _normalSpeed;
+    }
+
+    /// <summary>
+    /// Increases the speed of the object's rotation until it close to 10.
+    /// </summary>
+    /// <remarks>
+    /// The original rotation speed is kept in _normalSpeed, which restores can be used to restore the rotation speed
+    /// back to its original speed.
+    /// </remarks>
+    private void SpeedUp()
+    {
+        if (speed <= 9.75f)
+        {
+            speed += 0.25f;
+        }
+        else
+        {
+            _launchReady = true;
+            CancelInvoke(nameof(SpeedUp));
+        }
+    }
+    
 }
