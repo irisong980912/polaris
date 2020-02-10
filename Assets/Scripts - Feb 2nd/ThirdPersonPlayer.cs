@@ -6,10 +6,9 @@ using System.Collections.Generic;
 public class ThirdPersonPlayer : MonoBehaviour
 {
 
-    public float speed = 200f;
-    public float circleRadius = 1f;
+    public float speed;
 
-    public int stardust = 0;
+    public int stardust;
     public List<GameObject> inventory = new List<GameObject>();
 
     public Transform cam; 
@@ -21,8 +20,6 @@ public class ThirdPersonPlayer : MonoBehaviour
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
 
-    private bool _inControl;
-    
     private void Awake()
     {
         _body = GetComponent<Rigidbody>();
@@ -66,19 +63,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         // Camera.main to cam
         // Convert direction from local to world relative to camera
         
-        // Only alters the player's movement when there are inputs;
-        // otherwise, player is free to be moved around by forces.
-        if (Math.Abs(xAxis) > 0.05 || Math.Abs(yAxis) > 0.05)
-        {
-            _inControl = true;
-            _body.velocity = cam.transform.TransformDirection(_direction) * (speed * Time.deltaTime);
-        }
-        else
-        {
-            if (!_inControl || _body.velocity == Vector3.zero) return;
-            _body.velocity = Vector3.zero;
-            _inControl = false;
-        }
+        _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
 
     }
 
