@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Cassiopeia.unity
+    path: Assets/Scenes/Graveyard/Cassiopeia.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/Scenes/Cassiopeia(with test animation).unity
+    path: Assets/Scenes/Main Scene.unity
     guid: 831924c114f228a47b0a661c02176323
   m_configObjects: {}
