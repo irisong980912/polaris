@@ -9,6 +9,11 @@ TagManager:
   - '|GravityObject|Player|'
   - Star1
   - Star
+  - '|Player|'
+  - '|PlanetCore|'
+  - '|Planet|'
+  - '|Star|'
+  - '|Dust|'
   layers:
   - Default
   - TransparentFX
