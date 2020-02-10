@@ -20,7 +20,6 @@ public class Orbit : MonoBehaviour
     private Collider _player;
     private Transform _self;
     private bool _launchBegan;
-    private bool _launchReady;
 
     private void Start()
     {
@@ -31,17 +30,14 @@ public class Orbit : MonoBehaviour
     private void FixedUpdate()
     {
         _self.Rotate(_self.up, speed);
+        
+        if (_player is null) return;
 
         if (!Input.GetButton("Fire1") || _player.transform.parent != _self) return;
         if (!_launchBegan)
         {
             SlingshotStart();
         }
-        else
-        {
-            Slingshot();
-        }
-
     }
 
     /// <summary>
@@ -110,41 +106,21 @@ public class Orbit : MonoBehaviour
     {
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
+        _player.gameObject.transform.SetParent(null);
         _self.forward = cam.transform.forward;
-        InvokeRepeating(nameof(SpeedUp), 0, 0.02f); // 0.02 seconds is consistent with FixedUpdate.
+        _player.gameObject.transform.SetParent(_self);
+        speed = 6;
+        Invoke(nameof(Slingshot), 1.0f);
     }
     
     /// <summary>
-    /// Launches the player after they have gained enough speed.
+    /// Launches the player after 1 rotation.
     /// </summary>
     private void Slingshot()
     {
-        if (!(Vector3.Angle(cam.transform.forward, _self.forward) < 5)) return;
-        if (!_launchReady) return;
-        _launchReady = false;
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
+        _player.gameObject.GetComponent<Rigidbody>().AddForce(_self.forward.normalized * 10, ForceMode.Force);
     }
-
-    /// <summary>
-    /// Increases the speed of the object's rotation until it close to 10.
-    /// </summary>
-    /// <remarks>
-    /// The original rotation speed is kept in _normalSpeed, which restores can be used to restore the rotation speed
-    /// back to its original speed.
-    /// </remarks>
-    private void SpeedUp()
-    {
-        if (speed <= 9.75f)
-        {
-            speed += 0.25f;
-        }
-        else
-        {
-            _launchReady = true;
-            CancelInvoke(nameof(SpeedUp));
-        }
-    }
-    
 }
