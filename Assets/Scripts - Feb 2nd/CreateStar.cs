@@ -34,7 +34,6 @@ public class CreateStar : MonoBehaviour
             
             if (other.CompareTag("|Player|"))
             {
-                // only trigger if the other is player
                 onTrigger = true;
                 _other = other;
                 print("player trigger create");
@@ -69,14 +68,13 @@ public class CreateStar : MonoBehaviour
 
             ActivateAnimations();
 
+            // wait untill the animations are over
             Invoke("StartDestroy", 4);
 
         } else
         {
             onTrigger = false;
         }
-
-
 
     }
 

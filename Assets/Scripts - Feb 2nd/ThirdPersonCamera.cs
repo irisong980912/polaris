@@ -42,8 +42,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
         // unity clamp API ensures that the value is always within the range
         _currentY = Mathf.Clamp(_currentY, yAngleMin, yAngleMax);
-
-
     }
 
 
@@ -69,7 +67,6 @@ public class ThirdPersonCamera : MonoBehaviour
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
         // smooth following
         Vector3 desiredPosition = _target.position;
-
         Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothPosition + rotation * dir;
 
@@ -81,14 +78,15 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         _target = star;
         _isTriggered = true;
-        Debug.Log("collide cam");
+        Debug.Log("OrbitDetected");
     }
+
 
     public void CancelFocus()
     {
         _target = character;
         _isCancel = true;
-        Debug.Log("collide cam CANCELLLLL");
+        Debug.Log("CancelFocus");
     }
 
 
