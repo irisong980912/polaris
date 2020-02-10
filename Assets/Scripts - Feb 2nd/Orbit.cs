@@ -109,7 +109,7 @@ public class Orbit : MonoBehaviour
         _player.gameObject.transform.SetParent(null);
         _self.forward = cam.transform.forward;
         _player.gameObject.transform.SetParent(_self);
-        speed = 6;
+        speed = 7.2f;
         Invoke(nameof(Slingshot), 1.0f);
     }
     
@@ -121,6 +121,6 @@ public class Orbit : MonoBehaviour
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
-        _player.gameObject.GetComponent<Rigidbody>().AddForce(_self.forward.normalized * 10, ForceMode.Force);
+        _player.gameObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward.normalized * 6000, ForceMode.Force);
     }
 }
