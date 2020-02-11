@@ -23,7 +23,7 @@ public class Interact : MonoBehaviour
     {
         ThirdPersonPlayer player = collision.GetComponent<ThirdPersonPlayer>();
 
-        if (Input.GetKeyDown("e")) //activate
+        if (Input.GetKeyDown("joystick button 0")) //activate
         {
             if (active == false)
             {

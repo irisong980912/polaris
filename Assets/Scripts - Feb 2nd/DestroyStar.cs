@@ -30,7 +30,7 @@ public class DestroyStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown("e") && enabled)
+        if (Input.GetButton("Fire1") && enabled)
         {
             
             if (other.CompareTag("|Player|"))
