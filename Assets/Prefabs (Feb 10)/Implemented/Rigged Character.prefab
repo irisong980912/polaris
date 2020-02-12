@@ -945,7 +945,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
-  circleRadius: 1
   stardust: 0
   inventory: []
   cam: {fileID: 0}
