@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.023205414, g: 0.010478335, b: 0.037866138, a: 1}
+  m_IndirectSpecularColor: {r: 0.021948371, g: 0.009902131, b: 0.035763137, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1443,6 +1443,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69560035517957288, guid: fb44204b6819a954d9aa106b8b155865,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 69560035517957288, guid: fb44204b6819a954d9aa106b8b155865,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 69560035517957291, guid: fb44204b6819a954d9aa106b8b155865,
         type: 3}
       propertyPath: cam
@@ -1453,6 +1463,11 @@ PrefabInstance:
       propertyPath: collectDustSoundContainer
       value: 
       objectReference: {fileID: 442566734}
+    - target: {fileID: 69560035517957291, guid: fb44204b6819a954d9aa106b8b155865,
+        type: 3}
+      propertyPath: speed
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 5011825466097251541, guid: fb44204b6819a954d9aa106b8b155865,
         type: 3}
       propertyPath: m_LocalPosition.x
