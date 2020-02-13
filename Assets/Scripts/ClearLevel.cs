@@ -1,8 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
 
-
-using UnityEngine;
-using UnityEngine.UI;
 public class ClearLevel : MonoBehaviour
 {
     [SerializeField] private GameObject clearLevelImage;
@@ -13,14 +10,6 @@ public class ClearLevel : MonoBehaviour
         {
             clearLevelImage.SetActive(true);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        //if (other.CompareTag("|Player|"))
-        //{
-        //    clearLevelImage.SetActive(false);
-        //}
     }
 
 }
