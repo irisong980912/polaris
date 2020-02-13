@@ -2,6 +2,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
@@ -16,6 +18,12 @@ public class ThirdPersonPlayer : MonoBehaviour
     private Rigidbody _body;
 
     private Vector3 _direction;
+
+    public int stardustSelection;
+
+    public GameObject inv1;
+
+    public GameObject inv2;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
@@ -37,7 +45,37 @@ public class ThirdPersonPlayer : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (Input.GetButton("Fire3"))
+        {  
+            stardustSelection = 0;
+        }
 
+        if (Input.GetButton("Jump"))
+        {  
+            stardustSelection = 1;
+        }
+
+        if (stardustSelection == 0){
+            inv1.GetComponent<Outline>().enabled = true;
+            inv2.GetComponent<Outline>().enabled = false;
+        }
+        else if (stardustSelection == 1){
+            inv1.GetComponent<Outline>().enabled = false;
+            inv2.GetComponent<Outline>().enabled = true;
+        }
+
+        if (inventory.Count == 0){
+            inv1.GetComponent<Image>().sprite = null;
+            inv2.GetComponent<Image>().sprite = null;
+        }
+        else if (inventory.Count == 1){
+            inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
+            inv2.GetComponent<Image>().sprite = null;
+        }
+        else if (inventory.Count == 2){
+            inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
+            inv2.GetComponent<Image>().sprite = inventory[1].GetComponent<Image>().sprite;
+        }
         Move();
 
         // if the mc is not at the same location as the camera,

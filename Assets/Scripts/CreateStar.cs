@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
@@ -29,7 +28,7 @@ public class CreateStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Fire1") && enabled)
+        if (Input.GetButton("Fire2") && enabled)
         {
             
             if (other.CompareTag("|Player|"))
@@ -54,9 +53,9 @@ public class CreateStar : MonoBehaviour
             gravitySound.Play();
 
             print("!!!!!!!!!!!!!! has star dust");
-            GameObject stardust = player.inventory[0];
+            GameObject stardust = player.inventory[player.stardustSelection];
             GetComponent<DestroyStar>().usedStardust.Add(stardust);
-            player.inventory.RemoveAt(0);
+            player.inventory.RemoveAt(player.stardustSelection);
 
             player.stardust -= 1;
 
