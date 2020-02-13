@@ -13,7 +13,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public int stardust;
     public List<GameObject> inventory = new List<GameObject>();
 
-    public Transform cam; 
+    public Transform cam;
 
     private Rigidbody _body;
 
@@ -42,7 +42,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
     }
 
-    
+
     private void FixedUpdate()
     {
         if (Input.GetButton("Fire3"))
@@ -94,13 +94,13 @@ public class ThirdPersonPlayer : MonoBehaviour
         // y is in and out
         var xAxis = Input.GetAxisRaw("Horizontal");
         var yAxis = Input.GetAxisRaw("Vertical");
- 
+
         _direction = new Vector3(xAxis, 0f, yAxis);
         _direction = _direction.normalized;
-        
+
         // Camera.main to cam
         // Convert direction from local to world relative to camera
-        
+
         _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
 
     }
@@ -111,10 +111,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         // determines which angle that the camera is looking at
         var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
         var lookAt = Quaternion.Slerp(transform.rotation,
-                                      Quaternion.Euler(0,targetRotation,0),
+                                      Quaternion.Euler(0, targetRotation, 0),
                                       0.5f);
         _body.rotation = lookAt;
- 
+
     }
 
 }
