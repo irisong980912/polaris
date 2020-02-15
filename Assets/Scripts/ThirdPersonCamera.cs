@@ -48,26 +48,26 @@ public class ThirdPersonCamera : MonoBehaviour
     private void LateUpdate()
     {
 
-        if (_isTriggered)
-        {
-            smoothSpeed = 0.08f;
-            _isTriggered = false;
+        //if (_isTriggered)
+        //{
+        //    smoothSpeed = 0.08f;
+        //    _isTriggered = false;
 
-        }
-        else if (_isCancel)
-        {
-            // set back to default
-            smoothSpeed = 0.125f;
-            _isCancel = false;
+        //}
+        //else if (_isCancel)
+        //{
+        //    // set back to default
+        //    smoothSpeed = 0.125f;
+        //    _isCancel = false;
 
-        }
+        //}
 
         // position the camera behind the player by "distance"
         var dir = new Vector3(0, 0, -distance);
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
         // smooth following
-        Vector3 desiredPosition = _target.position;
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        Vector3 desiredPosition = _target.position ;
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed );
         transform.position = smoothPosition + rotation * dir;
 
         cam.LookAt(_target);
