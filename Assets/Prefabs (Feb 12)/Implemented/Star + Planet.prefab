@@ -382,7 +382,7 @@ Transform:
   m_GameObject: {fileID: 6507822067475619711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.730666, y: 2.4980245, z: 6.4757233}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4597209042790450542}
   - {fileID: 2191115614775773686}
@@ -506,26 +506,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1775042285519120187}
     m_Modifications:
-    - target: {fileID: 1703217123732974197, guid: 5c309b70a7f0d472eb666f25dde2ed03,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
-        type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640653539286324056, guid: 5c309b70a7f0d472eb666f25dde2ed03,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0b17f79c931a2a64d87e14563d6279ae, type: 2}
-    - target: {fileID: 7044443756469068781, guid: 5c309b70a7f0d472eb666f25dde2ed03,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -665,11 +645,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Planet 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7328000404029805947, guid: 399b4fc82195942069d447f4154576f1,
-        type: 3}
-      propertyPath: cam
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
