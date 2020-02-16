@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stardustValue: 1
-  stardust: {fileID: 0}
+  stardust: {fileID: 1831400283502397979}
 --- !u!1001 &4837615845604294762
 PrefabInstance:
   m_ObjectHideFlags: 0
