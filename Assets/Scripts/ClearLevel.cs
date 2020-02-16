@@ -9,6 +9,8 @@ public class ClearLevel : MonoBehaviour
 
     public int totalStarNum;
 
+    public Transform cam;
+
     private void OnTriggerStay(Collider other)
     {
         Debug.Log("collide with clear");
@@ -16,16 +18,18 @@ public class ClearLevel : MonoBehaviour
         if (other.CompareTag("|Player|") &&
             totalStarNum == other.GetComponent<ThirdPersonPlayer>().litStarNum)
         {
-            //TopDownCameraPans();
-            clearLevelImage.SetActive(true);
+            // camera pans
+            cam.GetComponent<ThirdPersonCamera>().isCleared = true;
+
+            Invoke("showClearImage", 6);
         }
     }
 
-
-    private void TopDownCameraPans()
+    void showClearImage()
     {
-        
+        clearLevelImage.SetActive(true);
     }
-    
+
+
 
 }
