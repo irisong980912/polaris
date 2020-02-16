@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc5d47244b46a64fb17a6654ab9defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.07
   stardust: 0
   inventory: []
   cam: {fileID: 0}
