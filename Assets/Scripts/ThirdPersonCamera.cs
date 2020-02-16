@@ -26,6 +26,10 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform topDownObject;
     public Transform centralStar;
 
+    public float clearRotX = 90;
+    public float clearRotY = 22;
+    public float clearRotZ = -500;
+
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -67,9 +71,6 @@ public class ThirdPersonCamera : MonoBehaviour
         //    smoothSpeed = 0.125f;
         //    _isCancel = false;
 
-        //public float clearPosX;
-        //public float clearPosY;
-        //public float clearPosZ;
         //    //}
         Vector3 dir;
         Quaternion rotation;
@@ -120,17 +121,5 @@ public class ThirdPersonCamera : MonoBehaviour
         _isCancel = true;
         Debug.Log("CancelFocus");
     }
-
-    public void PanTopView()
-    {
-        //Debug.Log("hi");
-        //Vector3 desiredPosition = topDownObject.position;
-        //Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.smoothDeltaTime);
-        //transform.position = smoothPosition + new Vector3(0, distance, 0);
-        //cam.LookAt(topDownObject);
-
-
-    }
-
 
 }
