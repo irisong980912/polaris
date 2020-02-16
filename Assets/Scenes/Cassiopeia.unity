@@ -1690,11 +1690,6 @@ PrefabInstance:
       propertyPath: inv2
       value: 
       objectReference: {fileID: 1591966303}
-    - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
-        type: 3}
-      propertyPath: speed
-      value: 0.07
-      objectReference: {fileID: 0}
     - target: {fileID: 5137222419336618007, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
       propertyPath: m_Name
@@ -3501,16 +3496,6 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 1148804705}
-    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
-        type: 3}
-      propertyPath: smoothSpeed
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
-        type: 3}
-      propertyPath: distance
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_Name
