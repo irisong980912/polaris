@@ -53,11 +53,17 @@ public class CreateStar : MonoBehaviour
             gravitySound.Play();
 
             print("!!!!!!!!!!!!!! has star dust");
+
+            Debug.Log("=== Before creation ===: " + player.litStarNum);
+
+            // update stardust num and the lit star num
             GameObject stardust = player.inventory[player.stardustSelection];
             GetComponent<DestroyStar>().usedStardust.Add(stardust);
             player.inventory.RemoveAt(player.stardustSelection);
-
             player.stardust -= 1;
+            player.litStarNum += 1;
+
+            Debug.Log("=== After creation ===: " + player.litStarNum);
 
             GetComponent<Orbit>().enabled = true;
             GetComponent<Gravity>().enabled = true;
@@ -69,6 +75,8 @@ public class CreateStar : MonoBehaviour
 
             // wait untill the animations are over
             Invoke("StartDestroy", 4);
+
+            // check if all the stars has 
 
         } else
         {
