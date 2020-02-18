@@ -271,9 +271,3 @@ MonoBehaviour:
   smoothSpeed: 0.015
   distance: 0.05
   offset: {x: 0, y: 0, z: 0}
-  isCleared: 0
-  topDownObject: {fileID: 0}
-  centralStar: {fileID: 0}
-  clearRotX: 90
-  clearRotY: 22
-  clearRotZ: -500
