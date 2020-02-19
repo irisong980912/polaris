@@ -128,7 +128,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: b496b7bb2867a9c4fa44a54d04225f16, type: 2}
   m_Tag: 
-  m_SpeedParameter: RingAnimationMultiplier
+  m_SpeedParameter: RingActivationMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -153,7 +153,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: RingAnimationMultiplier
+  - m_Name: RingActivationMultiplier
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
@@ -195,10 +195,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: aa0a6c0b9b6d0a64ba0ab98d4938cf44, type: 2}
   m_Tag: 
-  m_SpeedParameter: RingAnimationMultiplier
+  m_SpeedParameter: RingActivationMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: RingAnimationMultiplier
+  m_TimeParameter: RingActivationMultiplier
 --- !u!1101 &8249936646323650072
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
