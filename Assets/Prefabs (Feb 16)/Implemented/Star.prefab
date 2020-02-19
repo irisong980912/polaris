@@ -408,7 +408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6668956837254164919}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0089998245, y: -0.00999999, z: -0.05000019}
+  m_LocalPosition: {x: 0.014, y: -0.00999999, z: -0.051}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 8240559358194348407}
@@ -755,7 +755,7 @@ Animator:
   m_GameObject: {fileID: 8619516870928191434}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a74b26739b3d1714b91630c3ef512f28, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -796,7 +796,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9007396541691365466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.9906664, y: -0.39802456, z: 0.49427652}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
@@ -879,7 +879,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5658587470108897816
 MonoBehaviour:
@@ -893,7 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db20a0893a120c488f8fb6f372f4983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityStrength: 60
+  gravityStrength: 70
   gravityRadius: 10
 --- !u!95 &3040263607613523733
 Animator:
@@ -905,7 +905,7 @@ Animator:
   m_GameObject: {fileID: 9007396541691365466}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57829730dcabde4449e5dd11840f6fb4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  cam: {fileID: 0}
+  cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
 --- !u!114 &1563010730179123855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,8 +960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8d2784f8be5874aa8bb7dca4e891c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createSound: {fileID: 0}
-  gravitySound: {fileID: 0}
+  createSound: {fileID: 8087075398965279733}
+  gravitySound: {fileID: 4233131572791728809}
   createSoundContainer: {fileID: 6559098337144906128}
   gravitySoundContainer: {fileID: 1783430075410231443}
   character: {fileID: 0}

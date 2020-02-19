@@ -13,15 +13,18 @@ public class Gravity : MonoBehaviour
     private void Start()
     {
 
+        Debug.Log("start gravity");
+
         try
         {
             var goList = new List<GameObject>();
             foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
             {
                 var go = (GameObject) o;
-                if (go.tag.Contains("|GravityObject|"))
+                if (go.tag.Contains("|Player|"))
                 {
                     goList.Add(go);
+                    Debug.Log(go.name);
                 }
 
                 _gravityObjects = goList.ToArray();

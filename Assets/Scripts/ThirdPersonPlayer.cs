@@ -52,37 +52,6 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (Input.GetButton("Fire3"))
-        //{  
-        //    stardustSelection = 0;
-        //}
-
-        //if (Input.GetButton("Jump"))
-        //{  
-        //    stardustSelection = 1;
-        //}
-
-        //if (stardustSelection == 0){
-        //    inv1.GetComponent<Outline>().enabled = true;
-        //    inv2.GetComponent<Outline>().enabled = false;
-        //}
-        //else if (stardustSelection == 1){
-        //    inv1.GetComponent<Outline>().enabled = false;
-        //    inv2.GetComponent<Outline>().enabled = true;
-        //}
-
-        //if (inventory.Count == 0){
-        //    inv1.GetComponent<Image>().sprite = null;
-        //    inv2.GetComponent<Image>().sprite = null;
-        //}
-        //else if (inventory.Count == 1){
-        //    inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
-        //    inv2.GetComponent<Image>().sprite = null;
-        //}
-        //else if (inventory.Count == 2){
-        //    inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
-        //    inv2.GetComponent<Image>().sprite = inventory[1].GetComponent<Image>().sprite;
-        //}
         Move();
 
         // if the mc is not at the same location as the camera,
