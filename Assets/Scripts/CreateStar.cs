@@ -18,11 +18,22 @@ public class CreateStar : MonoBehaviour
     [SerializeField] private Animator StarVFX;
     [SerializeField] private Animator[] RingAnimationController;
 
+    //Speed multiplier for animations
+    public float activationSpeedMultiplier = 1;
     private void Start()
     {
 
         createSound = createSoundContainer.GetComponent<AudioSource>();
         gravitySound = gravitySoundContainer.GetComponent<AudioSource>();
+
+        StarAnimationController.SetFloat("StarActivationMultiplier", activationSpeedMultiplier);
+        StarVFX.SetFloat("VFXActivationMultiplier", activationSpeedMultiplier);
+
+        //Iterate through rings array
+        foreach (Animator ring in RingAnimationController)
+        {
+            ring.SetFloat("RingActivationMultiplier", activationSpeedMultiplier);
+        }
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
