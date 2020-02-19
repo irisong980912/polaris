@@ -1778,6 +1778,11 @@ PrefabInstance:
       propertyPath: collectDustSound
       value: 
       objectReference: {fileID: 469866242}
+    - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
+        type: 3}
+      propertyPath: collectDustSoundContainer
+      value: 
+      objectReference: {fileID: 1506626319}
     - target: {fileID: 5137222419336618007, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
       propertyPath: m_Name
@@ -2934,6 +2939,12 @@ RectTransform:
   m_AnchoredPosition: {x: 7.8500004, y: 0.000022888}
   m_SizeDelta: {x: 1040.3, y: 708.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1506626319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5137222419246901480, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 921745524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1518355883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
