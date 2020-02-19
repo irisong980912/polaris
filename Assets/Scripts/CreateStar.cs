@@ -16,7 +16,7 @@ public class CreateStar : MonoBehaviour
 
     [SerializeField] private Animator StarAnimationController;
     [SerializeField] private Animator StarVFX;
-
+    [SerializeField] private Animator[] RingAnimationController;
 
     private void Start()
     {
@@ -99,6 +99,12 @@ public class CreateStar : MonoBehaviour
     {
         StarAnimationController.SetTrigger("playCreateStar");
         StarVFX.SetTrigger("playActivateStarVFX");
+       
+        //Iterate through rings array 
+        foreach (Animator ring in RingAnimationController)
+        {
+            ring.SetTrigger("PlayActivateRing");
+        }
     }
 
     private void Update()

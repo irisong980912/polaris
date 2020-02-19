@@ -19,7 +19,7 @@ public class DestroyStar : MonoBehaviour
 
     [SerializeField] private Animator StarAnimationController;
     [SerializeField] private Animator StarVFX;
-
+    [SerializeField] private Animator[] RingAnimationController;
 
     private void Start()
     {
@@ -85,6 +85,12 @@ public class DestroyStar : MonoBehaviour
     {
         StarAnimationController.SetTrigger("playDeactivateStar");
         StarVFX.SetTrigger("playDeactivateStarVFX");
+
+        //Iterate through rings array
+        foreach (Animator ring in RingAnimationController)
+        {
+            ring.SetTrigger("PlayDeactivateRing");
+        }
     }
 
     private void Update()
