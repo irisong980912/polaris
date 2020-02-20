@@ -1,76 +1,50 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
 
-    // Update is called once per frame
-
-    private GameObject[] _gravityObjects;
+    private GameObject _player;
     public float gravityStrength;
-    public float gravityRadius;
+    public float gravityRadius = 100.0f;
 
     private void Start()
     {
 
-        Debug.Log("start gravity");
-
         try
         {
-            var goList = new List<GameObject>();
             foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
             {
-                var go = (GameObject) o;
-                if (go.tag.Contains("|Player|"))
-                {
-                    goList.Add(go);
-                    Debug.Log(go.name);
-                }
-
-                _gravityObjects = goList.ToArray();
+                var go = (GameObject)o;
+                if (!go.tag.Contains("|Player|")) continue;
+                _player = go;
+                break;
             }
         }
         catch (UnityException)
         {
-            print("No such tag");
+            print("No |Player|");
         }
     }
 
     private void Update()
     {
-        
-        foreach (var gravityObject in _gravityObjects)
+       
+        // enforce gravity on player only when player is within the gravitational field
+        // TODO:figure out the number for gravitational field
+        float disToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+        if (disToPlayer <= gravityRadius)
         {
-            if (gameObject.tag.Contains("|Star|"))
-            {
-                GameObject core = GameObject.Find("Core");
-                // keep the gravity force within a distance
-                //Debug.Log(Vector3.Distance(core.transform.position, gravityObject.transform.position));
-                // before: if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
-                if (Vector3.Distance(transform.position, gravityObject.transform.position) <= gravityRadius)
-                {
-                    Debug.Log("Within Distance");
-                    ApplyGravity(gravityObject);
-                } 
-            }
-            else
-            {
-                ApplyGravity(gravityObject);
-            }
-            
+            _player.GetComponent<Rigidbody>().AddExplosionForce(
+                -(gravityStrength * disToPlayer),
+                transform.position,
+                gravityRadius,
+                0.0f,
+                ForceMode.Force
+            );
         }
+
+
     }
 
-    private void ApplyGravity(GameObject gravityObject)
-    {
 
-        gravityObject.GetComponent<Rigidbody>().AddExplosionForce(
-            -gravityStrength,
-            transform.position,
-            gravityRadius,
-            0.0f,
-            ForceMode.Force
-        );
-    }
 }
-    
