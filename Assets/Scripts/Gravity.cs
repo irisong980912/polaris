@@ -13,15 +13,18 @@ public class Gravity : MonoBehaviour
     private void Start()
     {
 
+        Debug.Log("start gravity");
+
         try
         {
             var goList = new List<GameObject>();
             foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
             {
                 var go = (GameObject) o;
-                if (go.tag.Contains("|GravityObject|"))
+                if (go.tag.Contains("|Player|"))
                 {
                     goList.Add(go);
+                    Debug.Log(go.name);
                 }
 
                 _gravityObjects = goList.ToArray();
@@ -40,10 +43,15 @@ public class Gravity : MonoBehaviour
         {
             if (gameObject.tag.Contains("|Star|"))
             {
-                if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
+                GameObject core = GameObject.Find("Core");
+                // keep the gravity force within a distance
+                //Debug.Log(Vector3.Distance(core.transform.position, gravityObject.transform.position));
+                // before: if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
+                if (Vector3.Distance(transform.position, gravityObject.transform.position) <= gravityRadius)
                 {
+                    Debug.Log("Within Distance");
                     ApplyGravity(gravityObject);
-                }
+                } 
             }
             else
             {
@@ -55,7 +63,6 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity(GameObject gravityObject)
     {
-
 
         gravityObject.GetComponent<Rigidbody>().AddExplosionForce(
             -gravityStrength,

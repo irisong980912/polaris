@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RingMat V1
+  m_Shader: {fileID: -6465566751694194690, guid: 2b4f5488ddff38c459b20d4694ed10ee,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_3CE53EF0: 0.5
+    - Vector1_592AD2E2: 0.35
+    - Vector1_78AF544C: 0.3
+    - Vector1_7ADC2485: 0.8
+    - Vector1_8BC50A54: 0.33
+    - Vector1_9F359C24: 0.28
+    - Vector1_ACD16739: 0.41
+    - Vector1_B08A437A: 0.5
+    - Vector1_CD3D27E4: 0.6
+    - Vector1_CE905A8D: 0.3
+    m_Colors:
+    - Color_468EF4D4: {r: 3.765918, g: 0.4707397, b: 12.84447, a: 0}
+--- !u!114 &6624745272039102168
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
