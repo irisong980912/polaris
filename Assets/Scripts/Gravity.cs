@@ -43,10 +43,15 @@ public class Gravity : MonoBehaviour
         {
             if (gameObject.tag.Contains("|Star|"))
             {
-                if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
+                GameObject core = GameObject.Find("Core");
+                // keep the gravity force within a distance
+                //Debug.Log(Vector3.Distance(core.transform.position, gravityObject.transform.position));
+                // before: if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
+                if (Vector3.Distance(transform.position, gravityObject.transform.position) <= gravityRadius)
                 {
+                    Debug.Log("Within Distance");
                     ApplyGravity(gravityObject);
-                }
+                } 
             }
             else
             {
@@ -58,7 +63,6 @@ public class Gravity : MonoBehaviour
 
     private void ApplyGravity(GameObject gravityObject)
     {
-
 
         gravityObject.GetComponent<Rigidbody>().AddExplosionForce(
             -gravityStrength,
