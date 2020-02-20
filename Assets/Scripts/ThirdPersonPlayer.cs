@@ -83,7 +83,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         //    inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
         //    inv2.GetComponent<Image>().sprite = inventory[1].GetComponent<Image>().sprite;
         //}
-        Move();
+        if (CameraSwitch.mapActive == false)
+        {
+            Move();
+        }
 
         // if the mc is not at the same location as the camera,
         // handle camera rotation
