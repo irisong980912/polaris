@@ -6,45 +6,45 @@ public class CameraSwitch : Subject {
 
     public GameObject cameraOne;
     public GameObject cameraTwo;
-    public static bool MapActive;
+    private static bool _mapActive;
     List<Observer> observers = new List<Observer>();
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         //Camera Position Set
-        cameraOne.active = true;
-        cameraTwo.active = false;
-        MapActive = false;
+        cameraOne.SetActive(true);
+        cameraTwo.SetActive(false);
+        _mapActive = false;
         //Notify ThirdPersonPlayer on map status
-        Notify(MapActive, NotificationType.MapStatus);
+        Notify(_mapActive, NotificationType.MapStatus);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        switchCamera();
+        SwitchCamera();
     }
 
     //Change Camera
-    void switchCamera()
+    private void SwitchCamera()
     {
         if (Input.GetButtonDown("Fire3"))
         {
-            cameraChangeCounter();
+            CameraChangeCounter();
         }
     }
 
     //Camera Counter
-    void cameraChangeCounter()
+    private void CameraChangeCounter()
     {
-        int cameraPositionCounter = PlayerPrefs.GetInt("CameraPosition");
+        var cameraPositionCounter = PlayerPrefs.GetInt("CameraPosition");
         cameraPositionCounter++;
-        cameraPositionChange(cameraPositionCounter);
+        CameraPositionChange(cameraPositionCounter);
     }
 
     //Camera change Logic
-    void cameraPositionChange(int camPosition)
+    private void CameraPositionChange(int camPosition)
     {
         if (camPosition > 1)
         {
@@ -54,27 +54,26 @@ public class CameraSwitch : Subject {
         //Set camera position database
         PlayerPrefs.SetInt("CameraPosition", camPosition);
 
-        //Set camera position 1 which is regular camera
-        if (camPosition == 0)
+        switch (camPosition)
         {
-            cameraOne.SetActive(true);
-            MapActive = false;
-            //Notify ThirdPersonPlayer on map status so player can move
-            Notify(MapActive, NotificationType.MapStatus);
-            //Time.timeScale = 1f;
-            cameraTwo.SetActive(false);
+            //Set camera position 1 which is regular camera
+            case 0:
+                cameraOne.SetActive(true);
+                _mapActive = false;
+                //Notify ThirdPersonPlayer on map status so player can move
+                Notify(_mapActive, NotificationType.MapStatus);
+                //Time.timeScale = 1f;
+                cameraTwo.SetActive(false);
+                break;
+            //Set camera position 2 which is map camera
+            case 1:
+                cameraTwo.SetActive(true);
+                _mapActive = true;
+                //Notify ThirdPersonPlayer on map status so player does not move
+                Notify(_mapActive, NotificationType.MapStatus);
+                //Time.timeScale = 0f;
+                cameraOne.SetActive(false);
+                break;
         }
-
-        //Set camera position 2 which is map camera
-        if (camPosition == 1)
-        {
-            cameraTwo.SetActive(true);
-            MapActive = true;
-            //Notify ThirdPersonPlayer on map status so player does not move
-            Notify(MapActive, NotificationType.MapStatus);
-            //Time.timeScale = 0f;
-            cameraOne.SetActive(false);
-        }
-
     }
 }

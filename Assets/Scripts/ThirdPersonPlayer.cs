@@ -54,17 +54,15 @@ public class ThirdPersonPlayer : Observer
         {
             print("No such tag");
         }
-        CameraSwitch CameraSwitch = _mapScript.GetComponent<CameraSwitch>();
-        CameraSwitch.RegisterObserver(this);
+        var cameraSwitch = _mapScript.GetComponent<CameraSwitch>();
+        cameraSwitch.RegisterObserver(this);
     }
 
     public override void OnNotify(bool value, NotificationType notificationType)
     {
-        if (notificationType == NotificationType.MapStatus)
-        {
-            _mapActive = value;
-            Debug.Log(value);
-        }
+        if (notificationType != NotificationType.MapStatus) return;
+        _mapActive = value;
+        Debug.Log(value);
     }
 
     private void Awake()

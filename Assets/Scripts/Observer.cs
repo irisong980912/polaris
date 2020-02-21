@@ -16,7 +16,7 @@ public abstract class Subject : MonoBehaviour
         _observers.Add(observer);
     }
 
-    public void Notify(bool value, NotificationType notificationType)
+    protected void Notify(bool value, NotificationType notificationType)
     {
         foreach (var observer in _observers)
             observer.OnNotify(value, notificationType);
