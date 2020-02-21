@@ -8,9 +8,10 @@ using UnityEngine;
 public class AsteroidBeltBounce : MonoBehaviour
 {
     // TODO: play around with explosionStrength and find the best value 
-    public float explosionStrength = 1000.0f;
+    public float explosionStrength = 1.0f;
     void OnCollisionEnter(Collision c)
     {
+        Debug.Log(c.rigidbody.velocity.normalized);
         Vector3 forceVec = c.rigidbody.velocity.normalized * explosionStrength;
         c.rigidbody.AddForce(forceVec, ForceMode.Impulse);
     }
