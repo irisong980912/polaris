@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 
-public class ThirdPersonPlayer : MonoBehaviour
+public class ThirdPersonPlayer : Observer
 {
 
     public float speed;
@@ -21,11 +21,15 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private Vector3 _direction;
 
+    private bool _mapActive;
+
     public int stardustSelection;
 
     public GameObject inv1;
 
     public GameObject inv2;
+
+    private GameObject _mapScript;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
@@ -33,6 +37,34 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void Start()
     {
         litStarNum = 0;
+        //Get the camera switch script so it can add this as an observer
+        try
+        {
+            var goList = new List<GameObject>();
+            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
+            {
+                var go = (GameObject) o;
+                if (go.tag.Contains("|MapScript|"))
+                {
+                    _mapScript = go;
+                }
+            }
+        }
+        catch (UnityException)
+        {
+            print("No such tag");
+        }
+        CameraSwitch CameraSwitch = _mapScript.GetComponent<CameraSwitch>();
+        CameraSwitch.RegisterObserver(this);
+    }
+
+    public override void OnNotify(bool value, NotificationType notificationType)
+    {
+        if (notificationType == NotificationType.MapStatus)
+        {
+            _mapActive = value;
+            Debug.Log(value);
+        }
     }
 
     private void Awake()
@@ -83,7 +115,9 @@ public class ThirdPersonPlayer : MonoBehaviour
         //    inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
         //    inv2.GetComponent<Image>().sprite = inventory[1].GetComponent<Image>().sprite;
         //}
-        if (CameraSwitch.mapActive == false)
+
+        //only move when map is not open, _mapActive is updated when CameraSwitch notifies this observer
+        if (_mapActive == false)
         {
             Move();
         }
@@ -127,4 +161,9 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     }
 
+}
+
+public enum NotificationType
+{
+    MapStatus
 }

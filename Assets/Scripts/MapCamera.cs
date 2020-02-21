@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MapCamera : MonoBehaviour
 {
-    public Transform m_Target;
-    public float m_Height = 30f;
-    public float m_Distance = 30f;
-    public float m_Angle = 45f;
+    public Transform mapTarget;
+    public float mapHeight = 30f;
+    public float mapDistance = 30f;
+    public float mapAngle = 45f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +24,19 @@ public class MapCamera : MonoBehaviour
     protected virtual void HandleCamera()
     {
         //Exit if no target
-        if(!m_Target)
+        if(!mapTarget)
         {
             return;
         }
 
         //Build world position vector
-        Vector3 worldPosition = (Vector3.forward * -m_Distance) + (Vector3.up * m_Height);
+        Vector3 worldPosition = (Vector3.forward * -mapDistance) + (Vector3.up * mapHeight);
 
         //Build rotated vector
-        Vector3 rotatedVector = Quaternion.AngleAxis(m_Angle, Vector3.up) * worldPosition;
+        Vector3 rotatedVector = Quaternion.AngleAxis(mapAngle, Vector3.up) * worldPosition;
 
         //Move the position
-        Vector3 flatTargetPosition = m_Target.position;
+        Vector3 flatTargetPosition = mapTarget.position;
         flatTargetPosition.y = 0f;
         Vector3 finalPosition = flatTargetPosition + rotatedVector;
 
