@@ -1588,10 +1588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3283753471dc5924a962a00bab7ee32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Target: {fileID: 1148804705}
-  m_Height: 30
-  m_Distance: 30
-  m_Angle: 0
+  mapTarget: {fileID: 0}
+  mapHeight: 30
+  mapDistance: 30
+  mapAngle: 45
 --- !u!1 &1247382401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,7 +2683,7 @@ GameObject:
   - component: {fileID: 2142367745}
   m_Layer: 0
   m_Name: MapScript
-  m_TagString: Untagged
+  m_TagString: '|MapScript|'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
