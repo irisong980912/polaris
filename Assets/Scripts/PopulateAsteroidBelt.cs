@@ -1,42 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PopulateAsteroidBelt : MonoBehaviour
 {
-
-    Collider volume;
+    private Collider _volume;
     public GameObject[] asteroidPrefabs;
-    public int numberSpawned = 0;
+    public int numberSpawned;
 
-    public float radius;
-    int randomIndex;
-    float randScale;
+    private int _randomIndex;
+    private float _randScale;
 
-    void Start()
+    private void Start()
     {
-        volume = gameObject.GetComponent<Collider>();
-        radius = volume.bounds.extents.x;
+        _volume = gameObject.GetComponent<Collider>();
 
-        for (int i = 0; i < numberSpawned; i++)
+        for (var i = 0; i < numberSpawned; i++)
         {
-            randomIndex = Random.Range(0, asteroidPrefabs.Length);
-            randScale = Random.Range(1, 2);
+            _randomIndex = Random.Range(0, asteroidPrefabs.Length);
+            _randScale = Random.Range(1, 2);
 
-            Vector3 spawnLoc = new Vector3(Random.Range(volume.bounds.center.x - volume.bounds.extents.x, volume.bounds.center.x + volume.bounds.extents.x), Random.Range(volume.bounds.center.y - volume.bounds.extents.y, volume.bounds.center.y + volume.bounds.extents.y), Random.Range(volume.bounds.center.z - volume.bounds.extents.z, volume.bounds.center.z + volume.bounds.extents.z));
-            GameObject asteroid = Instantiate(asteroidPrefabs[randomIndex], spawnLoc, Random.rotation);
+            var bounds = _volume.bounds;
+            var spawnLoc = new Vector3(Random.Range(bounds.center.x - bounds.extents.x, bounds.center.x + bounds.extents.x), Random.Range(bounds.center.y - bounds.extents.y, bounds.center.y + bounds.extents.y), Random.Range(bounds.center.z - bounds.extents.z, bounds.center.z + bounds.extents.z));
+            var asteroid = Instantiate(asteroidPrefabs[_randomIndex], spawnLoc, Random.rotation);
 
-            asteroid.transform.parent = volume.transform;
-            asteroid.transform.localScale *= randScale;
+            asteroid.transform.parent = _volume.transform;
+            asteroid.transform.localScale *= _randScale;
 
         }
     }
-
-    void Update()
-    {
-
-        
-    }
-
-
 }
