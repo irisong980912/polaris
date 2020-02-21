@@ -1,15 +1,13 @@
-﻿﻿using System.Collections;
-using System.Collections.Generic;
+﻿﻿using System;
 using UnityEngine;
 
-public class CameraSwitch : Subject {
+public class CameraSwitch : MonoBehaviour {
 
     public GameObject cameraOne;
     public GameObject cameraTwo;
     private static bool _mapActive;
-    List<Observer> observers = new List<Observer>();
-
-    // Use this for initialization
+    public static event Action<bool> OnMapSwitch;
+    
     private void Start()
     {
         //Camera Position Set
@@ -17,7 +15,7 @@ public class CameraSwitch : Subject {
         cameraTwo.SetActive(false);
         _mapActive = false;
         //Notify ThirdPersonPlayer on map status
-        Notify(_mapActive, NotificationType.MapStatus);
+        OnMapSwitch?.Invoke(_mapActive);
     }
 
     // Update is called once per frame
@@ -61,7 +59,7 @@ public class CameraSwitch : Subject {
                 cameraOne.SetActive(true);
                 _mapActive = false;
                 //Notify ThirdPersonPlayer on map status so player can move
-                Notify(_mapActive, NotificationType.MapStatus);
+                OnMapSwitch?.Invoke(_mapActive);
                 //Time.timeScale = 1f;
                 cameraTwo.SetActive(false);
                 break;
@@ -70,7 +68,7 @@ public class CameraSwitch : Subject {
                 cameraTwo.SetActive(true);
                 _mapActive = true;
                 //Notify ThirdPersonPlayer on map status so player does not move
-                Notify(_mapActive, NotificationType.MapStatus);
+                OnMapSwitch?.Invoke(_mapActive);
                 //Time.timeScale = 0f;
                 cameraOne.SetActive(false);
                 break;

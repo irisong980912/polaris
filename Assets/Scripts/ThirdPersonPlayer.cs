@@ -1,11 +1,7 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
-
-public class ThirdPersonPlayer : Observer
+public class ThirdPersonPlayer : MonoBehaviour
 {
 
     public float speed;
@@ -21,15 +17,13 @@ public class ThirdPersonPlayer : Observer
 
     private Vector3 _direction;
 
-    private bool _mapActive;
+    private static bool _mapActive;
 
     public int stardustSelection;
 
     public GameObject inv1;
 
     public GameObject inv2;
-
-    private GameObject _mapScript;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
@@ -46,7 +40,6 @@ public class ThirdPersonPlayer : Observer
                 var go = (GameObject) o;
                 if (go.tag.Contains("|MapScript|"))
                 {
-                    _mapScript = go;
                 }
             }
         }
@@ -54,16 +47,14 @@ public class ThirdPersonPlayer : Observer
         {
             print("No such tag");
         }
-        var cameraSwitch = _mapScript.GetComponent<CameraSwitch>();
-        cameraSwitch.RegisterObserver(this);
+        CameraSwitch.OnMapSwitch += SetMapActive;
     }
 
-    public override void OnNotify(bool value, NotificationType notificationType)
+    private static void SetMapActive(bool mapActive)
     {
-        if (notificationType != NotificationType.MapStatus) return;
-        _mapActive = value;
-        Debug.Log(value);
+        _mapActive = mapActive;
     }
+
 
     private void Awake()
     {
