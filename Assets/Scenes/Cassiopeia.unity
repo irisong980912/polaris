@@ -496,7 +496,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!1001 &97365771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!135 &444530257
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2047,7 +2047,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!1 &866863069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!135 &866863074
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2229,7 +2229,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!1001 &921745524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2425,7 +2425,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!135 &945771671
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!135 &951817374
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!1 &1062781034
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +3966,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!1 &1770816058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4268,7 +4268,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!135 &1897289361
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4702,7 +4702,7 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
   - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
   - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
-  numberSpawned: 800
+  numberSpawned: 200
 --- !u!135 &2094759667
 SphereCollider:
   m_ObjectHideFlags: 0
