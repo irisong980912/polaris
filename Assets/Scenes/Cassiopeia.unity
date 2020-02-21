@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.022051832, g: 0.0099231005, b: 0.0360084, a: 1}
+  m_IndirectSpecularColor: {r: 0.022061046, g: 0.009915478, b: 0.035996698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1259,6 +1259,7 @@ GameObject:
   - component: {fileID: 429365027}
   - component: {fileID: 429365029}
   - component: {fileID: 429365028}
+  - component: {fileID: 429365030}
   m_Layer: 0
   m_Name: Asteroid Belt 1 Head
   m_TagString: Untagged
@@ -1306,6 +1307,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 350
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &429365030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429365026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 300
 --- !u!1 &444530252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1336,7 @@ GameObject:
   - component: {fileID: 444530253}
   - component: {fileID: 444530255}
   - component: {fileID: 444530254}
+  - component: {fileID: 444530256}
   m_Layer: 0
   m_Name: Belt 1-4
   m_TagString: Untagged
@@ -1364,6 +1384,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 400
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &444530256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444530252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 300
 --- !u!82 &469866242 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5137222419246901478, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
@@ -1927,6 +1965,7 @@ GameObject:
   - component: {fileID: 866863070}
   - component: {fileID: 866863072}
   - component: {fileID: 866863071}
+  - component: {fileID: 866863073}
   m_Layer: 0
   m_Name: Belt 1-2
   m_TagString: Untagged
@@ -1974,6 +2013,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 400
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &866863073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866863069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 300
 --- !u!1 &906868871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,6 +2219,7 @@ GameObject:
   - component: {fileID: 945771667}
   - component: {fileID: 945771669}
   - component: {fileID: 945771668}
+  - component: {fileID: 945771670}
   m_Layer: 0
   m_Name: Asteroid Belt 1 Tail
   m_TagString: Untagged
@@ -2208,6 +2266,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 300
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &945771670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945771666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 300
 --- !u!1 &951817369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,6 +2295,7 @@ GameObject:
   - component: {fileID: 951817370}
   - component: {fileID: 951817372}
   - component: {fileID: 951817371}
+  - component: {fileID: 951817373}
   m_Layer: 0
   m_Name: Belt 1-3
   m_TagString: Untagged
@@ -2266,6 +2343,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 400
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &951817373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951817369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 300
 --- !u!4 &1011666355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
@@ -3872,6 +3967,7 @@ GameObject:
   - component: {fileID: 1897289357}
   - component: {fileID: 1897289359}
   - component: {fileID: 1897289358}
+  - component: {fileID: 1897289360}
   m_Layer: 0
   m_Name: Belt 1-5
   m_TagString: Untagged
@@ -3919,6 +4015,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 400
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1897289360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897289356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 400
 --- !u!1 &1904166338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,6 +4387,7 @@ GameObject:
   - component: {fileID: 2094759663}
   - component: {fileID: 2094759665}
   - component: {fileID: 2094759664}
+  - component: {fileID: 2094759666}
   m_Layer: 0
   m_Name: Belt 1-1
   m_TagString: Untagged
@@ -4320,6 +4435,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 375
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2094759666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094759662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51026dfbe886449a3643d96f981b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: -927199367670048503, guid: 68456912aa3e34ab6b61143a54ff05b1, type: 3}
+  - {fileID: -927199367670048503, guid: 15daa5613ee9345658970bbd8221aa56, type: 3}
+  - {fileID: -927199367670048503, guid: 5d0eb6bfc83544a959a9991a250a328e, type: 3}
+  numberSpawned: 50
+  radius: 300
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
