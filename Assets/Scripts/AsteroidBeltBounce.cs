@@ -8,7 +8,7 @@ using UnityEngine;
 public class AsteroidBeltBounce : MonoBehaviour
 {
     // TODO: play around with explosionStrength and find the best value 
-    public float explosionStrength = 1.0f;
+    public float explosionStrength = 10.0f;
     void OnCollisionEnter(Collision c)
     {
         Debug.Log(c.rigidbody.velocity.normalized);
