@@ -7,6 +7,8 @@ public class AsteroidBeltBounce : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<Rigidbody>().velocity = -other.gameObject.GetComponent<Rigidbody>().velocity;
+        other.gameObject.GetComponent<Rigidbody>().AddForce(
+            -other.gameObject.transform.forward.normalized * 6000, 
+            ForceMode.Force);
     }
 }
