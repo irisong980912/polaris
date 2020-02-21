@@ -19,12 +19,24 @@ public class DestroyStar : MonoBehaviour
 
     [SerializeField] private Animator StarAnimationController;
     [SerializeField] private Animator StarVFX;
+    [SerializeField] private Animator[] RingAnimationController;
 
+    //Speed multiplier for animations
+    public float activationSpeedMultiplier = 1;
 
     private void Start()
     {
         destroySound = destroySoundContainer.GetComponent<AudioSource>();
         disperseDustSound = disperseDustSoundContainer.GetComponent<AudioSource>();
+
+        StarAnimationController.SetFloat("StarActivationMultiplier", activationSpeedMultiplier);
+        StarVFX.SetFloat("VFXActivationMultiplier", activationSpeedMultiplier);
+
+        //Iterate through rings array
+        foreach (Animator ring in RingAnimationController)
+        {
+            ring.SetFloat("RingActivationMultiplier", activationSpeedMultiplier);
+        }
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
@@ -47,12 +59,18 @@ public class DestroyStar : MonoBehaviour
 
     private void ScatterStar()
     {
+        ThirdPersonPlayer player = _other.GetComponent<ThirdPersonPlayer>();
+
         destroySound.Play();
         disperseDustSound.Play();
 
         GameObject stardust = usedStardust[0];
         stardust.SetActive(true);
         usedStardust.RemoveAt(0);
+        player.litStarNum -= 1;
+
+        // error prevention
+        Debug.Log("=== After Destroy ===: " + player.litStarNum);
 
         GetComponent<Orbit>().enabled = false;
         GetComponent<Gravity>().enabled = false;
@@ -79,6 +97,12 @@ public class DestroyStar : MonoBehaviour
     {
         StarAnimationController.SetTrigger("playDeactivateStar");
         StarVFX.SetTrigger("playDeactivateStarVFX");
+
+        //Iterate through rings array
+        foreach (Animator ring in RingAnimationController)
+        {
+            ring.SetTrigger("PlayDeactivateRing");
+        }
     }
 
     private void Update()
