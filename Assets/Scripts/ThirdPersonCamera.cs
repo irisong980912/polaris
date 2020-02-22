@@ -14,21 +14,15 @@ public class ThirdPersonCamera : MonoBehaviour
     private float _currentX;
     private float _currentY;
 
-    private Transform _target = null;
+    private Transform _target;
 
-    private bool _isTriggered = false;
-    private bool _isCancel = false;
+    private bool _isTriggered;
+    private bool _isCancel;
 
-    public Vector3 offset;
-
-    public bool isCleared = false;
+    public bool isCleared;
 
     public Transform topDownObject;
     public Transform centralStar;
-
-    public float clearRotX = 90;
-    public float clearRotY = 22;
-    public float clearRotZ = -500;
 
 
     /// <summary>
@@ -52,13 +46,11 @@ public class ThirdPersonCamera : MonoBehaviour
 
         // unity clamp API ensures that the value is always within the range
         _currentY = Mathf.Clamp(_currentY, yAngleMin, yAngleMax);
-
     }
 
 
     private void LateUpdate()
     {
-
         //if (_isTriggered)
         //{
         //    smoothSpeed = 0.08f;
@@ -72,29 +64,23 @@ public class ThirdPersonCamera : MonoBehaviour
         //    _isCancel = false;
 
         //    //}
-        Vector3 dir;
-        Quaternion rotation;
         Vector3 desiredPosition;
         Vector3 smoothPosition;
 
         if (isCleared)
         {
-  
             desiredPosition = topDownObject.position;
             smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothPosition;
 
             var newRot = Quaternion.Euler(90, 22, -500); // top down camera rotation 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, smoothSpeed);
-
-
         }
         else
         {
-        
             // position the camera behind the player by "distance"
-            dir = new Vector3(0, 0, -distance);
-            rotation = Quaternion.Euler(_currentY, _currentX, 0);
+            var dir = new Vector3(0, 0, -distance);
+            var rotation = Quaternion.Euler(_currentY, _currentX, 0);
             // smooth following
             desiredPosition = _target.position;
             smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
@@ -102,8 +88,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
             cam.LookAt(_target);
         }
-
-        
     }
 
 
