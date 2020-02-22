@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyStar : MonoBehaviour
@@ -27,6 +28,8 @@ public class DestroyStar : MonoBehaviour
     private static readonly int PlayDeactivateStar = Animator.StringToHash("playDeactivateStar");
     private static readonly int PlayDeactivateStarVfx = Animator.StringToHash("playDeactivateStarVFX");
     private static readonly int PlayDeactivateRing = Animator.StringToHash("PlayDeactivateRing");
+
+    public static event Action OnStarDestruction; 
 
     private void Start()
     {
@@ -86,6 +89,7 @@ public class DestroyStar : MonoBehaviour
     private void StartCreate()
     {
         Debug.Log("StartCreate");
+        OnStarDestruction?.Invoke();
         GetComponent<CreateStar>().enabled = true;
     }
 

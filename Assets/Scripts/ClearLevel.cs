@@ -11,6 +11,7 @@ public class ClearLevel : MonoBehaviour
     private void Start()
     {
         CreateStar.OnStarCreation += OnStarCreation;
+        DestroyStar.OnStarDestruction += OnStarDestruction;
     }
 
     private void OnStarCreation()
@@ -20,6 +21,11 @@ public class ClearLevel : MonoBehaviour
         {
             ShowClearImage();
         }
+    }
+
+    private static void OnStarDestruction()
+    {
+        _starsLit--;
     }
 
     private void ShowClearImage()
