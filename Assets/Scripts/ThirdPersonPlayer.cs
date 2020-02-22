@@ -1,8 +1,5 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 
 public class ThirdPersonPlayer : MonoBehaviour
@@ -23,10 +20,6 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public int stardustSelection;
 
-    public GameObject inv1;
-
-    public GameObject inv2;
-
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
 
@@ -43,7 +36,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("|Dust|"))
+        // TODO: Move me to the collect stardust script.
+        if (collision.tag.Contains("|Dust|"))
         {
             collectDustSound.Play();
         }
