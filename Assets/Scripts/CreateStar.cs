@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CreateStar : MonoBehaviour
@@ -23,6 +24,8 @@ public class CreateStar : MonoBehaviour
     private static readonly int PlayCreateStar = Animator.StringToHash("playCreateStar");
     private static readonly int PlayActivateStarVfx = Animator.StringToHash("playActivateStarVFX");
     private static readonly int PlayActivateRing = Animator.StringToHash("PlayActivateRing");
+
+    public static event Action OnStarCreation; 
 
     private void Start()
     {
@@ -99,6 +102,7 @@ public class CreateStar : MonoBehaviour
     private void StartDestroy()
     {
         Debug.Log("StartDestroy");
+        OnStarCreation?.Invoke();
         GetComponent<DestroyStar>().enabled = true;
     }
 

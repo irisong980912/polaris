@@ -6,27 +6,25 @@ public class ClearLevel : MonoBehaviour
 
     public int totalStarNum;
 
-    public Transform cam;
+    private static int _starsLit;
 
-    private void OnTriggerStay(Collider other)
+    private void Start()
     {
+        CreateStar.OnStarCreation += OnStarCreation;
+    }
 
-        // if the player has collected sufficient number of stars
-        if (other.CompareTag("|Player|") &&
-            totalStarNum == other.GetComponent<ThirdPersonPlayer>().litStarNum)
+    private void OnStarCreation()
+    {
+        _starsLit++;
+        if (_starsLit == totalStarNum)
         {
-            // camera pans
-            cam.GetComponent<ThirdPersonCamera>().isCleared = true;
-
-            Invoke("showClearImage", 7);
+            ShowClearImage();
         }
     }
 
-    void showClearImage()
+    private void ShowClearImage()
     {
         clearLevelImage.SetActive(true);
     }
-
-
-
+    
 }
