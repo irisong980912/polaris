@@ -10,6 +10,8 @@ using UnityEngine;
 /// <remarks>
 /// The head of the asteroid belt cannot move.
 /// </remarks>
+///
+// TODO: make movable asteroid belts to test this script.
 public class AsteroidBeltPath : MonoBehaviour
 {
     // TODO: Test values to find a good value for this, then code it in and set to private.
