@@ -23,7 +23,6 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void Start()
     {
-        litStarNum = 0;
         //Get the camera switch script so it can add this as an observer
         try
         {
