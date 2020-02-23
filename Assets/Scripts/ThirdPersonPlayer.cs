@@ -6,24 +6,17 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public float speed;
 
-    public int litStarNum;
-
     public int stardust;
     public List<GameObject> inventory = new List<GameObject>();
 
     public Transform cam;
 
     private Rigidbody _body;
-
     private Vector3 _direction;
 
     private static bool _mapActive;
 
     public int stardustSelection;
-
-    public GameObject inv1;
-
-    public GameObject inv2;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
@@ -64,7 +57,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("|Dust|"))
+        // TODO: Move me to the collect stardust script.
+        if (collision.tag.Contains("|Dust|"))
         {
             collectDustSound.Play();
         }
@@ -73,39 +67,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (Input.GetButton("Fire3"))
-        //{  
-        //    stardustSelection = 0;
-        //}
 
-        //if (Input.GetButton("Jump"))
-        //{  
-        //    stardustSelection = 1;
-        //}
-
-        //if (stardustSelection == 0){
-        //    inv1.GetComponent<Outline>().enabled = true;
-        //    inv2.GetComponent<Outline>().enabled = false;
-        //}
-        //else if (stardustSelection == 1){
-        //    inv1.GetComponent<Outline>().enabled = false;
-        //    inv2.GetComponent<Outline>().enabled = true;
-        //}
-
-        //if (inventory.Count == 0){
-        //    inv1.GetComponent<Image>().sprite = null;
-        //    inv2.GetComponent<Image>().sprite = null;
-        //}
-        //else if (inventory.Count == 1){
-        //    inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
-        //    inv2.GetComponent<Image>().sprite = null;
-        //}
-        //else if (inventory.Count == 2){
-        //    inv1.GetComponent<Image>().sprite = inventory[0].GetComponent<Image>().sprite;
-        //    inv2.GetComponent<Image>().sprite = inventory[1].GetComponent<Image>().sprite;
-        //}
-
-        //only move when map is not open, _mapActive is updated when CameraSwitch notifies this observer
         if (_mapActive == false)
         {
             Move();
@@ -135,7 +97,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         // Convert direction from local to world relative to camera
 
         _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
-
     }
 
 
@@ -147,7 +108,6 @@ public class ThirdPersonPlayer : MonoBehaviour
                                       Quaternion.Euler(0, targetRotation, 0),
                                       0.5f);
         _body.rotation = lookAt;
-
     }
 
 }

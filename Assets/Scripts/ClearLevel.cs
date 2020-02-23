@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ClearLevel : MonoBehaviour
 {
@@ -6,27 +7,38 @@ public class ClearLevel : MonoBehaviour
 
     public int totalStarNum;
 
-    public Transform cam;
+    private static int _numStarsLit;
 
-    private void OnTriggerStay(Collider other)
+    public static event Action OnLevelClear;
+
+    private void Start()
     {
-
-        // if the player has collected sufficient number of stars
-        if (other.CompareTag("|Player|") &&
-            totalStarNum == other.GetComponent<ThirdPersonPlayer>().litStarNum)
-        {
-            // camera pans
-            cam.GetComponent<ThirdPersonCamera>().isCleared = true;
-
-            Invoke("showClearImage", 7);
-        }
+        CreateStar.OnStarCreation += OnStarCreation;
+        DestroyStar.OnStarDestruction += OnStarDestruction;
     }
 
-    void showClearImage()
+    private void OnStarCreation()
     {
+        Debug.Log("ClearLevel -- OnStarCreation");
+        _numStarsLit++;
+        if (_numStarsLit != totalStarNum) return;
+        Debug.Log("equal");
+        OnLevelClear?.Invoke();
+        // The level clear screen needs to be delayed so that the camera has time to pan to the appropriate location,
+        // and so that the player has enough time to see the constellation.
+        Invoke(nameof(ShowClearImage), 10);
+    }
+
+    private static void OnStarDestruction()
+    {
+        _numStarsLit--;
+    }
+
+    private void ShowClearImage()
+    {
+        Debug.Log("ClearLevel -- ShowClearImage");
+
         clearLevelImage.SetActive(true);
     }
-
-
-
+    
 }
