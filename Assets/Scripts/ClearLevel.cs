@@ -19,12 +19,14 @@ public class ClearLevel : MonoBehaviour
 
     private void OnStarCreation()
     {
+        Debug.Log("ClearLevel -- OnStarCreation");
         _numStarsLit++;
         if (_numStarsLit != totalStarNum) return;
+        Debug.Log("equal");
         OnLevelClear?.Invoke();
         // The level clear screen needs to be delayed so that the camera has time to pan to the appropriate location,
         // and so that the player has enough time to see the constellation.
-        Invoke(nameof(ShowClearImage), 7);
+        Invoke(nameof(ShowClearImage), 10);
     }
 
     private static void OnStarDestruction()
@@ -34,6 +36,8 @@ public class ClearLevel : MonoBehaviour
 
     private void ShowClearImage()
     {
+        Debug.Log("ClearLevel -- ShowClearImage");
+
         clearLevelImage.SetActive(true);
     }
     

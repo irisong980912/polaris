@@ -946,9 +946,9 @@ MonoBehaviour:
   disperseDustSoundContainer: {fileID: 4007785412229968600}
   onTrigger: 0
   usedStardust: []
-  StarAnimationController: {fileID: 3040263607613523733}
-  StarVFX: {fileID: 8832363041328108432}
-  RingAnimationController: []
+  starAnimationController: {fileID: 3040263607613523733}
+  starVfx: {fileID: 8832363041328108432}
+  ringAnimationController: []
   activationSpeedMultiplier: 1
 --- !u!114 &1744134124492446183
 MonoBehaviour:
@@ -966,9 +966,8 @@ MonoBehaviour:
   gravitySound: {fileID: 4233131572791728809}
   createSoundContainer: {fileID: 6559098337144906128}
   gravitySoundContainer: {fileID: 1783430075410231443}
-  character: {fileID: 0}
   onTrigger: 0
-  StarAnimationController: {fileID: 3040263607613523733}
-  StarVFX: {fileID: 8832363041328108432}
-  RingAnimationController: []
+  starAnimationController: {fileID: 3040263607613523733}
+  starVfx: {fileID: 8832363041328108432}
+  ringAnimationController: []
   activationSpeedMultiplier: 1

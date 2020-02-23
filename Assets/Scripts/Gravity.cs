@@ -49,7 +49,7 @@ public class Gravity : MonoBehaviour
                 // before: if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
                 if (Vector3.Distance(transform.position, gravityObject.transform.position) <= gravityRadius)
                 {
-                    Debug.Log("Within Distance");
+                    //Debug.Log("Within Distance");
                     ApplyGravity(gravityObject);
                 } 
             }

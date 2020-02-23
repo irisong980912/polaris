@@ -21,7 +21,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool _levelCleared;
 
-    public Transform topDownObject;
+    public Transform TopViewCamPos;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -50,6 +50,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        // TODO: Test the camera smooth speed when player orbiting the planet
         //if (_isTriggered)
         //{
         //    smoothSpeed = 0.08f;
@@ -64,16 +65,31 @@ public class ThirdPersonCamera : MonoBehaviour
 
         //    //}
 
-        if (_levelCleared) return;
-        // position the camera behind the player by "distance"
-        var dir = new Vector3(0, 0, -distance);
-        var rotation = Quaternion.Euler(_currentY, _currentX, 0);
-        // smooth following
-        var desiredPosition = _target.position;
-        var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothPosition + rotation * dir;
+        //if (_levelCleared) return;
 
-        cam.LookAt(_target);
+        // Camera smooth movement can be only realized in a update() function
+        if (_levelCleared)
+        {
+            Vector3 desiredPosition = TopViewCamPos.position;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
+
+            Quaternion newRot = Quaternion.Euler(90, -45, -500); 
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
+        } else
+        {
+
+            // position the camera behind the player by "distance"
+            var dir = new Vector3(0, 0, -distance);
+            var rotation = Quaternion.Euler(_currentY, _currentX, 0);
+            // smooth following
+            var desiredPosition = _target.position;
+            var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            transform.position = smoothPosition + rotation * dir;
+
+            cam.LookAt(_target);
+
+        }
+        
     }
 
 
@@ -95,13 +111,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void OnLevelClear()
     {
         _levelCleared = true;
-        
-        var desiredPosition = topDownObject.position;
-        var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothPosition;
-
-        var newRot = Quaternion.Euler(90, 22, -500); // top down camera rotation 
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRot, smoothSpeed);
+        Debug.Log("Camera -- OnLevelClear");
     }
 
 

@@ -79,7 +79,7 @@ public class CreateStar : MonoBehaviour
             ActivateAnimations();
 
             // wait until the animations are over
-            Invoke(nameof(StartDestroy), 4);
+            Invoke(nameof(StartDestroy), 6);
 
             // check if all the stars has 
 
