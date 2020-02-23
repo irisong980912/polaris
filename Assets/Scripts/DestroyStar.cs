@@ -1,76 +1,70 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyStar : MonoBehaviour
 {
     public AudioSource destroySound;
-
     public GameObject destroySoundContainer;
 
     public AudioSource disperseDustSound;
-
     public GameObject disperseDustSoundContainer;
 
-    private Collider _other = null;
+    private Collider _other;
 
     public bool onTrigger;
 
     public List<GameObject> usedStardust = new List<GameObject>();
 
-    [SerializeField] private Animator StarAnimationController;
-    [SerializeField] private Animator StarVFX;
-    [SerializeField] private Animator[] RingAnimationController;
+    [SerializeField] private Animator starAnimationController;
+    [SerializeField] private Animator starVfx;
+    [SerializeField] private Animator[] ringAnimationController;
 
     //Speed multiplier for animations
     public float activationSpeedMultiplier = 1;
+    private static readonly int StarActivationMultiplier = Animator.StringToHash("StarActivationMultiplier");
+    private static readonly int VfxActivationMultiplier = Animator.StringToHash("VFXActivationMultiplier");
+    private static readonly int RingActivationMultiplier = Animator.StringToHash("RingActivationMultiplier");
+    private static readonly int PlayDeactivateStar = Animator.StringToHash("playDeactivateStar");
+    private static readonly int PlayDeactivateStarVfx = Animator.StringToHash("playDeactivateStarVFX");
+    private static readonly int PlayDeactivateRing = Animator.StringToHash("PlayDeactivateRing");
+
+    public static event Action OnStarDestruction; 
 
     private void Start()
     {
         destroySound = destroySoundContainer.GetComponent<AudioSource>();
         disperseDustSound = disperseDustSoundContainer.GetComponent<AudioSource>();
 
-        StarAnimationController.SetFloat("StarActivationMultiplier", activationSpeedMultiplier);
-        StarVFX.SetFloat("VFXActivationMultiplier", activationSpeedMultiplier);
+        starAnimationController.SetFloat(StarActivationMultiplier, activationSpeedMultiplier);
+        starVfx.SetFloat(VfxActivationMultiplier, activationSpeedMultiplier);
 
         //Iterate through rings array
-        foreach (Animator ring in RingAnimationController)
+        foreach (var ring in ringAnimationController)
         {
-            ring.SetFloat("RingActivationMultiplier", activationSpeedMultiplier);
+            ring.SetFloat(RingActivationMultiplier, activationSpeedMultiplier);
         }
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Fire2") && enabled)
-        {
-            
-            if (other.CompareTag("|Player|"))
-            {
-                onTrigger = true;
-                _other = other;
-                print("player trigger destroy");
-
-            }
-
-        }
+        if (!Input.GetButton("Fire2") || !enabled) return;
+        if (!other.tag.Contains("|Player|")) return;
+        onTrigger = true;
+        _other = other;
+        print("player trigger destroy");
     }
 
 
     private void ScatterStar()
     {
-        ThirdPersonPlayer player = _other.GetComponent<ThirdPersonPlayer>();
-
         destroySound.Play();
         disperseDustSound.Play();
 
-        GameObject stardust = usedStardust[0];
+        var stardust = usedStardust[0];
         stardust.SetActive(true);
         usedStardust.RemoveAt(0);
-        player.litStarNum -= 1;
-
-        // error prevention
-        Debug.Log("=== After Destroy ===: " + player.litStarNum);
 
         GetComponent<Orbit>().enabled = false;
         GetComponent<Gravity>().enabled = false;
@@ -80,28 +74,29 @@ public class DestroyStar : MonoBehaviour
 
         ActivateAnimations();
 
-        Invoke("StartCreate", 4);
+        Invoke(nameof(StartCreate), 4);
     }
 
     /// <summary>
     /// Will be called by Invoke to set a timeout.
     /// </summary>
-    void StartCreate()
+    private void StartCreate()
     {
         Debug.Log("StartCreate");
+        OnStarDestruction?.Invoke();
         GetComponent<CreateStar>().enabled = true;
     }
 
     //Trigger animation clips from animation controller
-    void ActivateAnimations()
+    private void ActivateAnimations()
     {
-        StarAnimationController.SetTrigger("playDeactivateStar");
-        StarVFX.SetTrigger("playDeactivateStarVFX");
+        starAnimationController.SetTrigger(PlayDeactivateStar);
+        starVfx.SetTrigger(PlayDeactivateStarVfx);
 
         //Iterate through rings array
-        foreach (Animator ring in RingAnimationController)
+        foreach (var ring in ringAnimationController)
         {
-            ring.SetTrigger("PlayDeactivateRing");
+            ring.SetTrigger(PlayDeactivateRing);
         }
     }
 
@@ -109,11 +104,8 @@ public class DestroyStar : MonoBehaviour
     {
         if (onTrigger && _other)
         {
-
             ScatterStar();
-        
         }
-
     }
 
 }

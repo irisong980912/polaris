@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Experimental.VFX;
 
 public class CreateStar : MonoBehaviour
 {
@@ -9,53 +8,53 @@ public class CreateStar : MonoBehaviour
 
     public GameObject createSoundContainer;
     public GameObject gravitySoundContainer;
-
-    public Transform character;
-    private Collider _other = null;
+    
+    private Collider _other;
     public bool onTrigger;
 
-    [SerializeField] private Animator StarAnimationController;
-    [SerializeField] private Animator StarVFX;
-    [SerializeField] private Animator[] RingAnimationController;
+    [SerializeField] private Animator starAnimationController;
+    [SerializeField] private Animator starVfx;
+    [SerializeField] private Animator[] ringAnimationController;
 
     //Speed multiplier for animations
     public float activationSpeedMultiplier = 1;
+    private static readonly int StarActivationMultiplier = Animator.StringToHash("StarActivationMultiplier");
+    private static readonly int VfxActivationMultiplier = Animator.StringToHash("VFXActivationMultiplier");
+    private static readonly int RingActivationMultiplier = Animator.StringToHash("RingActivationMultiplier");
+    private static readonly int PlayCreateStar = Animator.StringToHash("playCreateStar");
+    private static readonly int PlayActivateStarVfx = Animator.StringToHash("playActivateStarVFX");
+    private static readonly int PlayActivateRing = Animator.StringToHash("PlayActivateRing");
+
+    public static event Action OnStarCreation; 
+
     private void Start()
     {
-
         createSound = createSoundContainer.GetComponent<AudioSource>();
         gravitySound = gravitySoundContainer.GetComponent<AudioSource>();
 
-        StarAnimationController.SetFloat("StarActivationMultiplier", activationSpeedMultiplier);
-        StarVFX.SetFloat("VFXActivationMultiplier", activationSpeedMultiplier);
+        starAnimationController.SetFloat(StarActivationMultiplier, activationSpeedMultiplier);
+        starVfx.SetFloat(VfxActivationMultiplier, activationSpeedMultiplier);
 
         //Iterate through rings array
-        foreach (Animator ring in RingAnimationController)
+        foreach (var ring in ringAnimationController)
         {
-            ring.SetFloat("RingActivationMultiplier", activationSpeedMultiplier);
+            ring.SetFloat(RingActivationMultiplier, activationSpeedMultiplier);
         }
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetButton("Fire2") && enabled)
-        {
-            
-            if (other.CompareTag("|Player|"))
-            {
-                onTrigger = true;
-                _other = other;
-                print("player trigger create");
-
-            }
-        }
+        if (!Input.GetButton("Fire2") || !enabled) return;
+        if (!other.tag.Contains("|Player|")) return;
+        onTrigger = true;
+        _other = other;
+        print("player trigger create");
     }
 
     private void FormStar()
     {
-
-        ThirdPersonPlayer player = _other.GetComponent<ThirdPersonPlayer>();
+        var player = _other.GetComponent<ThirdPersonPlayer>();
 
         if (player.stardust > 0)
         {
@@ -65,16 +64,11 @@ public class CreateStar : MonoBehaviour
 
             print("!!!!!!!!!!!!!! has star dust");
 
-            Debug.Log("=== Before creation ===: " + player.litStarNum);
-
             // update stardust num and the lit star num
-            GameObject stardust = player.inventory[player.stardustSelection];
+            var stardust = player.inventory[player.stardustSelection];
             GetComponent<DestroyStar>().usedStardust.Add(stardust);
             player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
-            player.litStarNum += 1;
-
-            Debug.Log("=== After creation ===: " + player.litStarNum);
 
             GetComponent<Orbit>().enabled = true;
             GetComponent<Gravity>().enabled = true;
@@ -84,8 +78,8 @@ public class CreateStar : MonoBehaviour
 
             ActivateAnimations();
 
-            // wait untill the animations are over
-            Invoke("StartDestroy", 4);
+            // wait until the animations are over
+            Invoke(nameof(StartDestroy), 6);
 
             // check if all the stars has 
 
@@ -99,22 +93,23 @@ public class CreateStar : MonoBehaviour
     /// <summary>
     /// Will be called by Invoke to set a timeout.
     /// </summary>
-    void StartDestroy()
+    private void StartDestroy()
     {
         Debug.Log("StartDestroy");
+        OnStarCreation?.Invoke();
         GetComponent<DestroyStar>().enabled = true;
     }
 
     //Trigger animation clips from animation controller
-    void ActivateAnimations()
+    private void ActivateAnimations()
     {
-        StarAnimationController.SetTrigger("playCreateStar");
-        StarVFX.SetTrigger("playActivateStarVFX");
+        starAnimationController.SetTrigger(PlayCreateStar);
+        starVfx.SetTrigger(PlayActivateStarVfx);
        
         //Iterate through rings array 
-        foreach (Animator ring in RingAnimationController)
+        foreach (var ring in ringAnimationController)
         {
-            ring.SetTrigger("PlayActivateRing");
+            ring.SetTrigger(PlayActivateRing);
         }
     }
 
@@ -122,9 +117,7 @@ public class CreateStar : MonoBehaviour
     {
         if (onTrigger && _other)
         {
-            
             FormStar();
-
         }
 
     }
