@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-
 public class ThirdPersonPlayer : MonoBehaviour
 {
 
     public float speed;
-
-    public int litStarNum;
 
     public int stardust;
     public List<GameObject> inventory = new List<GameObject>();
@@ -15,19 +12,13 @@ public class ThirdPersonPlayer : MonoBehaviour
     public Transform cam;
 
     private Rigidbody _body;
-
     private Vector3 _direction;
 
     public int stardustSelection;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
-
-    private void Start()
-    {
-        litStarNum = 0;
-    }
-
+    
     private void Awake()
     {
         _body = GetComponent<Rigidbody>();
@@ -72,7 +63,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         // Convert direction from local to world relative to camera
 
         _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
-
     }
 
 
@@ -84,7 +74,6 @@ public class ThirdPersonPlayer : MonoBehaviour
                                       Quaternion.Euler(0, targetRotation, 0),
                                       0.5f);
         _body.rotation = lookAt;
-
     }
 
 }

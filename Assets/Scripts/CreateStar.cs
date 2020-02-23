@@ -54,7 +54,6 @@ public class CreateStar : MonoBehaviour
 
     private void FormStar()
     {
-
         var player = _other.GetComponent<ThirdPersonPlayer>();
 
         if (player.stardust > 0)
@@ -65,16 +64,11 @@ public class CreateStar : MonoBehaviour
 
             print("!!!!!!!!!!!!!! has star dust");
 
-            Debug.Log("=== Before creation ===: " + player.litStarNum);
-
             // update stardust num and the lit star num
             var stardust = player.inventory[player.stardustSelection];
             GetComponent<DestroyStar>().usedStardust.Add(stardust);
             player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
-            player.litStarNum += 1;
-
-            Debug.Log("=== After creation ===: " + player.litStarNum);
 
             GetComponent<Orbit>().enabled = true;
             GetComponent<Gravity>().enabled = true;
