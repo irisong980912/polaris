@@ -60,7 +60,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -268,12 +268,6 @@ MonoBehaviour:
   cam: {fileID: 8377187791607531543}
   yAngleMin: -80
   yAngleMax: 80
-  smoothSpeed: 0.015
-  distance: 0.05
-  offset: {x: 0, y: 0, z: 0}
-  isCleared: 0
-  topDownObject: {fileID: 0}
-  centralStar: {fileID: 0}
-  clearRotX: 90
-  clearRotY: 22
-  clearRotZ: -500
+  smoothSpeed: 0.02
+  distance: 0.08
+  TopViewCamPos: {fileID: 0}

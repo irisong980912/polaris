@@ -4925,16 +4925,6 @@ PrefabInstance:
       propertyPath: m_CustomSkybox
       value: 
       objectReference: {fileID: 2100000, guid: 280542b274ae15b4a8862e720471607c, type: 2}
-    - target: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173,
-        type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173,
-        type: 3}
-      propertyPath: far clip plane
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4995,16 +4985,6 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 1148804705}
-    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
-        type: 3}
-      propertyPath: smoothSpeed
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
-        type: 3}
-      propertyPath: distance
-      value: 0.08
-      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: TopViewCamPos
