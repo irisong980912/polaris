@@ -14,11 +14,41 @@ public class ThirdPersonPlayer : MonoBehaviour
     private Rigidbody _body;
     private Vector3 _direction;
 
+    private static bool _mapActive;
+
     public int stardustSelection;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
-    
+
+    private void Start()
+    {
+        litStarNum = 0;
+        //Get the camera switch script so it can add this as an observer
+        try
+        {
+            var goList = new List<GameObject>();
+            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
+            {
+                var go = (GameObject) o;
+                if (go.tag.Contains("|MapScript|"))
+                {
+                }
+            }
+        }
+        catch (UnityException)
+        {
+            print("No such tag");
+        }
+        CameraSwitch.OnMapSwitch += SetMapActive;
+    }
+
+    private static void SetMapActive(bool mapActive)
+    {
+        _mapActive = mapActive;
+    }
+
+
     private void Awake()
     {
         _body = GetComponent<Rigidbody>();
@@ -37,7 +67,11 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+
+        if (_mapActive == false)
+        {
+            Move();
+        }
 
         // if the mc is not at the same location as the camera,
         // handle camera rotation
@@ -76,4 +110,9 @@ public class ThirdPersonPlayer : MonoBehaviour
         _body.rotation = lookAt;
     }
 
+}
+
+public enum NotificationType
+{
+    MapStatus
 }
