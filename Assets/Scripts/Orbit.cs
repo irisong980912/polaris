@@ -25,7 +25,6 @@ public class Orbit : MonoBehaviour
 
     private void Start()
     {
-        print("Orbit start "  + transform.name);
         if (gameObject.tag.Contains("|GravityCore|")) // the star gravity core
         {
             _self = transform.parent.transform; 
@@ -46,11 +45,7 @@ public class Orbit : MonoBehaviour
         if (_player is null) return;
         
         if (!Input.GetButton("Fire1") || _player.transform.parent != _self) return;
-
-        ////// !!!!!!!
-        if (!_self.parent.parent.CompareTag("|Star|")) return;
-        if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
-
+        
         if (!_launchBegan)
         {
             SlingshotStart();
@@ -87,14 +82,17 @@ public class Orbit : MonoBehaviour
             if (other.gameObject.tag.Contains("|Planet|"))
             {
 
-                print("Orbit -- add planet");
-
                 other.gameObject.transform.SetParent(transform.parent.transform);
             }
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
+
+            // player can orbit only if the star is lit
+            if (!_self.parent.parent.CompareTag("|Star|")) return;
+            if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
+
             cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
             _player = other;
             _self.forward = other.transform.position - transform.position;
