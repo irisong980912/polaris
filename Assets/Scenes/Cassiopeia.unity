@@ -5071,6 +5071,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4943265309136642250, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531538, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_CustomSkybox
