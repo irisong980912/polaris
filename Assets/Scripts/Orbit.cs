@@ -2,6 +2,7 @@
 
 /// <summary>
 /// apply  this script to star gravityCore
+/// 
 /// Attached to an object that would be the epicentre of the orbit,
 /// and forces provided |GravityObject| to orbit around it.
 /// The speed of the orbit is determined by the speed variable.
@@ -24,6 +25,7 @@ public class Orbit : MonoBehaviour
 
     private void Start()
     {
+        print("Orbit start "  + transform.name);
         if (gameObject.tag.Contains("|GravityCore|")) // the star gravity core
         {
             _self = transform.parent.transform; 
@@ -35,7 +37,6 @@ public class Orbit : MonoBehaviour
         }
         
         _normalSpeed = speed;
-        Debug.Log("Start orbit: " + _self.name);
     }
     
     private void FixedUpdate()
@@ -43,8 +44,13 @@ public class Orbit : MonoBehaviour
         _self.Rotate(_self.up, speed);
         
         if (_player is null) return;
-
+        
         if (!Input.GetButton("Fire1") || _player.transform.parent != _self) return;
+
+        ////// !!!!!!!
+        if (!_self.parent.parent.CompareTag("|Star|")) return;
+        if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
+
         if (!_launchBegan)
         {
             SlingshotStart();
@@ -75,13 +81,14 @@ public class Orbit : MonoBehaviour
     /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
 
         if (gameObject.tag.Contains("|GravityCore|"))
         {
-            Debug.Log("OnTriggerEnter star, set parent.");
             if (other.gameObject.tag.Contains("|Planet|"))
             {
+
+                print("Orbit -- add planet");
+
                 other.gameObject.transform.SetParent(transform.parent.transform);
             }
         }

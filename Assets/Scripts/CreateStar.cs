@@ -72,9 +72,9 @@ public class CreateStar : MonoBehaviour
 
             transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
             transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
-
-            // enable the orbit script of all planets of the star
-
+            GetComponent<Star>().isCreated = true;
+            // enable the orbit script of all planets of the star 
+             
             //GetComponentInChildren<Gravity>().enabled = true;
             GetComponent<CreateStar>().enabled = false;
             

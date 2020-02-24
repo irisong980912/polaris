@@ -68,7 +68,9 @@ public class DestroyStar : MonoBehaviour
 
         transform.Find("GravityCore").GetComponent<Orbit>().enabled = false;
         transform.Find("GravityCore").GetComponent<Gravity>().enabled = false;
-        //GetComponentInChildren<Gravity>().enabled = false;
+
+        GetComponent<Star>().isCreated = false;
+
         GetComponent<DestroyStar>().enabled = false;
 
         onTrigger = false;

@@ -9,9 +9,12 @@ public class Star : MonoBehaviour
 {
 
     public List<GameObject> planetCores = new List<GameObject>();
+    public bool isCreated;
 
     void Start()
     {
+        Debug.Log("hi star");
+        isCreated = false;
         AddDescendantsWithTag(transform, "|PlanetCore|");
         PrintAllPlanetCores();
     }
@@ -26,8 +29,11 @@ public class Star : MonoBehaviour
     {
         foreach (Transform child in parent)
         {
+            Debug.Log(child.name);
+
             if (child.gameObject.CompareTag(tag))
             {
+                Debug.Log("add");
                 planetCores.Add(child.gameObject);
             }
             AddDescendantsWithTag(child, tag);
