@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
+/// apply  this script to star gravityCore
 /// Attached to an object that would be the epicentre of the orbit,
 /// and forces provided |GravityObject| to orbit around it.
 /// The speed of the orbit is determined by the speed variable.
@@ -23,8 +24,18 @@ public class Orbit : MonoBehaviour
 
     private void Start()
     {
-        _self = transform;
+        if (gameObject.tag.Contains("|GravityCore|")) // the star gravity core
+        {
+            _self = transform.parent.transform; 
+        }
+        else  // the planet core
+        {
+            _self = transform;
+
+        }
+        
         _normalSpeed = speed;
+        Debug.Log("Start orbit: " + _self.name);
     }
     
     private void FixedUpdate()
@@ -64,11 +75,14 @@ public class Orbit : MonoBehaviour
     /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag.Contains("|Star|"))
+        Debug.Log("trigger");
+
+        if (gameObject.tag.Contains("|GravityCore|"))
         {
+            Debug.Log("OnTriggerEnter star, set parent.");
             if (other.gameObject.tag.Contains("|Planet|"))
             {
-                other.gameObject.transform.SetParent(transform);
+                other.gameObject.transform.SetParent(transform.parent.transform);
             }
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
@@ -77,7 +91,7 @@ public class Orbit : MonoBehaviour
             cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
             _player = other;
             _self.forward = other.transform.position - transform.position;
-            other.gameObject.transform.SetParent(_self);
+            other.gameObject.transform.SetParent(transform);
             InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
         }
     }

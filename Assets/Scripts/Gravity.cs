@@ -40,38 +40,65 @@ public class Gravity : MonoBehaviour
 
         Debug.Log("CHILD GRAVITY enabled!!!!");
 
-        //try
-        //{
-        //    foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
-        //    {
-        //        var go = (GameObject)o;
-        //        if (!go.tag.Contains("|Player|")) continue;
-        //        _player = go;
-        //        break;
-        //    }
-        //}
-        //catch (UnityException)
-        //{
-        //    print("No |Player|");
-        //}
     }
 
     private void Update()
     {
         if (withinGravityRadius == true)
         {
-            // enforce gravity on player only when player is within the gravitational field
-            // TODO:figure out the number for gravitational field
-            Debug.Log("Gravity strength: " + gravityStrength * disToPlayer / 10 * disToPlayer / 10);
 
-            _player.GetComponent<Rigidbody>().AddExplosionForce(
-                -(gravityStrength * disToPlayer / 10 * disToPlayer / 10),
+            if (disToPlayer <= 100.0f) // small gravity allow player to get onto the planets easier
+            {
+
+                gravityStrength = 10.0f;
+
+                _player.GetComponent<Rigidbody>().AddExplosionForce(
+                -gravityStrength,
                 transform.position,
                 gravityRadius,
                 0.0f,
                 ForceMode.Force
-            );
-            
+                );
+            }
+            else if (disToPlayer <= 130.0f)
+            {
+                gravityStrength = 20.0f;
+
+                _player.GetComponent<Rigidbody>().AddExplosionForce(
+                -gravityStrength,
+                transform.position,
+                gravityRadius,
+                0.0f,
+                ForceMode.Force
+                );
+            }
+
+            else if (disToPlayer <= 160.0f)
+            {
+                gravityStrength = 30.0f;
+
+                _player.GetComponent<Rigidbody>().AddExplosionForce(
+                -gravityStrength,
+                transform.position,
+                gravityRadius,
+                0.0f,
+                ForceMode.Force
+                );
+            }
+            else // disToPlayer > 160.0f,
+            // should also be porpotional to the player speed (for speed up implementation)
+            {
+                float playerSpeedRatio = 1 / _player.GetComponent<ThirdPersonPlayer>().speed;
+                gravityStrength = (disToPlayer / 20) * (disToPlayer / 20) * playerSpeedRatio;
+
+                _player.GetComponent<Rigidbody>().AddExplosionForce(
+                -gravityStrength,
+                transform.position,
+                gravityRadius,
+                0.0f,
+                ForceMode.Force
+                );
+            }
 
         }
         
