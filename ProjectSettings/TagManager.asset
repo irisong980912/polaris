@@ -15,6 +15,7 @@ TagManager:
   - '|Star|'
   - '|Dust|'
   - '|MapScript|'
+  - '|InnerGravityField|'
   layers:
   - Default
   - TransparentFX
