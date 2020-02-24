@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &53660491 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1338612252675524252, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5812685808749588326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &156860875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1116,12 @@ MonoBehaviour:
             m_StringArgument: Test
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &855127391 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7205238475538438468, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1763122577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &857672078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1799,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
+--- !u!95 &1375349880 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5373934888126223027, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1763122577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1433711522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2266,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 500023125557290159, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ca2a85bde52de489549624ba02aacb, type: 2}
+    - target: {fileID: 893021672384305444, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47873455
+      objectReference: {fileID: 0}
+    - target: {fileID: 893021672384305444, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47873452
+      objectReference: {fileID: 0}
+    - target: {fileID: 893021672384305444, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47873452
+      objectReference: {fileID: 0}
     - target: {fileID: 2549909159675571203, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2308,13 +2346,49 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 855127391}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1990126206}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1375349880}
+    - target: {fileID: 6843160177385992320, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e667b7e4e42ec934e82db1551e719f02, type: 2}
     - target: {fileID: 7030474040305587271, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: m_Name
       value: Star + Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 8619294394632469367, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 22bfd74f17e0fb341bc3d50432af7973, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389e1607ad1574ed59c8ba82b7eb1e5e, type: 3}
+--- !u!95 &1763268516 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7205238475538438468, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5812685808749588326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1770816058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2544,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770816058}
   m_CullTransparentMesh: 0
+--- !u!95 &1835661633 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5373934888126223027, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5812685808749588326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904166338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2617,12 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!95 &1990126206 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1338612252675524252, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1763122577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996804882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,6 +3066,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 500023125557290159, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 22bfd74f17e0fb341bc3d50432af7973, type: 2}
     - target: {fileID: 1775042285519120187, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3035,6 +3126,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2670226676382995155, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47873455
+      objectReference: {fileID: 0}
+    - target: {fileID: 2670226676382995155, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47873452
+      objectReference: {fileID: 0}
+    - target: {fileID: 2670226676382995155, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47873452
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685074887446366589, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3963751740320933769, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: m_Controller
@@ -3045,11 +3156,41 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 0f0914b327a844b6199d09785cea316b, type: 3}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1763268516}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 53660491}
+    - target: {fileID: 4373952191594052335, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1835661633}
     - target: {fileID: 6171234315432537598, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: character
       value: 
       objectReference: {fileID: 1148804705}
+    - target: {fileID: 6357958235731029317, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367624978436470187, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6499752697619258988, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3060,6 +3201,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Star + planet
       objectReference: {fileID: 0}
+    - target: {fileID: 6584324465286015729, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843160177385992320, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ca2a85bde52de489549624ba02aacb, type: 2}
     - target: {fileID: 7258222456418263805, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
         type: 3}
       propertyPath: m_Controller
@@ -3070,6 +3221,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 57829730dcabde4449e5dd11840f6fb4, type: 2}
+    - target: {fileID: 8619294394632469367, guid: 389e1607ad1574ed59c8ba82b7eb1e5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e667b7e4e42ec934e82db1551e719f02, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389e1607ad1574ed59c8ba82b7eb1e5e, type: 3}
 --- !u!114 &5940427506477450218
