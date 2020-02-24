@@ -71,7 +71,9 @@ public class CreateStar : MonoBehaviour
             player.stardust -= 1;
 
             GetComponent<Orbit>().enabled = true;
-            GetComponent<Gravity>().enabled = true;
+            transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
+
+            //GetComponentInChildren<Gravity>().enabled = true;
             GetComponent<CreateStar>().enabled = false;
             
             onTrigger = false;

@@ -1,76 +1,83 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
 
-    // Update is called once per frame
-
-    private GameObject[] _gravityObjects;
+    private GameObject _player;
     public float gravityStrength;
-    public float gravityRadius;
+    public float gravityRadius = 180.0f;
+
+    public float disToPlayer;
+
+    private bool withinGravityRadius = false;
+
+
+    private void OnTriggerStay(Collider c)
+    {
+        if (c.gameObject.tag.Contains("|Player|"))
+        {
+            _player = c.gameObject;
+            disToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+            //Debug.Log("disToPlayer is: " + disToPlayer);
+            withinGravityRadius = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider c)
+    {
+        if (c.gameObject.tag.Contains("|Player|"))
+        {
+            Debug.Log("exit gravity distance");
+
+            withinGravityRadius = false;
+        }
+    }
+
+
 
     private void Start()
     {
 
-        Debug.Log("start gravity");
+        Debug.Log("CHILD GRAVITY enabled!!!!");
 
-        try
-        {
-            var goList = new List<GameObject>();
-            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
-            {
-                var go = (GameObject) o;
-                if (go.tag.Contains("|Player|"))
-                {
-                    goList.Add(go);
-                    Debug.Log(go.name);
-                }
-
-                _gravityObjects = goList.ToArray();
-            }
-        }
-        catch (UnityException)
-        {
-            print("No such tag");
-        }
+        //try
+        //{
+        //    foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
+        //    {
+        //        var go = (GameObject)o;
+        //        if (!go.tag.Contains("|Player|")) continue;
+        //        _player = go;
+        //        break;
+        //    }
+        //}
+        //catch (UnityException)
+        //{
+        //    print("No |Player|");
+        //}
     }
 
     private void Update()
     {
-        
-        foreach (var gravityObject in _gravityObjects)
+        if (withinGravityRadius == true)
         {
-            if (gameObject.tag.Contains("|Star|"))
-            {
-                GameObject core = GameObject.Find("Core");
-                // keep the gravity force within a distance
-                //Debug.Log(Vector3.Distance(core.transform.position, gravityObject.transform.position));
-                // before: if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
-                if (Vector3.Distance(transform.position, gravityObject.transform.position) <= gravityRadius)
-                {
-                    //Debug.Log("Within Distance");
-                    ApplyGravity(gravityObject);
-                } 
-            }
-            else
-            {
-                ApplyGravity(gravityObject);
-            }
+            // enforce gravity on player only when player is within the gravitational field
+            // TODO:figure out the number for gravitational field
+            Debug.Log("Gravity strength: " + gravityStrength * disToPlayer / 10 * disToPlayer / 10);
+
+            _player.GetComponent<Rigidbody>().AddExplosionForce(
+                -(gravityStrength * disToPlayer / 10 * disToPlayer / 10),
+                transform.position,
+                gravityRadius,
+                0.0f,
+                ForceMode.Force
+            );
             
+
         }
+        
+
+
     }
 
-    private void ApplyGravity(GameObject gravityObject)
-    {
 
-        gravityObject.GetComponent<Rigidbody>().AddExplosionForce(
-            -gravityStrength,
-            transform.position,
-            gravityRadius,
-            0.0f,
-            ForceMode.Force
-        );
-    }
 }
-    
