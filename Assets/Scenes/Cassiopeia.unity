@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.022061046, g: 0.009915478, b: 0.035996698, a: 1}
+  m_IndirectSpecularColor: {r: 0.02200779, g: 0.009937315, b: 0.035911307, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearLevelImage: {fileID: 1490270997}
-  totalStarNum: 1
+  totalStarNum: 10
 --- !u!136 &112257934
 CapsuleCollider:
   m_ObjectHideFlags: 0
