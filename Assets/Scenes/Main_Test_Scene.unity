@@ -1274,6 +1274,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1226465152407708639, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_TagString
+      value: '|CameraCollider|'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965524033634280000, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965524033634280000, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232899612007319348, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.95801145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232899612007319348, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.95801145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232899612007319348, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.95801145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368240906486817857, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368240906486817857, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368240906486817857, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943265309136642250, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943265309136642250, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626741951017500113, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_LocalPosition.x

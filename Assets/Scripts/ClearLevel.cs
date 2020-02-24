@@ -31,7 +31,7 @@ public class ClearLevel : MonoBehaviour
 
 
         //Delay until camera pans out of field
-        Invoke("DisableInnerFieldRender", 3);
+        //Invoke("DisableInnerFieldRender", 3);
 
         // The level clear screen needs to be delayed so that the camera has time to pan to the appropriate location,
         // and so that the player has enough time to see the constellation.
