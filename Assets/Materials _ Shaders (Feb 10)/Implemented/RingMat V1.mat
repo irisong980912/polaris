@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RingMat V3
+  m_Name: RingMat V1
   m_Shader: {fileID: -6465566751694194690, guid: 2b4f5488ddff38c459b20d4694ed10ee,
     type: 3}
   m_ShaderKeywords: 
@@ -21,18 +21,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_3CE53EF0: 0.717
-    - Vector1_592AD2E2: 0.3405
+    - Vector1_3CE53EF0: 0.5
+    - Vector1_592AD2E2: 0.35
     - Vector1_78AF544C: 0.3
     - Vector1_7ADC2485: 0.8
-    - Vector1_8BC50A54: 0.35
-    - Vector1_9F359C24: 0.25
-    - Vector1_ACD16739: 0.457
-    - Vector1_B08A437A: 0.47
-    - Vector1_CD3D27E4: 0.732
-    - Vector1_CE905A8D: 0.2557
+    - Vector1_8BC50A54: 0.33
+    - Vector1_9322B8CB: 0
+    - Vector1_9F359C24: 0.28
+    - Vector1_ACD16739: 0.41
+    - Vector1_B08A437A: 0.5
+    - Vector1_CD3D27E4: 0.6
+    - Vector1_CE905A8D: 0.3
     m_Colors:
-    - Color_468EF4D4: {r: 8.276734, g: 1.6276915, b: 12.780392, a: 0}
+    - Color_468EF4D4: {r: 3.765918, g: 0.4707397, b: 12.84447, a: 0}
 --- !u!114 &6624745272039102168
 MonoBehaviour:
   m_ObjectHideFlags: 11

@@ -32,6 +32,8 @@ public class CreateStar : MonoBehaviour
         createSound = createSoundContainer.GetComponent<AudioSource>();
         gravitySound = gravitySoundContainer.GetComponent<AudioSource>();
 
+
+
         starAnimationController.SetFloat(StarActivationMultiplier, activationSpeedMultiplier);
         starVfx.SetFloat(VfxActivationMultiplier, activationSpeedMultiplier);
 

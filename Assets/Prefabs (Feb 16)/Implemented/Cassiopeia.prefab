@@ -657,8 +657,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 7-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 7-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &2982534144348923707 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148055719320307160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296602364630685510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -737,8 +748,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 8-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 8-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &2982534145197752616 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148055719630152651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296602363798630741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -817,8 +839,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 1-3
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 1-3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &2982534144984104376 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148055719687577435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296602363861290437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -897,11 +930,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 10-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 10-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
 --- !u!4 &296602364142544066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148055719940650588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2982534144703042751 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
     type: 3}
   m_PrefabInstance: {fileID: 1148055719940650588}
   m_PrefabAsset: {fileID: 0}
@@ -977,11 +1021,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 4-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 4-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
 --- !u!4 &296602363181392549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148055720115892283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2982534145680970456 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
     type: 3}
   m_PrefabInstance: {fileID: 1148055720115892283}
   m_PrefabAsset: {fileID: 0}
@@ -1057,8 +1112,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 3-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 3-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &2982534145749525568 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1148055720181810851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296602363247055933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1137,8 +1203,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 6-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 6-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &192495488859854861 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2603432669032102638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3445896823634733168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1217,8 +1294,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 8-3
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 8-3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &4007143189105375 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2775516860635719740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3276251348553153186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1297,11 +1385,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 1-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 1-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
 --- !u!4 &3276251348762084914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2775516860847805612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4007143131166287 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
     type: 3}
   m_PrefabInstance: {fileID: 2775516860847805612}
   m_PrefabAsset: {fileID: 0}
@@ -1377,8 +1476,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 10-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 10-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &4007142845194056 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2775516861097278891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3276251349047865141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1457,8 +1567,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 4-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 4-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &4007143811062063 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2775516861259414476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3276251348065216850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1487,6 +1608,31 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 6969028393011694976}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 192495488859854861}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 6533694114036780066}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[3]
+      value: 
+      objectReference: {fileID: 8342482177360693205}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1717,8 +1863,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 6-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 6-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &6969028393011694976 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5061016833902489443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5606804658991185405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1797,8 +1954,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 6-4
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 6-4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &8342482177360693205 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6146519380613784886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6827415326626609064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -1827,6 +1995,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 6343748846677910112}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 4007143131166287}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 2982534144984104376}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1917,6 +2105,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 2982534145197752616}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 6343748846740020976}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 4007143189105375}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2007,6 +2215,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 4007142845194056}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 2982534144703042751}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2187,6 +2410,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 2982534144348923707}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 6343748846444869859}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2277,6 +2515,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 2982534145749525568}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2367,6 +2615,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.46396303
       objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 2982534145680970456}
+    - target: {fileID: 1744134124492446183, guid: 5c309b70a7f0d472eb666f25dde2ed03,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 4007143811062063}
     - target: {fileID: 8240559358194348407, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2707,8 +2970,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 6-3
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 6-3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &6533694114036780066 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8946112272484036289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8635073298004671583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -2787,8 +3061,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 7-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 7-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &6343748846444869859 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 9116170132047436288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8462312838073780382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -2867,8 +3152,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 8-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 8-2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
+--- !u!95 &6343748846740020976 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 9116170132877409299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8462312837761855117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
@@ -2947,11 +3243,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 1-1
       objectReference: {fileID: 0}
+    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Name
+      value: RingsPrefab 1-1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}
 --- !u!4 &8462312837974954525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 9116170133085257859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6343748846677910112 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2777209796985971427, guid: 399b4fc82195942069d447f4154576f1,
     type: 3}
   m_PrefabInstance: {fileID: 9116170133085257859}
   m_PrefabAsset: {fileID: 0}
