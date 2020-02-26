@@ -72,8 +72,12 @@ public class CreateStar : MonoBehaviour
             player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
 
-            GetComponent<Orbit>().enabled = true;
-            GetComponent<Gravity>().enabled = true;
+            transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
+            transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
+            GetComponent<Star>().isCreated = true;
+            // enable the orbit script of all planets of the star 
+             
+            //GetComponentInChildren<Gravity>().enabled = true;
             GetComponent<CreateStar>().enabled = false;
             
             onTrigger = false;
@@ -83,7 +87,7 @@ public class CreateStar : MonoBehaviour
             // wait until the animations are over
             Invoke(nameof(StartDestroy), 6);
 
-            // check if all the stars has 
+            
 
         } else
         {
