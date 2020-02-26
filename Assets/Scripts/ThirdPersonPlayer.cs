@@ -102,7 +102,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void HandleRotation()
     {
         // determines which angle that the camera is looking at
-        var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+        var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
         var lookAt = Quaternion.Slerp(transform.rotation,
                                       Quaternion.Euler(0, targetRotation, 0),
                                       0.5f);

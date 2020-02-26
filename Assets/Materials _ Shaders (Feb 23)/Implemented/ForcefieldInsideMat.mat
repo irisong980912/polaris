@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ForcefieldInsideMat
-  m_Shader: {fileID: -6465566751694194690, guid: ef069ee12b78f814384d6fcc94fb4244,
+  m_Shader: {fileID: -6465566751694194690, guid: 9cb1fc5981562ec4382287ecf6367989,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
