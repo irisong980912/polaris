@@ -5,7 +5,7 @@ public class Gravity : MonoBehaviour
     public float gravityRadius = 180.0f;
     
     private GameObject _player;
-    private float _gravityStrength;
+    public float gravityStrength;
     private float _disToPlayer;
     private bool _withinGravityRadius;
 
@@ -38,26 +38,26 @@ public class Gravity : MonoBehaviour
         if (_withinGravityRadius != true) return;
         if (_disToPlayer <= gravityRadius * .65f) // small gravity allow player to get onto the planets easier
         {
-            _gravityStrength = 5.0f;
+            gravityStrength = 5.0f;
         }
         else if (_disToPlayer <= gravityRadius * .75f)
         {
-            _gravityStrength = 15.0f;
+            gravityStrength = 15.0f;
         }
 
         else if (_disToPlayer <= gravityRadius * .85f)
         {
-            _gravityStrength = 30.0f;
+            gravityStrength = 30.0f;
         }
         else // disToPlayer > gravityRadius * .85f
         {
             // gravity strength is proportional to player speed and distance
             var playerSpeedRatio = 1 / _player.GetComponent<ThirdPersonPlayer>().speed;
-            _gravityStrength = (_disToPlayer / 20) * (_disToPlayer / 20) * playerSpeedRatio;
+            gravityStrength = (_disToPlayer / 20) * (_disToPlayer / 20) * playerSpeedRatio;
         }
         
         _player.GetComponent<Rigidbody>().AddExplosionForce(
-            -_gravityStrength,
+            -gravityStrength,
             transform.position,
             gravityRadius,
             0.0f,
