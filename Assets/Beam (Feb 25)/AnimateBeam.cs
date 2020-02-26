@@ -13,7 +13,7 @@ public class AnimateBeam : MonoBehaviour
 
     public float beamDrawSpeed;
     public float normalBeamWidth = 1.0f;
-    public float mapClearBeamWidth = 2.0f;
+    public float mapClearBeamWidth = 20.0f;
 
     public bool starOriginActivated;
     public bool starDestinActivated;
@@ -23,7 +23,6 @@ public class AnimateBeam : MonoBehaviour
     void Start()
     {
         beam = gameObject.GetComponent<LineRenderer>();
-        //beam.GetComponent<LineRenderer>();
         beam.SetPosition(0, originStar.position);
         beam.SetPosition(1, originStar.position);
 
@@ -32,6 +31,9 @@ public class AnimateBeam : MonoBehaviour
         beam.startWidth = normalBeamWidth;
         beam.endWidth = normalBeamWidth;
 
+        // add the OnLevelClear function in the camera to ClearLevel listener
+        ClearLevel.OnLevelClear += OnLevelClear;
+
     }
 
     // Update is called once per frame
@@ -39,17 +41,19 @@ public class AnimateBeam : MonoBehaviour
     {
         checkStarsActivation();
         DrawConstellation();
-        //OnLevelClear();
     }
 
     void OnLevelClear()
     {
+        // TODO: does not seem to change the beamwidth, don't know why
+        print("animate beam - clear level");
         beam.startWidth = mapClearBeamWidth;
         beam.endWidth = mapClearBeamWidth;
     }
 
     void checkStarsActivation()
     {
+        // TODO: check star.isActivate when merge to master
         //if DestroyStar Script is enabled, that means that the star is active
         starOriginActivated = originStar.GetComponent<DestroyStar>().enabled;
         starDestinActivated = destinStar.GetComponent<DestroyStar>().enabled;

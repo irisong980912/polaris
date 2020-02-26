@@ -14,6 +14,7 @@ public class ClearLevel : MonoBehaviour
 
     private GameObject[] innerGravityfield;
 
+
     private void Start()
     {
         CreateStar.OnStarCreation += OnStarCreation;
@@ -27,6 +28,8 @@ public class ClearLevel : MonoBehaviour
         _numStarsLit++;
         if (_numStarsLit != totalStarNum) return;
         Debug.Log("equal");
+
+        // call camera and animateBean
         OnLevelClear?.Invoke();
 
 
