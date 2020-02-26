@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class ClearLevel : MonoBehaviour
 {
@@ -12,14 +11,14 @@ public class ClearLevel : MonoBehaviour
 
     public static event Action OnLevelClear;
 
-    private GameObject[] innerGravityfield;
+    private GameObject[] _innerGravityField;
 
 
     private void Start()
     {
         CreateStar.OnStarCreation += OnStarCreation;
         DestroyStar.OnStarDestruction += OnStarDestruction;
-        innerGravityfield = GameObject.FindGameObjectsWithTag("|InnerGravityField|");
+        _innerGravityField = GameObject.FindGameObjectsWithTag("|InnerGravityField|");
     }
 
     private void OnStarCreation()
@@ -28,11 +27,10 @@ public class ClearLevel : MonoBehaviour
         _numStarsLit++;
         if (_numStarsLit != totalStarNum) return;
         Debug.Log("equal");
-
-        // call camera and animateBean
+        
         OnLevelClear?.Invoke();
 
-
+        //TODO: implement me.
         //Delay until camera pans out of field
         //Invoke("DisableInnerFieldRender", 3);
 
@@ -56,7 +54,7 @@ public class ClearLevel : MonoBehaviour
     private void DisableInnerFieldRender()
     {
         //Disable render for inner gravity field (or it will show when the camera pans out of the field)
-        foreach (GameObject field in innerGravityfield)
+        foreach (var field in _innerGravityField)
         {
             field.GetComponent<MeshRenderer>().enabled = false;
         }
