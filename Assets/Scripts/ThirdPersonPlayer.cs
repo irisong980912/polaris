@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public float speed;
 
     public int stardust;
+    public TextMeshProUGUI stardustcount;
     public List<GameObject> inventory = new List<GameObject>();
 
     public Transform cam;
@@ -23,23 +26,24 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void Start()
     {
-        //Get the camera switch script so it can add this as an observer
-        try
-        {
-            var goList = new List<GameObject>();
-            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
-            {
-                var go = (GameObject) o;
-                if (go.tag.Contains("|MapScript|"))
-                {
-                }
-            }
-        }
-        catch (UnityException)
-        {
-            print("No such tag");
-        }
-        CameraSwitch.OnMapSwitch += SetMapActive;
+        // CameraSwitch.OnMapSwitch += SetMapActive;
+        // try
+        // {
+        //     var goList = new List<GameObject>();
+        //     foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
+        //     {
+        //         var go = (GameObject) o;
+        //         if (go.tag.Contains("|StardustCount|"))
+        //         {
+        //             stardustcount = go.GetComponent<TextMeshProUGUI>();
+        //         }
+        //     }
+        // }
+        // catch (UnityException)
+        // {
+        //     print("No such tag");
+        // }
+        // stardustcount = GetComponent<Text>();
     }
 
     private static void SetMapActive(bool mapActive)
@@ -78,7 +82,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             HandleRotation();
         }
-
+        stardustcount.text = "Stardust: " + stardust;
     }
 
 

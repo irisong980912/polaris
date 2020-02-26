@@ -35,7 +35,7 @@ public class ClearLevel : MonoBehaviour
 
         // The level clear screen needs to be delayed so that the camera has time to pan to the appropriate location,
         // and so that the player has enough time to see the constellation.
-        Invoke(nameof(ShowClearImage), 10);
+        Invoke(nameof(ShowClearImage), totalStarNum);
     }
 
     private static void OnStarDestruction()

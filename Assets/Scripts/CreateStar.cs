@@ -67,9 +67,9 @@ public class CreateStar : MonoBehaviour
             print("!!!!!!!!!!!!!! has star dust");
 
             // update stardust num and the lit star num
-            var stardust = player.inventory[player.stardustSelection];
-            GetComponent<DestroyStar>().usedStardust.Add(stardust);
-            player.inventory.RemoveAt(player.stardustSelection);
+            // var stardust = player.inventory[player.stardustSelection];
+            // GetComponent<DestroyStar>().usedStardust.Add(stardust);
+            // player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
 
             GetComponent<Orbit>().enabled = true;

@@ -17,6 +17,7 @@ TagManager:
   - '|MapScript|'
   - '|InnerGravityField|'
   - '|CameraCollider|'
+  - '|StardustCount|'
   layers:
   - Default
   - TransparentFX

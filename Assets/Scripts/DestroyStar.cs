@@ -61,10 +61,11 @@ public class DestroyStar : MonoBehaviour
     {
         destroySound.Play();
         disperseDustSound.Play();
-
-        var stardust = usedStardust[0];
-        stardust.SetActive(true);
-        usedStardust.RemoveAt(0);
+        var player = _other.GetComponent<ThirdPersonPlayer>();
+        player.stardust += 1;
+        // var stardust = usedStardust[0];
+        // stardust.SetActive(true);
+        // usedStardust.RemoveAt(0);
 
         GetComponent<Orbit>().enabled = false;
         GetComponent<Gravity>().enabled = false;
