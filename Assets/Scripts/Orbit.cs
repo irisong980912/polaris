@@ -94,6 +94,7 @@ public class Orbit : MonoBehaviour
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
             cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
+            cam.transform.LookAt(_self);
             _player = other;
             _self.forward = other.transform.position - transform.position;
             other.gameObject.transform.SetParent(transform);
@@ -110,7 +111,9 @@ public class Orbit : MonoBehaviour
         other.gameObject.transform.SetParent(null);
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
+        cam.transform.LookAt(other.transform);
         cam.GetComponent<ThirdPersonCamera>().CancelFocus();
+
         CancelInvoke(nameof(AdjustRotation));
     }
 
@@ -128,8 +131,8 @@ public class Orbit : MonoBehaviour
         _player.gameObject.transform.SetParent(null);
         _self.forward = cam.transform.forward;
         _player.gameObject.transform.SetParent(_self);
-        speed = 7.2f;
-        Invoke(nameof(Slingshot), 1.0f);
+        speed = 3.0f;
+        Invoke(nameof(Slingshot), 1.5f);
     }
     
     /// <summary>

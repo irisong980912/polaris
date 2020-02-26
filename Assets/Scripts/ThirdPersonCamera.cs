@@ -5,6 +5,8 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform character;          // the player to look at
     public Transform cam;             // camera itself
 
+    private Transform _planet;
+
     // set the min and max camera angle on X and Y axis
     public float yAngleMin = -80.0f;  // bottom degree
     public float yAngleMax = 80.0f;   // top degree
@@ -16,7 +18,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private Transform _target;
 
-    private bool _isTriggered;
+    private bool _orbitDetected;
     private bool _isCancel;
 
     private bool _levelCleared;
@@ -29,6 +31,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void Start()
     {
         _target = character;
+        _orbitDetected = false;
 
         var dir = new Vector3(0, 0, -10.0f);
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
@@ -39,6 +42,14 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
+        if (_planet)
+        {
+            print("_orbitDetected true");
+            smoothSpeed = 0.8f;
+            cam.LookAt(_planet);
+
+        }
+
         // move the camera angle by mouse
         _currentX += Input.GetAxis("Mouse X");
         _currentY += Input.GetAxis("Mouse Y");
@@ -51,19 +62,21 @@ public class ThirdPersonCamera : MonoBehaviour
     private void LateUpdate()
     {
         // TODO: Test the camera smooth speed when player orbiting the planet
-        //if (_isTriggered)
-        //{
-        //    smoothSpeed = 0.08f;
-        //    _isTriggered = false;
+        if (_planet)
+        {
+            print("_orbitDetected true");
+            smoothSpeed = 0.8f;
+            cam.LookAt(_planet);
 
-        //}
-        //else if (_isCancel)
-        //{
-        //    // set back to default
-        //    smoothSpeed = 0.125f;
-        //    _isCancel = false;
+        }
+        else if (!_planet)
+        {
+            
+            // set back to default
+            smoothSpeed = 0.02f;
+            cam.LookAt(_target);
 
-        //    //}
+        }
 
         //if (_levelCleared) return;
 
@@ -86,25 +99,27 @@ public class ThirdPersonCamera : MonoBehaviour
             var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothPosition + rotation * dir;
 
-            cam.LookAt(_target);
+  
+            
 
         }
         
     }
 
 
-    public void OrbitDetected(Transform star)
+    public void OrbitDetected(Transform planet)
     {
-        _target = star;
-        _isTriggered = true;
+        _planet = planet;
+        _orbitDetected = true;
         Debug.Log("OrbitDetected");
     }
 
 
     public void CancelFocus()
     {
+        _planet = null;
         _target = character;
-        _isCancel = true;
+        _orbitDetected = false;
         Debug.Log("CancelFocus");
     }
     

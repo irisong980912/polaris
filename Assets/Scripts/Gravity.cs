@@ -58,6 +58,7 @@ public class Gravity : MonoBehaviour
                 0.0f,
                 ForceMode.Force
                 );
+
             }
             else if (disToPlayer <= 130.0f)
             {
