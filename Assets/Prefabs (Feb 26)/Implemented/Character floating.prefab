@@ -1024,7 +1024,7 @@ Animator:
   m_GameObject: {fileID: 5137222419336618007}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0f0914b327a844b6199d09785cea316b, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 771cb10a5529141a3858b7c7a9f0c70c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1171,13 +1171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.07
-  litStarNum: 0
   stardust: 0
   inventory: []
-  cam: {fileID: 0}
+  cam: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
   stardustSelection: 0
-  inv1: {fileID: 0}
-  inv2: {fileID: 0}
   collectDustSound: {fileID: 0}
   collectDustSoundContainer: {fileID: 5137222419246901480}
 --- !u!1 &5137222419354523739

@@ -266,13 +266,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7374ed9979d57477b8137899c7bd99da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 5137222419336618001, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
+    type: 3}
   cam: {fileID: 8377187791607531543}
   yAngleMin: -80
   yAngleMax: 80
   smoothSpeed: 0.02
   distance: 0.08
-  TopViewCamPos: {fileID: 0}
+  TopViewCamPos: {fileID: 1965121661485291902, guid: cc10f5a2562604e3084e6f3ee57641c8,
+    type: 3}
 --- !u!135 &4943265309136642250
 SphereCollider:
   m_ObjectHideFlags: 0
