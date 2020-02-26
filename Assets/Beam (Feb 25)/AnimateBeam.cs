@@ -12,6 +12,8 @@ public class AnimateBeam : MonoBehaviour
     public Transform destinStar;
 
     public float beamDrawSpeed;
+    public float normalBeamWidth = 1.0f;
+    public float mapClearBeamWidth = 2.0f;
 
     public bool starOriginActivated;
     public bool starDestinActivated;
@@ -27,6 +29,9 @@ public class AnimateBeam : MonoBehaviour
 
         dist = Vector3.Distance(originStar.position, destinStar.position);
 
+        beam.startWidth = normalBeamWidth;
+        beam.endWidth = normalBeamWidth;
+
     }
 
     // Update is called once per frame
@@ -34,6 +39,13 @@ public class AnimateBeam : MonoBehaviour
     {
         checkStarsActivation();
         DrawConstellation();
+        //OnLevelClear();
+    }
+
+    void OnLevelClear()
+    {
+        beam.startWidth = mapClearBeamWidth;
+        beam.endWidth = mapClearBeamWidth;
     }
 
     void checkStarsActivation()

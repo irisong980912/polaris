@@ -3151,6 +3151,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2157094122908144957, guid: 6355198a4501fbd428726e15d952a6f9,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7944414390988622441, guid: 6355198a4501fbd428726e15d952a6f9,
         type: 3}
       propertyPath: originStar
@@ -3161,6 +3166,11 @@ PrefabInstance:
       propertyPath: destinStar
       value: 
       objectReference: {fileID: 221767730}
+    - target: {fileID: 7944414390988622441, guid: 6355198a4501fbd428726e15d952a6f9,
+        type: 3}
+      propertyPath: normalBeamWidth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8743528527613346895, guid: 6355198a4501fbd428726e15d952a6f9,
         type: 3}
       propertyPath: m_LocalPosition.x
