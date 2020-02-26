@@ -38,6 +38,10 @@ public class AnimateBeam : MonoBehaviour
 
     void checkStarsActivation()
     {
+        //if DestroyStar Script is enabled, that means that the star is active
+        starOriginActivated = originStar.GetComponent<DestroyStar>().enabled;
+        starDestinActivated = destinStar.GetComponent<DestroyStar>().enabled;
+
         if(starOriginActivated && starDestinActivated)
         {
             triggerBeam = true;
@@ -49,14 +53,14 @@ public class AnimateBeam : MonoBehaviour
 
     void DrawConstellation()
     {
+        Vector3 pointA = originStar.position;
+        Vector3 pointB = destinStar.position;
+
         if (counter < dist && triggerBeam)
         {
             counter += 0.1f / beamDrawSpeed;
 
             float x = Mathf.Lerp(0, dist, counter);
-
-            Vector3 pointA = originStar.position;
-            Vector3 pointB = destinStar.position;
 
             Vector3 pointAlongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
             beam.SetPosition(1, pointAlongLine);
@@ -66,9 +70,6 @@ public class AnimateBeam : MonoBehaviour
             counter -= 0.1f / beamDrawSpeed;
 
             float x = Mathf.Lerp(0, dist, counter);
-
-            Vector3 pointA = originStar.position;
-            Vector3 pointB = destinStar.position;
 
             Vector3 pointAlongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
             beam.SetPosition(1, pointAlongLine);

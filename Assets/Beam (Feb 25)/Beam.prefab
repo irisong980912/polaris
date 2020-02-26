@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421253648527163835}
-  - component: {fileID: 8961005971820411733}
   - component: {fileID: 1149631856562889729}
+  - component: {fileID: 8961005971820411733}
   m_Layer: 0
   m_Name: Beam
   m_TagString: Untagged
@@ -32,6 +32,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1149631856562889729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872622204314740396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9319ef87db6e245a776c1cea54a370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originStar: {fileID: 0}
+  destinStar: {fileID: 0}
+  beamDrawSpeed: 3
+  starOriginActivated: 0
+  starDestinActivated: 0
+  triggerBeam: 0
 --- !u!120 &8961005971820411733
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -128,19 +146,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!114 &1149631856562889729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6872622204314740396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be9319ef87db6e245a776c1cea54a370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originStar: {fileID: 0}
-  destinStar: {fileID: 0}
-  beamDrawSpeed: 0
-  triggerBeam: 0
