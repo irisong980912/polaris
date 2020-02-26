@@ -39,7 +39,7 @@ public class AnimateBeam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkStarsActivation();
+        CheckStarsActivation();
         DrawConstellation();
     }
 
@@ -51,12 +51,11 @@ public class AnimateBeam : MonoBehaviour
         beam.endWidth = mapClearBeamWidth;
     }
 
-    void checkStarsActivation()
+    void CheckStarsActivation()
     {
-        // TODO: check star.isActivate when merge to master
-        //if DestroyStar Script is enabled, that means that the star is active
-        starOriginActivated = originStar.GetComponent<DestroyStar>().enabled;
-        starDestinActivated = destinStar.GetComponent<DestroyStar>().enabled;
+        // check if both stars are created
+        starOriginActivated = originStar.GetComponent<Star>().isCreated;
+        starDestinActivated = destinStar.GetComponent<Star>().isCreated;
 
         if(starOriginActivated && starDestinActivated)
         {

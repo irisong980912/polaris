@@ -46,7 +46,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6219092277910208421
 MonoBehaviour:
@@ -127,17 +127,17 @@ PrefabInstance:
     - target: {fileID: 6505688401455917944, guid: 19bed6dbd3f13304b83c37167f48381f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6505688401455917944, guid: 19bed6dbd3f13304b83c37167f48381f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6505688401455917944, guid: 19bed6dbd3f13304b83c37167f48381f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6505688401455917945, guid: 19bed6dbd3f13304b83c37167f48381f,
         type: 3}
@@ -312,17 +312,17 @@ PrefabInstance:
     - target: {fileID: 8342505292182103785, guid: 86fb8835e9fff7640be8c3e7d542ba52,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8342505292182103785, guid: 86fb8835e9fff7640be8c3e7d542ba52,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8342505292182103785, guid: 86fb8835e9fff7640be8c3e7d542ba52,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fb8835e9fff7640be8c3e7d542ba52, type: 3}
