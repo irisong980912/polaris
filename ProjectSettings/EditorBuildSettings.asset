@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cassiopeia.unity
     guid: 6d26bbfcae30845249a59dcebfcb534c
+  - enabled: 1
+    path: Assets/Scenes/Ursa Minor.unity
+    guid: d7f53e299bd936d4c8788f956b3dd49e
   m_configObjects: {}
