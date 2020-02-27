@@ -271,10 +271,11 @@ MonoBehaviour:
   cam: {fileID: 8377187791607531543}
   yAngleMin: -80
   yAngleMax: 80
-  smoothSpeed: 0.02
-  distance: 0.08
+  smoothSpeed: 1.5
+  distance: 1
   TopViewCamPos: {fileID: 1965121661485291902, guid: cc10f5a2562604e3084e6f3ee57641c8,
     type: 3}
+  smoothTime: 0.3
 --- !u!135 &4943265309136642250
 SphereCollider:
   m_ObjectHideFlags: 0

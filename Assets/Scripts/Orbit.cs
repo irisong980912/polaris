@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// apply  this script to star gravityCore
@@ -23,6 +24,8 @@ public class Orbit : MonoBehaviour
     private Transform _self;
     private bool _launchBegan;
 
+    public static event Action OnOrbit;
+    public static event Action OffOrbit;
     private void Start()
     {
         if (gameObject.tag.Contains("|GravityCore|")) // the star gravity core
@@ -93,8 +96,9 @@ public class Orbit : MonoBehaviour
             if (!_self.parent.parent.CompareTag("|Star|")) return;
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
-            cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
-            cam.transform.LookAt(_self);
+            OnOrbit?.Invoke();
+
+            //cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
             _player = other;
             _self.forward = other.transform.position - transform.position;
             other.gameObject.transform.SetParent(transform);
@@ -111,8 +115,9 @@ public class Orbit : MonoBehaviour
         other.gameObject.transform.SetParent(null);
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
-        cam.transform.LookAt(other.transform);
-        cam.GetComponent<ThirdPersonCamera>().CancelFocus();
+
+        OffOrbit?.Invoke();
+        //cam.GetComponent<ThirdPersonCamera>().CancelFocus();
 
         CancelInvoke(nameof(AdjustRotation));
     }

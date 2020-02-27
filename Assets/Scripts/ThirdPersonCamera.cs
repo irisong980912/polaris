@@ -19,36 +19,39 @@ public class ThirdPersonCamera : MonoBehaviour
     private Transform _target;
 
     private bool _orbitDetected;
-    private bool _isCancel;
+    private bool _firstTime;
 
     private bool _levelCleared;
 
     public Transform TopViewCamPos;
+
+    public float smoothTime = 0.3F;
+    private Vector3 velocity = Vector3.zero;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
     /// </summary>
     private void Start()
     {
+
+
+        Orbit.OnOrbit += OnOrbit;
+        Orbit.OffOrbit += OffOrbit;
+
         _target = character;
-        _orbitDetected = false;
 
         var dir = new Vector3(0, 0, -10.0f);
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
         transform.position = character.position + rotation * dir;
 
         ClearLevel.OnLevelClear += OnLevelClear;
+         
+
+        cam.LookAt(character);
     }
 
     private void Update()
     {
-        if (_planet)
-        {
-            print("_orbitDetected true");
-            smoothSpeed = 0.8f;
-            cam.LookAt(_planet);
-
-        }
 
         // move the camera angle by mouse
         _currentX += Input.GetAxis("Mouse X");
@@ -61,24 +64,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        // TODO: Test the camera smooth speed when player orbiting the planet
-        if (_planet)
-        {
-            print("_orbitDetected true");
-            smoothSpeed = 0.8f;
-            cam.LookAt(_planet);
-
-        }
-        else if (!_planet)
-        {
-            
-            // set back to default
-            smoothSpeed = 0.02f;
-            cam.LookAt(_target);
-
-        }
-
-        //if (_levelCleared) return;
 
         // Camera smooth movement can be only realized in a update() function
         if (_levelCleared)
@@ -91,34 +76,68 @@ public class ThirdPersonCamera : MonoBehaviour
         } else
         {
 
-            // position the camera behind the player by "distance"
-            var dir = new Vector3(0, 0, -distance);
+            var dir = new Vector3(-distance, 0.02f, -distance);
             var rotation = Quaternion.Euler(_currentY, _currentX, 0);
-            // smooth following
-            var desiredPosition = _target.position;
-            var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothPosition + rotation * dir;
 
-  
-            
+
+            if (_orbitDetected)
+            {
+                cam.LookAt(character.parent);
+
+                cam.rotation = rotation;
+
+                if (_firstTime)
+                {
+                    
+                    var smoothPosition = Vector3.Lerp(transform.position, transform.position + new Vector3(-distance, -distance, -distance), smoothSpeed * Time.deltaTime);
+                    transform.position = smoothPosition;
+
+                    _firstTime = false;
+                }
+
+            }
+            else 
+            {
+
+                // set back to default
+                distance = 1.0f;
+                cam.LookAt(character);
+
+                
+                // smooth following
+                var desiredPosition = character.position;
+                var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+                transform.position = smoothPosition;
+
+                // prevent camera shaking
+                Vector3 newPosition = Vector3.SmoothDamp(transform.position, transform.position + rotation * dir, ref velocity, smoothTime);
+                transform.position = newPosition;
+
+
+            }
+
 
         }
+        
+
+        
         
     }
 
 
-    public void OrbitDetected(Transform planet)
+    public void OnOrbit()
     {
-        _planet = planet;
         _orbitDetected = true;
-        Debug.Log("OrbitDetected");
+        _firstTime = true;
+        Debug.Log("OrbitDetected： " + _orbitDetected);
+
+       
+
     }
 
 
-    public void CancelFocus()
+    public void OffOrbit()
     {
-        _planet = null;
-        _target = character;
         _orbitDetected = false;
         Debug.Log("CancelFocus");
     }
