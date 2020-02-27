@@ -9,7 +9,6 @@ public sealed class MapCamera : MonoBehaviour
     public float mapAngle = 45f;
     
     public GameObject playerCamera;
-    public GameObject mapCamera;
     private IsometricCamera _camHandler;
     private static bool _mapActive;
 
@@ -18,7 +17,7 @@ public sealed class MapCamera : MonoBehaviour
     
     private void Start()
     {
-        _camHandler = new IsometricCamera(playerCamera, mapCamera);
+        _camHandler = new IsometricCamera(playerCamera, gameObject);
         SetMapCameraLocation();
         
         //Notify ThirdPersonPlayer on map status
