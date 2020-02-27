@@ -28,10 +28,6 @@ public class Orbit : MonoBehaviour
     public static event Action OffOrbit;
 
     public static event Action OnSlingShot;
-// =======
-//     public static event Action<Transform> OnOrbitStart;
-//     public static event Action OnOrbitStop;
-// >>>>>>> master
 
     private void Start()
     {
@@ -92,14 +88,8 @@ public class Orbit : MonoBehaviour
             // player can orbit only if the star is lit
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
-// <<<<<<< fixCam
             OnOrbit?.Invoke();
 
-            //cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
-// =======
-//             OnOrbitStart?.Invoke(_self);
-            
-// >>>>>>> master
             _player = other;
             _self.LookAt(other.transform.position);
             other.gameObject.transform.SetParent(transform);
@@ -116,13 +106,8 @@ public class Orbit : MonoBehaviour
         other.gameObject.transform.SetParent(null);
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
-// <<<<<<< fixCam
 
         OffOrbit?.Invoke();
-        //cam.GetComponent<ThirdPersonCamera>().CancelFocus();
-// =======
-//         OnOrbitStop?.Invoke();
-// >>>>>>> master
 
         CancelInvoke(nameof(AdjustRotation));
     }
