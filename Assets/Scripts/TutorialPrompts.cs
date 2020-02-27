@@ -14,7 +14,7 @@ public class TutorialPrompts : MonoBehaviour
         {
             tutorialtext.text = "You have a stardust in your inventory, try walking up to a dead star and pressing X";
         } else if (tutorialzone == "TutorialZone2"){
-            tutorialtext.text = "Awesome, do you see that glowing ball? That is a stardust, pick it up to activate more stars";
+            tutorialtext.text = "Awesome, do you see that glowing ball? That is stardust, pick it up to activate more stars";
         } else if (tutorialzone == "TutorialZone3"){
             tutorialtext.text = "See that black ball? That is a planet. Ride it's orbit and press B to slingshot";
         }else if (tutorialzone == "TutorialZone4"){
@@ -24,7 +24,12 @@ public class TutorialPrompts : MonoBehaviour
         }
         if (other.tag.Contains("|Star|"))
         {
-            tutorialtext.text = "Press X to activate star";
+            if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
+                tutorialtext.text = "Press X to activate star";
+            }
+            else if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
+                tutorialtext.text = "Press X to activate star";
+            }
         }
         if (other.tag.Contains("|Planet|"))
         {
