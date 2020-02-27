@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Placeholder Skybox
-  m_Shader: {fileID: 108, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 104, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _MAPPING_LATITUDE_LONGITUDE_LAYOUT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,7 +33,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 2800000, guid: 44277b305c1bc4f5ebef0a9e083ebf97, type: 3}
+        m_Texture: {fileID: 2800000, guid: e93eb3e81013f4854847839c8696dae2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: 505a770b7dced45009a4eab9b1d347c7, type: 3}
+        m_Texture: {fileID: 2800000, guid: b44df5b2fbd834877a1ab3b9c93f8314, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -53,11 +53,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: af2402fd3b17448eb94016d3d87c2819, type: 3}
+        m_Texture: {fileID: 2800000, guid: 58745cb0280b548009672bdfcda45f3e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 729b741c8a8d24f77bf420e46ff069b1, type: 3}
+        m_Texture: {fileID: 2800000, guid: b4c61c04d2ed545aab26097acf750615, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 2800000, guid: f38417bd2564c41e0a4a09e43663965e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d28ba290571f94073b3fe9bcc80c9ebe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -85,7 +85,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:
-        m_Texture: {fileID: 2800000, guid: 1698886ec6ccf4e6dbb41be545d0d127, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4904918b1014b4d3499ebeadbf5bf9db, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -96,7 +96,7 @@ Material:
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 1.64
+    - _Exposure: 0.99
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
