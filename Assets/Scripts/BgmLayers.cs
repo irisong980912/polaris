@@ -11,13 +11,13 @@ public class BgmLayers : MonoBehaviour
     public AudioSource bgmLayer5;
     public AudioSource bgmLayer6;
     public AudioSource bgmLayer7;
-    public AudioSource bgmLayer8;
-    public AudioSource bgmLayer9;
-    public AudioSource bgmLayer10;
-    public AudioSource bgmLayer11;
-    public AudioSource bgmLayer12;
-    public AudioSource bgmLayer13;
-    public AudioSource bgmLayer14;
+    // public AudioSource bgmLayer8;
+    // public AudioSource bgmLayer9;
+    // public AudioSource bgmLayer10;
+    // public AudioSource bgmLayer11;
+    // public AudioSource bgmLayer12;
+    // public AudioSource bgmLayer13;
+    // public AudioSource bgmLayer14;
 
     private List<AudioSource> _allLayers;
     
@@ -34,22 +34,22 @@ public class BgmLayers : MonoBehaviour
             bgmLayer5.GetComponent<AudioSource>(),
             bgmLayer6.GetComponent<AudioSource>(),
             bgmLayer7.GetComponent<AudioSource>(),
-            bgmLayer8.GetComponent<AudioSource>(),
-            bgmLayer9.GetComponent<AudioSource>(),
-            bgmLayer10.GetComponent<AudioSource>(),
-            bgmLayer11.GetComponent<AudioSource>(),
-            bgmLayer12.GetComponent<AudioSource>(),
-            bgmLayer13.GetComponent<AudioSource>(),
-            bgmLayer14.GetComponent<AudioSource>()
+            // bgmLayer8.GetComponent<AudioSource>(),
+            // bgmLayer9.GetComponent<AudioSource>(),
+            // bgmLayer10.GetComponent<AudioSource>(),
+            // bgmLayer11.GetComponent<AudioSource>(),
+            // bgmLayer12.GetComponent<AudioSource>(),
+            // bgmLayer13.GetComponent<AudioSource>(),
+            // bgmLayer14.GetComponent<AudioSource>()
         };
 
 
         foreach (var layer in _allLayers)
         {
-            layer.enabled = false;
+            layer.volume = 0;
         }
 
-        _allLayers[0].enabled = true;
+        _allLayers[0].volume = 1;
         
         CreateStar.OnStarCreation += OnStarCreation;
         DestroyStar.OnStarDestruction += OnStarDestruction;
@@ -57,9 +57,9 @@ public class BgmLayers : MonoBehaviour
 
     private void OnStarCreation()
     {
-        foreach (var layer in _allLayers.Where(layer => !layer.enabled))
+        foreach (var layer in _allLayers.Where(layer => !(layer.volume > 0.1)))
         {
-            layer.enabled = true;
+            layer.volume = 1;
             break;
         }
     }
@@ -69,9 +69,9 @@ public class BgmLayers : MonoBehaviour
         var previous = _allLayers[0];
         foreach (var layer in _allLayers)
         {
-            if (!layer.enabled)
+            if (!(layer.volume > 0.1))
             {
-                previous.enabled = false;
+                previous.volume = 0;
             }
             previous = layer;
         }
