@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -24,8 +24,14 @@ public class Orbit : MonoBehaviour
     private Transform _self;
     private bool _launchBegan;
 
-    public static event Action<Transform> OnOrbitStart;
-    public static event Action OnOrbitStop;
+    public static event Action OnOrbit;
+    public static event Action OffOrbit;
+
+    public static event Action OnSlingShot;
+// =======
+//     public static event Action<Transform> OnOrbitStart;
+//     public static event Action OnOrbitStop;
+// >>>>>>> master
 
     private void Start()
     {
@@ -86,8 +92,14 @@ public class Orbit : MonoBehaviour
             // player can orbit only if the star is lit
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
-            OnOrbitStart?.Invoke(_self);
+// <<<<<<< fixCam
+            OnOrbit?.Invoke();
+
+            //cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
+// =======
+//             OnOrbitStart?.Invoke(_self);
             
+// >>>>>>> master
             _player = other;
             _self.LookAt(other.transform.position);
             other.gameObject.transform.SetParent(transform);
@@ -104,7 +116,13 @@ public class Orbit : MonoBehaviour
         other.gameObject.transform.SetParent(null);
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
-        OnOrbitStop?.Invoke();
+// <<<<<<< fixCam
+
+        OffOrbit?.Invoke();
+        //cam.GetComponent<ThirdPersonCamera>().CancelFocus();
+// =======
+//         OnOrbitStop?.Invoke();
+// >>>>>>> master
 
         CancelInvoke(nameof(AdjustRotation));
     }
@@ -118,6 +136,8 @@ public class Orbit : MonoBehaviour
     /// </remarks>
     private void SlingshotStart()
     {
+
+        
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
         _player.gameObject.transform.SetParent(null);
@@ -132,9 +152,10 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
+        OnSlingShot?.Invoke();
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
-        _player.gameObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward.normalized * 6000, ForceMode.Force);
+        _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
     }
 }

@@ -72,12 +72,14 @@ public class ThirdPersonPlayer : MonoBehaviour
         var yAxis = Input.GetAxisRaw("Vertical");
 
         _direction = new Vector3(xAxis, 0f, yAxis);
+
         _direction = _direction.normalized;
 
         // Camera.main to cam
         // Convert direction from local to world relative to camera
 
         _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
+
     }
 
     private void HandleRotation()
