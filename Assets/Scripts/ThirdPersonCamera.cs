@@ -19,9 +19,12 @@ public class ThirdPersonCamera : MonoBehaviour
     private Transform _target;
 
     private bool _orbitDetected;
-    private bool _firstTime;
+    private bool _firstTimeOrbit;
+    private bool _firstTimeShot;
 
     private bool _levelCleared;
+
+    private bool _onSlingShot;
 
     public Transform TopViewCamPos;
 
@@ -37,6 +40,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         Orbit.OnOrbit += OnOrbit;
         Orbit.OffOrbit += OffOrbit;
+        Orbit.OnSlingShot += OnSlingShot;
+
 
         _target = character;
 
@@ -84,23 +89,48 @@ public class ThirdPersonCamera : MonoBehaviour
             {
                 cam.LookAt(character.parent);
 
-                cam.rotation = rotation;
+                
 
-                if (_firstTime)
+                if (_firstTimeOrbit)
                 {
                     
-                    var smoothPosition = Vector3.Lerp(transform.position, transform.position + new Vector3(-distance, -distance, -distance), smoothSpeed * Time.deltaTime);
+                    var smoothPosition = Vector3.Lerp(transform.position, transform.position + new Vector3(-distance, 0, -distance), smoothSpeed * Time.deltaTime);
                     transform.position = smoothPosition;
 
-                    _firstTime = false;
+                    _firstTimeOrbit = false;
+                } else
+                {
+                    cam.rotation = rotation;
                 }
 
             }
-            else 
+            else if (_onSlingShot)
+            {
+                // look at th left side
+                var desiredPosition = character.position - character.right * 10;
+
+                //if (_firstTimeShot)
+                //{
+
+                    
+
+                //    _firstTimeShot = false;
+                //}
+
+                
+                // smooth following
+                var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+                transform.position = smoothPosition;
+
+                cam.LookAt(character);
+
+
+
+            }
+
+            else
             {
 
-                // set back to default
-                distance = 1.0f;
                 cam.LookAt(character);
 
                 
@@ -125,18 +155,17 @@ public class ThirdPersonCamera : MonoBehaviour
     }
 
 
-    public void OnOrbit()
+    private void OnOrbit()
     {
         _orbitDetected = true;
-        _firstTime = true;
+        _firstTimeOrbit = true;
         Debug.Log("OrbitDetected： " + _orbitDetected);
 
        
 
     }
 
-
-    public void OffOrbit()
+    private void OffOrbit()
     {
         _orbitDetected = false;
         Debug.Log("CancelFocus");
@@ -146,6 +175,22 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         _levelCleared = true;
         Debug.Log("Camera -- OnLevelClear");
+    }
+
+    private void OnSlingShot()
+    {
+        _onSlingShot = true;
+        _firstTimeShot = true;
+        Debug.Log("OnSlingShot");
+
+        Invoke(nameof(OffSlingShot), 2);
+
+    }
+
+    private void OffSlingShot()
+    {
+        _onSlingShot = false;
+        Debug.Log("OnSlingShot");
     }
 
 

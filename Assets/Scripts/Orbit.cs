@@ -26,6 +26,9 @@ public class Orbit : MonoBehaviour
 
     public static event Action OnOrbit;
     public static event Action OffOrbit;
+
+    public static event Action OnSlingShot;
+
     private void Start()
     {
         if (gameObject.tag.Contains("|GravityCore|")) // the star gravity core
@@ -131,6 +134,8 @@ public class Orbit : MonoBehaviour
     /// </remarks>
     private void SlingshotStart()
     {
+
+        
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
         _player.gameObject.transform.SetParent(null);
@@ -145,9 +150,10 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
+        OnSlingShot?.Invoke();
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
-        _player.gameObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward.normalized * 6000, ForceMode.Force);
+        _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
     }
 }
