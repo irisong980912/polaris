@@ -13,11 +13,22 @@ public sealed class MapCamera : MonoBehaviour
     private static bool _mapActive;
 
     private bool MapActive => _camHandler.IsometricCameraActive;
+
+    public GameObject PlayerCamera
+    {
+        get => playerCamera;
+        set
+        {
+            playerCamera = value;
+            _camHandler.PlayerCamera = value;
+        }
+    }
+
     public static event Action<bool> OnMapSwitch;
     
     private void Start()
     {
-        _camHandler = new IsometricCamera(playerCamera, gameObject);
+        _camHandler = new IsometricCamera(PlayerCamera, gameObject);
         SetMapCameraLocation();
         
         //Notify ThirdPersonPlayer on map status
