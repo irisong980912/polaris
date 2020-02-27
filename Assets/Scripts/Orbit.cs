@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -28,19 +28,16 @@ public class Orbit : MonoBehaviour
     public static event Action OffOrbit;
 
     public static event Action OnSlingShot;
+// =======
+//     public static event Action<Transform> OnOrbitStart;
+//     public static event Action OnOrbitStop;
+// >>>>>>> master
 
     private void Start()
     {
-        if (gameObject.tag.Contains("|GravityCore|")) // the star gravity core
-        {
-            _self = transform.parent.transform; 
-        }
-        else  // the planet core
-        {
-            _self = transform;
+        _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
 
-        }
-        
+        // Store the normal rotation speed so it can be restored after a slingshot.
         _normalSpeed = speed;
     }
     
@@ -77,50 +74,55 @@ public class Orbit : MonoBehaviour
     /// </summary>
     /// <remarks>
     /// Since players can move, we need to regularly call AdjustRotation() to keep a player orbiting
-    /// all the way around the player
+    /// all the way around the object.
     /// </remarks>
-    /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerEnter(Collider other)
     {
-
         if (gameObject.tag.Contains("|GravityCore|"))
         {
             if (other.gameObject.tag.Contains("|Planet|"))
             {
-
                 other.gameObject.transform.SetParent(transform.parent.transform);
             }
+            
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
-
             // player can orbit only if the star is lit
-            if (!_self.parent.parent.CompareTag("|Star|")) return;
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
+// <<<<<<< fixCam
             OnOrbit?.Invoke();
 
             //cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
+// =======
+//             OnOrbitStart?.Invoke(_self);
+            
+// >>>>>>> master
             _player = other;
-            _self.forward = other.transform.position - transform.position;
+            _self.LookAt(other.transform.position);
             other.gameObject.transform.SetParent(transform);
             InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
         }
+        
     }
 
     /// <summary>
     /// When objects leave their orbits, they cease to be children of _self, so they stop rotating when _self spins.
     /// </summary>
-    /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerExit(Collider other)
     {
         other.gameObject.transform.SetParent(null);
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
+// <<<<<<< fixCam
 
         OffOrbit?.Invoke();
         //cam.GetComponent<ThirdPersonCamera>().CancelFocus();
+// =======
+//         OnOrbitStop?.Invoke();
+// >>>>>>> master
 
         CancelInvoke(nameof(AdjustRotation));
     }

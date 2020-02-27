@@ -2,14 +2,12 @@
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public Transform character;          // the player to look at
-    public Transform cam;             // camera itself
-
-    private Transform _planet;
+    public Transform character;           // the player to look at
+    public Transform cam;                 // camera itself
 
     // set the min and max camera angle on X and Y axis
-    public float yAngleMin = -80.0f;  // bottom degree
-    public float yAngleMax = 80.0f;   // top degree
+    public float yAngleMin = -80.0f;      // bottom degree
+    public float yAngleMax = 80.0f;       // top degree
     public float smoothSpeed = 0.125f;
     public float distance = 0.8f;
 
@@ -18,6 +16,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private Transform _target;
 
+// <<<<<<< fixCam
     private bool _orbitDetected;
     private bool _firstTimeOrbit;
     private bool _firstTimeShot;
@@ -27,6 +26,11 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _onSlingShot;
 
     public Transform TopViewCamPos;
+// =======
+//     private bool _levelCleared;
+
+//     public Transform topViewCamPos;
+// >>>>>>> master
 
     public float smoothTime = 0.3F;
     private Vector3 velocity = Vector3.zero;
@@ -49,6 +53,8 @@ public class ThirdPersonCamera : MonoBehaviour
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
         transform.position = character.position + rotation * dir;
 
+        Orbit.OnOrbitStart += OrbitDetected;
+        Orbit.OnOrbitStop += CancelFocus;
         ClearLevel.OnLevelClear += OnLevelClear;
          
 
@@ -57,7 +63,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Update()
     {
-
         // move the camera angle by mouse
         _currentX += Input.GetAxis("Mouse X");
         _currentY += Input.GetAxis("Mouse Y");
@@ -69,17 +74,23 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+// <<<<<<< fixCam
+// =======
+//         cam.LookAt(_target);
+// >>>>>>> master
 
         // Camera smooth movement can be only realized in a update() function
         if (_levelCleared)
         {
-            Vector3 desiredPosition = TopViewCamPos.position;
+            var desiredPosition = topViewCamPos.position;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
-            Quaternion newRot = Quaternion.Euler(90, -45, -500); 
+            var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
-        } else
+        } 
+        else
         {
+// <<<<<<< fixCam
 
             var dir = new Vector3(-distance, 0.02f, -distance);
             var rotation = Quaternion.Euler(_currentY, _currentX, 0);
@@ -108,32 +119,18 @@ public class ThirdPersonCamera : MonoBehaviour
             {
                 // look at th left side
                 var desiredPosition = character.position - character.right * 10;
-
-                //if (_firstTimeShot)
-                //{
-
-                    
-
-                //    _firstTimeShot = false;
-                //}
-
                 
                 // smooth following
                 var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
                 transform.position = smoothPosition;
 
                 cam.LookAt(character);
-
-
-
             }
 
             else
             {
 
                 cam.LookAt(character);
-
-                
                 // smooth following
                 var desiredPosition = character.position;
                 var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
@@ -142,11 +139,16 @@ public class ThirdPersonCamera : MonoBehaviour
                 // prevent camera shaking
                 Vector3 newPosition = Vector3.SmoothDamp(transform.position, transform.position + rotation * dir, ref velocity, smoothTime);
                 transform.position = newPosition;
-
-
             }
-
-
+// =======
+//             // position the camera behind the player by "distance"
+//             var dir = new Vector3(0, 0, -distance);
+//             var rotation = Quaternion.Euler(_currentY, _currentX, 0);
+//             // smooth following
+//             var desiredPosition = _target.position;
+//             var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+//             transform.position = smoothPosition + rotation * dir;
+// >>>>>>> master
         }
         
 
@@ -154,20 +156,37 @@ public class ThirdPersonCamera : MonoBehaviour
         
     }
 
+// <<<<<<< fixCam
 
     private void OnOrbit()
     {
         _orbitDetected = true;
         _firstTimeOrbit = true;
         Debug.Log("OrbitDetected： " + _orbitDetected);
+// =======
+//     private void OrbitDetected(Transform planet)
+//     {
+//         // TODO: Test the camera smooth speed when player orbiting the planet
+//         smoothSpeed = 0.8f;
+//         _target = planet;
+//         Debug.Log("OrbitDetected");
+//     }
+// >>>>>>> master
 
        
 
     }
 
+// <<<<<<< fixCam
     private void OffOrbit()
     {
         _orbitDetected = false;
+// =======
+//     private void CancelFocus()
+//     {
+//         smoothSpeed = 0.02f;
+//         _target = character;
+// >>>>>>> master
         Debug.Log("CancelFocus");
     }
     
