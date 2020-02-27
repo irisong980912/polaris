@@ -9,4 +9,12 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    private void Update()
+    {
+        if (Input.GetButton("Fire2"))
+        {
+            PlayGame();
+        }
+    }
 }
