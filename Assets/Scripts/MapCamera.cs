@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public sealed class MapCamera : MonoBehaviour
+public class MapCamera : MonoBehaviour
 {
     public Transform mapTarget;
     public float mapHeight = 30f;
@@ -14,7 +14,7 @@ public sealed class MapCamera : MonoBehaviour
 
     private bool MapActive => _camHandler.IsometricCameraActive;
 
-    public GameObject PlayerCamera
+    private GameObject PlayerCamera
     {
         get => playerCamera;
         set
@@ -33,6 +33,7 @@ public sealed class MapCamera : MonoBehaviour
         
         //Notify ThirdPersonPlayer on map status
         OnMapSwitch?.Invoke(MapActive);
+        PuzzleCamera.OnPuzzleEnterOrExit += OnPuzzleEnterOrExit;
     }
 
     // Update is called once per frame
@@ -64,6 +65,15 @@ public sealed class MapCamera : MonoBehaviour
         var finalPosition = flatTargetPosition + rotatedVector;
         
         _camHandler.SetIsometricCameraLocation(finalPosition, flatTargetPosition - finalPosition);
+    }
+
+    /// <summary>
+    /// The camera perspective that needs to be returned to when closing the map changes if the player is inside of
+    /// a puzzle area. This method updates playerCamera to restore the correct perspective.
+    /// </summary>
+    private void OnPuzzleEnterOrExit(GameObject activeCamera)
+    {
+        PlayerCamera = activeCamera;
     }
 
 }
