@@ -27,20 +27,20 @@ public class BgmLayers : MonoBehaviour
     {
         _allLayers = new List<AudioSource>
         {
-            bgmLayer1,
-            bgmLayer2,
-            bgmLayer3,
-            bgmLayer4,
-            bgmLayer5,
-            bgmLayer6,
-            bgmLayer7,
-            bgmLayer8,
-            bgmLayer9,
-            bgmLayer10,
-            bgmLayer11,
-            bgmLayer12,
-            bgmLayer13,
-            bgmLayer14
+            bgmLayer1.GetComponent<AudioSource>(),
+            bgmLayer2.GetComponent<AudioSource>(),
+            bgmLayer3.GetComponent<AudioSource>(),
+            bgmLayer4.GetComponent<AudioSource>(),
+            bgmLayer5.GetComponent<AudioSource>(),
+            bgmLayer6.GetComponent<AudioSource>(),
+            bgmLayer7.GetComponent<AudioSource>(),
+            bgmLayer8.GetComponent<AudioSource>(),
+            bgmLayer9.GetComponent<AudioSource>(),
+            bgmLayer10.GetComponent<AudioSource>(),
+            bgmLayer11.GetComponent<AudioSource>(),
+            bgmLayer12.GetComponent<AudioSource>(),
+            bgmLayer13.GetComponent<AudioSource>(),
+            bgmLayer14.GetComponent<AudioSource>()
         };
 
 
