@@ -12,12 +12,14 @@ public class AnimateBeam : MonoBehaviour
     public Transform destinStar;
 
     public float beamDrawSpeed;
-    public float normalBeamWidth = 1.0f;
-    public float mapClearBeamWidth = 20.0f;
+    public float normalBeamWidth = 30.0f;
+    //public float mapClearBeamWidth = 20.0f;
 
     public bool starOriginActivated;
     public bool starDestinActivated;
     public bool triggerBeam;
+
+    private bool _levelClear;
 
     // Start is called before the first frame update
     void Start()
@@ -39,16 +41,26 @@ public class AnimateBeam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckStarsActivation();
-        DrawConstellation();
+        if (_levelClear)
+        {
+            print("animate beam - clear level");
+            CheckStarsActivation();
+            DrawConstellation();
+        }
+
     }
 
     void OnLevelClear()
     {
         // TODO: does not seem to change the beamwidth, don't know why
-        print("animate beam - clear level");
-        beam.startWidth = mapClearBeamWidth;
-        beam.endWidth = mapClearBeamWidth;
+        
+
+        _levelClear = true;
+
+        //CheckStarsActivation();
+        //DrawConstellation();
+        //beam.startWidth = mapClearBeamWidth;
+        //beam.endWidth = mapClearBeamWidth;
     }
 
     void CheckStarsActivation()
@@ -71,6 +83,7 @@ public class AnimateBeam : MonoBehaviour
         Vector3 pointA = originStar.position;
         Vector3 pointB = destinStar.position;
 
+        print("draw conse");
         if (counter < dist && triggerBeam)
         {
             counter += 0.1f / beamDrawSpeed;
@@ -82,6 +95,7 @@ public class AnimateBeam : MonoBehaviour
         }
         else if (counter != 0 && !triggerBeam)
         {
+
             counter -= 0.1f / beamDrawSpeed;
 
             float x = Mathf.Lerp(0, dist, counter);

@@ -12,7 +12,6 @@ public class Star : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("hi star");
         isCreated = false;
     }
 
