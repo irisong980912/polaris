@@ -25,7 +25,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool _onSlingShot;
 
-    public Transform TopViewCamPos;
+    public Transform topViewCamPos;
 // =======
 //     private bool _levelCleared;
 
@@ -53,8 +53,8 @@ public class ThirdPersonCamera : MonoBehaviour
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
         transform.position = character.position + rotation * dir;
 
-        Orbit.OnOrbitStart += OrbitDetected;
-        Orbit.OnOrbitStop += CancelFocus;
+        //Orbit.OnOrbitStart += OrbitDetected;
+        //Orbit.OnOrbitStop += CancelFocus;
         ClearLevel.OnLevelClear += OnLevelClear;
          
 
