@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
-
     public float speed;
 
     public int stardust;
@@ -23,22 +22,6 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void Start()
     {
-        //Get the camera switch script so it can add this as an observer
-        try
-        {
-            var goList = new List<GameObject>();
-            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
-            {
-                var go = (GameObject) o;
-                if (go.tag.Contains("|MapScript|"))
-                {
-                }
-            }
-        }
-        catch (UnityException)
-        {
-            print("No such tag");
-        }
         CameraSwitch.OnMapSwitch += SetMapActive;
     }
 
@@ -67,7 +50,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (_mapActive == false)
+        if (!_mapActive)
         {
             Move();
         }
@@ -80,7 +63,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
 
     }
-
 
     private void Move()
     {
@@ -98,7 +80,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
     }
 
-
     private void HandleRotation()
     {
         // determines which angle that the camera is looking at
@@ -109,9 +90,4 @@ public class ThirdPersonPlayer : MonoBehaviour
         _body.rotation = lookAt;
     }
 
-}
-
-public enum NotificationType
-{
-    MapStatus
 }
