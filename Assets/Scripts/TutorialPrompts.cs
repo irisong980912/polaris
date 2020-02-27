@@ -27,8 +27,8 @@ public class TutorialPrompts : MonoBehaviour
             if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
                 tutorialtext.text = "Press X to activate star";
             }
-            else if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
-                tutorialtext.text = "Press X to activate star";
+            else if (other.GetComponent<CreateStar>().enabled == false && other.GetComponent<DestroyStar>().enabled == true){
+                tutorialtext.text = "Press X to deactivate star";
             }
         }
         if (other.tag.Contains("|Planet|"))
