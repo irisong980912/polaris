@@ -43,7 +43,7 @@ public class Orbit : MonoBehaviour
         
         if (_player is null) return;
         
-        if (!Input.GetButton("Fire1") || _player.transform.parent != _self) return;
+        if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
         
         if (!_launchBegan)
         {
