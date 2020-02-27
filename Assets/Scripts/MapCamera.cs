@@ -71,7 +71,7 @@ public class MapCamera : MonoBehaviour
     /// The camera perspective that needs to be returned to when closing the map changes if the player is inside of
     /// a puzzle area. This method updates playerCamera to restore the correct perspective.
     /// </summary>
-    private void OnPuzzleEnterOrExit(GameObject activeCamera)
+    private void OnPuzzleEnterOrExit(GameObject activeCamera, GameObject puzzleCameraContainer)
     {
         PlayerCamera = activeCamera;
     }

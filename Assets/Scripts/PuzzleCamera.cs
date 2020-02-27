@@ -6,7 +6,7 @@ public class PuzzleCamera : MonoBehaviour
     public GameObject playerCamera;
     private IsometricCamera _camHandler;
 
-    public static event Action<GameObject> OnPuzzleEnterOrExit;
+    public static event Action<GameObject, GameObject> OnPuzzleEnterOrExit;
 
     private void Start()
     {
@@ -18,12 +18,12 @@ public class PuzzleCamera : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _camHandler.SwitchPerspective();
-        OnPuzzleEnterOrExit?.Invoke(_camHandler.GetActiveCamera());
+        OnPuzzleEnterOrExit?.Invoke(_camHandler.GetActiveCamera(), gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
         _camHandler.SwitchPerspective();
-        OnPuzzleEnterOrExit?.Invoke(_camHandler.GetActiveCamera());
+        OnPuzzleEnterOrExit?.Invoke(_camHandler.GetActiveCamera(), gameObject);
     }
 }
