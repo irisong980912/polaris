@@ -10,30 +10,20 @@ public class ThirdPersonCamera : MonoBehaviour
     public float yAngleMax = 80.0f;       // top degree
     public float smoothSpeed = 0.125f;
     public float distance = 0.8f;
+    public float smoothTime = 0.3F;
+    private Vector3 velocity = Vector3.zero;
 
     private float _currentX;
     private float _currentY;
 
-    private Transform _target;
-
-// <<<<<<< fixCam
     private bool _orbitDetected;
     private bool _firstTimeOrbit;
-    private bool _firstTimeShot;
 
     private bool _levelCleared;
 
     private bool _onSlingShot;
 
     public Transform topViewCamPos;
-// =======
-//     private bool _levelCleared;
-
-//     public Transform topViewCamPos;
-// >>>>>>> master
-
-    public float smoothTime = 0.3F;
-    private Vector3 velocity = Vector3.zero;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -46,17 +36,11 @@ public class ThirdPersonCamera : MonoBehaviour
         Orbit.OffOrbit += OffOrbit;
         Orbit.OnSlingShot += OnSlingShot;
 
-
-        _target = character;
+        ClearLevel.OnLevelClear += OnLevelClear;
 
         var dir = new Vector3(0, 0, -10.0f);
         var rotation = Quaternion.Euler(_currentY, _currentX, 0);
         transform.position = character.position + rotation * dir;
-
-        //Orbit.OnOrbitStart += OrbitDetected;
-        //Orbit.OnOrbitStop += CancelFocus;
-        ClearLevel.OnLevelClear += OnLevelClear;
-         
 
         cam.LookAt(character);
     }
@@ -74,10 +58,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-// <<<<<<< fixCam
-// =======
-//         cam.LookAt(_target);
-// >>>>>>> master
 
         // Camera smooth movement can be only realized in a update() function
         if (_levelCleared)
@@ -90,17 +70,12 @@ public class ThirdPersonCamera : MonoBehaviour
         } 
         else
         {
-// <<<<<<< fixCam
-
             var dir = new Vector3(-distance, 0.02f, -distance);
             var rotation = Quaternion.Euler(_currentY, _currentX, 0);
-
 
             if (_orbitDetected)
             {
                 cam.LookAt(character.parent);
-
-                
 
                 if (_firstTimeOrbit)
                 {
@@ -117,7 +92,7 @@ public class ThirdPersonCamera : MonoBehaviour
             }
             else if (_onSlingShot)
             {
-                // look at th left side
+                // look at the left side while player slingshotting
                 var desiredPosition = character.position - character.right * 10;
                 
                 // smooth following
@@ -140,7 +115,8 @@ public class ThirdPersonCamera : MonoBehaviour
                 Vector3 newPosition = Vector3.SmoothDamp(transform.position, transform.position + rotation * dir, ref velocity, smoothTime);
                 transform.position = newPosition;
             }
-// =======
+
+            // TODO: still need to test this code
 //             // position the camera behind the player by "distance"
 //             var dir = new Vector3(0, 0, -distance);
 //             var rotation = Quaternion.Euler(_currentY, _currentX, 0);
@@ -148,46 +124,23 @@ public class ThirdPersonCamera : MonoBehaviour
 //             var desiredPosition = _target.position;
 //             var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 //             transform.position = smoothPosition + rotation * dir;
-// >>>>>>> master
         }
-        
-
-        
         
     }
 
-// <<<<<<< fixCam
 
     private void OnOrbit()
     {
         _orbitDetected = true;
         _firstTimeOrbit = true;
-        Debug.Log("OrbitDetected： " + _orbitDetected);
-// =======
-//     private void OrbitDetected(Transform planet)
-//     {
-//         // TODO: Test the camera smooth speed when player orbiting the planet
-//         smoothSpeed = 0.8f;
-//         _target = planet;
-//         Debug.Log("OrbitDetected");
-//     }
-// >>>>>>> master
-
-       
+        Debug.Log("OnOrbit" );
 
     }
 
-// <<<<<<< fixCam
     private void OffOrbit()
     {
         _orbitDetected = false;
-// =======
-//     private void CancelFocus()
-//     {
-//         smoothSpeed = 0.02f;
-//         _target = character;
-// >>>>>>> master
-        Debug.Log("CancelFocus");
+        Debug.Log("OffOrbit");
     }
     
     private void OnLevelClear()
@@ -199,9 +152,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void OnSlingShot()
     {
         _onSlingShot = true;
-        _firstTimeShot = true;
         Debug.Log("OnSlingShot");
-
         Invoke(nameof(OffSlingShot), 2);
 
     }
