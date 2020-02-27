@@ -22,7 +22,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void Start()
     {
-        CameraSwitch.OnMapSwitch += SetMapActive;
+        MapCamera.OnMapSwitch += SetMapActive;
     }
 
     private static void SetMapActive(bool mapActive)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public sealed class MapCamera : MonoBehaviour
 {
@@ -6,20 +7,34 @@ public sealed class MapCamera : MonoBehaviour
     public float mapHeight = 30f;
     public float mapDistance = 30f;
     public float mapAngle = 45f;
+    
+    public GameObject playerCamera;
+    public GameObject mapCamera;
+    private IsometricCamera _camHandler;
+    private static bool _mapActive;
 
-    // Start is called before the first frame update
+    private bool MapActive => _camHandler.IsometricCameraActive;
+    public static event Action<bool> OnMapSwitch;
+    
     private void Start()
     {
-        HandleCamera();
+        _camHandler = new IsometricCamera(playerCamera, mapCamera);
+        SetMapCameraLocation();
+        
+        //Notify ThirdPersonPlayer on map status
+        OnMapSwitch?.Invoke(MapActive);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        HandleCamera();
+        if (!Input.GetButtonDown("Fire3")) return;
+        SetMapCameraLocation();
+        _camHandler.SwitchPerspective();
+        OnMapSwitch?.Invoke(MapActive);
     }
 
-    private void HandleCamera()
+    private void SetMapCameraLocation()
     {
         //Exit if no target
         if(!mapTarget)
@@ -37,10 +52,8 @@ public sealed class MapCamera : MonoBehaviour
         var flatTargetPosition = mapTarget.position;
         flatTargetPosition.y = 0f;
         var finalPosition = flatTargetPosition + rotatedVector;
-
-        transform.position = finalPosition;
-
-        //Let camera look at target
-        transform.LookAt(flatTargetPosition);
+        
+        _camHandler.SetIsometricCameraLocation(finalPosition, flatTargetPosition - finalPosition);
     }
+
 }
