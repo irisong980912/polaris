@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearLevelImage: {fileID: 1490270997}
-  totalStarNum: 1
+  totalStarNum: 7
 --- !u!136 &112257934
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1889,7 +1889,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -4078,7 +4078,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -5575,7 +5575,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -6347,7 +6347,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -7085,7 +7085,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -7643,7 +7643,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -8541,7 +8541,7 @@ PrefabInstance:
     - target: {fileID: 8408047773879214375, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: isCreated
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007396541691365466, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
