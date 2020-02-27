@@ -1,34 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-/// <summary>
-///  TODO: when scattering the stardustm implement the transition animation that stardust
-///  is being distributed from the core
-/// </summary>
 public class StardustPickup : MonoBehaviour
 {
     public int stardustValue = 1;
+    // TODO: implement me.
     //public AudioClip clip;
     public GameObject stardust;
 
     public void OnTriggerEnter(Collider collision)
     {
-        
-
-        ThirdPersonPlayer player = collision.GetComponent<ThirdPersonPlayer>();
+        var player = collision.GetComponent<ThirdPersonPlayer>();
         Debug.Log("pickup");
-        
 
-        if (player != null)
-        {
-            Debug.Log("pickup add");
-            player.stardust += stardustValue;
-            player.inventory.Add(stardust);
-            //Destroy(gameObject);
-            gameObject.SetActive(false);
-        }
+        if (player is null) return;
+        Debug.Log("pickup add");
+        player.stardust += stardustValue;
+        player.inventory.Add(stardust);
+        gameObject.SetActive(false);
     }
 
 }

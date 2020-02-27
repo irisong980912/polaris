@@ -1,76 +1,70 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-
-    // Update is called once per frame
-
-    private GameObject[] _gravityObjects;
+    public float gravityRadius = 180.0f;
+    
+    private GameObject _player;
     public float gravityStrength;
-    public float gravityRadius;
+    private float _disToPlayer;
+    private bool _withinGravityRadius;
+
+    // TODO: See if this collider is needed.
+    private void OnTriggerStay(Collider c)
+    {
+        if (!c.gameObject.tag.Contains("|Player|")) return;
+        _player = c.gameObject;
+        _disToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+        //Debug.Log("disToPlayer is: " + disToPlayer);
+        _withinGravityRadius = true;
+    }
+
+    private void OnTriggerExit(Collider c)
+    {
+        if (c.gameObject.tag.Contains("|Player|"))
+        {
+            _withinGravityRadius = false;
+        }
+        
+    }
 
     private void Start()
     {
-
-        Debug.Log("start gravity");
-
-        try
-        {
-            var goList = new List<GameObject>();
-            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
-            {
-                var go = (GameObject) o;
-                if (go.tag.Contains("|Player|"))
-                {
-                    goList.Add(go);
-                    Debug.Log(go.name);
-                }
-
-                _gravityObjects = goList.ToArray();
-            }
-        }
-        catch (UnityException)
-        {
-            print("No such tag");
-        }
+        Debug.Log("CHILD GRAVITY enabled!!!!");
     }
 
     private void Update()
     {
-        
-        foreach (var gravityObject in _gravityObjects)
+        if (_withinGravityRadius != true) return;
+        if (_disToPlayer <= gravityRadius * .65f) // small gravity allow player to get onto the planets easier
         {
-            if (gameObject.tag.Contains("|Star|"))
-            {
-                GameObject core = GameObject.Find("Core");
-                // keep the gravity force within a distance
-                //Debug.Log(Vector3.Distance(core.transform.position, gravityObject.transform.position));
-                // before: if (Vector3.Distance(transform.position, gravityObject.transform.position) > 0.8 * gravityRadius)
-                if (Vector3.Distance(transform.position, gravityObject.transform.position) <= gravityRadius)
-                {
-                    //Debug.Log("Within Distance");
-                    ApplyGravity(gravityObject);
-                } 
-            }
-            else
-            {
-                ApplyGravity(gravityObject);
-            }
-            
+            gravityStrength = 5.0f;
         }
-    }
+        else if (_disToPlayer <= gravityRadius * .75f)
+        {
+            gravityStrength = 15.0f;
+        }
 
-    private void ApplyGravity(GameObject gravityObject)
-    {
-
-        gravityObject.GetComponent<Rigidbody>().AddExplosionForce(
+        else if (_disToPlayer <= gravityRadius * .85f)
+        {
+            gravityStrength = 30.0f;
+        }
+        else // disToPlayer > gravityRadius * .85f
+        {
+            // gravity strength is proportional to player speed and distance
+            var playerSpeedRatio = 1 / _player.GetComponent<ThirdPersonPlayer>().speed;
+            gravityStrength = (_disToPlayer / 20) * (_disToPlayer / 20) * playerSpeedRatio;
+        }
+        
+        _player.GetComponent<Rigidbody>().AddExplosionForce(
             -gravityStrength,
             transform.position,
             gravityRadius,
             0.0f,
             ForceMode.Force
         );
+
     }
+
+
 }
-    

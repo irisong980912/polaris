@@ -50,7 +50,7 @@ public class AsteroidBeltPath : MonoBehaviour
     {
         foreach (var star in _stars.Keys)
         {
-            if (Vector3.Distance(star.transform.position, transform.position) < star.GetComponent<Gravity>().gravityRadius 
+            if (Vector3.Distance(star.transform.position, transform.position) < star.transform.Find("GravityCore").GetComponent<Gravity>().gravityRadius
                 && !_stars[star])
             {
                 _stars[star] = true;
@@ -58,16 +58,16 @@ public class AsteroidBeltPath : MonoBehaviour
                 RotateTowardsObject(
                     _parent.forward,
                     vectorToStar,
-                    star.GetComponent<Gravity>().gravityStrength / resistanceToGravity);
+                    star.transform.Find("GravityCore").GetComponent<Gravity>().gravityStrength / resistanceToGravity);
             }
             else if (_stars[star] && 
-                     Vector3.Distance(star.transform.position, transform.position) >= star.GetComponent<Gravity>().gravityRadius)
+                     Vector3.Distance(star.transform.position, transform.position) >= star.transform.Find("GravityCore").GetComponent<Gravity>().gravityRadius)
             {
                 _stars[star] = false;
                 RotateTowardsObject(
                     _parent.forward,
                     _parent.parent.forward,
-                    star.GetComponent<Gravity>().gravityStrength / resistanceToGravity);
+                    star.transform.Find("GravityCore").GetComponent<Gravity>().gravityStrength / resistanceToGravity);
             }
             
         }

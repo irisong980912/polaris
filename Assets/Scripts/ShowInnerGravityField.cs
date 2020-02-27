@@ -1,34 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShowInnerGravityField : MonoBehaviour
 {
-    MeshRenderer renderInside;
+    private MeshRenderer _renderInside;
 
 
     private void Start()
     {
-        renderInside = gameObject.GetComponent<MeshRenderer>();
+        _renderInside = gameObject.GetComponent<MeshRenderer>();
     }
 
-    void OnTriggerEnter(Collider player)
+    private void OnTriggerEnter(Collider player)
     {
-        if (player.CompareTag("MainCamera"))
-        {
-            renderInside.enabled = true;
-            Debug.Log("enabled");
-           
-        }
+        if (!player.CompareTag("MainCamera")) return;
+        _renderInside.enabled = true;
+        Debug.Log("enabled");
     }
 
     private void OnTriggerExit(Collider player)
     {
-        if (player.CompareTag("MainCamera"))
-        {
-            renderInside.enabled = false;
-            Debug.Log("disabled");
-
-        }
+        if (!player.CompareTag("MainCamera")) return;
+        _renderInside.enabled = false;
+        Debug.Log("disabled");
     }
 }

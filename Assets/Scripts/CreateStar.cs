@@ -32,8 +32,6 @@ public class CreateStar : MonoBehaviour
         createSound = createSoundContainer.GetComponent<AudioSource>();
         gravitySound = gravitySoundContainer.GetComponent<AudioSource>();
 
-
-
         starAnimationController.SetFloat(StarActivationMultiplier, activationSpeedMultiplier);
         starVfx.SetFloat(VfxActivationMultiplier, activationSpeedMultiplier);
 
@@ -42,6 +40,7 @@ public class CreateStar : MonoBehaviour
         {
             ring.SetFloat(RingActivationMultiplier, activationSpeedMultiplier);
         }
+        
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
@@ -61,10 +60,7 @@ public class CreateStar : MonoBehaviour
         if (player.stardust > 0)
         {
             createSound.Play();
-
             gravitySound.Play();
-
-            print("!!!!!!!!!!!!!! has star dust");
 
             // update stardust num and the lit star num
             // var stardust = player.inventory[player.stardustSelection];
@@ -72,8 +68,11 @@ public class CreateStar : MonoBehaviour
             // player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
 
-            GetComponent<Orbit>().enabled = true;
-            GetComponent<Gravity>().enabled = true;
+            transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
+            transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
+            GetComponent<Star>().isCreated = true;
+            // enable the orbit script of all planets of the star 
+            
             GetComponent<CreateStar>().enabled = false;
             
             onTrigger = false;
@@ -82,10 +81,8 @@ public class CreateStar : MonoBehaviour
 
             // wait until the animations are over
             Invoke(nameof(StartDestroy), 6);
-
-            // check if all the stars has 
-
-        } else
+        } 
+        else
         {
             onTrigger = false;
         }
@@ -113,6 +110,7 @@ public class CreateStar : MonoBehaviour
         {
             ring.SetTrigger(PlayActivateRing);
         }
+        
     }
 
     private void Update()
@@ -123,4 +121,5 @@ public class CreateStar : MonoBehaviour
         }
 
     }
+    
 }

@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 
 /// <summary>
+/// apply  this script to star gravityCore
+/// 
 /// Attached to an object that would be the epicentre of the orbit,
 /// and forces provided |GravityObject| to orbit around it.
 /// The speed of the orbit is determined by the speed variable.
@@ -21,9 +24,16 @@ public class Orbit : MonoBehaviour
     private Transform _self;
     private bool _launchBegan;
 
+    public static event Action OnOrbit;
+    public static event Action OffOrbit;
+
+    public static event Action OnSlingShot;
+
     private void Start()
     {
-        _self = transform;
+        _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
+
+        // Store the normal rotation speed so it can be restored after a slingshot.
         _normalSpeed = speed;
     }
     
@@ -32,8 +42,9 @@ public class Orbit : MonoBehaviour
         _self.Rotate(_self.up, speed);
         
         if (_player is null) return;
-
-        if (!Input.GetButton("Fire1") || _player.transform.parent != _self) return;
+        
+        if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
+        
         if (!_launchBegan)
         {
             SlingshotStart();
@@ -59,39 +70,45 @@ public class Orbit : MonoBehaviour
     /// </summary>
     /// <remarks>
     /// Since players can move, we need to regularly call AdjustRotation() to keep a player orbiting
-    /// all the way around the player
+    /// all the way around the object.
     /// </remarks>
-    /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag.Contains("|Star|"))
+        if (gameObject.tag.Contains("|GravityCore|"))
         {
             if (other.gameObject.tag.Contains("|Planet|"))
             {
-                other.gameObject.transform.SetParent(transform);
+                other.gameObject.transform.SetParent(transform.parent.transform);
             }
+            
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
-            cam.GetComponent<ThirdPersonCamera>().OrbitDetected(_self);
+            // player can orbit only if the star is lit
+            if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
+
+            OnOrbit?.Invoke();
+
             _player = other;
-            _self.forward = other.transform.position - transform.position;
-            other.gameObject.transform.SetParent(_self);
+            _self.LookAt(other.transform.position);
+            other.gameObject.transform.SetParent(transform);
             InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
         }
+        
     }
 
     /// <summary>
     /// When objects leave their orbits, they cease to be children of _self, so they stop rotating when _self spins.
     /// </summary>
-    /// <param name="other"> An object's collider that collides with the collider of _self. </param>
     private void OnTriggerExit(Collider other)
     {
         other.gameObject.transform.SetParent(null);
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
-        cam.GetComponent<ThirdPersonCamera>().CancelFocus();
+
+        OffOrbit?.Invoke();
+
         CancelInvoke(nameof(AdjustRotation));
     }
 
@@ -104,13 +121,15 @@ public class Orbit : MonoBehaviour
     /// </remarks>
     private void SlingshotStart()
     {
+
+        
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
         _player.gameObject.transform.SetParent(null);
         _self.forward = cam.transform.forward;
         _player.gameObject.transform.SetParent(_self);
-        speed = 7.2f;
-        Invoke(nameof(Slingshot), 1.0f);
+        speed = 3.0f;
+        Invoke(nameof(Slingshot), 1.5f);
     }
     
     /// <summary>
@@ -118,9 +137,10 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
+        OnSlingShot?.Invoke();
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
-        _player.gameObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward.normalized * 6000, ForceMode.Force);
+        _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
     }
 }
