@@ -4,15 +4,15 @@ using UnityEngine;
 public class PuzzleCamera : MonoBehaviour
 {
     public GameObject playerCamera;
-    public GameObject puzzleCamera;
     private IsometricCamera _camHandler;
 
     public static event Action<GameObject> OnPuzzleEnterOrExit;
 
     private void Start()
     {
+        var self = transform;
         _camHandler = new IsometricCamera(playerCamera, gameObject);
-        _camHandler.SetIsometricCameraLocation(puzzleCamera.transform.position, puzzleCamera.transform.forward);
+        _camHandler.SetIsometricCameraLocation(self.position, self.forward);
     }
 
     private void OnTriggerEnter(Collider other)
