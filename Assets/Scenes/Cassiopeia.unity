@@ -1702,19 +1702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d2bc8deea754e1d980c4ade897e26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &283867125
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283867117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &296722934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
@@ -5402,6 +5389,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3598269431205180449, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3720048391353597906, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: speed
@@ -5465,7 +5457,7 @@ PrefabInstance:
     - target: {fileID: 5815385671659067279, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: speed
-      value: 0.3
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6084356202297414957, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -7164,7 +7156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -99.99986, y: 24.999023}
+  m_AnchoredPosition: {x: -99.99988, y: 24.999023}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927823163
