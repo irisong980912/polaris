@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
     public float speed;
 
     public int stardust;
+    public TextMeshProUGUI stardustcount;
     public List<GameObject> inventory = new List<GameObject>();
 
     public Transform cam;
@@ -61,7 +64,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             HandleRotation();
         }
-
+        stardustcount.text = "Stardust: " + stardust;
     }
 
     private void Move()

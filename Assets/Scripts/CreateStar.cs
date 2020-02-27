@@ -63,9 +63,9 @@ public class CreateStar : MonoBehaviour
             gravitySound.Play();
 
             // update stardust num and the lit star num
-            var stardust = player.inventory[player.stardustSelection];
-            GetComponent<DestroyStar>().usedStardust.Add(stardust);
-            player.inventory.RemoveAt(player.stardustSelection);
+            // var stardust = player.inventory[player.stardustSelection];
+            // GetComponent<DestroyStar>().usedStardust.Add(stardust);
+            // player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
 
             transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
