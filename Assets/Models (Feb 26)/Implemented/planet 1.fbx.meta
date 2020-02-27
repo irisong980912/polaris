@@ -3,7 +3,92 @@ guid: b53cdf262011e44f59dff3875d1c4a83
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: bd6eed983fbb7d343a034fa8d2f303b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: ea05b23f085816540b1529831fcba468, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 6f193b8ae7ae6bb47a62141f040d29cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue
+    second: {fileID: 2100000, guid: ea05b23f085816540b1529831fcba468, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue teal
+    second: {fileID: 2100000, guid: 6f193b8ae7ae6bb47a62141f040d29cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brown
+    second: {fileID: 2100000, guid: 423fbfbc79fa5db47bb948ba61c745c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral
+    second: {fileID: 2100000, guid: 27ef34b825c5e0b41b99aa7498637651, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark blue
+    second: {fileID: 2100000, guid: bd6eed983fbb7d343a034fa8d2f303b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light purple
+    second: {fileID: 2100000, guid: f500f46c9fabd6140b31926e700e3513, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light purple.001
+    second: {fileID: 2100000, guid: b3d830cf3ef6c7442b531c89f159addb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light purple.002
+    second: {fileID: 2100000, guid: f500f46c9fabd6140b31926e700e3513, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light purple.003
+    second: {fileID: 2100000, guid: f500f46c9fabd6140b31926e700e3513, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purple
+    second: {fileID: 2100000, guid: 48d95cd6b93ba17439235b806bb2c790, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purple.001
+    second: {fileID: 2100000, guid: 48d95cd6b93ba17439235b806bb2c790, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purple.002
+    second: {fileID: 2100000, guid: 48d95cd6b93ba17439235b806bb2c790, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purple.003
+    second: {fileID: 2100000, guid: 48d95cd6b93ba17439235b806bb2c790, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: bc6865273a8ad5c4ba9377546c27fc6d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
