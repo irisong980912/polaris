@@ -24,10 +24,10 @@ public class Orbit : MonoBehaviour
     private Transform _self;
     private bool _launchBegan;
 
-    public static event Action OnOrbit;
-    public static event Action OffOrbit;
+    public static event Action OnOrbitStart;
+    public static event Action OnOrbitStop;
 
-    public static event Action OnSlingShot;
+    public static event Action OnSlingshotLaunch;
 
     private void Start()
     {
@@ -88,11 +88,11 @@ public class Orbit : MonoBehaviour
             // player can orbit only if the star is lit
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
-            OnOrbit?.Invoke();
-
             _player = other;
             _self.LookAt(other.transform.position);
             other.gameObject.transform.SetParent(transform);
+            
+            OnOrbitStart?.Invoke();
             InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
         }
         
@@ -107,8 +107,7 @@ public class Orbit : MonoBehaviour
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
 
-        OffOrbit?.Invoke();
-
+        OnOrbitStop?.Invoke();
         CancelInvoke(nameof(AdjustRotation));
     }
 
@@ -121,8 +120,6 @@ public class Orbit : MonoBehaviour
     /// </remarks>
     private void SlingshotStart()
     {
-
-        
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
         _player.gameObject.transform.SetParent(null);
@@ -137,7 +134,7 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
-        OnSlingShot?.Invoke();
+        OnSlingshotLaunch?.Invoke();
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
