@@ -11,7 +11,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public float distance = 0.8f;
     public float smoothTime = 0.3F;
-    private Vector3 velocity = Vector3.zero;
+    private Vector3 _velocity = Vector3.zero;
 
     private float _currentX;
     private float _currentY;
@@ -79,7 +79,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
                 if (_firstTimeOrbit)
                 {
-                    
                     var smoothPosition = Vector3.Lerp(transform.position, transform.position + new Vector3(-distance, 0, -distance), smoothSpeed * Time.deltaTime);
                     transform.position = smoothPosition;
 
@@ -92,7 +91,7 @@ public class ThirdPersonCamera : MonoBehaviour
             }
             else if (_onSlingShot)
             {
-                // look at the left side while player slingshotting
+                // look at the left side when player slingshots
                 var desiredPosition = character.position - character.right * 10;
                 
                 // smooth following
@@ -104,7 +103,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
             else
             {
-
                 cam.LookAt(character);
                 // smooth following
                 var desiredPosition = character.position;
@@ -112,7 +110,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 transform.position = smoothPosition;
 
                 // prevent camera shaking
-                Vector3 newPosition = Vector3.SmoothDamp(transform.position, transform.position + rotation * dir, ref velocity, smoothTime);
+                var newPosition = Vector3.SmoothDamp(transform.position, transform.position + rotation * dir, ref _velocity, smoothTime);
                 transform.position = newPosition;
             }
 
@@ -162,6 +160,5 @@ public class ThirdPersonCamera : MonoBehaviour
         _onSlingShot = false;
         Debug.Log("OnSlingShot");
     }
-
-
+    
 }
