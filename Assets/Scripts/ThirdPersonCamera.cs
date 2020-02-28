@@ -3,28 +3,17 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public Transform player;                      // the player to look at
-    private Transform _mainCamera;                  // camera itself
+    public Transform player;
+    private Transform _mainCamera;
 
     public float minimumDistanceFromTarget = 4;
     public float maximumRotationSpeed = 1.8f;
     public float cameraFollowDelay = 0.2f;
 
-    public float smoothSpeed = 0.125f;
-
     private Transform _cameraTarget;
     private Vector3 _currentCameraVelocity = Vector3.zero;
 
-    private float _currentX;
-    private float _currentY;
-
-    private bool _orbitDetected;
-    private bool _firstTimeOrbit;
-
     private bool _levelCleared;
-
-    private bool _onSlingShot;
-
     public Transform topViewCamPos;
 
     /// <summary>
@@ -37,7 +26,6 @@ public class ThirdPersonCamera : MonoBehaviour
         
         Orbit.OnOrbitStart += OnOrbitStart;
         Orbit.OnOrbitStop += OnOrbitStop;
-        Orbit.OnSlingshotLaunch += OnSlingshotLaunch;
         ClearLevel.OnLevelClear += OnLevelClear;
 
         var dir = new Vector3(0, 0, -10.0f);
@@ -90,36 +78,14 @@ public class ThirdPersonCamera : MonoBehaviour
         _mainCamera.LookAt(_cameraTarget);
         
         //TODO: Refactor this implementation to use IsometricCamera when that feature is implemented.
-        if (_levelCleared)
-        {
-            var desiredPosition = topViewCamPos.position;
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
+        if (!_levelCleared) return;
+        var desiredPosition = topViewCamPos.position;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
-            var newRot = Quaternion.Euler(90, -45, -500); 
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
-        } 
-        else
-        {
-            if (!_onSlingShot) return;
-            // look at the left side when player slingshots
-            var desiredPosition = player.position - player.right * 10;
-                
-            // smooth following
-            var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-            transform.position = smoothPosition;
-
-            _mainCamera.LookAt(player);
-
-            // TODO: still need to test this code
-//             // position the camera behind the player by "distance"
-//             var dir = new Vector3(0, 0, -distance);
-//             var rotation = Quaternion.Euler(_currentY, _currentX, 0);
-//             // smooth following
-//             var desiredPosition = _target.position;
-//             var smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-//             transform.position = smoothPosition + rotation * dir;
-        }
+        var newRot = Quaternion.Euler(90, -45, -500); 
+        transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
         
+        //TODO: Add slingshot camera effects.
     }
 
     private void OnOrbitStart()
@@ -139,18 +105,4 @@ public class ThirdPersonCamera : MonoBehaviour
         _levelCleared = true;
     }
 
-    private void OnSlingshotLaunch()
-    {
-        _onSlingShot = true;
-        Debug.Log("OnSlingShot");
-        Invoke(nameof(OffSlingShot), 2);
-
-    }
-
-    private void OffSlingShot()
-    {
-        _onSlingShot = false;
-        Debug.Log("OnSlingShot");
-    }
-    
 }

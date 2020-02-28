@@ -23,11 +23,8 @@ public class Orbit : MonoBehaviour
     private Collider _player;
     private Transform _self;
     private bool _launchBegan;
-
     public static event Action OnOrbitStart;
     public static event Action OnOrbitStop;
-
-    public static event Action OnSlingshotLaunch;
 
     private void Start()
     {
@@ -134,7 +131,6 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
-        OnSlingshotLaunch?.Invoke();
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
