@@ -52,47 +52,16 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        if (!_mapActive)
-        {
-            Move();
-        }
-
-        // if the mc is not at the same location as the camera,
-        // handle camera rotation
-        if (_direction != Vector3.zero)
-        {
-            HandleRotation();
-        }
-        stardustcount.text = "Stardust: " + stardust;
-    }
-
-    private void Move()
-    {
-        // x is left and right
-        // y is in and out
+        if (_mapActive) return;
         var xAxis = Input.GetAxisRaw("Horizontal");
         var yAxis = Input.GetAxisRaw("Vertical");
 
         _direction = new Vector3(xAxis, 0f, yAxis);
-
         _direction = _direction.normalized;
-
-        // Camera.main to cam
-        // Convert direction from local to world relative to camera
 
         _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
 
+        // stardustcount.text = "Stardust: " + stardust;
     }
-
-    private void HandleRotation()
-    {
-        // determines which angle that the camera is looking at
-        var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-        var lookAt = Quaternion.Slerp(transform.rotation,
-                                      Quaternion.Euler(0, targetRotation, 0),
-                                      0.5f);
-        _body.rotation = lookAt;
-    }
-
+    
 }
