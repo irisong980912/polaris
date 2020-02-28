@@ -6,7 +6,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform player;                      // the player to look at
     private Transform _mainCamera;                  // camera itself
 
-    public float minimumDistanceFromTarget = 0.8f;
+    public float minimumDistanceFromTarget = 4;
     public float maximumRotationSpeed = 1.8f;
     public float cameraFollowDelay = 0.2f;
 
