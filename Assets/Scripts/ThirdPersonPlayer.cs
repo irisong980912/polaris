@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
@@ -6,15 +7,11 @@ using TMPro;
 public class ThirdPersonPlayer : MonoBehaviour
 {
     public float speed;
-
     public int stardust;
     public TextMeshProUGUI stardustcount;
     public List<GameObject> inventory = new List<GameObject>();
 
     public Transform cam;
-
-    private Rigidbody _body;
-    private Vector3 _direction;
 
     private static bool _mapActive;
 
@@ -28,19 +25,15 @@ public class ThirdPersonPlayer : MonoBehaviour
         CameraSwitch.OnMapSwitch += SetMapActive;
     }
 
-    
     private static void SetMapActive(bool mapActive)
     {
         _mapActive = mapActive;
     }
 
-
     private void Awake()
     {
-        _body = GetComponent<Rigidbody>();
         collectDustSound = collectDustSoundContainer.GetComponent<AudioSource>();
     }
-
     
     public void OnTriggerEnter(Collider collision)
     {
@@ -49,54 +42,23 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             collectDustSound.Play();
         }
+        
     }
-
-    /// <summary>
-    /// FixedUpdate is called for every physics frame (when player is moving)
-    /// </summary>
+    
     private void FixedUpdate()
     {
         if (_mapActive) return;
-        Move();
+        
+        var xAxisInput = Input.GetAxisRaw("Horizontal");
+        var yAxisInput = Input.GetAxisRaw("Vertical");
 
-        // handle player rotation for movement if the player is not at the same location as the camera,
-        if (_direction != Vector3.zero)
-        {
-            HandleRotation();
-        }
-        // TODO: add the UI for stardust count back to canvas
-        //stardustcount.text = "Stardust: " + stardust;
+        if (Math.Abs(xAxisInput) < 0.1f && Math.Abs(yAxisInput) < 0.1f) return;
+        
+        var directionFromInput = new Vector3(xAxisInput, 0f, yAxisInput).normalized;
+        var directionOfTravel = cam.TransformDirection(directionFromInput);
+        
+        transform.Translate(directionOfTravel * speed, Space.World);
+        transform.forward = directionOfTravel;
     }
 
-    
-    private void Move()
-    {
-        // x is left and right
-        // y is in and out
-        var xAxis = Input.GetAxisRaw("Horizontal");
-        var yAxis = Input.GetAxisRaw("Vertical");
-
-        _direction = new Vector3(xAxis, 0f, yAxis).normalized;
-
-        // Convert direction from local to world relative to camera
-        _body.transform.Translate(cam.transform.TransformDirection(_direction) * speed, Space.World);
-
-    }
-
-    
-    /// <summary>
-    /// Rotate the player to face the direction of their movement.
-    /// This function will be called only when player is moving.
-    /// </summary>
-    private void HandleRotation()
-    {
-        // determines which angle that the camera is facing
-        var targetRotation = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-        // determines which angle that player should be facing
-        var lookAt = Quaternion.Slerp(transform.rotation,
-            Quaternion.Euler(0, targetRotation, 0),
-            0.5f);
-        _body.rotation = lookAt;
-    }
-    
 }
