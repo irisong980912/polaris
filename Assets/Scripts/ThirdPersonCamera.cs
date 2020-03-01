@@ -40,7 +40,7 @@ public class ThirdPersonCamera : MonoBehaviour
         var yAxisInput = Input.GetAxis("Mouse Y");
 
         var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
-        if (Math.Abs(distanceToTarget - minimumDistanceFromTarget) > 1.0f)
+        if (Math.Abs(distanceToTarget - minimumDistanceFromTarget) > 0.1f * minimumDistanceFromTarget)
         {
             var currentCameraPosition = _mainCamera.position;
             
