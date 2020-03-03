@@ -5,6 +5,7 @@ public class CameraSwitch : MonoBehaviour {
 
     public GameObject cameraOne;
     public GameObject cameraTwo;
+    public GameObject mapPlayerPosition;
     private static bool _mapActive;
     public static event Action<bool> OnMapSwitch;
     
@@ -14,6 +15,8 @@ public class CameraSwitch : MonoBehaviour {
         cameraOne.SetActive(true);
         cameraTwo.SetActive(false);
         _mapActive = false;
+        //Disable player map position indicator
+        mapPlayerPosition.SetActive(false);
         //Notify ThirdPersonPlayer on map status
         OnMapSwitch?.Invoke(_mapActive);
     }
@@ -62,6 +65,7 @@ public class CameraSwitch : MonoBehaviour {
                 OnMapSwitch?.Invoke(_mapActive);
                 //Time.timeScale = 1f;
                 cameraTwo.SetActive(false);
+                mapPlayerPosition.SetActive(false);
                 break;
             //Set camera position 2 which is map camera
             case 1:
@@ -71,6 +75,7 @@ public class CameraSwitch : MonoBehaviour {
                 OnMapSwitch?.Invoke(_mapActive);
                 //Time.timeScale = 0f;
                 cameraOne.SetActive(false);
+                mapPlayerPosition.SetActive(true);
                 break;
         }
     }
