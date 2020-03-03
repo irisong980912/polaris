@@ -11166,6 +11166,11 @@ PrefabInstance:
       propertyPath: topViewCamPos
       value: 
       objectReference: {fileID: 1391387692}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1148804705}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_Name
