@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: 8377187791607531542}
   - component: {fileID: 8377187791607531544}
   - component: {fileID: 8377187791607531540}
-  - component: {fileID: 8377187791607531538}
   - component: {fileID: 8377187791607531539}
   - component: {fileID: 8377187791607531545}
   - component: {fileID: 4943265309136642250}
@@ -241,7 +240,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8377187791607531547}
-  m_LocalRotation: {x: 0.07731342, y: 0.108316384, z: -0.0084497705, w: 0.99106956}
+  m_LocalRotation: {x: -0.077311516, y: -0.108312175, z: 0.0084492285, w: -0.99107015}
   m_LocalPosition: {x: -2.68, y: 4.38, z: 3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -254,7 +253,7 @@ Transform:
   - {fileID: 2742502001618896900}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.146, y: 195.09, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 8.9210005, y: 372.474, z: 0}
 --- !u!20 &8377187791607531542
 Camera:
   m_ObjectHideFlags: 0
@@ -366,15 +365,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!45 &8377187791607531538
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8377187791607531547}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 0}
 --- !u!82 &8377187791607531539
 AudioSource:
   m_ObjectHideFlags: 0
@@ -483,14 +473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7374ed9979d57477b8137899c7bd99da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 5137222419336618001, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
-    type: 3}
-  cam: {fileID: 8377187791607531543}
-  yAngleMin: -80
-  yAngleMax: 80
-  smoothSpeed: 1.5
-  distance: 1
-  smoothTime: 0.3
+  player: {fileID: 0}
+  minimumDistanceFromTarget: 4
+  maximumRotationSpeed: 1.8
+  cameraFollowDelay: 0.1
   topViewCamPos: {fileID: 0}
 --- !u!135 &4943265309136642250
 SphereCollider:
@@ -503,7 +489,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3965524033634280000
 Rigidbody:
