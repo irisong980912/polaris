@@ -1,17 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapPlayerPosition : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         FollowPlayer();
     }
@@ -20,6 +14,7 @@ public class MapPlayerPosition : MonoBehaviour
     private void FollowPlayer()
     {
         var player = GameObject.FindWithTag("|Player|").transform;
-        transform.position = new Vector3(player.position.x, player.position.y, player.position.z);
+        var position = player.position;
+        transform.position = new Vector3(position.x, position.y, position.z);
     }
 }
