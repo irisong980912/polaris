@@ -829,20 +829,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1830011370829815669, guid: 399b4fc82195942069d447f4154576f1,
-        type: 3}
-      propertyPath: m_Name
-      value: 1-3 Core
-      objectReference: {fileID: 0}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
       value: Planet 1-3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
-        type: 3}
-      propertyPath: m_Name
-      value: RingsPrefab 1-3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399b4fc82195942069d447f4154576f1, type: 3}

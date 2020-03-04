@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba091f1123d1a1f499bbf192b652a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.1
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
 --- !u!1 &7531728700848219579
 GameObject:
@@ -1096,6 +1096,11 @@ PrefabInstance:
     - target: {fileID: 4730448755969866321, guid: 358356bbd09fd0042916b8a5adaa5d3e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053106564271275166, guid: 358356bbd09fd0042916b8a5adaa5d3e,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8646550423283648578, guid: 358356bbd09fd0042916b8a5adaa5d3e,
