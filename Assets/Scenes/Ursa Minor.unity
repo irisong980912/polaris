@@ -4556,6 +4556,11 @@ PrefabInstance:
       propertyPath: stardustcount
       value: 
       objectReference: {fileID: 1157439929}
+    - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
+        type: 3}
+      propertyPath: stardustCount
+      value: 
+      objectReference: {fileID: 1157439929}
     - target: {fileID: 5137222419336618007, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
       propertyPath: m_Name
