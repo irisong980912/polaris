@@ -8,7 +8,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 {
     public float speed;
     public int stardust;
-    public TextMeshProUGUI stardustcount;
+    public TextMeshProUGUI stardustCount;
     public List<GameObject> inventory = new List<GameObject>();
 
     public Transform cam;
@@ -44,7 +44,12 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
         
     }
-    
+
+    private void Update()
+    {
+        stardustCount.text = "Stardust: " + stardust;
+    }
+
     private void FixedUpdate()
     {
         if (_mapActive) return;
@@ -58,7 +63,11 @@ public class ThirdPersonPlayer : MonoBehaviour
         var directionOfTravel = cam.TransformDirection(directionFromInput);
         
         transform.Translate(directionOfTravel * speed, Space.World);
-        transform.forward = directionOfTravel;
+        transform.forward = directionOfTravel; 
+        
+        
     }
+    
+   
 
 }

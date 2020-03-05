@@ -25,6 +25,8 @@ public class Orbit : MonoBehaviour
     private bool _launchBegan;
     public static event Action OnOrbitStart;
     public static event Action OnOrbitStop;
+    
+    public static event Action OnSlingShot;
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class Orbit : MonoBehaviour
 
         // Store the normal rotation speed so it can be restored after a slingshot.
         _normalSpeed = speed;
+        
     }
     
     private void FixedUpdate()
@@ -104,7 +107,10 @@ public class Orbit : MonoBehaviour
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
 
+
+        print("slingshot - trigger onOxrbitStop");
         OnOrbitStop?.Invoke();
+
         CancelInvoke(nameof(AdjustRotation));
     }
 
@@ -131,9 +137,12 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
+        OnSlingShot?.Invoke();
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         speed = _normalSpeed;
         _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
+
     }
+
 }

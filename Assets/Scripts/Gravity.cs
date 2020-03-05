@@ -53,7 +53,7 @@ public class Gravity : MonoBehaviour
         {
             // gravity strength is proportional to player speed and distance
             var playerSpeedRatio = 1 / _player.GetComponent<ThirdPersonPlayer>().speed;
-            gravityStrength = (_disToPlayer / 20) * (_disToPlayer / 20) * playerSpeedRatio;
+            gravityStrength = (_disToPlayer / 20) * (_disToPlayer / 20) * playerSpeedRatio * 5;
         }
         
         _player.GetComponent<Rigidbody>().AddExplosionForce(

@@ -6,21 +6,29 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform player;
     private Transform _mainCamera;
 
-    public float minimumDistanceFromTarget = 4;
+    private float _minimumDistanceFromTarget;
+    public float distanceFromPlayer = 4;
+    private float _distanceFromPlanet;
+    public float onOrbitDistanceRatio = 8.0f;
+    
     public float maximumRotationSpeed = 1.8f;
     public float cameraFollowDelay = 0.2f;
 
     private Transform _cameraTarget;
     private Vector3 _currentCameraVelocity = Vector3.zero;
-
+ 
     private bool _levelCleared;
     public Transform topViewCamPos;
+    
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
     /// </summary>
     private void Start()
     {
+        _minimumDistanceFromTarget = distanceFromPlayer;
+        _distanceFromPlanet = distanceFromPlayer * onOrbitDistanceRatio;
+            
         _cameraTarget = player;
         _mainCamera = transform;
         
@@ -36,68 +44,78 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        var xAxisInput = Input.GetAxis("Mouse X");
-        var yAxisInput = Input.GetAxis("Mouse Y");
 
-        var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
-        if (Math.Abs(distanceToTarget - minimumDistanceFromTarget) > 0.1f * minimumDistanceFromTarget)
+        if (_levelCleared)
         {
-            var currentCameraPosition = _mainCamera.position;
-            
-            var vectorToTarget = _cameraTarget.position - currentCameraPosition;
-            var idealMovementForCamera = vectorToTarget - vectorToTarget.normalized * minimumDistanceFromTarget;
-            var idealPositionForCamera = currentCameraPosition + idealMovementForCamera;
+            var desiredPosition = topViewCamPos.position;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
-            _mainCamera.position = Vector3.SmoothDamp(
-                currentCameraPosition,
-                idealPositionForCamera,
-                ref _currentCameraVelocity,
-                cameraFollowDelay);
-        }
+            var newRot = Quaternion.Euler(90, -45, -500); 
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
 
-        if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
+        } else
         {
-            distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
-            _mainCamera.LookAt(_cameraTarget);
-            
-            var xRotationMagnitude = xAxisInput * maximumRotationSpeed;
-            var yRotationMagnitude = yAxisInput * maximumRotationSpeed;
-            
-            // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
-            // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
-            _mainCamera.Rotate(yRotationMagnitude, xRotationMagnitude, 0, Space.Self);
+            var xAxisInput = Input.GetAxis("Mouse X");
+            var yAxisInput = Input.GetAxis("Mouse Y");
 
-            // After rotating the camera, it will no longer be pointing at the player.
-            // By translating the camera as follows, it will be adjusted to point at the player again.
-            var lookingAtPosition = _mainCamera.position + _mainCamera.forward * distanceToTarget;
-            var correctivePath = _cameraTarget.position - lookingAtPosition;
+            var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
+            if (Math.Abs(distanceToTarget - _minimumDistanceFromTarget) > 0.1f * _minimumDistanceFromTarget)
+            {
+                var currentCameraPosition = _mainCamera.position;
+                
+                var vectorToTarget = _cameraTarget.position - currentCameraPosition;
+                var idealMovementForCamera = vectorToTarget - vectorToTarget.normalized * _minimumDistanceFromTarget;
+                var idealPositionForCamera = currentCameraPosition + idealMovementForCamera;
+
+                _mainCamera.position = Vector3.SmoothDamp(
+                    currentCameraPosition,
+                    idealPositionForCamera,
+                    ref _currentCameraVelocity,
+                    cameraFollowDelay);
+            }
+
+            if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
+            {
+                distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
+                _mainCamera.LookAt(_cameraTarget);
+                
+                var xRotationMagnitude = xAxisInput * maximumRotationSpeed;
+                var yRotationMagnitude = yAxisInput * maximumRotationSpeed;
+                
+                // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
+                // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
+                _mainCamera.Rotate(yRotationMagnitude, xRotationMagnitude, 0, Space.Self);
+
+                // After rotating the camera, it will no longer be pointing at the player.
+                // By translating the camera as follows, it will be adjusted to point at the player again.
+                var lookingAtPosition = _mainCamera.position + _mainCamera.forward * distanceToTarget;
+                var correctivePath = _cameraTarget.position - lookingAtPosition;
+                
+                _mainCamera.Translate(correctivePath, Space.World);
+            }
+
+            //TODO: Refactor this implementation to use IsometricCamera when that feature is implemented.
+
+            _mainCamera.LookAt(_cameraTarget); 
             
-            _mainCamera.Translate(correctivePath, Space.World);
+            //TODO: Add slingshot camera effects.
+
         }
         
-        _mainCamera.LookAt(_cameraTarget);
-        
-        //TODO: Refactor this implementation to use IsometricCamera when that feature is implemented.
-        if (!_levelCleared) return;
-        var desiredPosition = topViewCamPos.position;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
-
-        var newRot = Quaternion.Euler(90, -45, -500); 
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
-        
-        //TODO: Add slingshot camera effects.
     }
 
     private void OnOrbitStart()
     {
+        Debug.Log("camera --- OnOrbitStart");
         _cameraTarget = player.parent;
-        minimumDistanceFromTarget *= 2;
+        _minimumDistanceFromTarget = _distanceFromPlanet;
     }
 
     private void OnOrbitStop()
     {
+        Debug.Log("camera --- OnOrbitStop");
         _cameraTarget = player;
-        minimumDistanceFromTarget /= 2;
+        _minimumDistanceFromTarget = distanceFromPlayer;
     }
     
     private void OnLevelClear()
