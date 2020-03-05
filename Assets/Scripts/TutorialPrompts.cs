@@ -18,12 +18,37 @@ public class TutorialPrompts : MonoBehaviour
         } else if (tutorialzone == "TutorialZone2"){
             tutorialtext.text = "Awesome, do you see that glowing ball? That is stardust, pick it up to activate more stars";
         } else if (tutorialzone == "TutorialZone3"){
-            tutorialtext.text = "See that black ball? That is a planet. Ride it's orbit and press B to slingshot";
+            tutorialtext.text = "See that colourful ball? That is a planet. Ride it's orbit and press X to slingshot";
         } else if (tutorialzone == "TutorialZone4"){
             tutorialtext.text = "Find the scattered stardust and light up the remaining stars";
         } else {
             tutorialtext.text = "";
         }
+        
+        if (other.tag.Contains("|Star|"))
+        {
+            if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
+                tutorialtext.text = "Press X to activate star";
+            }
+            else if (other.GetComponent<CreateStar>().enabled == false && other.GetComponent<DestroyStar>().enabled == true){
+                tutorialtext.text = "Press X to deactivate star";
+            }
+        }
+        if (other.tag.Contains("|PlanetCore|"))
+        {
+            
+            tutorialtext.text = "Press X to slingshot. You can also slingshot to escape the gravity field";
+        }
+        
+        if (other.tag.Contains("|Asteroids|") && _isAsteroid)
+        {
+  
+            tutorialtext.text = "This is an asteroid belt. You cannot walk past it.";
+            Invoke(nameof(SetAsteroidFalse), 4);
+  
+            
+        }
+        
 
         if (other.tag.Contains("|GravityCore|"))
         {
@@ -34,7 +59,9 @@ public class TutorialPrompts : MonoBehaviour
                 
             }
             
-            if (other.GetComponentInParent<Star>().isCreated && other.GetComponent<Gravity>().disToPlayer > other.GetComponent<Gravity>().gravityRadius * .50f)       
+            if (other.transform.parent.name == "Star 1" &&
+                other.transform.parent.GetComponent<Star>().isCreated 
+                && other.GetComponent<Gravity>().disToPlayer > other.GetComponent<Gravity>().gravityRadius * .50f)       
             {
                 if (other.transform.parent.name == "Star 1")
                 {
@@ -49,28 +76,7 @@ public class TutorialPrompts : MonoBehaviour
             }
         }
         
-        if (other.tag.Contains("|Star|"))
-        {
-            if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
-                tutorialtext.text = "Press X to activate star";
-            }
-            else if (other.GetComponent<CreateStar>().enabled == false && other.GetComponent<DestroyStar>().enabled == true){
-                tutorialtext.text = "Press X to deactivate star";
-            }
-        }
-        if (other.tag.Contains("|Planet|"))
-        {
-            tutorialtext.text = "Press X to slingshot. You can also slingshot to escape the gravity field";
-        }
         
-        if (other.tag.Contains("|Asteroids|") && _isAsteroid)
-        {
-  
-            tutorialtext.text = "This is an asteroid belt. You cannot walk past it.";
-            Invoke(nameof(SetAsteroidFalse), 4);
-  
-            
-        }
     }
 
     private void OnTriggerExit(Collider other)
