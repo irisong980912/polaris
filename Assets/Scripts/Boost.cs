@@ -1,14 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Boost : MonoBehaviour
 {
-    // Update is called once per frame
+    private ThirdPersonPlayer _playerScript;
+    private float _normalSpeed;
+    private float _boostSpeed;
+
+    private void Start()
+    {
+        _playerScript = GameObject.FindWithTag("|Player|").GetComponent<ThirdPersonPlayer>();
+        _normalSpeed = _playerScript.speed;
+        _boostSpeed = _normalSpeed * 3;
+    }
+
     void Update()
     {
-        var playerScript = GameObject.FindWithTag("|Player|").GetComponent<ThirdPersonPlayer>();
-        if (playerScript.stardust >= 3)
+        if (_playerScript.stardust >= 3)
         {
-            playerScript.speed = Input.GetButton("Jump") ? 1.3f : 0.6f;
+            _playerScript.speed = Input.GetButton("Jump") ? _boostSpeed : _normalSpeed;
         }
     }
 }
