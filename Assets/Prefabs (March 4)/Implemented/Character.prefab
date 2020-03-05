@@ -924,8 +924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc5d47244b46a64fb17a6654ab9defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.07
+  speed: 0.6
   stardust: 0
+  stardustCount: {fileID: 0}
   inventory: []
   cam: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
   stardustSelection: 0
