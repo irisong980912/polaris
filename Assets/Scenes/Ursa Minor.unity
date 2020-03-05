@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.015121656, g: 0.004663416, b: 0.028162796, a: 1}
+  m_IndirectSpecularColor: {r: 0.015151451, g: 0.004667077, b: 0.028175348, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -371,6 +371,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 921745524}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &49386038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49386037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e866688eeb3c34f90bdbf03cfc5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &49386043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4756,7 +4768,7 @@ PrefabInstance:
     - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
       propertyPath: stardust
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
