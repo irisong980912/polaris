@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StarMat
-  m_Shader: {fileID: -6465566751694194690, guid: f0ab395c4909f064683947d21e3145d5,
+  m_Name: PlanetTestLitMat 2
+  m_Shader: {fileID: -6465566751694194690, guid: e66beb8ca2e29004da84a67bc09969e3,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -49,11 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_321BE34D: 0
-    - Vector1_671E59BA: 100
-    - Vector1_7DE72576: 2.84
-    - Vector1_D5C0D32A: 0.958
-    - Vector1_E1E52BFB: 150
+    - Vector1_18ABE632: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -76,11 +72,24 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_72F3439F: {r: 12.413593, g: 1.018221, b: 0, a: 0}
-    - Color_7CA8FE39: {r: 0.008899963, g: 0.008899963, b: 0.0754717, a: 0}
-    - Color_91D9D606: {r: 1.396457, g: 0.7477802, b: 0, a: 0}
-    - Color_B05F2D54: {r: 0.4622642, g: 0, b: 0.004771314, a: 0}
+    - Color_28DCE419: {r: 5.5080986, g: 3.0600548, b: 4.5501685, a: 0}
+    - Color_95D73380: {r: 0.0572671, g: 0, b: 0.3490566, a: 0}
+    - Color_A169927C: {r: 0.9254902, g: 0, b: 0.5255494, a: 0}
+    - Color_E6D6574E: {r: 0.01960784, g: 0.009803922, b: 0.1137255, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+--- !u!114 &2441997558250829198
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
