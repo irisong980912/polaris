@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8241725926889027295}
   - component: {fileID: 130548801382246795}
   m_Layer: 0
-  m_Name: Beam (Star Systems 1 & 2)
+  m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   originStar: {fileID: 0}
   destinStar: {fileID: 0}
   beamDrawSpeed: 3
-  normalBeamWidth: 1
+  normalBeamWidth: 8
   starOriginActivated: 0
   starDestinActivated: 0
   triggerBeam: 0
@@ -94,7 +94,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 5
     widthCurve:
       serializedVersion: 2
       m_Curve:
