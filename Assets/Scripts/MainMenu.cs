@@ -11,6 +11,12 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void ExitGame()
+    {
+        print("You quit the game");
+        Application.Quit();
+    }
     
     private void Update()
     {
@@ -18,5 +24,6 @@ public class MainMenu : MonoBehaviour
         {
             PlayGame();
         }
+
     }
 }

@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: d6b9105103f05c845b6eaee9da3940e7
+  - enabled: 1
+    path: Assets/Scenes/TestImageMenu.unity
+    guid: 2b01d35edde8146b1a189ff9c794c5e5
   - enabled: 1
     path: Assets/Scenes/Cassiopeia.unity
     guid: 6d26bbfcae30845249a59dcebfcb534c
