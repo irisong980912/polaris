@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Gravity : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class Gravity : MonoBehaviour
     
     private GameObject _player;
     public float gravityStrength;
-    private float _disToPlayer;
+    public float disToPlayer;
     private bool _withinGravityRadius;
 
     // TODO: See if this collider is needed.
@@ -14,7 +15,7 @@ public class Gravity : MonoBehaviour
     {
         if (!c.gameObject.tag.Contains("|Player|")) return;
         _player = c.gameObject;
-        _disToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+        disToPlayer = Vector3.Distance(transform.position, _player.transform.position);
         //Debug.Log("disToPlayer is: " + disToPlayer);
         _withinGravityRadius = true;
     }
@@ -36,24 +37,24 @@ public class Gravity : MonoBehaviour
     private void Update()
     {
         if (_withinGravityRadius != true) return;
-        if (_disToPlayer <= gravityRadius * .65f) // small gravity allow player to get onto the planets easier
+        if (disToPlayer <= gravityRadius * .65f) // small gravity allow player to get onto the planets easier
         {
             gravityStrength = 5.0f;
         }
-        else if (_disToPlayer <= gravityRadius * .75f)
+        else if (disToPlayer <= gravityRadius * .75f)
         {
-            gravityStrength = 15.0f;
+            gravityStrength = 20.0f;
         }
 
-        else if (_disToPlayer <= gravityRadius * .85f)
+        else if (disToPlayer <= gravityRadius * .85f)
         {
-            gravityStrength = 30.0f;
+            gravityStrength = 40.0f;
         }
         else // disToPlayer > gravityRadius * .85f
         {
             // gravity strength is proportional to player speed and distance
             var playerSpeedRatio = 1 / _player.GetComponent<ThirdPersonPlayer>().speed;
-            gravityStrength = (_disToPlayer / 20) * (_disToPlayer / 20) * playerSpeedRatio * 8;
+            gravityStrength = (disToPlayer / 20) * (disToPlayer / 20) * playerSpeedRatio * 8;
         }
         
         _player.GetComponent<Rigidbody>().AddExplosionForce(

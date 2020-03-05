@@ -861,6 +861,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearLevelImage: {fileID: 1490270997}
+  stardustCountText: {fileID: 1623209934}
+  tutorialZoneText: {fileID: 0}
   totalStarNum: 2
 --- !u!136 &112257934
 CapsuleCollider:
@@ -2047,6 +2049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityRadius: 180
   gravityStrength: 70
+  disToPlayer: 0
 --- !u!135 &324301661
 SphereCollider:
   m_ObjectHideFlags: 0

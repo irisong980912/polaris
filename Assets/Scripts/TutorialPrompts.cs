@@ -6,8 +6,10 @@ using TMPro;
 public class TutorialPrompts : MonoBehaviour
 {
     public TextMeshProUGUI tutorialtext;
+    private bool _isFirstEntryToGravityField = true;
+    private bool _isAsteroid = true;
 
-    void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         var tutorialzone = other.name;
         if (tutorialzone == "TutorialZone1")
@@ -17,11 +19,36 @@ public class TutorialPrompts : MonoBehaviour
             tutorialtext.text = "Awesome, do you see that glowing ball? That is stardust, pick it up to activate more stars";
         } else if (tutorialzone == "TutorialZone3"){
             tutorialtext.text = "See that black ball? That is a planet. Ride it's orbit and press B to slingshot";
-        }else if (tutorialzone == "TutorialZone4"){
+        } else if (tutorialzone == "TutorialZone4"){
             tutorialtext.text = "Find the scattered stardust and light up the remaining stars";
-        }else {
+        } else {
             tutorialtext.text = "";
         }
+
+        if (other.tag.Contains("|GravityCore|"))
+        {
+            if (_isFirstEntryToGravityField)
+            {
+                tutorialtext.text = "You have entered the gravitational field of a star";
+                Invoke(nameof(SetFalse), 3);
+                
+            }
+            
+            if (other.GetComponentInParent<Star>().isCreated && other.GetComponent<Gravity>().disToPlayer > other.GetComponent<Gravity>().gravityRadius * .50f)       
+            {
+                if (other.transform.parent.name == "Star 1")
+                {
+                    tutorialtext.text = "Long press \"triangle\" when moving to escape the gravitational field." +
+                                                        " You can only use Mega Boost when you have 3 or more stardusts";
+                }
+                else
+                {
+                    tutorialtext.text = "Long press \"triangle\" to perform MegaBoosts";
+                }
+                
+            }
+        }
+        
         if (other.tag.Contains("|Star|"))
         {
             if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
@@ -33,13 +60,40 @@ public class TutorialPrompts : MonoBehaviour
         }
         if (other.tag.Contains("|Planet|"))
         {
-            tutorialtext.text = "Press B to slingshot";
+            tutorialtext.text = "Press X to slingshot. You can also slingshot to escape the gravity field";
+        }
+        
+        if (other.tag.Contains("|Asteroids|") && _isAsteroid)
+        {
+  
+            tutorialtext.text = "This is an asteroid belt. You cannot walk past it.";
+            Invoke(nameof(SetAsteroidFalse), 4);
+  
+            
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         // Destroy everything that leaves the trigger
         tutorialtext.text = "";
     }
+    
+    private void SetFalse()
+    {
+        _isFirstEntryToGravityField = false;
+    }
+    
+    private void SetAsteroidFalse()
+    {
+        _isAsteroid = false;
+        Invoke(nameof(SetAsteroidTrue), 4);
+    }
+    
+    private void SetAsteroidTrue()
+    {
+        _isAsteroid = true;
+    }
+    
 }
+    
