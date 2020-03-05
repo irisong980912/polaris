@@ -384,6 +384,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialtext: {fileID: 1450036173}
+--- !u!114 &49386044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49386037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e866688eeb3c34f90bdbf03cfc5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &57375037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11305,6 +11317,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1687258585}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1148804705}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_Name
