@@ -74,7 +74,10 @@ public class ThirdPersonCamera : MonoBehaviour
              */
 
             //InputAction replaces "Input.GetAxis("Example")" and calls function
-            cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
+            //cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
+
+            inputAction.Player.Look.performed += ctx => cameraRotationInput = ctx.ReadValue<Vector2>();
+            inputAction.Player.Look.canceled += ctx => cameraRotationInput = Vector2.zero;
 
             var xAxisInput = cameraRotationInput.x;
             var yAxisInput = cameraRotationInput.y;

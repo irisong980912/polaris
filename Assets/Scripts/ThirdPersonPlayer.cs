@@ -72,7 +72,9 @@ public class ThirdPersonPlayer : MonoBehaviour
          */
 
         //InputAction replaces "Input.GetAxis("Example")" and calls function
-        movementInput = inputAction.Player.Move.ReadValue<Vector2>();
+        //movementInput = inputAction.Player.Move.ReadValue<Vector2>();
+        inputAction.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+        inputAction.Player.Move.canceled += ctx => movementInput = Vector2.zero;
 
         if (_mapActive) return;
         
