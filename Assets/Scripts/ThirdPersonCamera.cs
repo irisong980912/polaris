@@ -19,13 +19,26 @@ public class ThirdPersonCamera : MonoBehaviour
  
     private bool _levelCleared;
     public Transform topViewCamPos;
-    
+
+    //InputActions
+    PlayerInputActions inputAction;
+
+    Vector2 cameraRotationInput;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
     /// </summary>
+    /// 
+
+    void Awake()
+    {
+        //InputActions
+        inputAction = new PlayerInputActions();
+    }
+
     private void Start()
     {
+
         _minimumDistanceFromTarget = distanceFromPlayer;
         _distanceFromPlanet = distanceFromPlayer * onOrbitDistanceRatio;
             
@@ -55,8 +68,16 @@ public class ThirdPersonCamera : MonoBehaviour
 
         } else
         {
+            /*
             var xAxisInput = Input.GetAxis("Mouse X");
             var yAxisInput = Input.GetAxis("Mouse Y");
+             */
+
+            //InputAction replaces "Input.GetAxis("Example")" and calls function
+            cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
+
+            var xAxisInput = cameraRotationInput.x;
+            var yAxisInput = cameraRotationInput.y;
 
             var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
             if (Math.Abs(distanceToTarget - _minimumDistanceFromTarget) > 0.1f * _minimumDistanceFromTarget)
@@ -122,5 +143,21 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         _levelCleared = true;
     }
+
+    //InputActions
+    //Activates all actions in action maps (action maps are Player and UI)
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
+    {
+        inputAction.Player.Enable();
+    }
+
+    //Disables all actions in Player action maps (action maps are Player and UI)
+    private void OnDisable()
+    {
+        inputAction.Player.Disable();
+    }
+
 
 }

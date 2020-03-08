@@ -28,6 +28,15 @@ public class Orbit : MonoBehaviour
     
     public static event Action OnSlingShot;
 
+    //InputActions
+    PlayerInputActions inputAction;
+
+    void Awake()
+    {
+        //InputActions
+        inputAction = new PlayerInputActions();
+    }
+
     private void Start()
     {
         _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
@@ -43,11 +52,14 @@ public class Orbit : MonoBehaviour
         
         if (_player is null) return;
         
-        if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
+        //if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
         
         if (!_launchBegan)
         {
-            SlingshotStart();
+            //InputAction replaces "Input.GetButton("Example") and calls function
+            inputAction.Player.Interact.performed += ctx => SlingshotStart();
+
+            //SlingshotStart();
         }
     }
 
@@ -143,6 +155,19 @@ public class Orbit : MonoBehaviour
         speed = _normalSpeed;
         _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
 
+    }
+
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
+    {
+        inputAction.Player.Enable();
+    }
+
+    //Disables all actions in Player action maps (action maps are Player and UI)
+    private void OnDisable()
+    {
+        inputAction.Player.Disable();
     }
 
 }
