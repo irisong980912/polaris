@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CreateStar : MonoBehaviour
 {
@@ -30,10 +31,14 @@ public class CreateStar : MonoBehaviour
     //InputActions
     PlayerInputActions inputAction;
 
+    public InputAction Interact;
+
     void Awake()
     {
         //InputActions
         inputAction = new PlayerInputActions();
+        Interact = inputAction.Player.Interact;
+
     }
 
     private void Start()
@@ -56,6 +61,10 @@ public class CreateStar : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //if (!Input.GetButton("Fire2") || !enabled) return
+
+        //InputAction replaces "Input.GetButton("Example") and holds a bool
+        if (!Interact.triggered || !enabled) return;
+
         if (!other.tag.Contains("|Player|")) return;
         onTrigger = true;
         _other = other;
@@ -126,10 +135,8 @@ public class CreateStar : MonoBehaviour
     {
         if (onTrigger && _other)
         {
-            //InputAction replaces "Input.GetButton("Example") and calls function
-            inputAction.Player.Interact.performed += ctx => FormStar();
-            
-            //FormStar();
+
+            FormStar();
 
         }
 
@@ -139,12 +146,14 @@ public class CreateStar : MonoBehaviour
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
+        Interact.Enable();
         inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
+        Interact.Disable();
         inputAction.Player.Disable();
     }
 

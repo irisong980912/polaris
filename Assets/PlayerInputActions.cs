@@ -54,7 +54,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""c30c7980-8a8d-4fe3-b255-f7ef5b11ca10"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
