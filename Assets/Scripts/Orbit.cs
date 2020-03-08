@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// apply  this script to star gravityCore
@@ -31,10 +32,13 @@ public class Orbit : MonoBehaviour
     //InputActions
     PlayerInputActions inputAction;
 
+    public InputAction slingshotAction;
+
     void Awake()
     {
         //InputActions
         inputAction = new PlayerInputActions();
+        slingshotAction = inputAction.Player.Slingshot;
     }
 
     private void Start()
@@ -51,15 +55,18 @@ public class Orbit : MonoBehaviour
         _self.Rotate(_self.up, speed);
         
         if (_player is null) return;
-        
+
         //if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
         
+        //InputAction replaces "Input.GetButton("Example") and holds a bool
+        if (!slingshotAction.triggered || _player.transform.parent != _self) return;
+
         if (!_launchBegan)
         {
             //InputAction replaces "Input.GetButton("Example") and calls function
-            inputAction.Player.Interact.performed += ctx => SlingshotStart();
+            //inputAction.Player.Interact.performed += ctx => SlingshotStart();
 
-            //SlingshotStart();
+            SlingshotStart();
         }
     }
 
@@ -161,12 +168,14 @@ public class Orbit : MonoBehaviour
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
+        slingshotAction.Enable();
         inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
+        slingshotAction.Disable();
         inputAction.Player.Disable();
     }
 

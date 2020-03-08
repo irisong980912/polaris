@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraSwitch : MonoBehaviour {
 
@@ -11,10 +12,14 @@ public class CameraSwitch : MonoBehaviour {
     //InputActions
     PlayerInputActions inputAction;
 
+    public InputAction mapAction;
+
     void Awake()
     {
         //InputActions
         inputAction = new PlayerInputActions();
+
+        mapAction = inputAction.Player.Map;
     }
 
     private void Start()
@@ -37,15 +42,21 @@ public class CameraSwitch : MonoBehaviour {
     private void SwitchCamera()
     {
         //InputAction replaces "Input.GetButton("Example") and calls function
-        inputAction.Player.Map.performed += ctx => CameraChangeCounter();
+        //inputAction.Player.Map.performed += ctx => CameraChangeCounter();
 
-        
+        //InputAction replaces "Input.GetButton("Example") and holds a bool
+        if (mapAction.triggered)
+        {
+            CameraChangeCounter();
+        }
+
         /*
         if (Input.GetButtonDown("Fire3"))
         {
             CameraChangeCounter();
         }
         */
+
     }
 
     //Camera Counter
@@ -94,12 +105,14 @@ public class CameraSwitch : MonoBehaviour {
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
+        mapAction.Enable();
         inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
+        mapAction.Disable();
         inputAction.Player.Disable();
     }
 
