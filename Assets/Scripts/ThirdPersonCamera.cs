@@ -55,7 +55,7 @@ public class ThirdPersonCamera : MonoBehaviour
         _mainCamera.LookAt(_cameraTarget);
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
 
         if (_levelCleared)
