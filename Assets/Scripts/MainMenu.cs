@@ -65,9 +65,11 @@ public class MainMenu : MonoBehaviour
             PlayGame();
         }
         */
+        /*
         if (interact.triggered)
         {
             PlayGame();
         }
+        */
     }
 }
