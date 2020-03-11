@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class CreateStar : MonoBehaviour
 {
@@ -25,7 +27,20 @@ public class CreateStar : MonoBehaviour
     private static readonly int PlayActivateStarVfx = Animator.StringToHash("playActivateStarVFX");
     private static readonly int PlayActivateRing = Animator.StringToHash("PlayActivateRing");
 
-    public static event Action OnStarCreation; 
+    public static event Action OnStarCreation;
+    
+    //InputActions
+    PlayerInputActions _inputAction;
+
+    [FormerlySerializedAs("Interact")] public InputAction interact;
+
+    void Awake()
+    {
+        //InputActions
+        _inputAction = new PlayerInputActions();
+        interact = _inputAction.Player.Interact;
+
+    }
 
     private void Start()
     {
@@ -46,7 +61,11 @@ public class CreateStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        if (!Input.GetButton("Fire2") || !enabled) return;
+        //if (!Input.GetButton("Fire2") || !enabled) return
+
+        //InputAction replaces "Input.GetButton("Example") and holds a bool
+        if (!interact.triggered || !enabled) return;
+
         if (!other.tag.Contains("|Player|")) return;
         onTrigger = true;
         _other = other;
@@ -117,9 +136,26 @@ public class CreateStar : MonoBehaviour
     {
         if (onTrigger && _other)
         {
+
             FormStar();
+
         }
 
     }
-    
+
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
+    {
+        interact.Enable();
+        _inputAction.Player.Enable();
+    }
+
+    //Disables all actions in Player action maps (action maps are Player and UI)
+    private void OnDisable()
+    {
+        interact.Disable();
+        _inputAction.Player.Disable();
+    }
+
 }

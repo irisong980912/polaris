@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class TutorialPrompts : MonoBehaviour
@@ -18,7 +16,7 @@ public class TutorialPrompts : MonoBehaviour
         } else if (tutorialzone == "TutorialZone2"){
             tutorialtext.text = "Awesome, do you see that glowing ball? That is stardust, pick it up to activate more stars";
         } else if (tutorialzone == "TutorialZone3"){
-            tutorialtext.text = "See that colourful ball? That is a planet. Ride it's orbit and press X to slingshot";
+            tutorialtext.text = "See that colourful ball? That is a planet. Ride it's orbit and press ◻ to slingshot";
         } else if (tutorialzone == "TutorialZone4"){
             tutorialtext.text = "Find the scattered stardust and light up the remaining stars";
         } else {
@@ -27,17 +25,16 @@ public class TutorialPrompts : MonoBehaviour
         
         if (other.tag.Contains("|Star|"))
         {
-            if (other.GetComponent<CreateStar>().enabled == true && other.GetComponent<DestroyStar>().enabled == false){
+            if (other.GetComponent<CreateStar>().enabled && other.GetComponent<DestroyStar>().enabled == false){
                 tutorialtext.text = "Press X to activate star";
             }
-            else if (other.GetComponent<CreateStar>().enabled == false && other.GetComponent<DestroyStar>().enabled == true){
+            else if (other.GetComponent<CreateStar>().enabled == false && other.GetComponent<DestroyStar>().enabled){
                 tutorialtext.text = "Press X to deactivate star";
             }
         }
         if (other.tag.Contains("|PlanetCore|"))
         {
-            
-            tutorialtext.text = "Press X to slingshot. You can also slingshot to escape the gravity field";
+            tutorialtext.text = "Press ◻ to slingshot. You can also slingshot to escape the gravity field";
         }
         
         if (other.tag.Contains("|Asteroids|") && _isAsteroid)
@@ -65,12 +62,12 @@ public class TutorialPrompts : MonoBehaviour
             {
                 if (other.transform.parent.name == "Star 1")
                 {
-                    tutorialtext.text = "Long press \"triangle\" when moving to escape the gravitational field." +
-                                                        " You can only use Mega Boost when you have 3 or more stardusts";
+                    tutorialtext.text = "Long press O when moving to escape the gravitational field." +
+                                                        " You can only use Mega Boost when you have 3 or more stardust";
                 }
                 else
                 {
-                    tutorialtext.text = "Long press \"triangle\" to perform MegaBoosts";
+                    tutorialtext.text = "Long press O to perform MegaBoosts";
                 }
                 
             }

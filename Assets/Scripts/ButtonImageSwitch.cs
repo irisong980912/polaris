@@ -15,8 +15,8 @@ public class ButtonImageSwitch : MonoBehaviour, IPointerExitHandler, IPointerEnt
     private void Start()
     {
         _buttonImg = GetComponent<Image>();
+        
     }
-    
     
     public void OnPointerEnter(PointerEventData eventData)
     {
