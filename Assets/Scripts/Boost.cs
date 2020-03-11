@@ -9,15 +9,19 @@ public class Boost : MonoBehaviour
     private float _boostSpeed;
 
     //InputActions
-    PlayerInputActions inputAction;
+    PlayerInputActions _inputAction;
     
     public InputAction boostAction;
 
+    private bool _mPressed;
+    private bool _mReleased;
+    
+    
     void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
-        boostAction = inputAction.Player.Boost;
+        _inputAction = new PlayerInputActions();
+        boostAction = _inputAction.Player.Boost;
     }
 
     private void Start()
@@ -31,9 +35,22 @@ public class Boost : MonoBehaviour
     {
         if (_playerScript.stardust >= 3)
         {
+            boostAction.performed += ctx =>
+            {
+                _mPressed = true;
+                _mReleased = false;
+            };
+            boostAction.canceled += ctx =>
+            {
+                _mReleased = true;
+                _mPressed = false;
+            }; 
             //InputAction replaces "Input.GetButton("Example") and holds a bool
-            _playerScript.speed = boostAction.triggered ? _boostSpeed : _normalSpeed;
-            
+            // _playerScript.speed = boostAction.triggered ? _boostSpeed : _normalSpeed;
+            if (_mPressed)
+                _playerScript.speed = _boostSpeed;
+            if (_mReleased)
+                _playerScript.speed = _normalSpeed;
             //_playerScript.speed = Input.GetButton("Jump") ? _boostSpeed : _normalSpeed;
         }
     }
@@ -43,13 +60,13 @@ public class Boost : MonoBehaviour
     private void OnEnable()
     {
         boostAction.Enable();
-        inputAction.Player.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
         boostAction.Disable();
-        inputAction.Player.Disable();
+        _inputAction.Player.Disable();
     }
 }
