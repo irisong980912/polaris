@@ -17,6 +17,7 @@ public class StardustPickup : MonoBehaviour
         player.stardust += stardustValue;
         player.inventory.Add(stardust);
         gameObject.SetActive(false);
+
     }
 
 }
