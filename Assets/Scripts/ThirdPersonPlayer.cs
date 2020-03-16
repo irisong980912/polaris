@@ -9,7 +9,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 {
     
     public Transform cam;
-    public float speed = 60.0f;
+    public float speed;
     public float rotateSpeed = 5.0f;
 
     public int stardust;

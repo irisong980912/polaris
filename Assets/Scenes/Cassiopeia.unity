@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.015151451, g: 0.004667077, b: 0.028175348, a: 1}
+  m_IndirectSpecularColor: {r: 0.015121656, g: 0.004663416, b: 0.028162796, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1563,6 +1563,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraOne: {fileID: 283867117}
   cameraTwo: {fileID: 1616016495}
+  mapAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!4 &255532832
 Transform:
   m_ObjectHideFlags: 0
@@ -2032,6 +2040,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  slingshotAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &324301660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9306,6 +9322,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  slingshotAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!135 &1966085691
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9725,6 +9749,14 @@ MonoBehaviour:
   starVfx: {fileID: 1313572474}
   ringAnimationController: []
   activationSpeedMultiplier: 1
+  Interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &2054838147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9748,6 +9780,14 @@ MonoBehaviour:
   starVfx: {fileID: 1313572474}
   ringAnimationController: []
   activationSpeedMultiplier: 1
+  Interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!95 &2054838148
 Animator:
   serializedVersion: 3
@@ -10606,7 +10646,7 @@ PrefabInstance:
     - target: {fileID: 5683594934562571774, guid: 2aaa38457410ac14d9b7bbab39151b8a,
         type: 3}
       propertyPath: speed
-      value: 0.6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aaa38457410ac14d9b7bbab39151b8a, type: 3}
