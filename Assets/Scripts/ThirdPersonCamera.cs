@@ -52,6 +52,7 @@ public class ThirdPersonCamera : MonoBehaviour
         var dir = new Vector3(0, 0, -10.0f);
         transform.position = player.position + dir;
 
+
         _mainCamera.LookAt(_cameraTarget);
     }
 
@@ -68,20 +69,22 @@ public class ThirdPersonCamera : MonoBehaviour
 
         } else
         {
+
             /*
             var xAxisInput = Input.GetAxis("Mouse X");
             var yAxisInput = Input.GetAxis("Mouse Y");
              */
-
+            
             //InputAction replaces "Input.GetAxis("Example")" and calls function
             //cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
-
+            
             inputAction.Player.Look.performed += ctx => cameraRotationInput = ctx.ReadValue<Vector2>();
             inputAction.Player.Look.canceled += ctx => cameraRotationInput = Vector2.zero;
-
+            
             var xAxisInput = cameraRotationInput.x;
             var yAxisInput = cameraRotationInput.y;
-
+            
+            
             var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
             if (Math.Abs(distanceToTarget - _minimumDistanceFromTarget) > 0.1f * _minimumDistanceFromTarget)
             {
@@ -90,14 +93,14 @@ public class ThirdPersonCamera : MonoBehaviour
                 var vectorToTarget = _cameraTarget.position - currentCameraPosition;
                 var idealMovementForCamera = vectorToTarget - vectorToTarget.normalized * _minimumDistanceFromTarget;
                 var idealPositionForCamera = currentCameraPosition + idealMovementForCamera;
-
+            
                 _mainCamera.position = Vector3.SmoothDamp(
                     currentCameraPosition,
                     idealPositionForCamera,
                     ref _currentCameraVelocity,
                     cameraFollowDelay);
             }
-
+            
             if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
             {
                 distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
@@ -109,7 +112,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
                 // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
                 _mainCamera.Rotate(yRotationMagnitude, xRotationMagnitude, 0, Space.Self);
-
+            
                 // After rotating the camera, it will no longer be pointing at the player.
                 // By translating the camera as follows, it will be adjusted to point at the player again.
                 var lookingAtPosition = _mainCamera.position + _mainCamera.forward * distanceToTarget;
@@ -117,9 +120,9 @@ public class ThirdPersonCamera : MonoBehaviour
                 
                 _mainCamera.Translate(correctivePath, Space.World);
             }
-
+            
             //TODO: Refactor this implementation to use IsometricCamera when that feature is implemented.
-
+            
             _mainCamera.LookAt(_cameraTarget); 
             
             //TODO: Add slingshot camera effects.

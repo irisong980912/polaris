@@ -2,11 +2,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class ThirdPersonPlayer : MonoBehaviour
+
 {
-    public float speed;
-    public float maximumTurnRate;
+    
+    public Transform cam;
+    public float speed = 60.0f;
+    public float rotateSpeed = 5.0f;
+
     public int stardust;
     public TextMeshProUGUI stardustCount;
     public List<GameObject> inventory = new List<GameObject>();
@@ -53,45 +58,17 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void Update()
     {
         stardustCount.text = "Stardust: " + stardust;
-
-        Debug.Log(stardust);
-    }
-
-    private void FixedUpdate()
-    {
-        //InputAction replaces "Input.GetAxis("Example")" and calls function
-        //movementInput = inputAction.Player.Move.ReadValue<Vector2>();
+        
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
         if (_mapActive) return;
         
-        var xAxisInput = _movementInput.x;
-        var yAxisInput = _movementInput.y;
+        // var xAxisInput = _movementInput.x;
+        // var yAxisInput = _movementInput.y;
 
-        if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
-        {
-            // Squaring the inputs makes finer movements easier.
-            var interpretedXInput = xAxisInput * xAxisInput * maximumTurnRate;
-            var interpretedYInput = yAxisInput * yAxisInput * maximumTurnRate;
-            
-            // But squaring negative values makes them positive.
-            if (xAxisInput < 0)
-            {
-                interpretedXInput = -interpretedXInput;
-            }
-
-            if (yAxisInput < 0)
-            {
-                interpretedYInput = -interpretedYInput;
-            }
-            
-            // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
-            // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
-            transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
-        }
-        
-        transform.Translate(transform.forward * speed);
+        transform.position = transform.position + cam.transform.forward * speed * Time.deltaTime;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, cam.rotation, rotateSpeed);
     }
 
     //InputActions
