@@ -66,7 +66,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         
         // var xAxisInput = _movementInput.x;
         // var yAxisInput = _movementInput.y;
-
+        
+        // make player travel to the direction that camera is facing
         transform.position = transform.position + cam.transform.forward * speed * Time.deltaTime;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, cam.rotation, rotateSpeed);
     }
