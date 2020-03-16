@@ -9,11 +9,12 @@ public class MainMenu : MonoBehaviour
 {
     public EventSystem ES;
     private GameObject _storeSelected;
-    PlayerInputActions _inputAction;
-    [FormerlySerializedAs("Interact")] public InputAction interact;
+    private PlayerInputActions _inputAction;
+    public InputAction interact;
 
     public void PlayGame () 
     {
+        Debug.Log("start game");
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -35,6 +36,7 @@ public class MainMenu : MonoBehaviour
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
+        Debug.Log("start gamesss");
         interact.Enable();
         _inputAction.Player.Enable();
     }
