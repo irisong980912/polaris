@@ -64,14 +64,9 @@ public class ThirdPersonPlayer : MonoBehaviour
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
         if (_mapActive) return;
-
-        // var xAxisInput = _movementInput.x;
-        // var yAxisInput = _movementInput.y;
         
         var xAxisInput = _movementInput.x;
         var yAxisInput = _movementInput.y;
-        //
-        
         
         if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
         {
@@ -91,9 +86,6 @@ public class ThirdPersonPlayer : MonoBehaviour
                 interpretedYInput = -interpretedYInput;
             }
             transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
-            //
-            
-            
         }
 
         transform.position += transform.forward * speed * Time.deltaTime;
