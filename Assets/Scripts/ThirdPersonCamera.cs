@@ -78,6 +78,8 @@ public class ThirdPersonCamera : MonoBehaviour
             //InputAction replaces "Input.GetAxis("Example")" and calls function
             //cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
             
+            // TODO: make the camera rotate faster to follow player rotation
+            
             inputAction.Player.Look.performed += ctx => cameraRotationInput = ctx.ReadValue<Vector2>();
             inputAction.Player.Look.canceled += ctx => cameraRotationInput = Vector2.zero;
             
@@ -93,7 +95,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 var vectorToTarget = _cameraTarget.position - currentCameraPosition;
                 var idealMovementForCamera = vectorToTarget - vectorToTarget.normalized * _minimumDistanceFromTarget;
                 var idealPositionForCamera = currentCameraPosition + idealMovementForCamera;
-            
+                
                 _mainCamera.position = Vector3.SmoothDamp(
                     currentCameraPosition,
                     idealPositionForCamera,

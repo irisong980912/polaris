@@ -11,6 +11,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public Transform cam;
     public float speed;
     public float rotateSpeed = 5.0f;
+    public float maximumTurnRate;
 
     public int stardust;
     public TextMeshProUGUI stardustCount;
@@ -63,13 +64,45 @@ public class ThirdPersonPlayer : MonoBehaviour
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
         if (_mapActive) return;
-        
+
         // var xAxisInput = _movementInput.x;
         // var yAxisInput = _movementInput.y;
         
-        // make player travel to the direction that camera is facing
-        transform.position = transform.position + cam.transform.forward * speed * Time.deltaTime;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, cam.rotation, rotateSpeed);
+        var xAxisInput = _movementInput.x;
+        var yAxisInput = _movementInput.y;
+        //
+        
+        
+        if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
+        {
+            // Squaring the inputs makes finer movements easier.
+            
+            var interpretedXInput = xAxisInput * xAxisInput * maximumTurnRate;
+            var interpretedYInput = yAxisInput * yAxisInput * maximumTurnRate;
+            
+            // But squaring negative values makes them positive.
+            if (xAxisInput < 0)
+            {
+                interpretedXInput = -interpretedXInput;
+            }
+        
+            if (yAxisInput < 0)
+            {
+                interpretedYInput = -interpretedYInput;
+            }
+            transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+            //
+            
+            
+        }
+
+        transform.position += transform.forward * speed * Time.deltaTime;
+        // transform.Translate(transform.forward * speed);
+
+        // ======================================================================
+        // TODO: 2nd method of approaching this problem: let the player go in the direction of the camera
+        // transform.position = transform.position + cam.transform.forward * speed * Time.deltaTime;
+        // transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.rotation, rotateSpeed);
     }
 
     //InputActions
