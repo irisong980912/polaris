@@ -18,6 +18,8 @@ TagManager:
   - '|InnerGravityField|'
   - '|CameraCollider|'
   - '|StardustCount|'
+  - '|GravityCore|'
+  - '|Asteroids|'
   layers:
   - Default
   - TransparentFX

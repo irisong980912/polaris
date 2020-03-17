@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class CreateStar : MonoBehaviour
 {
@@ -29,15 +30,15 @@ public class CreateStar : MonoBehaviour
     public static event Action OnStarCreation;
     
     //InputActions
-    PlayerInputActions inputAction;
+    PlayerInputActions _inputAction;
 
-    public InputAction Interact;
+    [FormerlySerializedAs("Interact")] public InputAction interact;
 
     void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
-        Interact = inputAction.Player.Interact;
+        _inputAction = new PlayerInputActions();
+        interact = _inputAction.Player.Interact;
 
     }
 
@@ -63,7 +64,7 @@ public class CreateStar : MonoBehaviour
         //if (!Input.GetButton("Fire2") || !enabled) return
 
         //InputAction replaces "Input.GetButton("Example") and holds a bool
-        if (!Interact.triggered || !enabled) return;
+        if (!interact.triggered || !enabled) return;
 
         if (!other.tag.Contains("|Player|")) return;
         onTrigger = true;
@@ -146,15 +147,15 @@ public class CreateStar : MonoBehaviour
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
-        Interact.Enable();
-        inputAction.Player.Enable();
+        interact.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
-        Interact.Disable();
-        inputAction.Player.Disable();
+        interact.Disable();
+        _inputAction.Player.Disable();
     }
 
 }

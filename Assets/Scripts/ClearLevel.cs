@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class ClearLevel : MonoBehaviour
 {
-    [SerializeField] private GameObject clearLevelImage;
-
+    public GameObject clearLevelImage;
+    public GameObject stardustCountText;
+    public GameObject tutorialZoneText;
+    
     public int totalStarNum;
 
     private static int _numStarsLit;
@@ -49,6 +51,8 @@ public class ClearLevel : MonoBehaviour
         Debug.Log("ClearLevel -- ShowClearImage");
 
         clearLevelImage.SetActive(true);
+        stardustCountText.SetActive(false);
+        tutorialZoneText.SetActive(false);
     }
     
     private void DisableInnerFieldRender()

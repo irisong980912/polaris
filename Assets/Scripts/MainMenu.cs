@@ -1,17 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 
 public class MainMenu : MonoBehaviour
 {
     public EventSystem ES;
-    private GameObject StoreSelected;
+    private GameObject _storeSelected;
+    private PlayerInputActions _inputAction;
+    public InputAction interact;
 
     public void PlayGame () 
     {
+        Debug.Log("start game");
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -21,21 +24,51 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     
+    void Awake()
+    {
+        //InputActions
+        _inputAction = new PlayerInputActions();
+        interact = _inputAction.Player.Interact;
+
+    }
+    
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
+    {
+        Debug.Log("start gamesss");
+        interact.Enable();
+        _inputAction.Player.Enable();
+    }
+
+    //Disables all actions in Player action maps (action maps are Player and UI)
+    private void OnDisable()
+    {
+        interact.Disable();
+        _inputAction.Player.Disable();
+    }
+    
     private void Update()
     {
-        if (ES.currentSelectedGameObject != StoreSelected)
-        {
-            if (ES.currentSelectedGameObject == null)
-            {
-                ES.SetSelectedGameObject(StoreSelected);
-            }
-            else
-            {
-                StoreSelected = ES.currentSelectedGameObject;
-            }
-        }
+        // if (ES.currentSelectedGameObject != StoreSelected)
+        // {
+        //     if (ES.currentSelectedGameObject == null)
+        //     {
+        //         ES.SetSelectedGameObject(StoreSelected);
+        //     }
+        //     else
+        //     {
+        //         StoreSelected = ES.currentSelectedGameObject;
+        //     }
+        // }
         /*
         if (Input.GetButton("Fire2"))
+        {
+            PlayGame();
+        }
+        */
+        /*
+        if (interact.triggered)
         {
             PlayGame();
         }

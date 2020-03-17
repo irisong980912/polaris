@@ -10,16 +10,16 @@ public class CameraSwitch : MonoBehaviour {
     public static event Action<bool> OnMapSwitch;
 
     //InputActions
-    PlayerInputActions inputAction;
+    PlayerInputActions _inputAction;
 
     public InputAction mapAction;
 
     void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
+        _inputAction = new PlayerInputActions();
 
-        mapAction = inputAction.Player.Map;
+        mapAction = _inputAction.Player.Map;
     }
 
     private void Start()
@@ -106,14 +106,14 @@ public class CameraSwitch : MonoBehaviour {
     private void OnEnable()
     {
         mapAction.Enable();
-        inputAction.Player.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
         mapAction.Disable();
-        inputAction.Player.Disable();
+        _inputAction.Player.Disable();
     }
 
 }
