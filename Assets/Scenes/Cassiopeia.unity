@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.015151451, g: 0.004667077, b: 0.028175348, a: 1}
+  m_IndirectSpecularColor: {r: 0.01505335, g: 0.0046495264, b: 0.028051559, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1565,6 +1565,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraOne: {fileID: 283867117}
   cameraTwo: {fileID: 1616016495}
+  mapAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!4 &255532832
 Transform:
   m_ObjectHideFlags: 0
@@ -2034,6 +2042,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  slingshotAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &324301660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4081,6 +4097,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5384716f2a4bc40309c3197e5f3c8175, type: 3}
+--- !u!4 &790763138 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6832531872799488447, guid: 5384716f2a4bc40309c3197e5f3c8175,
+    type: 3}
+  m_PrefabInstance: {fileID: 790763137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &813440806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8635073298004671583, guid: 36af554bcc57e4a61a46eb296aa28465,
@@ -5421,6 +5443,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990c81260c8994be486a3c95f5c65f89, type: 3}
+--- !u!1001 &1137109885
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 790763138}
+    m_Modifications:
+    - target: {fileID: 6762541884849550457, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_Name
+      value: mountain planet Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.073274955
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.073274955
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.073274955
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9ac61c8e5c3349e8968a7ff67329e81, type: 3}
 --- !u!1 &1145444333
 GameObject:
   m_ObjectHideFlags: 0
@@ -6375,6 +6481,16 @@ PrefabInstance:
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3720048391353597906, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: slingshotAction.m_Id
+      value: 191cfb29-49e1-41aa-a52b-17676cf2b98a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720048391353597906, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: slingshotAction.m_Name
+      value: Slingshot
+      objectReference: {fileID: 0}
     - target: {fileID: 3738633495588287937, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_IsActive
@@ -6384,6 +6500,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813739673643694578, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: slingshotAction.m_Id
+      value: c8ace0cb-112d-48a3-8f88-f206914aaa9b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813739673643694578, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: slingshotAction.m_Name
+      value: Slingshot
       objectReference: {fileID: 0}
     - target: {fileID: 5384127806667707564, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6683,6 +6809,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 345498180}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1373471409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1882591816}
+    m_Modifications:
+    - target: {fileID: 6762541884849550457, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_Name
+      value: mountain planet Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -138.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -400.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 252.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7746817922441315946, guid: c9ac61c8e5c3349e8968a7ff67329e81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9ac61c8e5c3349e8968a7ff67329e81, type: 3}
 --- !u!4 &1389869420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3445896823634733168, guid: 36af554bcc57e4a61a46eb296aa28465,
@@ -8990,6 +9185,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3091d7ec611694da682b3019fb7aafbc, type: 3}
+--- !u!4 &1882591816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7653390305842828032, guid: 3091d7ec611694da682b3019fb7aafbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1882591815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1897289356
 GameObject:
   m_ObjectHideFlags: 0
@@ -9309,6 +9510,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  slingshotAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!135 &1966085691
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9728,6 +9937,14 @@ MonoBehaviour:
   starVfx: {fileID: 1313572474}
   ringAnimationController: []
   activationSpeedMultiplier: 1
+  interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &2054838147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9751,6 +9968,14 @@ MonoBehaviour:
   starVfx: {fileID: 1313572474}
   ringAnimationController: []
   activationSpeedMultiplier: 1
+  Interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!95 &2054838148
 Animator:
   serializedVersion: 3
