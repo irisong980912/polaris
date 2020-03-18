@@ -39,6 +39,8 @@ public class MainMenu : MonoBehaviour
         //InputActions
         _inputAction = new PlayerInputActions();
         cancel = _inputAction.UI.Cancel;
+        Time.timeScale = 1f;
+
     }
 
     private void Start()
