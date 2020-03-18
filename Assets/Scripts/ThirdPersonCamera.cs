@@ -87,7 +87,7 @@ public class ThirdPersonCamera : MonoBehaviour
             {
                 var currentCameraPosition = _mainCamera.position;
                 
-                var vectorToTarget = _cameraTarget.position - currentCameraPosition;
+                var vectorToTarget = _cameraTarget.position - _cameraTarget.forward - currentCameraPosition;
                 var idealMovementForCamera = vectorToTarget - vectorToTarget.normalized * _minimumDistanceFromTarget;
                 var idealPositionForCamera = currentCameraPosition + idealMovementForCamera;
 
