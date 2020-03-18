@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject starCountDisplay;
     public GameObject tutorialDisplay;
+    public GameObject clearMenu;
 
     public EventSystem ES;
     private GameObject _storeSelected;
@@ -50,7 +51,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (menuAction.triggered)
+        if (menuAction.triggered && clearMenu.activeSelf == false)
         {
             if (gameIsPaused)
             {
@@ -149,13 +150,13 @@ public class PauseMenu : MonoBehaviour
         }
 
     }
-        //InputActions
-        //Activates all actions in Player action maps (action maps are Player and UI)
-        private void OnEnable()
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
     {
         menuAction.Enable();
         cancel.Enable();
-        _inputAction.Player.Enable();
+        _inputAction.UI.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
@@ -163,6 +164,6 @@ public class PauseMenu : MonoBehaviour
     {
         menuAction.Disable();
         cancel.Disable();
-        _inputAction.Player.Disable();
+        _inputAction.UI.Disable();
     }
 }

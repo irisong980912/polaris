@@ -20,9 +20,6 @@ public class LevelSelectionMenu : MonoBehaviour
         
     }
 
-
-
-
     public void OnLevelSelect()
     {
         if (dropDown.value == 1)

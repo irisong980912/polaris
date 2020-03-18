@@ -179,13 +179,13 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("start gamesss");
         cancel.Enable();
-        _inputAction.Player.Enable();
+        _inputAction.UI.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
         cancel.Disable();
-        _inputAction.Player.Disable();
+        _inputAction.UI.Disable();
     }
 }
