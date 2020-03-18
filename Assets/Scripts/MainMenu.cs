@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject levelMenu;
 
+    //Check submenu status
     bool settingsOpen;
     bool levelOpen;
 
@@ -148,7 +149,7 @@ public class MainMenu : MonoBehaviour
             OnCancel();
 
             //controller navigation breaks if you dont set a new default selected gameobject
-            ES.SetSelectedGameObject(startButton);
+            ES.SetSelectedGameObject(settingsButton);
 
         }
 

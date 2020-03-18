@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,14 +13,23 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public GameObject starCountDisplay;
+    public GameObject tutorialDisplay;
 
     public EventSystem ES;
     private GameObject _storeSelected;
 
+    //Access Buttons
+    public GameObject resumeButton;
+    public GameObject settingsButton;
+    public GameObject menuButton;
+
+    //Check submenu status
+    bool settingsOpen;
+
     PlayerInputActions _inputAction;
 
     public InputAction menuAction;
-    public InputAction interact;
+    public InputAction cancel;
 
     void Awake()
     {
@@ -26,7 +37,7 @@ public class PauseMenu : MonoBehaviour
         _inputAction = new PlayerInputActions();
 
         menuAction = _inputAction.Player.Menu;
-        interact = _inputAction.Player.Interact;
+        cancel = _inputAction.UI.Cancel;
 
     }
 
@@ -62,23 +73,35 @@ public class PauseMenu : MonoBehaviour
                 _storeSelected = ES.currentSelectedGameObject;
             }
         }
+
+        if (cancel.triggered)
+        {
+            OnCancel();
+
+            //controller navigation breaks if you dont set a new default selected gameobject
+            ES.SetSelectedGameObject(settingsButton);
+
+        }
     }
 
     public void Resume()
     {
+        Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         starCountDisplay.SetActive(true);
-        Time.timeScale = 1f;
+        tutorialDisplay.SetActive(true);
 
         gameIsPaused = false;
     }
 
     void Pause()
     {
+        Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         starCountDisplay.SetActive(false);
-        Time.timeScale = 0f;
+        tutorialDisplay.SetActive(false);
 
+        ES.SetSelectedGameObject(resumeButton);
         gameIsPaused = true;
 
     }
@@ -94,15 +117,44 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenSettings()
     {
-        Debug.Log("Opening settings...");
+        if (!settingsOpen)
+        {
+            Time.timeScale = 0f;
+            print("Settings opened");
+            settingsMenu.SetActive(true);
+            settingsOpen = true;
+
+            resumeButton.GetComponent<Button>().interactable = false;
+            //settingsButton.GetComponent<Button>().interactable = false;
+            menuButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            OnCancel();
+        }
     }
 
-    //InputActions
-    //Activates all actions in Player action maps (action maps are Player and UI)
-    private void OnEnable()
+    void OnCancel()
+    {
+
+        if (settingsOpen)
+        {
+            settingsMenu.SetActive(false);
+
+            settingsOpen = false;
+
+            resumeButton.GetComponent<Button>().interactable = true;
+            //settingsButton.GetComponent<Button>().interactable = true;
+            menuButton.GetComponent<Button>().interactable = true;
+        }
+
+    }
+        //InputActions
+        //Activates all actions in Player action maps (action maps are Player and UI)
+        private void OnEnable()
     {
         menuAction.Enable();
-        interact.Enable();
+        cancel.Enable();
         _inputAction.Player.Enable();
     }
 
@@ -110,7 +162,7 @@ public class PauseMenu : MonoBehaviour
     private void OnDisable()
     {
         menuAction.Disable();
-        interact.Disable();
+        cancel.Disable();
         _inputAction.Player.Disable();
     }
 }
