@@ -13817,7 +13817,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 6491087595699819101}
   settingsMenu: {fileID: 950141870}
   starCountDisplay: {fileID: 6491087594172979342}
-  tutorialDisplay: {fileID: 0}
+  tutorialDisplay: {fileID: 566944938}
   ES: {fileID: 6491087595441597806}
   resumeButton: {fileID: 551410845}
   settingsButton: {fileID: 1322671198}
