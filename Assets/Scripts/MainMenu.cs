@@ -50,17 +50,18 @@ public class MainMenu : MonoBehaviour
     
     private void Update()
     {
-        // if (ES.currentSelectedGameObject != StoreSelected)
-        // {
-        //     if (ES.currentSelectedGameObject == null)
-        //     {
-        //         ES.SetSelectedGameObject(StoreSelected);
-        //     }
-        //     else
-        //     {
-        //         StoreSelected = ES.currentSelectedGameObject;
-        //     }
-        // }
+        if (ES.currentSelectedGameObject != _storeSelected)
+        {
+            if (ES.currentSelectedGameObject == null)
+            {
+                ES.SetSelectedGameObject(_storeSelected);
+            }
+            else
+            {
+               _storeSelected = ES.currentSelectedGameObject;
+            }
+         }
+        
         /*
         if (Input.GetButton("Fire2"))
         {
