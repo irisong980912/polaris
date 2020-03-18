@@ -27,9 +27,8 @@ public class PointerToStar : MonoBehaviour
     public Camera cam;
     public float imageWidth; 
 
-    public float disToClipPanel = 0f;
-
-    public float rotateSpeed = 2.0f;
+    public float disToClipPanel;
+    private bool _finishCameraPan;
 
     private void Start()
     {
@@ -37,39 +36,35 @@ public class PointerToStar : MonoBehaviour
         // TODO: need to listen to the event of isometric cam. 
         IsometricStarView.OnIsometricStarView += OnIsometricStarView;
         GetComponent<Image>().enabled = false;
+        _finishCameraPan = false;
         imageWidth = (float) (GetComponent<RectTransform>().rect.width * 0.5);
-        //GetComponent<Image>().enabled = true;
-
     }
-    
-    
+
+
     private void OnIsometricStarView(bool OnIsometricStarView)
     {
         _OnIsometricStarView = OnIsometricStarView;
-        GetComponent<Image>().enabled = true;
-        
         print("star to point: " + StarToPoint.name);
+        // enable the image after the camera finish pan
+        Invoke(nameof(FinishPan), 4.0f);
 
 
     }
-
-    private void testPos()
-    {
-        var p = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
-        transform.position = p;
-        transform.LookAt(cam.transform.position, -Vector3.up);
-        // transform.LookAt(cam.transform);
-    }
- 
     
+    private void FinishPan()
+    {
+        _finishCameraPan = true;
+        GetComponent<Image>().enabled = true;
+
+    }
 
     private void Update()
     {
 
         // find the relative position of the camera to the star
-        
         if (!StarToPoint) return;
         if (!_OnIsometricStarView) return;
+        if (!_finishCameraPan) return;
         // handle pointing position 
         var starPos = StarToPoint.transform.position;
         var camPos = cam.transform.position;
@@ -85,7 +80,7 @@ public class PointerToStar : MonoBehaviour
         
         var dis3D = new Vector3(xDis, 0, zDis).normalized;
         
-
+        // make the arrow stay at the edge of the camera viewport
         if (dis3D.x < dis3D.z)
         {
             if ((1 - dis3D.z) < dis3D.x) // z is closer to edge
@@ -115,16 +110,10 @@ public class PointerToStar : MonoBehaviour
         var viewportPos = cam.ViewportToWorldPoint(new Vector3(dis3D.z, dis3D.x, 
                                                         cam.nearClipPlane + disToClipPanel));
         transform.position = viewportPos;
-        // transform.LookAt(cam.transform);
         transform.rotation = cam.transform.rotation;
         transform.LookAt(cam.transform.position, -Vector3.up);
         
-        
-        // handle pointing rotation
-        var starPosViewport = cam.ScreenToWorldPoint(starPos);
-        
         // TODO： refine the rotation direction of the pointer
-        
         // var delta = starPos - transform.position;
         // delta.y = 0;
         // var rotation = Quaternion.LookRotation(delta);
@@ -132,7 +121,7 @@ public class PointerToStar : MonoBehaviour
         //
         
         // transform.Rotate(starPosViewport.x, 0,starPosViewport.z,Space.World);
-        // TODO： ---- refine rotation Method 2 ----
+        // TODO： ---- refine rotation Method 1 ----
         // Get the current euler angle in absolute terms
         // Vector3 curRotateAngle = transform.localEulerAngles;
         //
@@ -144,12 +133,12 @@ public class PointerToStar : MonoBehaviour
         //
         // transform.LookAt(StarToPoint.transform.position, -Vector3.left);
         
-        // TODO： ---- refine rotation method 1 ----
+        // TODO： ---- refine rotation method 2 ----
         //transform.rotation = Quaternion.LookRotation(Vector3.forward, starPosViewport - transform.position);
 
     }
     
-    // TODO: make the player use stick to choose which star to go to. 
-    // TODO: upon selection, show the live frontal images. 
-    // TODO: allow user to be shot to the direction of the star. 
+    // TODO: make the player use controller to choose which star to go to. 
+    // TODO: upon selection, show the live frontal images of the selected star. 
+    // TODO: allow user to be shot to the direction of the selected star. 
 }

@@ -39,7 +39,9 @@ public class PlayerIcon : MonoBehaviour
     private void SetIsometricActive(bool isoActive)
     {
         _isoActive = isoActive;
-        HandleImageEnable();
+        
+        Invoke(nameof(HandleImageEnable), 4.0f);
+        // HandleImageEnable();
     }
 
     private void HandleImageEnable()
@@ -47,7 +49,6 @@ public class PlayerIcon : MonoBehaviour
         if (_mapActive || _isoActive)
         {
             GetComponent<Image>().enabled = true;
-
             GetComponent<Image>().rectTransform.sizeDelta = _mapActive ? new Vector2(2000, 2000) : new Vector2(200, 200);
         }
         else

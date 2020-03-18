@@ -34,7 +34,8 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _returnToPlayer;
     private bool _rotateToTopView;
     private bool _onOrbit;
-    public static event Action<bool> OnIsometricStarView;
+    public static event Action<bool> onFinishCameraPan;
+    private bool _finishCameraPan;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -74,6 +75,8 @@ public class ThirdPersonCamera : MonoBehaviour
         
         if ((_levelCleared || _enableIsometricView) && _onOrbit)
         {
+            _finishCameraPan = false;
+            onFinishCameraPan?.Invoke(_finishCameraPan);
             
             var dir = new Vector3(0, 20f, 0);
             var desiredPosition = viewPos.position ;
@@ -81,7 +84,10 @@ public class ThirdPersonCamera : MonoBehaviour
 
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
-            _rotateToTopView = false;
+            
+            _finishCameraPan = true;
+            onFinishCameraPan?.Invoke(_finishCameraPan);
+
         }
 
         else
