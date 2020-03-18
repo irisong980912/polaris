@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -48,7 +48,6 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 Pause();
-
             }
         }
 
@@ -86,6 +85,9 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        gameIsPaused = false;
+        Time.timeScale = 1f;
+
         SceneManager.LoadScene("StartMenu");
         Debug.Log("Loading menu...");
     }
