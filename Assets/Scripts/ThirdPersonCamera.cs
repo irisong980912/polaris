@@ -16,14 +16,25 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private Transform _cameraTarget;
     private Vector3 _currentCameraVelocity = Vector3.zero;
- 
-    private bool _levelCleared;
-    public Transform topViewCamPos;
+
 
     //InputActions
     PlayerInputActions inputAction;
 
     Vector2 cameraRotationInput;
+
+    private bool _enableIsometricView;
+    private bool _levelCleared;
+
+    public Transform viewPos;
+    public Transform constellationViewPos;
+    public Transform isometricStarViewPos;
+    
+    private bool _isIsometricStarView;
+    private bool _returnToPlayer;
+    private bool _rotateToTopView;
+    private bool _onOrbit;
+    public static event Action<bool> OnIsometricStarView;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -48,6 +59,8 @@ public class ThirdPersonCamera : MonoBehaviour
         Orbit.OnOrbitStart += OnOrbitStart;
         Orbit.OnOrbitStop += OnOrbitStop;
         ClearLevel.OnLevelClear += OnLevelClear;
+        IsometricStarView.OnEnterGravityField += OnEnterGravityField;
+        IsometricStarView.OnExitGravityField += OnExitGravityField;
 
         var dir = new Vector3(0, 0, -10.0f);
         transform.position = player.position + dir;
@@ -57,16 +70,21 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        if (_levelCleared)
+     
+        
+        if ((_levelCleared || _enableIsometricView) && _onOrbit)
         {
-            var desiredPosition = topViewCamPos.position;
+            
+            var dir = new Vector3(0, 20f, 0);
+            var desiredPosition = viewPos.position ;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
+            _rotateToTopView = false;
+        }
 
-        } else
+        else
         {
             /*
             var xAxisInput = Input.GetAxis("Mouse X");
@@ -130,6 +148,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void OnOrbitStart()
     {
+        _onOrbit = true;
         Debug.Log("camera --- OnOrbitStart");
         _cameraTarget = player.parent;
         _minimumDistanceFromTarget = _distanceFromPlanet;
@@ -137,6 +156,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void OnOrbitStop()
     {
+        _onOrbit = false;
         Debug.Log("camera --- OnOrbitStop");
         _cameraTarget = player;
         _minimumDistanceFromTarget = distanceFromPlayer;
@@ -144,6 +164,8 @@ public class ThirdPersonCamera : MonoBehaviour
     
     private void OnLevelClear()
     {
+        _rotateToTopView = true;
+        viewPos = constellationViewPos;
         _levelCleared = true;
     }
 
@@ -160,6 +182,26 @@ public class ThirdPersonCamera : MonoBehaviour
     private void OnDisable()
     {
         inputAction.Player.Disable();
+    }
+
+    private void OnEnterGravityField()
+    {
+        Debug.Log("camera -- OnEnterGravityField");
+        if (_levelCleared) return;
+        viewPos = isometricStarViewPos;
+        _enableIsometricView = true;
+        _returnToPlayer = false;
+        _rotateToTopView = true;
+
+    }
+    
+    private void OnExitGravityField()
+    {
+        Debug.Log("camera -- OnExitGravityField");
+        if (_levelCleared) return;
+        _enableIsometricView = false;
+        _returnToPlayer = true;
+
     }
 
 

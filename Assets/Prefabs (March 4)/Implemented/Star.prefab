@@ -539,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityRadius: 180
   gravityStrength: 70
+  disToPlayer: 0
 --- !u!114 &4515238664515866747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +554,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.2
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  slingshotAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!1 &7531728700848219579
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1006,14 @@ MonoBehaviour:
   starVfx: {fileID: 8832363041328108432}
   ringAnimationController: []
   activationSpeedMultiplier: 1
+  Interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 45b44010-276b-43d6-8d0c-acc85240c23a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &1744134124492446183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,6 +1038,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   activationSpeedMultiplier: 1
+  interact:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4330b7f9-450d-4911-a356-80e19d6dbeb0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &8408047773879214375
 MonoBehaviour:
   m_ObjectHideFlags: 0
