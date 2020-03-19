@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1965121661485291902}
   m_Layer: 0
-  m_Name: TopViewCamPos
+  m_Name: ConstellationViewPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,10 +23,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965121661485291897}
-  m_LocalRotation: {x: -0.47771448, y: -0.52133375, z: 0.52133375, w: -0.47771448}
+  m_LocalRotation: {x: 0.47771442, y: 0.5213339, z: -0.5213338, w: 0.47771436}
   m_LocalPosition: {x: 133, y: 4626, z: -379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: -95.00001}

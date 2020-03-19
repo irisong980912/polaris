@@ -34,6 +34,7 @@ public class Orbit : MonoBehaviour
     public InputAction slingshotAction;
     private Transform _starToGo;
     private bool _onSlingShot;
+    private bool _beginSlingShot;
 
     void Awake()
     {
@@ -45,13 +46,14 @@ public class Orbit : MonoBehaviour
     private void Start()
     {
         StarIconManager.OnSelectStar += OnSelectStar;
+        ThirdPersonPlayer.EndSlingShot += EndSlingShot;
         _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
 
         // Store the normal rotation speed so it can be restored after a slingshot.
         _normalSpeed = speed;
         
     }
-    
+
     private void FixedUpdate()
     {
         _self.Rotate(_self.up, speed);
@@ -65,13 +67,13 @@ public class Orbit : MonoBehaviour
         ////InputAction replaces "Input.GetButton("Example") and holds a bool
         // if (!slingshotAction.triggered || _player.transform.parent != _self) return;
 
-        if (!_launchBegan)
-        {
-            //InputAction replaces "Input.GetButton("Example") and calls function
-            //inputAction.Player.Interact.performed += ctx => SlingshotStart();
+        if (!_beginSlingShot) return;
 
-            SlingshotStart();
-        }
+        if (_launchBegan) return;
+        //InputAction replaces "Input.GetButton("Example") and calls function
+        //inputAction.Player.Interact.performed += ctx => SlingshotStart();
+        print("orbit --- launch begin" + _launchBegan);
+        SlingshotStart();
     }
 
     /// <summary>
@@ -168,6 +170,7 @@ public class Orbit : MonoBehaviour
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         
+        _onSlingShot = false;
 
         // speed = _normalSpeed;
         // _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
@@ -178,7 +181,14 @@ public class Orbit : MonoBehaviour
     {
         print("|||||||||| orbit --- selected star ||||||||||");
         _starToGo = starToGo;
+        _beginSlingShot = true;
     }
+    
+    private void EndSlingShot(bool obj)
+    {
+        _beginSlingShot = false;
+    }
+    
     
 
     //InputActions
