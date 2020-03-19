@@ -7161,7 +7161,7 @@ PrefabInstance:
     - target: {fileID: 1563010730179123855, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1703217123732974197, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -8094,7 +8094,7 @@ PrefabInstance:
     - target: {fileID: 1563010730179123855, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1703217123732974197, guid: 5c309b70a7f0d472eb666f25dde2ed03,
         type: 3}
@@ -14363,7 +14363,7 @@ MonoBehaviour:
   tutorialZoneText: {fileID: 1450036171}
   ES: {fileID: 6491087595441597806}
   defaultButtonSelected: {fileID: 469924015}
-  totalStarNum: 2
+  totalStarNum: 7
   _numStarsLit: 0
 --- !u!114 &6491087595732213370
 MonoBehaviour:

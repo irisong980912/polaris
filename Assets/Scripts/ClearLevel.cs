@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Events;
 
 
 public class ClearLevel : MonoBehaviour
@@ -18,7 +18,8 @@ public class ClearLevel : MonoBehaviour
 
     public int totalStarNum;
 
-    private static int _numStarsLit;
+    //private static int _numStarsLit;
+    public int _numStarsLit;
 
     public static event Action OnLevelClear;
 
@@ -36,6 +37,7 @@ public class ClearLevel : MonoBehaviour
     }
     private void Start()
     {
+        _numStarsLit = 0;
         CreateStar.OnStarCreation += OnStarCreation;
         DestroyStar.OnStarDestruction += OnStarDestruction;
         _innerGravityField = GameObject.FindGameObjectsWithTag("|InnerGravityField|");
@@ -58,12 +60,19 @@ public class ClearLevel : MonoBehaviour
         // and so that the player has enough time to see the constellation.
         Invoke(nameof(ShowClearMenu), 9);
     }
-
+    /*
     private static void OnStarDestruction()
     {
         _numStarsLit--;
     }
-
+    */
+    private void OnStarDestruction()
+    {
+        if (_numStarsLit > 0)
+        {
+            _numStarsLit--;
+        }
+    }
     private void ShowClearMenu()
     {
         Debug.Log("ClearLevel -- ShowClearMenu");
@@ -112,5 +121,9 @@ public class ClearLevel : MonoBehaviour
     private void OnDisable()
     {
         _inputAction.UI.Disable();
+
+        //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
+        CreateStar.OnStarCreation -= OnStarCreation;
+        DestroyStar.OnStarDestruction -= OnStarDestruction;
     }
 }
