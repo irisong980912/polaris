@@ -71,7 +71,6 @@ public class PlayerIcon : MonoBehaviour
     private void OnDisable()
     {
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
-
         CameraSwitch.OnMapSwitch -= SetMapActive;
         IsometricStarView.OnIsometricStarView -= SetIsometricActive;
         Orbit.OnSlingShot -= OnSlingShot;

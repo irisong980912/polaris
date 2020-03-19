@@ -1,14 +1,13 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class StarIconManager : MonoBehaviour
+public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     
     private Image _buttonImg;
@@ -30,9 +29,23 @@ public class StarIconManager : MonoBehaviour
     public static event Action<Transform> OnHoverStop;
     
     public static event Action<Transform> OnSelectStar;
-    
+
+    //Event systems
+    public EventSystem ES;
+    public GameObject defaultbuttonSelected;
+    private GameObject _storeSelected;
+
+
+    PlayerInputActions _inputAction;
+
+    void Awake()
+    {
+        _inputAction = new PlayerInputActions();
+    }
+
     private void Start()
     {
+        ES.SetSelectedGameObject(defaultbuttonSelected);
         _buttonImg = GetComponent<Image>();
         
         if (starToGo.GetComponent<Star>().isCreated)
@@ -91,9 +104,20 @@ public class StarIconManager : MonoBehaviour
         if (!starToGo) return;
         OnSelectStar?.Invoke(starToGo);
     }
-    
-    
-    
+
+    //for controller selection, add star image switches
+    public void OnSelect(BaseEventData eventData)
+    {
+        
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+
+    }
+
+
+
     private void Update()
     {
         if (!player) return;
@@ -101,7 +125,30 @@ public class StarIconManager : MonoBehaviour
         var disToStar = Vector3.Distance(player.position, starToGo.position);
         disToStar = (float) Math.Round(disToStar, 0);
         starBtnText.text = disToStar + "m";
+
+        if (ES.currentSelectedGameObject != _storeSelected)
+        {
+            if (ES.currentSelectedGameObject == null)
+            {
+                ES.SetSelectedGameObject(_storeSelected);
+            }
+            else
+            {
+                _storeSelected = ES.currentSelectedGameObject;
+            }
+        }
     }
 
-     
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
+    {
+        _inputAction.UI.Enable();
+    }
+
+    //Disables all actions in Player action maps (action maps are Player and UI)
+    private void OnDisable()
+    {
+        _inputAction.UI.Disable();
+    }
 }
