@@ -8,6 +8,7 @@ using System.Linq;
 /// </summary>
 public class StaticCanvasManager : MonoBehaviour
 {
+    public GameObject StardustCountText;
     private void Start()
     {
         foreach(Transform child in transform){
@@ -21,7 +22,7 @@ public class StaticCanvasManager : MonoBehaviour
 
     private void SetIsometricActive(bool isIsometricActive)
     {
-        var StardustCountText = transform.Find("StardustCountText").gameObject;
+        //var StardustCountText = transform.Find("StardustCountText").gameObject;
         StardustCountText.SetActive(!isIsometricActive);
         
         foreach(Transform child in transform){
