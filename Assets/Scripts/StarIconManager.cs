@@ -5,10 +5,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 public class StarIconManager : MonoBehaviour
 {
+    
+    private Image _buttonImg;
+    
+    public Sprite litStarImage;
+    public Sprite litStarImageSelected;
+    public Sprite darkStarImage;
+    public Sprite darkStarImageSelected;
+
+    public bool _isLit;
 
     public Transform starToGo;
     
@@ -21,16 +31,55 @@ public class StarIconManager : MonoBehaviour
     
     public static event Action<Transform> OnSelectStar;
     
-    // show the image of the star when hovering
+    private void Start()
+    {
+        _buttonImg = GetComponent<Image>();
+        
+        if (starToGo.GetComponent<Star>().isCreated)
+        {
+            _buttonImg.sprite = litStarImage; 
+        }
+        else
+        {
+            _buttonImg.sprite = darkStarImage; 
+        }
+        
+        
+    }
+    
+    // OnPointerEnter
     public void ShowBeamDir () 
     {
+        if (!starToGo) return;
+        
+        if (starToGo.GetComponent<Star>().isCreated)
+        {
+            _buttonImg.sprite = litStarImageSelected; 
+        }
+        else
+        {
+            _buttonImg.sprite = darkStarImageSelected; 
+        }
+        
         Debug.Log("mouse hover enter");
         OnHoverStart?.Invoke(starToGo);
         
     }
     
+    // OnPointerExit
     public void HideBeamDir () 
     {
+        if (!starToGo) return;
+        
+        if (starToGo.GetComponent<Star>().isCreated)
+        {
+            _buttonImg.sprite = litStarImage; 
+        }
+        else
+        {
+            _buttonImg.sprite = darkStarImage; 
+        }
+        
         Debug.Log("mouse hover exit");
         OnHoverStop?.Invoke(starToGo);
         

@@ -12,7 +12,7 @@ public class ButtonImageSwitch : MonoBehaviour, IPointerExitHandler, IPointerEnt
     public Sprite originalButtonImage;
     public Sprite newButtonImage;
 
-
+ 
     private void Start()
     {
         _buttonImg = GetComponent<Image>();
