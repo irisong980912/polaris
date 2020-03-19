@@ -118,4 +118,13 @@ public class DrawPlanetToStarBeam : MonoBehaviour
             beam.SetPosition(1, pointAlongLine);
         }
     }
+
+    private void OnDisable()
+    {
+        //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
+
+        StarIconManager.OnHoverStart -= OnHoverStart;
+        StarIconManager.OnHoverStop -= OnHoverStop;
+        StarIconManager.OnSelectStar -= OnSelectStar;
+    }
 }

@@ -98,4 +98,10 @@ public class FindAdjacentStars : MonoBehaviour
         print(AdjacentStarList[1].name);
     
     }
+
+    private void OnDisable()
+    {
+        //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
+        IsometricStarView.OnInitiatePointerToAdjacentStars -= OnInitiatePointerToAdjacentStars;
+    }
 }

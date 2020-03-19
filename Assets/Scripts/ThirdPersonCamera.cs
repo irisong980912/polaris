@@ -178,6 +178,12 @@ public class ThirdPersonCamera : MonoBehaviour
     private void OnDisable()
     {
         inputAction.Player.Disable();
+
+        //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
+        Orbit.OnOrbitStart -= OnOrbitStart;
+        Orbit.OnOrbitStop -= OnOrbitStop;
+        ClearLevel.OnLevelClear -= OnLevelClear;
+        IsometricStarView.OnIsometricStarView -= OnIsometricStarView;
     }
 
     private void OnIsometricStarView(bool onIso)
@@ -200,6 +206,5 @@ public class ThirdPersonCamera : MonoBehaviour
             _returnToPlayer = true;
         }
     }
-
 
 }

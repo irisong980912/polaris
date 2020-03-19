@@ -32,7 +32,10 @@ public class StaticCanvasManager : MonoBehaviour
         }
 
     }
-
-
+    private void OnDisable()
+    {
+        //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
+        IsometricStarView.OnIsometricStarView -= SetIsometricActive;
+    }
 
 }
