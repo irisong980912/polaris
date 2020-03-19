@@ -32,7 +32,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     private bool _onSlingShot;
     private Transform _starToGo;
     
-    public Vector3 disFromGoalStar = new Vector3(50,0,50);
+    public Vector3 disFromGoalStar = new Vector3(50, 0,50);
     
 
     private void Start()
@@ -95,8 +95,19 @@ public class ThirdPersonPlayer : MonoBehaviour
         // when on slingshot, make the player move towards the target 
         if (_onSlingShot)
         {
-            var idealPos = _starToGo.position + disFromGoalStar; 
+            print("|||||||||| third person player --- slngshot ||||||||||" + _starToGo.name);
             
+            // sling shot the player to the designated star starToGo
+            var desiredPosition = _starToGo.position + disFromGoalStar;
+            //transform.position = Vector3.MoveTowards(transform.position, desiredPosition, speed * 100 * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, speed * 2 * Time.fixedDeltaTime);
+
+            // TODO: disable all the figure when slingshot
+
+            if (Vector3.Distance(desiredPosition, transform.position) < 10.0f)
+            {
+                _onSlingShot = false;
+            }
         }
         
         inputAction.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();

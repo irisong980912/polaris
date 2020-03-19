@@ -13,15 +13,25 @@ public class PlayerIcon : MonoBehaviour
     public Transform player;
     private static bool _isoActive;
     private static bool _mapActive;
+    private bool _onSlingShot;
 
     private void Start()
     {
         
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarView.OnIsometricStarView += SetIsometricActive;
+        Orbit.OnSlingShot += OnSlingShot;
         GetComponent<Image>().enabled = false;
 
     }
+
+    private void OnSlingShot(bool onSlingShot, Transform _starToGo)
+    {
+        _onSlingShot = onSlingShot;
+        _isoActive = false;
+        GetComponent<Image>().enabled = false;
+    }
+
     private void FixedUpdate()
     {
         transform.position = player.position;

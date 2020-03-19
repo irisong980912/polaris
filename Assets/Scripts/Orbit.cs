@@ -60,8 +60,10 @@ public class Orbit : MonoBehaviour
 
         //if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
         
-        //InputAction replaces "Input.GetButton("Example") and holds a bool
-        if (!slingshotAction.triggered || _player.transform.parent != _self) return;
+        // haven't selected a star
+        if (!_starToGo  || _player.transform.parent != _self) return;
+        ////InputAction replaces "Input.GetButton("Example") and holds a bool
+        // if (!slingshotAction.triggered || _player.transform.parent != _self) return;
 
         if (!_launchBegan)
         {
@@ -144,6 +146,7 @@ public class Orbit : MonoBehaviour
     /// </remarks>
     private void SlingshotStart()
     {
+        print("slingshot start");
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
         _player.gameObject.transform.SetParent(null);
@@ -158,34 +161,25 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
+        print("|||||||||| orbit --- slngshot ||||||||||");
         _onSlingShot = true;
         OnSlingShot?.Invoke(_onSlingShot, _starToGo);
         
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
         
-        // sling shot the player to the designated star starToGo
-        
-        var idealPos = _starToGo.position + disFromGoalStar; 
-        
+
         // speed = _normalSpeed;
         // _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
-        //
-        // Invoke(nameof(Slingshot), 1.5f);
         //
     }
     
     private void OnSelectStar(Transform starToGo)
     {
+        print("|||||||||| orbit --- selected star ||||||||||");
         _starToGo = starToGo;
     }
-
-
-    private void finishSlingShot()
-    {
-        _onSlingShot = false;
-        OnSlingShot?.Invoke(_onSlingShot);
-    }
+    
 
     //InputActions
     //Activates all actions in Player action maps (action maps are Player and UI)

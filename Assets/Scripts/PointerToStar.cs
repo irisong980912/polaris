@@ -72,9 +72,9 @@ public class PointerToStar : MonoBehaviour
         var xDis = starPos.x - camPos.x;
         var zDis = starPos.z - camPos.z;
         
-        // print("---------------mmmmmmm");
-        // print(StarToPoint.name);
-        // print(new Vector3(xDis, 0, zDis).normalized);
+        print("---------------mmmmmmm");
+        print(StarToPoint.name);
+        print(new Vector3(xDis, 0, zDis).normalized);
 
         xDis = Math.Abs(xDis);
         zDis = Math.Abs(zDis);
@@ -103,15 +103,26 @@ public class PointerToStar : MonoBehaviour
             }
         }
         
-        // print("---------------xs");
-        // print(StarToPoint.name);
-        // print(dis3D);
+        print("---------------xs");
+        print(StarToPoint.name);
+        print(dis3D);
             
         //due to the rotation of the camera, world space z is camera x, world space x is camera y
-        var viewportPos = cam.ViewportToWorldPoint(new Vector3(dis3D.z, dis3D.x, 
-                                                        cam.nearClipPlane + disToClipPanel));
+        // var viewportPos = cam.ViewportToWorldPoint(new Vector3(dis3D.z, dis3D.x,
+        // cam.nearClipPlane + disToClipPanel));
+
+        Vector3 viewportPos;
+        if (name == "StarButton1")
+        {
+             viewportPos = cam.ViewportToWorldPoint(new Vector3(1f, 0.5f, 
+                cam.nearClipPlane + disToClipPanel));
+        } else 
+        {
+             viewportPos = cam.ViewportToWorldPoint(new Vector3(0.5f, 1f, 
+                cam.nearClipPlane + disToClipPanel));
+        }
+        
         transform.position = viewportPos;
-        transform.rotation = cam.transform.rotation;
         transform.LookAt(cam.transform.position, -Vector3.up);
         
         // TODO： refine the rotation direction of the pointer
