@@ -2589,10 +2589,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: 6-4 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e667b7e4e42ec934e82db1551e719f02, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
       value: Planet 6-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4588104
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4588104
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45881048
       objectReference: {fileID: 0}
     - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
@@ -2976,6 +2996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1-1 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ca2a85bde52de489549624ba02aacb, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
@@ -3231,6 +3256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 6-3 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ca2a85bde52de489549624ba02aacb, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
@@ -3732,10 +3762,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: 7-2 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e667b7e4e42ec934e82db1551e719f02, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
       value: Planet 7-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.46213654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.46213654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4621366
       objectReference: {fileID: 0}
     - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
@@ -4919,6 +4969,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4-1 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ca2a85bde52de489549624ba02aacb, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
@@ -6375,6 +6430,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3-1 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6ca2a85bde52de489549624ba02aacb, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
@@ -6772,10 +6832,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: 6-2 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e667b7e4e42ec934e82db1551e719f02, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
       value: Planet 6-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.38436377
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.38436377
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38436383
       objectReference: {fileID: 0}
     - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
@@ -9160,10 +9240,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1-2 Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3668574674858672336, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e667b7e4e42ec934e82db1551e719f02, type: 2}
     - target: {fileID: 6349357668540798856, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
       propertyPath: m_Name
       value: Planet 1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.44276673
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.44276673
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951880711535323508, guid: 399b4fc82195942069d447f4154576f1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4427668
       objectReference: {fileID: 0}
     - target: {fileID: 8039870725245033878, guid: 399b4fc82195942069d447f4154576f1,
         type: 3}
@@ -10614,6 +10714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349906094361917149, guid: 81644a92e9f8d9d4e9b13483991da7f1,
+        type: 3}
+      propertyPath: totalStarNum
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81644a92e9f8d9d4e9b13483991da7f1, type: 3}
