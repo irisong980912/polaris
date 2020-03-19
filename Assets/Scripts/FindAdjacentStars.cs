@@ -30,15 +30,10 @@ public class FindAdjacentStars : MonoBehaviour
         // TODO: need to listen to the event of isometric cam. 
         IsometricStarView.OnInitiatePointerToAdjacentStars += OnInitiatePointerToAdjacentStars;
     }
-
-    private void Update()
-    {
-    }
-
+    
     private void OnInitiatePointerToAdjacentStars(Transform star)
     {
         // TODO: find the star that player is in 
-        print("this is OnInitiatePointerToAdjacentStars");
         currStar = star;
         FindTwoAdjacentStars();
         PopulateChildList();
@@ -48,14 +43,15 @@ public class FindAdjacentStars : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (child.name == "ArrowIcon1")
+            switch (child.name)
             {
-                child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[0];
-            } else if (child.name == "ArrowIcon2")
-            {
-                child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[1];
+                case "ArrowIcon1":
+                    child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[0];
+                    break;
+                case "ArrowIcon2":
+                    child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[1];
+                    break;
             }
-                
         }
     }
 

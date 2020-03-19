@@ -11,8 +11,6 @@ public class IsometricStarView : MonoBehaviour
     
     // TODO: change the naming to enter planet orbit
     // star view pos to planet view pos
-    public static event Action OnEnterGravityField;
-    public static event Action OnExitGravityField;
     public Transform isometricStarViewPos;
 
     public Transform cam;
@@ -22,18 +20,17 @@ public class IsometricStarView : MonoBehaviour
 
     private void OnTriggerEnter(Collider c)
     {
-        // when star are lit
         if (!transform.parent.parent) return; 
-        if (!transform.parent.parent.CompareTag("|Star|")) return; 
+        if (!transform.parent.parent.tag.Contains("|Star|")) return; 
         if (!transform.parent.parent.GetComponent<Star>().isCreated) return;
         if (!c.tag.Contains("|Player|")) return;
         
-        // print("--------------- iso-planet core parent parent");
-        // print(transform.parent.parent.tag);
         OnInitiatePointerToAdjacentStars?.Invoke(transform.parent.parent);
 
         cam.GetComponent<ThirdPersonCamera>().isometricStarViewPos = isometricStarViewPos;
-        Invoke(nameof(EnterField), 0.5f);
+        
+        // give time for camera to pan
+        Invoke(nameof(StartIsoView), 0.5f);
     }
     
     private void OnTriggerExit(Collider c)
@@ -43,17 +40,12 @@ public class IsometricStarView : MonoBehaviour
         
         _isIsometricStarView = false;
         OnIsometricStarView?.Invoke(_isIsometricStarView);
-        
-        OnExitGravityField?.Invoke();
-    
-    
     }
     
-    private void EnterField()
+    private void StartIsoView()
     {
         Debug.Log("enter star 1 gravity field ");
-        OnEnterGravityField?.Invoke();
-        
+
         _isIsometricStarView = true;
         OnIsometricStarView?.Invoke(_isIsometricStarView);
         
