@@ -52,12 +52,12 @@ public class FindAdjacentStars : MonoBehaviour
             {
                 print("StarButton1");
                 child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[0];
-                child.GetComponent<ChooseStarButton>().starToGo = AdjacentStarList[0].transform;
+                child.GetComponent<StarIconManager>().starToGo = AdjacentStarList[0].transform;
             } else if (child.name == "StarButton2")
             {
                 print("StarButton2");
                 child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[1];
-                child.GetComponent<ChooseStarButton>().starToGo = AdjacentStarList[1].transform;
+                child.GetComponent<StarIconManager>().starToGo = AdjacentStarList[1].transform;
             }
                 
         }

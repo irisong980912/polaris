@@ -44,7 +44,7 @@ public class Orbit : MonoBehaviour
 
     private void Start()
     {
-        ChooseStarButton.OnSelectStar += OnSelectStar;
+        StarIconManager.OnSelectStar += OnSelectStar;
         _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
 
         // Store the normal rotation speed so it can be restored after a slingshot.

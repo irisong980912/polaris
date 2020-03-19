@@ -1,23 +1,35 @@
 using System;
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-/// <summary>
-/// Manages star content
-/// 
-/// </summary>
+
 public class StarIconManager : MonoBehaviour
 {
-    public bool isCreated;
-    public float gravityRadius = 180.0f;
 
-    void Start()
+    public Transform starToGo;
+    
+    public static event Action<Transform> OnSelectStar;
+    
+    // show the image of the star when hovering
+    public void ShowFrontalImage () 
     {
-        isCreated = false;
+        Debug.Log("mouse hover");
+        
+    }
+    
+    
+
+    public void SelectStarToSlingShot()
+    {
+        print("mouse onclick -- SelectStarToSlingShot");
+
+        starToGo = GetComponent<PointerToStar>().StarToPoint.transform;
+        
+        OnSelectStar?.Invoke(starToGo);
     }
 
-    // private void Update()
-    // {
-    //     stardustCount.text = "Stardust: " + stardust;
-    // }
+    
 }
