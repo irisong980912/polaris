@@ -1020,10 +1020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15947a379a1491bbade84c2dae666d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StarToPoint: {fileID: 0}
-  cam: {fileID: 883709088}
-  imageWidth: 0
-  disToClipPanel: 0.4
 --- !u!114 &142792503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4201,10 +4197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15947a379a1491bbade84c2dae666d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StarToPoint: {fileID: 0}
-  cam: {fileID: 883709088}
-  imageWidth: 0
-  disToClipPanel: 0.4
 --- !u!114 &827739173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8447,6 +8439,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1839440597}
+          m_MethodName: SelectStarToSlingShot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1856641915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8462312837974954525, guid: 36af554bcc57e4a61a46eb296aa28465,
@@ -10425,6 +10432,11 @@ PrefabInstance:
     - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: topViewCamPos
+      value: 
+      objectReference: {fileID: 1391387692}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: constellationViewPos
       value: 
       objectReference: {fileID: 1391387692}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,

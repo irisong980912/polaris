@@ -29,7 +29,8 @@ public class DrawPlanetToStarBeam : MonoBehaviour
         StarIconManager.OnHoverStart += OnHoverStart;
         StarIconManager.OnHoverStop += OnHoverStop;
         StarIconManager.OnSelectStar += OnSelectStar;
-        _connectBeam = false;
+        // _connectBeam = false;
+        player = transform.parent;
 
     }
 
@@ -46,6 +47,7 @@ public class DrawPlanetToStarBeam : MonoBehaviour
         destinStar = targetStar;
         // planet core parent
 
+        player = transform.parent;
         if (!player.parent) return;
         
         print("on hover star --" + player.parent.parent.name);

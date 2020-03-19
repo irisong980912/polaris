@@ -70,9 +70,9 @@ public class ThirdPersonCamera : MonoBehaviour
     {
      
         
-        if ((_levelCleared || _enableIsometricView) && _onOrbit)
+        if ((_levelCleared || (_enableIsometricView && _onOrbit)))
         {
-            var desiredPosition = viewPos.position ;
+            var desiredPosition = _viewPos.position ;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
             var newRot = Quaternion.Euler(90, -45, -500); 
@@ -159,6 +159,7 @@ public class ThirdPersonCamera : MonoBehaviour
     
     private void OnLevelClear()
     {
+        print("clear level ------ camera !~@#@#@#@#$#$å");
         _rotateToTopView = true;
         _viewPos = constellationViewPos;
         _levelCleared = true;
@@ -187,7 +188,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if (_onIso)
         {
-            viewPos = isometricStarViewPos;
+            _viewPos = isometricStarViewPos;
             _enableIsometricView = true;
             _returnToPlayer = false;
             _rotateToTopView = true;

@@ -38,7 +38,7 @@ public class StarIconManager : MonoBehaviour
     
     public void SelectStarToSlingShot()
     {
-        print("mouse onclick -- SelectStarToSlingShot");
+        print("!!!!!!!!!!!!!mouse onclick -- SelectStarToSlingShot");
         if (!starToGo) return;
         OnSelectStar?.Invoke(starToGo);
     }
