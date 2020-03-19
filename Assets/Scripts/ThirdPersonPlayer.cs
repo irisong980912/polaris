@@ -22,6 +22,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
 
+    // public Transform firstStar;
+
     //InputActions
     PlayerInputActions inputAction;
     
@@ -44,6 +46,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarView.OnIsometricStarView += OnIsometricStarView;
         Orbit.OnSlingShot += OnSlingShot;
+        // transform.LookAt(firstStar);
     }
 
     private void OnSlingShot(bool onSlingShot, Transform starToGo)

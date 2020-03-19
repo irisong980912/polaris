@@ -16,6 +16,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private Transform _cameraTarget;
     private Vector3 _currentCameraVelocity = Vector3.zero;
+    
+    // public Transform firstStar;
 
 
     //InputActions
@@ -60,7 +62,7 @@ public class ThirdPersonCamera : MonoBehaviour
         ClearLevel.OnLevelClear += OnLevelClear;
         IsometricStarView.OnIsometricStarView += OnIsometricStarView;
 
-        var dir = new Vector3(0, 0, -10.0f);
+        var dir = new Vector3(-10.0f, 0, 0f);
         transform.position = player.position + dir;
 
         _mainCamera.LookAt(_cameraTarget);
