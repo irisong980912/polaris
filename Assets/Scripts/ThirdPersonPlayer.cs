@@ -56,7 +56,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         stardustCount.text = "Stardust: " + stardust;
         
@@ -86,6 +86,9 @@ public class ThirdPersonPlayer : MonoBehaviour
                 interpretedYInput = -interpretedYInput;
             }
             transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+            Quaternion q = transform.rotation;
+            q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
+            transform.rotation = q;
         }
 
         transform.position += transform.forward * speed * Time.deltaTime;
