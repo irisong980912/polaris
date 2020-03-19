@@ -29,17 +29,18 @@ public class ThirdPersonPlayer : MonoBehaviour
     Vector2 movementInput;
     private bool _levelCleared;
     private bool _enableIsometricViewMovement;
+
     private bool _onSlingShot;
     private Transform _starToGo;
-    
     public Vector3 disFromGoalStar = new Vector3(50, 0,50);
     
+    private bool _onIso;
+
 
     private void Start()
     {
         CameraSwitch.OnMapSwitch += SetMapActive;
-        IsometricStarView.OnEnterGravityField += OnEnterGravityField;
-        IsometricStarView.OnExitGravityField += OnExitGravityField;
+        IsometricStarView.OnIsometricStarView += OnIsometricStarView;
         Orbit.OnSlingShot += OnSlingShot;
     }
 
@@ -47,6 +48,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         _onSlingShot = onSlingShot;
         _starToGo = starToGo;
+
     }
 
     private static void SetMapActive(bool mapActive)
@@ -117,9 +119,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         var xAxisInput = movementInput.x;
         var yAxisInput = movementInput.y;
         
-        // TODO: move the player in a 2D perspective
+        
         if (_enableIsometricViewMovement)
         {
+            // TODO: move the player in a 2D perspective
             var playerPos = transform.position;
             playerPos.x += xAxisInput;
             playerPos.z += xAxisInput;
@@ -135,9 +138,8 @@ public class ThirdPersonPlayer : MonoBehaviour
             var directionOfTravel = cam.TransformDirection(directionFromInput);
         
             transform.Translate(directionOfTravel * speed, Space.World);
-            transform.forward = directionOfTravel; 
-            
-            
+            transform.forward = directionOfTravel;
+
         }
         
         
@@ -157,26 +159,13 @@ public class ThirdPersonPlayer : MonoBehaviour
         inputAction.Player.Disable();
     }
     
-    private void OnLevelClear()
-    {
-        _levelCleared = true;
-    }
 
-    private void OnEnterGravityField()
+    private void OnIsometricStarView(bool onIso)
     {
-        Debug.Log("camera -- OnEnterGravityField");
+        Debug.Log("camera -- OnIsometricStarView");
         if (_levelCleared) return;
-        _enableIsometricViewMovement = true;
-
+        _onIso = onIso;
+        _enableIsometricViewMovement = _onIso;
     }
-    
-    private void OnExitGravityField()
-    {
-        Debug.Log("camera -- OnExitGravityField");
-        if (_levelCleared) return;
-        _enableIsometricViewMovement = false;
-
-    }
-
 
 }

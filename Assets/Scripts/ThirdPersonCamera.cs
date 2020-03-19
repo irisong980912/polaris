@@ -30,12 +30,10 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform constellationViewPos;
     public Transform isometricStarViewPos;
     
-    private bool _isIsometricStarView;
     private bool _returnToPlayer;
     private bool _rotateToTopView;
     private bool _onOrbit;
-    public static event Action<bool> onFinishCameraPan;
-    private bool _finishCameraPan;
+    private bool _onIso;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -60,8 +58,7 @@ public class ThirdPersonCamera : MonoBehaviour
         Orbit.OnOrbitStart += OnOrbitStart;
         Orbit.OnOrbitStop += OnOrbitStop;
         ClearLevel.OnLevelClear += OnLevelClear;
-        IsometricStarView.OnEnterGravityField += OnEnterGravityField;
-        IsometricStarView.OnExitGravityField += OnExitGravityField;
+        IsometricStarView.OnIsometricStarView += OnIsometricStarView;
 
         var dir = new Vector3(0, 0, -10.0f);
         transform.position = player.position + dir;
@@ -75,18 +72,11 @@ public class ThirdPersonCamera : MonoBehaviour
         
         if ((_levelCleared || _enableIsometricView) && _onOrbit)
         {
-            _finishCameraPan = false;
-            onFinishCameraPan?.Invoke(_finishCameraPan);
-            
-            var dir = new Vector3(0, 20f, 0);
-            var desiredPosition = _viewPos.position ;
+            var desiredPosition = viewPos.position ;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
-            
-            _finishCameraPan = true;
-            onFinishCameraPan?.Invoke(_finishCameraPan);
         }
 
         else
@@ -189,24 +179,25 @@ public class ThirdPersonCamera : MonoBehaviour
         inputAction.Player.Disable();
     }
 
-    private void OnEnterGravityField()
+    private void OnIsometricStarView(bool onIso)
     {
-        Debug.Log("camera -- OnEnterGravityField");
         if (_levelCleared) return;
-        _viewPos = isometricStarViewPos;
-        _enableIsometricView = true;
-        _returnToPlayer = false;
-        _rotateToTopView = true;
+        Debug.Log("camera -- OnIsometricStarView");
+        _onIso = onIso;
 
-    }
-    
-    private void OnExitGravityField()
-    {
-        Debug.Log("camera -- OnExitGravityField");
-        if (_levelCleared) return;
-        _enableIsometricView = false;
-        _returnToPlayer = true;
+        if (_onIso)
+        {
+            viewPos = isometricStarViewPos;
+            _enableIsometricView = true;
+            _returnToPlayer = false;
+            _rotateToTopView = true;
+        }
 
+        else
+        {
+            _enableIsometricView = false;
+            _returnToPlayer = true;
+        }
     }
 
 
