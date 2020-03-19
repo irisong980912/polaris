@@ -92,6 +92,8 @@ public class StarIconManager : MonoBehaviour
         OnSelectStar?.Invoke(starToGo);
     }
     
+    
+    
     private void Update()
     {
         if (!player) return;
@@ -101,5 +103,5 @@ public class StarIconManager : MonoBehaviour
         starBtnText.text = disToStar + "m";
     }
 
-    
+     
 }

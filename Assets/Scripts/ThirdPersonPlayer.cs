@@ -35,6 +35,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     public Vector3 disFromGoalStar = new Vector3(50, 0,50);
     
     private bool _onIso;
+    private bool _beginSlingshot;
+    public static event Action<bool> EndSlingShot;
 
 
     private void Start()
@@ -46,9 +48,9 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void OnSlingShot(bool onSlingShot, Transform starToGo)
     {
+        print("+++++++++++++  player is on slingshot");
         _onSlingShot = onSlingShot;
         _starToGo = starToGo;
-
     }
 
     private static void SetMapActive(bool mapActive)
@@ -77,6 +79,12 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void Update()
     {
         stardustCount.text = "Stardust: " + stardust;
+    }
+    
+    private void endSlingshot()
+    {
+        _beginSlingshot = false;
+        EndSlingShot?.Invoke(_beginSlingshot);
     }
 
     private void FixedUpdate()
@@ -108,7 +116,10 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             if (Vector3.Distance(desiredPosition, transform.position) < 10.0f)
             {
+                print("DISABLE |||||||||| third person player --- slngshot ||||||||||");
                 _onSlingShot = false;
+                endSlingshot();
+
             }
         }
         
