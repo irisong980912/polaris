@@ -46,7 +46,10 @@ public class BgmLayers : MonoBehaviour
 
         foreach (var layer in _allLayers)
         {
-            layer.volume = 0;
+          
+                layer.volume = 0;
+
+           
         }
 
         _allLayers[0].volume = 1;
@@ -57,11 +60,16 @@ public class BgmLayers : MonoBehaviour
 
     private void OnStarCreation()
     {
-        foreach (var layer in _allLayers.Where(layer => !(layer.volume > 0.1)))
-        {
-            layer.volume = 1;
-            break;
-        }
+        //foreach (var layer in _allLayers)
+           foreach (var layer in _allLayers.Where(layer => !(layer.volume > 0.1)))
+
+            {
+           
+                layer.volume = 1;
+                break;
+            }
+            
+       
     }
 
     private void OnStarDestruction()
@@ -69,13 +77,23 @@ public class BgmLayers : MonoBehaviour
         var previous = _allLayers[0];
         foreach (var layer in _allLayers)
         {
-            if (!(layer.volume > 0.1))
-            {
-                previous.volume = 0;
-            }
-            previous = layer;
+            
+                if (!(layer.volume > 0.1))
+                {
+                    previous.volume = 0;
+                }
+                previous = layer;
+           
+            
         }
         
     }
-    
+
+    private void OnDisable()
+    {
+        //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
+        CreateStar.OnStarCreation -= OnStarCreation;
+        DestroyStar.OnStarDestruction -= OnStarDestruction;
+    }
+
 }
