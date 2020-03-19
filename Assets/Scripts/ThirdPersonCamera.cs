@@ -87,7 +87,6 @@ public class ThirdPersonCamera : MonoBehaviour
             
             _finishCameraPan = true;
             onFinishCameraPan?.Invoke(_finishCameraPan);
-
         }
 
         else

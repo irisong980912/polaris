@@ -53,6 +53,7 @@ public class PointerToStar : MonoBehaviour
     
     private void FinishPan()
     {
+        print("========= finish pan and enable image ----------");
         _finishCameraPan = true;
         GetComponent<Image>().enabled = true;
 

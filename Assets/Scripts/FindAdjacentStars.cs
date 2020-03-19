@@ -48,11 +48,13 @@ public class FindAdjacentStars : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (child.name == "ArrowIcon1")
+            if (child.name == "StarButton1")
             {
+                print("StarButton1");
                 child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[0];
-            } else if (child.name == "ArrowIcon2")
+            } else if (child.name == "StarButton2")
             {
+                print("StarButton2");
                 child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[1];
             }
                 

@@ -29,13 +29,24 @@ public class ThirdPersonPlayer : MonoBehaviour
     Vector2 movementInput;
     private bool _levelCleared;
     private bool _enableIsometricViewMovement;
-
+    private bool _onSlingShot;
+    private Transform _starToGo;
+    
+    public Vector3 disFromGoalStar = new Vector3(50,0,50);
+    
 
     private void Start()
     {
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarView.OnEnterGravityField += OnEnterGravityField;
         IsometricStarView.OnExitGravityField += OnExitGravityField;
+        Orbit.OnSlingShot += OnSlingShot;
+    }
+
+    private void OnSlingShot(bool onSlingShot, Transform starToGo)
+    {
+        _onSlingShot = onSlingShot;
+        _starToGo = starToGo;
     }
 
     private static void SetMapActive(bool mapActive)
@@ -80,6 +91,13 @@ public class ThirdPersonPlayer : MonoBehaviour
         //movementInput = inputAction.Player.Move.ReadValue<Vector2>();
         
         if (_mapActive) return;
+
+        // when on slingshot, make the player move towards the target 
+        if (_onSlingShot)
+        {
+            var idealPos = _starToGo.position + disFromGoalStar; 
+            
+        }
         
         inputAction.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         inputAction.Player.Move.canceled += ctx => movementInput = Vector2.zero;

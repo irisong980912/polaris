@@ -26,13 +26,14 @@ public class Orbit : MonoBehaviour
     private bool _launchBegan;
     public static event Action OnOrbitStart;
     public static event Action OnOrbitStop;
-    
-    public static event Action OnSlingShot;
+    public static event Action<bool, Transform> OnSlingShot;
 
     //InputActions
     PlayerInputActions inputAction;
 
     public InputAction slingshotAction;
+    private Transform _starToGo;
+    private bool _onSlingShot;
 
     void Awake()
     {
@@ -43,6 +44,7 @@ public class Orbit : MonoBehaviour
 
     private void Start()
     {
+        ChooseStarButton.OnSelectStar += OnSelectStar;
         _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
 
         // Store the normal rotation speed so it can be restored after a slingshot.
@@ -156,12 +158,33 @@ public class Orbit : MonoBehaviour
     /// </summary>
     private void Slingshot()
     {
-        OnSlingShot?.Invoke();
+        _onSlingShot = true;
+        OnSlingShot?.Invoke(_onSlingShot, _starToGo);
+        
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
-        speed = _normalSpeed;
-        _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
+        
+        // sling shot the player to the designated star starToGo
+        
+        var idealPos = _starToGo.position + disFromGoalStar; 
+        
+        // speed = _normalSpeed;
+        // _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
+        //
+        // Invoke(nameof(Slingshot), 1.5f);
+        //
+    }
+    
+    private void OnSelectStar(Transform starToGo)
+    {
+        _starToGo = starToGo;
+    }
 
+
+    private void finishSlingShot()
+    {
+        _onSlingShot = false;
+        OnSlingShot?.Invoke(_onSlingShot);
     }
 
     //InputActions
