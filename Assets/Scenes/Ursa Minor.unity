@@ -12135,6 +12135,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1148804705}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: distanceFromPlayer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: cameraFollowDelay
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_Name

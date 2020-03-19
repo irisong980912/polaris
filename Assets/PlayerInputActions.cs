@@ -27,14 +27,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""7526b167-daa5-4a32-9816-92f26f24f502"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Map"",
                     ""type"": ""Button"",
                     ""id"": ""21c0be6c-4ec6-4050-abef-a57beb5c2b6b"",
@@ -161,105 +153,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""161538bc-ab8d-4226-a4aa-4ff01beddcab"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4dcc4a4d-edaf-4b72-94be-b8d9accbef74"",
-                    ""path"": ""<DualShockGamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d4044a5a-9416-4558-93bb-44156efc3c9e"",
-                    ""path"": ""<XInputController>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3047bbe8-05c2-4e30-bff0-661fc16d01c6"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Keys"",
-                    ""id"": ""6ae82e35-0817-4212-bc55-e5950c9c89aa"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""176c700b-aa06-4352-8e46-f11c3e063310"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": ""Invert"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""b9122dac-8526-4f6d-af9c-fc421c7a1d70"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": ""Invert"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""eadd33ff-677f-4984-a0c5-13160e2a1b02"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""e9873050-b08c-41ae-a553-359c233cda57"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -1482,7 +1375,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Map = m_Player.FindAction("Map", throwIfNotFound: true);
         m_Player_Boost = m_Player.FindAction("Boost", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
@@ -1548,7 +1440,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Map;
     private readonly InputAction m_Player_Boost;
     private readonly InputAction m_Player_Interact;
@@ -1559,7 +1450,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Map => m_Wrapper.m_Player_Map;
         public InputAction @Boost => m_Wrapper.m_Player_Boost;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
@@ -1577,9 +1467,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Map.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMap;
                 @Map.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMap;
                 @Map.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMap;
@@ -1602,9 +1489,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
                 @Map.started += instance.OnMap;
                 @Map.performed += instance.OnMap;
                 @Map.canceled += instance.OnMap;
@@ -1734,7 +1618,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
         void OnMap(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);

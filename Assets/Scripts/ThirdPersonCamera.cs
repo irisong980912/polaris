@@ -21,9 +21,14 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform topViewCamPos;
 
     //InputActions
-    PlayerInputActions inputAction;
+    PlayerInputActions _inputAction;
 
-    Vector2 cameraRotationInput;
+    readonly Vector2 _cameraRotationInput;
+
+    public ThirdPersonCamera(Vector2 cameraRotationInput)
+    {
+        _cameraRotationInput = cameraRotationInput;
+    }
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
@@ -33,7 +38,7 @@ public class ThirdPersonCamera : MonoBehaviour
     void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
+        _inputAction = new PlayerInputActions();
     }
 
     private void Start()
@@ -79,12 +84,9 @@ public class ThirdPersonCamera : MonoBehaviour
             //cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
             
             // TODO: make the camera rotate faster to follow player rotation
-            
-            inputAction.Player.Look.performed += ctx => cameraRotationInput = ctx.ReadValue<Vector2>();
-            inputAction.Player.Look.canceled += ctx => cameraRotationInput = Vector2.zero;
-            
-            var xAxisInput = cameraRotationInput.x;
-            var yAxisInput = cameraRotationInput.y;
+
+            var xAxisInput = _cameraRotationInput.x;
+            var yAxisInput = _cameraRotationInput.y;
             
             
             var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
@@ -105,7 +107,9 @@ public class ThirdPersonCamera : MonoBehaviour
             
             if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
             {
-                distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
+                var position = _mainCamera.position;
+                var position1 = _cameraTarget.position;
+                distanceToTarget = Vector3.Distance(position, position1);
                 _mainCamera.LookAt(_cameraTarget);
                 
                 var xRotationMagnitude = xAxisInput * maximumRotationSpeed;
@@ -117,8 +121,8 @@ public class ThirdPersonCamera : MonoBehaviour
             
                 // After rotating the camera, it will no longer be pointing at the player.
                 // By translating the camera as follows, it will be adjusted to point at the player again.
-                var lookingAtPosition = _mainCamera.position + _mainCamera.forward * distanceToTarget;
-                var correctivePath = _cameraTarget.position - lookingAtPosition;
+                var lookingAtPosition = position + _mainCamera.forward * distanceToTarget;
+                var correctivePath = position1 - lookingAtPosition;
                 
                 _mainCamera.Translate(correctivePath, Space.World);
             }
@@ -158,13 +162,13 @@ public class ThirdPersonCamera : MonoBehaviour
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
-        inputAction.Player.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
-        inputAction.Player.Disable();
+        _inputAction.Player.Disable();
     }
 
 

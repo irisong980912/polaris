@@ -85,13 +85,16 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 interpretedYInput = -interpretedYInput;
             }
-            transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
-            Quaternion q = transform.rotation;
+
+            Transform transform1;
+            (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+            Quaternion q = transform1.rotation;
             q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
-            transform.rotation = q;
+            transform1.rotation = q;
         }
 
-        transform.position += transform.forward * speed * Time.deltaTime;
+        var transform2 = transform;
+        transform2.position += transform2.forward * (speed * Time.deltaTime);
         // transform.Translate(transform.forward * speed);
 
         // ======================================================================

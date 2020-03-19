@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.015121656, g: 0.004663416, b: 0.028162796, a: 1}
+  m_IndirectSpecularColor: {r: 0.015151451, g: 0.004667077, b: 0.028175348, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9753,7 +9753,7 @@ MonoBehaviour:
     m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 106942a1-71f1-4d5c-a5c5-b3052ccac360
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -9781,10 +9781,10 @@ MonoBehaviour:
   ringAnimationController: []
   activationSpeedMultiplier: 1
   Interact:
-    m_Name: 
+    m_Name: Interact
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: d9f4f1f3-4045-4600-9ccc-a97f775da12e
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -10950,6 +10950,16 @@ PrefabInstance:
       propertyPath: topViewCamPos
       value: 
       objectReference: {fileID: 1391387692}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: distanceFromPlayer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: cameraFollowDelay
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_Name
