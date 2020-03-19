@@ -24,9 +24,8 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     private bool _draw;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        player = transform.parent;
         StarIconManager.OnHoverStart += OnHoverStart;
         StarIconManager.OnHoverStop += OnHoverStop;
         StarIconManager.OnSelectStar += OnSelectStar;
@@ -46,6 +45,11 @@ public class DrawPlanetToStarBeam : MonoBehaviour
 
         destinStar = targetStar;
         // planet core parent
+
+        if (!player.parent) return;
+        
+        print("on hover star --" + player.parent.parent.name);
+        
         if (!player.parent.parent.CompareTag("|Planet|")) return;
         print("on hover star -- draw planet to star beam -- find planet");
         curPlanet = player.parent.parent;
@@ -74,29 +78,26 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     {
 
         if (!_connectBeam) return;
-        print("animate beam for planet and star");
         DrawBeam();
     
     }
-    
-    void DrawBeam()
+
+    private void DrawBeam()
     {
-        Vector3 pointA = curPlanet.position;
-        Vector3 pointB = destinStar.position;
+        var pointA = curPlanet.position;
+        var pointB = destinStar.position;
         
         
         beam.SetPosition(0, curPlanet.position);
         beam.SetPosition(1, curPlanet.position);
     
         dist = Vector3.Distance(curPlanet.position, destinStar.position);
-
-    
-        print("draw conse");
+        
         if (counter < dist && _draw)
         {
             counter += 0.1f / beamDrawSpeed;
     
-            float x = Mathf.Lerp(0, dist, counter);
+            var x = Mathf.Lerp(0, dist, counter);
     
             Vector3 pointAlongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
             beam.SetPosition(1, pointAlongLine);
@@ -106,9 +107,9 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     
             counter -= 0.1f / beamDrawSpeed;
     
-            float x = Mathf.Lerp(0, dist, counter);
+            var x = Mathf.Lerp(0, dist, counter);
     
-            Vector3 pointAlongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
+            var pointAlongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
             beam.SetPosition(1, pointAlongLine);
         }
     }

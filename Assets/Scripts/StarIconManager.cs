@@ -39,9 +39,7 @@ public class StarIconManager : MonoBehaviour
     public void SelectStarToSlingShot()
     {
         print("mouse onclick -- SelectStarToSlingShot");
-
-        starToGo = GetComponent<PointerToStar>().StarToPoint.transform;
-        
+        if (!starToGo) return;
         OnSelectStar?.Invoke(starToGo);
     }
     

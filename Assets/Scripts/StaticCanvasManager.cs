@@ -10,13 +10,12 @@ public class StaticCanvasManager : MonoBehaviour
 {
     private void Start()
     {
-        // foreach(Transform child in transform){
-        //     if(child.gameObject.tag == "|StarButton|"){
-        //         child.gameObject.SetActive(false);
-        //     }
-        // }
+        foreach(Transform child in transform){
+            if(child.gameObject.tag == "|StarButton|"){
+                child.gameObject.SetActive(false);
+            }
+        }
         
-        // _isIsometricActive = false;
         IsometricStarView.OnIsometricStarView += SetIsometricActive;
     }
 

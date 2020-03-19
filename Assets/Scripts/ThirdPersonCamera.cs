@@ -26,7 +26,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _enableIsometricView;
     private bool _levelCleared;
 
-    public Transform viewPos;
+    private Transform _viewPos;
     public Transform constellationViewPos;
     public Transform isometricStarViewPos;
     
@@ -79,7 +79,7 @@ public class ThirdPersonCamera : MonoBehaviour
             onFinishCameraPan?.Invoke(_finishCameraPan);
             
             var dir = new Vector3(0, 20f, 0);
-            var desiredPosition = viewPos.position ;
+            var desiredPosition = _viewPos.position ;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
             var newRot = Quaternion.Euler(90, -45, -500); 
@@ -170,7 +170,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void OnLevelClear()
     {
         _rotateToTopView = true;
-        viewPos = constellationViewPos;
+        _viewPos = constellationViewPos;
         _levelCleared = true;
     }
 
@@ -193,7 +193,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         Debug.Log("camera -- OnEnterGravityField");
         if (_levelCleared) return;
-        viewPos = isometricStarViewPos;
+        _viewPos = isometricStarViewPos;
         _enableIsometricView = true;
         _returnToPlayer = false;
         _rotateToTopView = true;

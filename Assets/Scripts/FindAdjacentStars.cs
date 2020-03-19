@@ -51,12 +51,10 @@ public class FindAdjacentStars : MonoBehaviour
             if (child.name == "StarButton1")
             {
                 print("StarButton1");
-                child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[0];
                 child.GetComponent<StarIconManager>().starToGo = AdjacentStarList[0].transform;
             } else if (child.name == "StarButton2")
             {
                 print("StarButton2");
-                child.GetComponent<PointerToStar>().StarToPoint = AdjacentStarList[1];
                 child.GetComponent<StarIconManager>().starToGo = AdjacentStarList[1].transform;
             }
                 
@@ -75,7 +73,7 @@ public class FindAdjacentStars : MonoBehaviour
         // select the two adjacent stars
         try
         {
-            foreach (var o in GameObject.FindObjectsOfType(typeof(GameObject)))
+            foreach (var o in FindObjectsOfType(typeof(GameObject)))
             {
                 var go = (GameObject) o;
                 if (!go.tag.Contains("|Star|")) continue;
