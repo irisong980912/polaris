@@ -12279,7 +12279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5137222418490447973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1402579469393235699, guid: 2aaa38457410ac14d9b7bbab39151b8a,
