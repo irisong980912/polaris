@@ -40,6 +40,7 @@ public class PlanetTopView : MonoBehaviour
     private void FixedUpdate()
     {
         if (!_startOrbit) return;
+        if (!player.parent) return;
         if (!player.parent.tag.Contains("|PlanetCore|")) return;
         planetToTarget = player.parent;
         var dir = new Vector3(xDisToPlanet, yDisToPlanet, zDisToPlanet);

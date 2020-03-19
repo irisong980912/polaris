@@ -22,6 +22,7 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     private bool _levelClear;
     private bool _connectBeam;
     private bool _draw;
+    private bool _endDraw;
 
     // Start is called before the first frame update
     private void Start()
@@ -29,7 +30,7 @@ public class DrawPlanetToStarBeam : MonoBehaviour
         StarIconManager.OnHoverStart += OnHoverStart;
         StarIconManager.OnHoverStop += OnHoverStop;
         StarIconManager.OnSelectStar += OnSelectStar;
-        // _connectBeam = false;
+        _connectBeam = false;
         player = transform.parent;
 
     }
@@ -37,10 +38,12 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     private void OnSelectStar(Transform obj)
     {
         _draw = false;
+        _endDraw = true;
     }
     
     private void OnHoverStart(Transform targetStar)
     {
+        _endDraw = false;
         print("on hover star -- draw planet to star beam");
         print(targetStar.name);
 
@@ -104,7 +107,7 @@ public class DrawPlanetToStarBeam : MonoBehaviour
             Vector3 pointAlongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
             beam.SetPosition(1, pointAlongLine);
         }
-        else if (counter != 0 && !_draw)
+        else if ((counter != 0 && !_draw) || (counter != 0 &&_endDraw))
         {
     
             counter -= 0.1f / beamDrawSpeed;

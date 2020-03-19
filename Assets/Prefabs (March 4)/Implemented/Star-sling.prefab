@@ -996,9 +996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15aaeb50015b0342bef1f35f98129b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroySound: {fileID: 373813919103060318}
+  destroySound: {fileID: 0}
   destroySoundContainer: {fileID: 7531728700848219579}
-  disperseDustSound: {fileID: 3858300112085188832}
+  disperseDustSound: {fileID: 0}
   disperseDustSoundContainer: {fileID: 4007785412229968600}
   onTrigger: 0
   usedStardust: []
@@ -1007,10 +1007,10 @@ MonoBehaviour:
   ringAnimationController: []
   activationSpeedMultiplier: 1
   Interact:
-    m_Name: Interact
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 337baae5-2e49-44c8-88e4-bd8e2692d3e5
+    m_Id: 45b44010-276b-43d6-8d0c-acc85240c23a
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -1042,7 +1042,7 @@ MonoBehaviour:
     m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 11e17873-c79a-4c56-96ce-97eacf8318ad
+    m_Id: 4330b7f9-450d-4911-a356-80e19d6dbeb0
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
