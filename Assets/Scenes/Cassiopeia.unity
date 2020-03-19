@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.015151451, g: 0.004667077, b: 0.028175348, a: 1}
+  m_IndirectSpecularColor: {r: 0.015121656, g: 0.004663416, b: 0.028162796, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6187,9 +6187,9 @@ MonoBehaviour:
   _isLit: 0
   starToGo: {fileID: 0}
   starBtnText: {fileID: 1840787785}
-  player: {fileID: 0}
-  ES: {fileID: 0}
-  defaultbuttonSelected: {fileID: 0}
+  player: {fileID: 5137222418490447973}
+  ES: {fileID: 9205680690666298864}
+  defaultbuttonSelected: {fileID: 1330058964}
 --- !u!114 &1330058968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6589,6 +6589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732111751939690060, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8514432705355034389, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -7036,17 +7041,17 @@ PrefabInstance:
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -708.7187
+      value: -701
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 976.40393
+      value: 975
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -337.44385
+      value: -331
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
@@ -7530,17 +7535,17 @@ PrefabInstance:
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -709.745
+      value: -703
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 976.6267
+      value: 975
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -338.5282
+      value: -332
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
@@ -9107,17 +9112,17 @@ PrefabInstance:
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -709.0535
+      value: -702
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 976.4038
+      value: 975
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -337.109
+      value: -329
       objectReference: {fileID: 0}
     - target: {fileID: 1831400283502397978, guid: e2c6606fc250840f79dc854ac85ef8b3,
         type: 3}
@@ -13635,7 +13640,7 @@ MonoBehaviour:
   tutorialZoneText: {fileID: 2046581982917514377}
   ES: {fileID: 9205680690666298864}
   defaultButtonSelected: {fileID: 7182826124621462511}
-  totalStarNum: 2
+  totalStarNum: 4
   _numStarsLit: 0
 --- !u!224 &9205680689902133954
 RectTransform:
