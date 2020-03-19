@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,17 +12,30 @@ public class StarIconManager : MonoBehaviour
 
     public Transform starToGo;
     
+    public TextMeshProUGUI starBtnText;
+
+    public Transform player;
+    public static event Action<Transform> OnHoverStart;
+    
+    public static event Action<Transform> OnHoverStop;
+    
     public static event Action<Transform> OnSelectStar;
     
     // show the image of the star when hovering
-    public void ShowFrontalImage () 
+    public void ShowBeamDir () 
     {
-        Debug.Log("mouse hover");
+        Debug.Log("mouse hover enter");
+        OnHoverStart?.Invoke(starToGo);
         
     }
     
+    public void HideBeamDir () 
+    {
+        Debug.Log("mouse hover exit");
+        OnHoverStop?.Invoke(starToGo);
+        
+    }
     
-
     public void SelectStarToSlingShot()
     {
         print("mouse onclick -- SelectStarToSlingShot");
@@ -29,6 +43,15 @@ public class StarIconManager : MonoBehaviour
         starToGo = GetComponent<PointerToStar>().StarToPoint.transform;
         
         OnSelectStar?.Invoke(starToGo);
+    }
+    
+    private void Update()
+    {
+        if (!player) return;
+        if (!starToGo) return;
+        var disToStar = Vector3.Distance(player.position, starToGo.position);
+        disToStar = (float) Math.Round(disToStar, 0);
+        starBtnText.text = disToStar + "m";
     }
 
     
