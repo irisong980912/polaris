@@ -115,6 +115,9 @@ public class MainMenu : MonoBehaviour
             levelButton.GetComponent<Button>().interactable = true;
             //settingsButton.GetComponent<Button>().interactable = true;
             quitButton.GetComponent<Button>().interactable = true;
+
+            //controller navigation breaks if you dont set a new default selected gameobject
+            ES.SetSelectedGameObject(settingsButton);
         }
 
         if (levelOpen)
@@ -126,6 +129,9 @@ public class MainMenu : MonoBehaviour
             //levelButton.GetComponent<Button>().interactable = true;
             settingsButton.GetComponent<Button>().interactable = true;
             quitButton.GetComponent<Button>().interactable = true;
+
+            //controller navigation breaks if you dont set a new default selected gameobject
+            ES.SetSelectedGameObject(levelButton);
         }
        
     }
@@ -149,9 +155,6 @@ public class MainMenu : MonoBehaviour
         if (cancel.triggered)
         {
             OnCancel();
-
-            //controller navigation breaks if you dont set a new default selected gameobject
-            ES.SetSelectedGameObject(settingsButton);
 
         }
 
