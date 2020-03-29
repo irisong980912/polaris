@@ -5065,6 +5065,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet V3.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5770979703076078959, guid: 990c81260c8994be486a3c95f5c65f89,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7371823790981920636, guid: 990c81260c8994be486a3c95f5c65f89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5395,6 +5400,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Planet V2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660001654243909907, guid: 3091d7ec611694da682b3019fb7aafbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653390305842828032, guid: 3091d7ec611694da682b3019fb7aafbc,
         type: 3}
@@ -6605,6 +6615,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -50.145004
       objectReference: {fileID: 0}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648131}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648129}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648127}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[3]
+      value: 
+      objectReference: {fileID: 1333648125}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648130}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648128}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648126}
+    - target: {fileID: 2382323373358098198, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[3]
+      value: 
+      objectReference: {fileID: 1333648124}
     - target: {fileID: 2529986653663696876, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6660,6 +6720,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 47.927002
       objectReference: {fileID: 0}
+    - target: {fileID: 3209715478841762942, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209715478841762942, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209715478841762942, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648130}
+    - target: {fileID: 3209715478841762942, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648128}
+    - target: {fileID: 3209715478841762942, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648126}
+    - target: {fileID: 3209715478841762942, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[3]
+      value: 
+      objectReference: {fileID: 1333648124}
     - target: {fileID: 3606804555888694164, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7410,6 +7500,66 @@ PrefabInstance:
       propertyPath: ringAnimationController.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8514432705550243805, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705766393835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705766393835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705766393835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648136}
+    - target: {fileID: 8514432705834430835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705834430835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705834430835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648132}
+    - target: {fileID: 8514432705834430835, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648136}
+    - target: {fileID: 8514432705940469524, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705940469524, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432705940469524, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648150}
+    - target: {fileID: 8514432705940469524, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648148}
     - target: {fileID: 8514432706113066143, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: ringAnimationController.Array.size
@@ -7417,9 +7567,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8514432706228198931, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432706228198931, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
       propertyPath: interact.m_Name
       value: Interact
       objectReference: {fileID: 0}
+    - target: {fileID: 8514432706228198931, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648121}
+    - target: {fileID: 8514432706228198931, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648122}
+    - target: {fileID: 8514432706228198931, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648123}
+    - target: {fileID: 8514432706284577411, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432706284577411, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432706284577411, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648146}
+    - target: {fileID: 8514432706284577411, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648144}
+    - target: {fileID: 8514432706284577411, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648142}
+    - target: {fileID: 8514432706528347280, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432706528347280, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514432706528347280, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648140}
+    - target: {fileID: 8514432706528347280, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648138}
     - target: {fileID: 8590119864901243604, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_IsActive
@@ -7485,6 +7700,196 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8912010322720425091, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010322720425091, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010322720425091, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648137}
+    - target: {fileID: 8912010322720425091, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648136}
+    - target: {fileID: 8912010322786365979, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010322786365979, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010322786365979, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648132}
+    - target: {fileID: 8912010322786365979, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648134}
+    - target: {fileID: 8912010322786365979, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648135}
+    - target: {fileID: 8912010322786365979, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648133}
+    - target: {fileID: 8912010323234239612, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323234239612, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323234239612, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648151}
+    - target: {fileID: 8912010323234239612, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648149}
+    - target: {fileID: 8912010323234239612, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648150}
+    - target: {fileID: 8912010323234239612, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648148}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648147}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648145}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648143}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648146}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648144}
+    - target: {fileID: 8912010323276227051, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648142}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648120}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648119}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648118}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648123}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648122}
+    - target: {fileID: 8912010323481992571, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[2]
+      value: 
+      objectReference: {fileID: 1333648121}
+    - target: {fileID: 8912010323585009656, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323585009656, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912010323585009656, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648141}
+    - target: {fileID: 8912010323585009656, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: ringAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648139}
+    - target: {fileID: 8912010323585009656, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[0]
+      value: 
+      objectReference: {fileID: 1333648140}
+    - target: {fileID: 8912010323585009656, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetAnimationController.Array.data[1]
+      value: 
+      objectReference: {fileID: 1333648138}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36af554bcc57e4a61a46eb296aa28465, type: 3}
 --- !u!4 &1333648113 stripped
@@ -7514,6 +7919,210 @@ Transform:
 --- !u!4 &1333648117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2036021492164663779, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648118 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2982534144984104376, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648119 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4007143131166287, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648120 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6343748846677910112, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648121 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5538399394330357514, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648122 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7340833921781275923, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648123 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4457791094655655020, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648124 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2038318906183917512, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648125 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8342482177360693205, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648126 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 83659268543016497, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648127 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6533694114036780066, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648128 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8716030254933134334, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648129 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 192495488859854861, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648130 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4423808336294274038, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648131 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6969028393011694976, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648132 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2038318905741629773, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648133 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4007143811062063, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648134 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4423808335787603452, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648135 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2982534145680970456, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648136 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5538399393120363106, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648137 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2982534145749525568, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648138 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5295000084780194175, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648139 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6343748846444869859, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648140 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3888787290438597663, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648141 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2982534144348923707, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648142 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8716030253673116257, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648143 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4007143189105375, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648144 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4977290991031191193, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648145 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6343748846740020976, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648146 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5538399393652071433, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648147 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2982534145197752616, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648148 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4977290990906472061, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648149 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2982534144703042751, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648150 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2038318906448483175, guid: 36af554bcc57e4a61a46eb296aa28465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333648112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1333648151 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4007142845194056, guid: 36af554bcc57e4a61a46eb296aa28465,
     type: 3}
   m_PrefabInstance: {fileID: 1333648112}
   m_PrefabAsset: {fileID: 0}
@@ -7607,6 +8216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Planet V2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153220836909639994, guid: eba0ce40b872f488aa2c11dcf1e8c40a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba0ce40b872f488aa2c11dcf1e8c40a, type: 3}
