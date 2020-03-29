@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1688088242804566326}
   - component: {fileID: 4922929427713283535}
   m_Layer: 0
-  m_Name: Planet V2.3
+  m_Name: ocean_planet (1) Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
