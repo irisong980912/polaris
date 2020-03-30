@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class CreateStar : MonoBehaviour
 {
@@ -16,28 +17,35 @@ public class CreateStar : MonoBehaviour
     [SerializeField] private Animator starAnimationController;
     [SerializeField] private Animator starVfx;
     [SerializeField] private Animator[] ringAnimationController;
+    [SerializeField] private Animator[] planetAnimationController;
+
 
     //Speed multiplier for animations
     public float activationSpeedMultiplier = 1;
     private static readonly int StarActivationMultiplier = Animator.StringToHash("StarActivationMultiplier");
     private static readonly int VfxActivationMultiplier = Animator.StringToHash("VFXActivationMultiplier");
     private static readonly int RingActivationMultiplier = Animator.StringToHash("RingActivationMultiplier");
+    private static readonly int PlanetActivationMultiplier = Animator.StringToHash("PlanetActivationMultiplier");
+
+
     private static readonly int PlayCreateStar = Animator.StringToHash("playCreateStar");
     private static readonly int PlayActivateStarVfx = Animator.StringToHash("playActivateStarVFX");
     private static readonly int PlayActivateRing = Animator.StringToHash("PlayActivateRing");
+    private static readonly int PlayActivatePlanet = Animator.StringToHash("PlayActivatePlanet");
+
 
     public static event Action OnStarCreation;
     
     //InputActions
-    PlayerInputActions inputAction;
+    PlayerInputActions _inputAction;
 
-    public InputAction Interact;
+    [FormerlySerializedAs("Interact")] public InputAction interact;
 
     void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
-        Interact = inputAction.Player.Interact;
+        _inputAction = new PlayerInputActions();
+        interact = _inputAction.Player.Interact;
 
     }
 
@@ -54,7 +62,13 @@ public class CreateStar : MonoBehaviour
         {
             ring.SetFloat(RingActivationMultiplier, activationSpeedMultiplier);
         }
-        
+
+        //Iterate through planets array
+        foreach (var planet in planetAnimationController)
+        {
+            planet.SetFloat(PlanetActivationMultiplier, activationSpeedMultiplier);
+        }
+
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
@@ -63,7 +77,7 @@ public class CreateStar : MonoBehaviour
         //if (!Input.GetButton("Fire2") || !enabled) return
 
         //InputAction replaces "Input.GetButton("Example") and holds a bool
-        if (!Interact.triggered || !enabled) return;
+        if (!interact.triggered || !enabled) return;
 
         if (!other.tag.Contains("|Player|")) return;
         onTrigger = true;
@@ -128,7 +142,13 @@ public class CreateStar : MonoBehaviour
         {
             ring.SetTrigger(PlayActivateRing);
         }
-        
+
+        //Iterate through Planets array 
+        foreach (var planet in planetAnimationController)
+        {
+            planet.SetTrigger(PlayActivatePlanet);
+        }
+
     }
 
     private void Update()
@@ -146,15 +166,15 @@ public class CreateStar : MonoBehaviour
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
-        Interact.Enable();
-        inputAction.Player.Enable();
+        interact.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
-        Interact.Disable();
-        inputAction.Player.Disable();
+        interact.Disable();
+        _inputAction.Player.Disable();
     }
 
 }

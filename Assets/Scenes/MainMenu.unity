@@ -847,6 +847,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa31831f8361ed488ff606bc7f0d3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ES: {fileID: 240673728}
+  menuAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!4 &1482987249
 Transform:
   m_ObjectHideFlags: 0

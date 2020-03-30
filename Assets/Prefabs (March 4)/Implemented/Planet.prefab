@@ -336,6 +336,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 861041709292393118}
     m_Modifications:
+    - target: {fileID: 2132469653272885155, guid: 771885d1906ef44619c22cb8f6671dd1,
+        type: 3}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272921595837260951, guid: 771885d1906ef44619c22cb8f6671dd1,
+        type: 3}
+      propertyPath: slingshotAction.m_Id
+      value: fb32b6ce-d890-4183-8d34-3549a5306fef
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272921595837260951, guid: 771885d1906ef44619c22cb8f6671dd1,
+        type: 3}
+      propertyPath: slingshotAction.m_Name
+      value: Slingshot
+      objectReference: {fileID: 0}
     - target: {fileID: 4115516336858612095, guid: 771885d1906ef44619c22cb8f6671dd1,
         type: 3}
       propertyPath: m_Name

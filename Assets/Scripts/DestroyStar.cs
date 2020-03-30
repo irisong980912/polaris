@@ -20,15 +20,20 @@ public class DestroyStar : MonoBehaviour
     [SerializeField] private Animator starAnimationController;
     [SerializeField] private Animator starVfx;
     [SerializeField] private Animator[] ringAnimationController;
+    [SerializeField] private Animator[] planetAnimationController;
+
 
     //Speed multiplier for animations
     public float activationSpeedMultiplier = 1;
     private static readonly int StarActivationMultiplier = Animator.StringToHash("StarActivationMultiplier");
     private static readonly int VfxActivationMultiplier = Animator.StringToHash("VFXActivationMultiplier");
     private static readonly int RingActivationMultiplier = Animator.StringToHash("RingActivationMultiplier");
+    private static readonly int PlanetActivationMultiplier = Animator.StringToHash("PlanetActivationMultiplier");
+
     private static readonly int PlayDeactivateStar = Animator.StringToHash("playDeactivateStar");
     private static readonly int PlayDeactivateStarVfx = Animator.StringToHash("playDeactivateStarVFX");
     private static readonly int PlayDeactivateRing = Animator.StringToHash("PlayDeactivateRing");
+    private static readonly int PlayDeactivatePlanet = Animator.StringToHash("PlayDeactivatePlanet");
 
     public static event Action OnStarDestruction;
 
@@ -57,6 +62,12 @@ public class DestroyStar : MonoBehaviour
         foreach (var ring in ringAnimationController)
         {
             ring.SetFloat(RingActivationMultiplier, activationSpeedMultiplier);
+        }
+
+        //Iterate through rings array
+        foreach (var planet in planetAnimationController)
+        {
+            planet.SetFloat(PlanetActivationMultiplier, activationSpeedMultiplier);
         }
     }
 
@@ -119,6 +130,12 @@ public class DestroyStar : MonoBehaviour
         foreach (var ring in ringAnimationController)
         {
             ring.SetTrigger(PlayDeactivateRing);
+        }
+
+        //Iterate through Planets array 
+        foreach (var planet in planetAnimationController)
+        {
+            planet.SetTrigger(PlayDeactivatePlanet);
         }
     }
 
