@@ -72,7 +72,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_AF6F5E2: {r: 0.7110257, g: 1.4900912, b: 1.7411011, a: 0}
+    - Color_AF6F5E2: {r: 0.9391499, g: 1.9496276, b: 2.270603, a: 0}
     - Color_D3241DF9: {r: 0.2, g: 0.69803923, b: 0.68716913, a: 0.54509807}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
