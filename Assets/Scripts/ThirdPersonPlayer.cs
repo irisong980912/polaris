@@ -6,6 +6,7 @@ using TMPro;
 public class ThirdPersonPlayer : MonoBehaviour
 
 {
+    public Transform cam;
     public float speed;
     public float maximumTurnRate;
 
@@ -124,12 +125,12 @@ public class ThirdPersonPlayer : MonoBehaviour
             }
         }
         
-        inputAction.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        inputAction.Player.Move.canceled += ctx => movementInput = Vector2.zero;
+        _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
+        _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
 
-        var xAxisInput = movementInput.x;
-        var yAxisInput = movementInput.y;
+        var xAxisInput = _movementInput.x;
+        var yAxisInput = _movementInput.y;
         
         
         if (_enableIsometricViewMovement)
@@ -153,10 +154,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             transform.forward = directionOfTravel;
 
         }
-        
-        var xAxisInput = _movementInput.x;
-        var yAxisInput = _movementInput.y;
-        
+
         if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
         {
             // Squaring the inputs makes finer movements easier.
