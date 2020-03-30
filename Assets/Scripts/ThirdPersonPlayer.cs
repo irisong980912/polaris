@@ -112,7 +112,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
         var xAxisInput = _movementInput.x;
-        var yAxisInput = _movementInput.y;
+        var yAxisInput = -1 * _movementInput.y;
 
         if (_enableIsometricViewMovement)
         {
