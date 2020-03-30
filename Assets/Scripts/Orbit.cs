@@ -18,7 +18,16 @@ using UnityEngine.InputSystem;
 /// </param>
 public class Orbit : MonoBehaviour
 {
-    public float speed;
+    public float planetLitStarSpeed;
+    private float _planetSpeed;
+
+    public float playerDarkStarSpeed;
+    public float playerLitStarSpeed;
+    private float _playerSpeed;
+    
+    // public float speed;
+    // public float playerOrbitSpeed;
+    
     public Camera cam;
     private float _normalSpeed;
     private Collider _player;
@@ -35,6 +44,8 @@ public class Orbit : MonoBehaviour
     private Transform _starToGo;
     private bool _onSlingShot;
     private bool _beginSlingShot;
+    public Transform coreForPlayer;
+    private bool _isLit;
 
     void Awake()
     {
@@ -45,21 +56,46 @@ public class Orbit : MonoBehaviour
 
     private void Start()
     {
+        _planetSpeed = 0;
+        _playerSpeed = playerDarkStarSpeed;
+        
         StarIconManager.OnSelectStar += OnSelectStar;
         ThirdPersonPlayer.EndSlingShot += EndSlingShot;
-        _self = gameObject.tag.Contains("|GravityCore|") ? transform.parent : transform;
-
+        CreateStar.OnStarCreation += OnStarCreation;
+        DestroyStar.OnStarDestruction += OnStarDestruction;
+        _self = transform;
         // Store the normal rotation speed so it can be restored after a slingshot.
-        _normalSpeed = speed;
+        _normalSpeed = _planetSpeed;
         
+    }
+
+    private void OnStarDestruction()
+    {
+        _isLit = false;
+        _planetSpeed = 0;
+        _playerSpeed = playerDarkStarSpeed;
+    }
+
+    private void OnStarCreation()
+    {
+        _isLit = true;
+        _planetSpeed = planetLitStarSpeed;
+        _playerSpeed = playerLitStarSpeed;
     }
 
     private void FixedUpdate()
     {
-        _self.Rotate(_self.up, speed);
+        _self.Rotate(_self.up * _planetSpeed, Space.World);
+
+        if (gameObject.tag.Contains("|GravityCore|"))
+        {
+            coreForPlayer.Rotate(_self.up * _playerSpeed, Space.World);
+        }
+        
         
         if (_player is null) return;
 
+        if (!_isLit) return;
         //if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
         
         // haven't selected a star
@@ -101,15 +137,26 @@ public class Orbit : MonoBehaviour
     {
         if (gameObject.tag.Contains("|GravityCore|"))
         {
+            
+            // if (other.gameObject.tag.Contains("|Planet|"))
             if (other.gameObject.tag.Contains("|Planet|"))
             {
-                other.gameObject.transform.SetParent(transform.parent.transform);
+                other.gameObject.transform.SetParent(transform);
+            }
+            
+            // TODO: make player orbit in the same direction as the planet but at a faster speed
+            else if (other.gameObject.tag.Contains("|Player|"))
+            {
+                print("orbit ----- set player to core");
+                other.gameObject.transform.SetParent(coreForPlayer);
             }
             
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
+            
+            print("clide with a plabet! " + gameObject.transform.parent.name);
             // player can orbit only if the star is lit
             if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
 
@@ -154,7 +201,7 @@ public class Orbit : MonoBehaviour
         _player.gameObject.transform.SetParent(null);
         _self.forward = cam.transform.forward;
         _player.gameObject.transform.SetParent(_self);
-        speed = 3.0f;
+        _planetSpeed = 3.0f;
         Invoke(nameof(Slingshot), 1.5f);
     }
     

@@ -96,12 +96,14 @@ public class DestroyStar : MonoBehaviour
         // stardust.SetActive(true);
         // usedStardust.RemoveAt(0);
 
-        transform.Find("GravityCore").GetComponent<Orbit>().enabled = false;
-        transform.Find("GravityCore").GetComponent<Gravity>().enabled = false;
+        // transform.Find("GravityCore").GetComponent<Orbit>().enabled = false;
+        // transform.Find("GravityCore").GetComponent<Gravity>().enabled = false;
 
         GetComponent<Star>().isCreated = false;
 
         GetComponent<DestroyStar>().enabled = false;
+        
+        OnStarDestruction?.Invoke();
 
         onTrigger = false;
 
@@ -116,7 +118,7 @@ public class DestroyStar : MonoBehaviour
     private void StartCreate()
     {
         Debug.Log("StartCreate");
-        OnStarDestruction?.Invoke();
+        // OnStarDestruction?.Invoke();
         GetComponent<CreateStar>().enabled = true;
     }
 

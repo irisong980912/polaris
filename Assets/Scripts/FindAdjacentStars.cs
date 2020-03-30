@@ -17,6 +17,8 @@ using UnityEngine.UI;
 /// need to build a tree and then breath first search the closest stars ????
 /// simply, the 2 most adjacent stars
 /// </summary>
+///
+///  TODO: change adjacent 2 stars to stars within radius
 public class FindAdjacentStars : MonoBehaviour
 {
     
@@ -28,10 +30,11 @@ public class FindAdjacentStars : MonoBehaviour
     {
         
         // TODO: need to listen to the event of isometric cam. 
-        IsometricStarView.OnInitiatePointerToAdjacentStars += OnInitiatePointerToAdjacentStars;
+        IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
     }
     
-    private void OnInitiatePointerToAdjacentStars(Transform star)
+    // start find adjacent stars when enter the star gravity field
+    private void OnIsometricStarView(bool isIso, Transform star)
     {
         // TODO: find the star that player is in 
         currStar = star;
@@ -102,6 +105,6 @@ public class FindAdjacentStars : MonoBehaviour
     private void OnDisable()
     {
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
-        IsometricStarView.OnInitiatePointerToAdjacentStars -= OnInitiatePointerToAdjacentStars;
+        IsometricStarPosManager.OnIsometricStarView -= OnIsometricStarView;
     }
 }

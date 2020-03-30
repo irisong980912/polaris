@@ -27,21 +27,24 @@ public class ThirdPersonPlayer : MonoBehaviour
     //Movement
     private Vector2 _movementInput;
     private bool _levelCleared;
-    private bool _enableIsometricViewMovement;
+    private bool _enableIsoViewMovement;
 
     private bool _onSlingShot;
     private Transform _starToGo;
     public Vector3 disFromGoalStar = new Vector3(50, 0,50);
-    
-    private bool _onIso;
+
     private bool _beginSlingshot;
     public static event Action<bool> EndSlingShot;
+
+    public Vector3 playerIsoStartPos;
+    private bool _firstTimeIso;
+    private Transform curStar;
 
 
     private void Start()
     {
         CameraSwitch.OnMapSwitch += SetMapActive;
-        IsometricStarView.OnIsometricStarView += OnIsometricStarView;
+        IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         Orbit.OnSlingShot += OnSlingShot;
         // transform.LookAt(firstStar);
     }
@@ -114,13 +117,28 @@ public class ThirdPersonPlayer : MonoBehaviour
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
 
-        if (_enableIsometricViewMovement)
+        if (_enableIsoViewMovement)
         {
             // TODO: move the player in a 2D perspective
+            if (_firstTimeIso)
+            {
+                transform.position = playerIsoStartPos;
+                _firstTimeIso = false;
+            }
+            
+            // move player in the direction of the star
             var playerPos = transform.position;
-            playerPos.x += xAxisInput;
-            playerPos.z += xAxisInput;
-            transform.position = playerPos;
+            var starPos = curStar.position;
+
+            var dir = (starPos - playerPos).normalized;
+            
+            // playerPos.x += xAxisInput;
+            // playerPos.z += yAxisInput;
+            transform.position = playerPos + dir * xAxisInput;
+            
+            transform.LookAt(cam.transform);
+            
+
         }
         else
         {
@@ -146,11 +164,12 @@ public class ThirdPersonPlayer : MonoBehaviour
                 q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
                 transform1.rotation = q;
             }   
-
+            var transform2 = transform;
+            transform2.position += transform2.forward * speed;
         }
 
-        var transform2 = transform;
-        transform2.position += transform2.forward * speed;
+        // var transform2 = transform;
+        // transform2.position += transform2.forward * speed;
     }
 
     //InputActions
@@ -166,11 +185,13 @@ public class ThirdPersonPlayer : MonoBehaviour
         _inputAction.Player.Disable();
     }
     
-    private void OnIsometricStarView(bool onIso)
+    private void OnIsometricStarView(bool onIso, Transform star)
     {
         Debug.Log("camera -- OnIsometricStarView");
         if (_levelCleared) return;
-        _onIso = onIso;
-        _enableIsometricViewMovement = _onIso;
+        _enableIsoViewMovement = onIso;
+        _firstTimeIso = true;
+        curStar = star;
+
     }
 }

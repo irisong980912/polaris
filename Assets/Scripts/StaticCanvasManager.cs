@@ -17,10 +17,10 @@ public class StaticCanvasManager : MonoBehaviour
             }
         }
         
-        IsometricStarView.OnIsometricStarView += SetIsometricActive;
+        IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
     }
 
-    private void SetIsometricActive(bool isIsometricActive)
+    private void SetIsometricActive(bool isIsometricActive, Transform star)
     {
         //var StardustCountText = transform.Find("StardustCountText").gameObject;
         StardustCountText.SetActive(!isIsometricActive);
@@ -35,7 +35,7 @@ public class StaticCanvasManager : MonoBehaviour
     private void OnDisable()
     {
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
-        IsometricStarView.OnIsometricStarView -= SetIsometricActive;
+        IsometricStarPosManager.OnIsometricStarView -= SetIsometricActive;
     }
 
 }

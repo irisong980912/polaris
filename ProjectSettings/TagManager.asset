@@ -22,6 +22,7 @@ TagManager:
   - '|Asteroids|'
   - '|ArrowIcon|'
   - '|StarButton|'
+  - '|GravityCoreForPlayer|'
   layers:
   - Default
   - TransparentFX

@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8240559358194348407}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &231935842724485122
 SphereCollider:
@@ -547,21 +547,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6769666023076319719}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba091f1123d1a1f499bbf192b652a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  planetLitStarSpeed: 5
+  playerDarkStarSpeed: 2
+  playerLitStarSpeed: 8
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
   slingshotAction:
-    m_Name: 
+    m_Name: Slingshot
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 4a2207b8-a1b5-4ef6-87e6-dcd100a10250
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
+  coreForPlayer: {fileID: 2148772901552218}
 --- !u!1 &7531728700848219579
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +692,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8374661033469280334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2148772901552218}
+  m_Layer: 0
+  m_Name: GravityCoreForPlayer
+  m_TagString: '|GravityCoreForPlayer|'
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2148772901552218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374661033469280334}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8240559358194348407}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8619516870928191434
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +921,7 @@ Transform:
   - {fileID: 1399163469416773232}
   - {fileID: 4670316473449136147}
   - {fileID: 6020234962431353854}
+  - {fileID: 2148772901552218}
   - {fileID: 5528136462605301698}
   - {fileID: 5872897348888088374}
   m_Father: {fileID: 0}
@@ -1005,6 +1039,7 @@ MonoBehaviour:
   starAnimationController: {fileID: 3040263607613523733}
   starVfx: {fileID: 8832363041328108432}
   ringAnimationController: []
+  planetAnimationController: []
   activationSpeedMultiplier: 1
   Interact:
     m_Name: Interact
@@ -1037,6 +1072,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  planetAnimationController: []
   activationSpeedMultiplier: 1
   interact:
     m_Name: 
@@ -1105,7 +1141,7 @@ PrefabInstance:
     - target: {fileID: 4730448755969866321, guid: 358356bbd09fd0042916b8a5adaa5d3e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4730448755969866321, guid: 358356bbd09fd0042916b8a5adaa5d3e,
         type: 3}
@@ -1121,6 +1157,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853152785524859844, guid: 358356bbd09fd0042916b8a5adaa5d3e,
+        type: 3}
+      propertyPath: mapAction.m_Id
+      value: f4419b59-c741-41af-9a92-0f7659bd44ab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853152785524859844, guid: 358356bbd09fd0042916b8a5adaa5d3e,
+        type: 3}
+      propertyPath: mapAction.m_Name
+      value: Map
       objectReference: {fileID: 0}
     - target: {fileID: 8053106564271275166, guid: 358356bbd09fd0042916b8a5adaa5d3e,
         type: 3}

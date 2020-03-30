@@ -67,7 +67,8 @@ public class ThirdPersonCamera : MonoBehaviour
         Orbit.OnOrbitStart += OnOrbitStart;
         Orbit.OnOrbitStop += OnOrbitStop;
         ClearLevel.OnLevelClear += OnLevelClear;
-        IsometricStarView.OnIsometricStarView += OnIsometricStarView;
+        // IsometricStarView.OnIsometricStarView += OnIsometricStarView;
+        IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
 
         var dir = new Vector3(-10.0f, 0, 0f);
         transform.position = player.position + dir;
@@ -79,13 +80,21 @@ public class ThirdPersonCamera : MonoBehaviour
     {
      
         
-        if ((_levelCleared || (_enableIsometricView && _onOrbit)))
+        // if ((_levelCleared || (_enableIsometricView && _onOrbit)))
+
+
+        if ((_levelCleared || _enableIsometricView))
         {
+            
             var desiredPosition = _viewPos.position ;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
+        }
+        if (_enableIsometricView)
+        {
+            _mainCamera.LookAt(_cameraTarget);
         }
 
         else
@@ -180,10 +189,13 @@ public class ThirdPersonCamera : MonoBehaviour
         Orbit.OnOrbitStart -= OnOrbitStart;
         Orbit.OnOrbitStop -= OnOrbitStop;
         ClearLevel.OnLevelClear -= OnLevelClear;
-        IsometricStarView.OnIsometricStarView -= OnIsometricStarView;
+        // IsometricStarView.OnIsometricStarView -= OnIsometricStarView;
+        IsometricStarPosManager.OnIsometricStarView -= OnIsometricStarView;
     }
+    
 
-    private void OnIsometricStarView(bool onIso)
+
+    private void OnIsometricStarView(bool onIso, Transform star)
     {
         if (_levelCleared) return;
         Debug.Log("camera -- OnIsometricStarView");
@@ -195,12 +207,14 @@ public class ThirdPersonCamera : MonoBehaviour
             _enableIsometricView = true;
             _returnToPlayer = false;
             _rotateToTopView = true;
+            _cameraTarget = star;
         }
 
         else
         {
             _enableIsometricView = false;
             _returnToPlayer = true;
+            _cameraTarget = player;
         }
     }
 

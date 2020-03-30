@@ -33,7 +33,7 @@ public class CreateStar : MonoBehaviour
     private static readonly int PlayActivateRing = Animator.StringToHash("PlayActivateRing");
     private static readonly int PlayActivatePlanet = Animator.StringToHash("PlayActivatePlanet");
 
-
+    
     public static event Action OnStarCreation;
     
     //InputActions
@@ -100,12 +100,15 @@ public class CreateStar : MonoBehaviour
             // player.inventory.RemoveAt(player.stardustSelection);
             player.stardust -= 1;
 
-            transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
-            transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
+            // transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
+            // transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
             GetComponent<Star>().isCreated = true;
             // enable the orbit script of all planets of the star 
             
             GetComponent<CreateStar>().enabled = false;
+            
+            OnStarCreation?.Invoke();
+            
             
             onTrigger = false;
 
@@ -127,7 +130,7 @@ public class CreateStar : MonoBehaviour
     private void StartDestroy()
     {
         Debug.Log("StartDestroy");
-        OnStarCreation?.Invoke();
+        // OnStarCreation?.Invoke();
         GetComponent<DestroyStar>().enabled = true;
     }
 
