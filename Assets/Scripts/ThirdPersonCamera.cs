@@ -21,21 +21,15 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform topViewCamPos;
 
     //InputActions
-    PlayerInputActions _inputAction;
-
-    readonly Vector2 _cameraRotationInput;
+    private PlayerInputActions _inputAction;
+    private readonly Vector2 _cameraRotationInput;
 
     public ThirdPersonCamera(Vector2 cameraRotationInput)
     {
         _cameraRotationInput = cameraRotationInput;
     }
 
-    /// <summary>
-    /// Camera Starting Position, creating a zoom in effect
-    /// </summary>
-    /// 
-
-    void Awake()
+    private void Awake()
     {
         //InputActions
         _inputAction = new PlayerInputActions();
@@ -43,7 +37,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Start()
     {
-
         _minimumDistanceFromTarget = distanceFromPlayer;
         _distanceFromPlanet = distanceFromPlayer * onOrbitDistanceRatio;
             
@@ -56,7 +49,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
         var dir = new Vector3(0, 0, -10.0f);
         transform.position = player.position + dir;
-
 
         _mainCamera.LookAt(_cameraTarget);
     }
@@ -72,23 +64,14 @@ public class ThirdPersonCamera : MonoBehaviour
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
 
-        } else
+        } 
+        else
         {
-
-            /*
-            var xAxisInput = Input.GetAxis("Mouse X");
-            var yAxisInput = Input.GetAxis("Mouse Y");
-             */
-            
-            //InputAction replaces "Input.GetAxis("Example")" and calls function
-            //cameraRotationInput = inputAction.Player.Look.ReadValue<Vector2>();
-            
             // TODO: make the camera rotate faster to follow player rotation
 
             var xAxisInput = _cameraRotationInput.x;
             var yAxisInput = _cameraRotationInput.y;
-            
-            
+
             var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
             if (Math.Abs(distanceToTarget - _minimumDistanceFromTarget) > 0.1f * _minimumDistanceFromTarget)
             {
@@ -127,26 +110,19 @@ public class ThirdPersonCamera : MonoBehaviour
                 _mainCamera.Translate(correctivePath, Space.World);
             }
             
-            //TODO: Refactor this implementation to use IsometricCamera when that feature is implemented.
-            
-            _mainCamera.LookAt(_cameraTarget); 
-            
-            //TODO: Add slingshot camera effects.
-
+            _mainCamera.LookAt(_cameraTarget);
         }
         
     }
 
     private void OnOrbitStart()
     {
-        Debug.Log("camera --- OnOrbitStart");
         _cameraTarget = player.parent;
         _minimumDistanceFromTarget = _distanceFromPlanet;
     }
 
     private void OnOrbitStop()
     {
-        Debug.Log("camera --- OnOrbitStop");
         _cameraTarget = player;
         _minimumDistanceFromTarget = distanceFromPlayer;
     }
@@ -158,8 +134,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     //InputActions
     //Activates all actions in action maps (action maps are Player and UI)
-    //InputActions
-    //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
         _inputAction.Player.Enable();

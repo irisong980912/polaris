@@ -24,7 +24,6 @@ public class ThirdPersonPlayer : MonoBehaviour
     //Movement
     private Vector2 _movementInput;
 
-
     private void Start()
     {
         CameraSwitch.OnMapSwitch += SetMapActive;
@@ -76,7 +75,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 interpretedXInput = -interpretedXInput;
             }
-        
             if (yAxisInput < 0)
             {
                 interpretedYInput = -interpretedYInput;
@@ -90,13 +88,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
 
         var transform2 = transform;
-        transform2.position += transform2.forward * (speed * Time.deltaTime);
-        // transform.Translate(transform.forward * speed);
-
-        // ======================================================================
-        // TODO: 2nd method of approaching this problem: let the player go in the direction of the camera
-        // transform.position = transform.position + cam.transform.forward * speed * Time.deltaTime;
-        // transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.rotation, rotateSpeed);
+        transform2.position += transform2.forward * speed;
     }
 
     //InputActions

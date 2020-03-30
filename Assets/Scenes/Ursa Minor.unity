@@ -4769,7 +4769,7 @@ PrefabInstance:
     - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
       propertyPath: speed
-      value: 20
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
@@ -6510,7 +6510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c834c9e3e7f24407bf66a924d93c36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
 --- !u!4 &1313599490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 861041709292393118, guid: 399b4fc82195942069d447f4154576f1,
