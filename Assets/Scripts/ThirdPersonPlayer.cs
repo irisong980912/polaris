@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 
 public class ThirdPersonPlayer : MonoBehaviour
+
 {
     public float speed;
     public float maximumTurnRate;
+
     public int stardust;
     public TextMeshProUGUI stardustCount;
     public List<GameObject> inventory = new List<GameObject>();
@@ -50,17 +52,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        stardustCount.text = "Stardust: " + stardust;
-
-        Debug.Log(stardust);
-    }
-
     private void FixedUpdate()
     {
-        //InputAction replaces "Input.GetAxis("Example")" and calls function
-        //movementInput = inputAction.Player.Move.ReadValue<Vector2>();
+        stardustCount.text = "Stardust: " + stardust;
+        
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
@@ -68,10 +63,11 @@ public class ThirdPersonPlayer : MonoBehaviour
         
         var xAxisInput = _movementInput.x;
         var yAxisInput = _movementInput.y;
-
+        
         if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
         {
             // Squaring the inputs makes finer movements easier.
+            
             var interpretedXInput = xAxisInput * xAxisInput * maximumTurnRate;
             var interpretedYInput = yAxisInput * yAxisInput * maximumTurnRate;
             
@@ -80,18 +76,27 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 interpretedXInput = -interpretedXInput;
             }
-
+        
             if (yAxisInput < 0)
             {
                 interpretedYInput = -interpretedYInput;
             }
-            
-            // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
-            // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
-            transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+
+            Transform transform1;
+            (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+            var q = transform1.rotation;
+            q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
+            transform1.rotation = q;
         }
-        
-        transform.Translate(transform.forward * speed);
+
+        var transform2 = transform;
+        transform2.position += transform2.forward * (speed * Time.deltaTime);
+        // transform.Translate(transform.forward * speed);
+
+        // ======================================================================
+        // TODO: 2nd method of approaching this problem: let the player go in the direction of the camera
+        // transform.position = transform.position + cam.transform.forward * speed * Time.deltaTime;
+        // transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.rotation, rotateSpeed);
     }
 
     //InputActions
