@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.008265974, g: 0.0001508225, b: 0.017148603, a: 1}
+  m_IndirectSpecularColor: {r: 0.008328224, g: 0.00015056817, b: 0.017207535, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11311,6 +11311,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1148804705}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: distanceFromPlayer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377187791607531545, guid: 5af2148d413b4438e81dae883bf23173,
+        type: 3}
+      propertyPath: cameraFollowDelay
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8377187791607531547, guid: 5af2148d413b4438e81dae883bf23173,
         type: 3}
       propertyPath: m_Name
