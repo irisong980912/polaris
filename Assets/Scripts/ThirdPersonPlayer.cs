@@ -1,23 +1,19 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 
-using UnityEngine.Experimental;
-
 public class ThirdPersonPlayer : MonoBehaviour
+
 {
     public float speed;
+    public float maximumTurnRate;
+
     public int stardust;
     public TextMeshProUGUI stardustCount;
     public List<GameObject> inventory = new List<GameObject>();
 
-    public Transform cam;
-
     private static bool _mapActive;
-
-    public int stardustSelection;
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
@@ -25,10 +21,10 @@ public class ThirdPersonPlayer : MonoBehaviour
     // public Transform firstStar;
 
     //InputActions
-    PlayerInputActions inputAction;
+    private PlayerInputActions _inputAction;
     
     //Movement
-    Vector2 movementInput;
+    private Vector2 _movementInput;
     private bool _levelCleared;
     private bool _enableIsometricViewMovement;
 
@@ -61,10 +57,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         _mapActive = mapActive;
     }
 
-    void Awake()
+    private void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
+        _inputAction = new PlayerInputActions();
 
         collectDustSound = collectDustSoundContainer.GetComponent<AudioSource>();
     }
@@ -75,8 +71,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         if (collision.tag.Contains("|Dust|"))
         {
             collectDustSound.Play();
-        }
-        
+        }     
     }
 
     private void Update()
@@ -92,6 +87,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+
     
         if (_levelCleared) return;
         
@@ -102,6 +98,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         //InputAction replaces "Input.GetAxis("Example")" and calls function
         //movementInput = inputAction.Player.Move.ReadValue<Vector2>();
+        _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
+        _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
         
         if (_mapActive) return;
 
@@ -156,24 +154,50 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         }
         
+        var xAxisInput = _movementInput.x;
+        var yAxisInput = _movementInput.y;
         
-        
+        if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
+        {
+            // Squaring the inputs makes finer movements easier.
+            
+            var interpretedXInput = xAxisInput * xAxisInput * maximumTurnRate;
+            var interpretedYInput = yAxisInput * yAxisInput * maximumTurnRate;
+            
+            // But squaring negative values makes them positive.
+            if (xAxisInput < 0)
+            {
+                interpretedXInput = -interpretedXInput;
+            }
+            if (yAxisInput < 0)
+            {
+                interpretedYInput = -interpretedYInput;
+            }
+
+            Transform transform1;
+            (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+            var q = transform1.rotation;
+            q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
+            transform1.rotation = q;
+        }
+
+        var transform2 = transform;
+        transform2.position += transform2.forward * speed;
     }
 
     //InputActions
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
-        inputAction.Player.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
-        inputAction.Player.Disable();
+        _inputAction.Player.Disable();
     }
     
-
     private void OnIsometricStarView(bool onIso)
     {
         Debug.Log("camera -- OnIsometricStarView");
@@ -181,5 +205,4 @@ public class ThirdPersonPlayer : MonoBehaviour
         _onIso = onIso;
         _enableIsometricViewMovement = _onIso;
     }
-
 }
