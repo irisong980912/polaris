@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7993965776357156977}
   - component: {fileID: 1529748321597492195}
   - component: {fileID: 5245132377141617444}
+  - component: {fileID: 6322266970982705615}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -94,6 +95,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &6322266970982705615
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5532377405222988460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05e5a47f39a61ce4fa69416ea0ccf224, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6108884645785289122
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7105633343681082289}
   m_Layer: 0
-  m_Name: planet 1 Variant
+  m_Name: Planet V1.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
