@@ -17,15 +17,22 @@ public class CreateStar : MonoBehaviour
     [SerializeField] private Animator starAnimationController;
     [SerializeField] private Animator starVfx;
     [SerializeField] private Animator[] ringAnimationController;
+    [SerializeField] private Animator[] planetAnimationController;
+
 
     //Speed multiplier for animations
     public float activationSpeedMultiplier = 1;
     private static readonly int StarActivationMultiplier = Animator.StringToHash("StarActivationMultiplier");
     private static readonly int VfxActivationMultiplier = Animator.StringToHash("VFXActivationMultiplier");
     private static readonly int RingActivationMultiplier = Animator.StringToHash("RingActivationMultiplier");
+    private static readonly int PlanetActivationMultiplier = Animator.StringToHash("PlanetActivationMultiplier");
+
+
     private static readonly int PlayCreateStar = Animator.StringToHash("playCreateStar");
     private static readonly int PlayActivateStarVfx = Animator.StringToHash("playActivateStarVFX");
     private static readonly int PlayActivateRing = Animator.StringToHash("PlayActivateRing");
+    private static readonly int PlayActivatePlanet = Animator.StringToHash("PlayActivatePlanet");
+
 
     public static event Action OnStarCreation;
     
@@ -55,7 +62,13 @@ public class CreateStar : MonoBehaviour
         {
             ring.SetFloat(RingActivationMultiplier, activationSpeedMultiplier);
         }
-        
+
+        //Iterate through planets array
+        foreach (var planet in planetAnimationController)
+        {
+            planet.SetFloat(PlanetActivationMultiplier, activationSpeedMultiplier);
+        }
+
     }
 
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
@@ -129,7 +142,13 @@ public class CreateStar : MonoBehaviour
         {
             ring.SetTrigger(PlayActivateRing);
         }
-        
+
+        //Iterate through Planets array 
+        foreach (var planet in planetAnimationController)
+        {
+            planet.SetTrigger(PlayActivatePlanet);
+        }
+
     }
 
     private void Update()

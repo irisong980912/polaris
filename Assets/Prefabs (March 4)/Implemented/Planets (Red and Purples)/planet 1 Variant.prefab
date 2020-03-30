@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &2038318905652472784
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333396210416962004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05e5a47f39a61ce4fa69416ea0ccf224, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4378834273693760467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,5 +171,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: planet 1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4224801822505238522, guid: b53cdf262011e44f59dff3875d1c4a83,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53cdf262011e44f59dff3875d1c4a83, type: 3}
+--- !u!1 &6333396210416962004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1504201320810728953, guid: b53cdf262011e44f59dff3875d1c4a83,
+    type: 3}
+  m_PrefabInstance: {fileID: 4378834273693760467}
+  m_PrefabAsset: {fileID: 0}
