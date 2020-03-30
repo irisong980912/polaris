@@ -2,15 +2,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.Serialization;
 
 public class ThirdPersonPlayer : MonoBehaviour
 
 {
-    
-    public Transform cam;
     public float speed;
-    public float rotateSpeed = 5.0f;
     public float maximumTurnRate;
 
     public int stardust;
@@ -88,7 +84,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             Transform transform1;
             (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
-            Quaternion q = transform1.rotation;
+            var q = transform1.rotation;
             q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
             transform1.rotation = q;
         }

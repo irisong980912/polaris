@@ -107,9 +107,9 @@ public class ThirdPersonCamera : MonoBehaviour
             
             if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
             {
-                var position = _mainCamera.position;
-                var position1 = _cameraTarget.position;
-                distanceToTarget = Vector3.Distance(position, position1);
+                var mainCameraPos = _mainCamera.position;
+                var cameraTargetPos = _cameraTarget.position;
+                distanceToTarget = Vector3.Distance(mainCameraPos, cameraTargetPos);
                 _mainCamera.LookAt(_cameraTarget);
                 
                 var xRotationMagnitude = xAxisInput * maximumRotationSpeed;
@@ -121,8 +121,8 @@ public class ThirdPersonCamera : MonoBehaviour
             
                 // After rotating the camera, it will no longer be pointing at the player.
                 // By translating the camera as follows, it will be adjusted to point at the player again.
-                var lookingAtPosition = position + _mainCamera.forward * distanceToTarget;
-                var correctivePath = position1 - lookingAtPosition;
+                var lookingAtPosition = mainCameraPos + _mainCamera.forward * distanceToTarget;
+                var correctivePath = cameraTargetPos - lookingAtPosition;
                 
                 _mainCamera.Translate(correctivePath, Space.World);
             }
