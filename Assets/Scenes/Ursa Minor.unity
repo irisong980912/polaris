@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.00830479, g: 0.00015096724, b: 0.017148482, a: 1}
+  m_IndirectSpecularColor: {r: 0.008265974, g: 0.0001508225, b: 0.017148603, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostAction:
-    m_Name: 
+    m_Name: Boost
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 2d6f53f2-8f84-439a-a543-387b60207dd5
@@ -4469,6 +4469,11 @@ PrefabInstance:
       propertyPath: stardustCount
       value: 
       objectReference: {fileID: 1157439929}
+    - target: {fileID: 5137222419336618005, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
+        type: 3}
+      propertyPath: maximumTurnRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5137222419336618007, guid: f8873d4e56b7a43ffbe17a32ad320b7a,
         type: 3}
       propertyPath: m_Name

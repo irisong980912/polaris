@@ -88,51 +88,32 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-    
         if (_levelCleared) return;
-        
-        /*
-        var xAxisInput = Input.GetAxisRaw("Horizontal");
-        var yAxisInput = Input.GetAxisRaw("Vertical");
-         */
 
-        //InputAction replaces "Input.GetAxis("Example")" and calls function
-        //movementInput = inputAction.Player.Move.ReadValue<Vector2>();
-        _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
-        _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
-        
         if (_mapActive) return;
 
         // when on slingshot, make the player move towards the target 
         if (_onSlingShot)
         {
-            print("|||||||||| third person player --- slngshot ||||||||||" + _starToGo.name);
-            
-            // sling shot the player to the designated star starToGo
             var desiredPosition = _starToGo.position + disFromGoalStar;
-            //transform.position = Vector3.MoveTowards(transform.position, desiredPosition, speed * 100 * Time.fixedDeltaTime);
             transform.position = Vector3.Lerp(transform.position, desiredPosition, speed * 2 * Time.fixedDeltaTime);
 
             // TODO: disable all the figure when slingshot
 
             if (Vector3.Distance(desiredPosition, transform.position) < 10.0f)
             {
-                print("DISABLE |||||||||| third person player --- slngshot ||||||||||");
                 _onSlingShot = false;
                 endSlingshot();
-
             }
+            
         }
         
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
 
-
         var xAxisInput = _movementInput.x;
         var yAxisInput = _movementInput.y;
-        
-        
+
         if (_enableIsometricViewMovement)
         {
             // TODO: move the player in a 2D perspective
@@ -143,40 +124,29 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
         else
         {
-            if (Math.Abs(xAxisInput) < 0.1f && Math.Abs(yAxisInput) < 0.1f) return;
-
-            //var directionFromInput = new Vector3(xAxisInput, 0f, yAxisInput).normalized;
-            var directionFromInput = new Vector3(0f, 0f, yAxisInput).normalized;
-
-            var directionOfTravel = cam.TransformDirection(directionFromInput);
-        
-            transform.Translate(directionOfTravel * speed, Space.World);
-            transform.forward = directionOfTravel;
-
-        }
-
-        if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
-        {
-            // Squaring the inputs makes finer movements easier.
-            
-            var interpretedXInput = xAxisInput * xAxisInput * maximumTurnRate;
-            var interpretedYInput = yAxisInput * yAxisInput * maximumTurnRate;
-            
-            // But squaring negative values makes them positive.
-            if (xAxisInput < 0)
+            if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
             {
-                interpretedXInput = -interpretedXInput;
-            }
-            if (yAxisInput < 0)
-            {
-                interpretedYInput = -interpretedYInput;
-            }
+                // Squaring the inputs makes finer movements easier.
+                var interpretedXInput = xAxisInput * xAxisInput * maximumTurnRate;
+                var interpretedYInput = yAxisInput * yAxisInput * maximumTurnRate;
+            
+                // But squaring negative values makes them positive.
+                if (xAxisInput < 0)
+                {
+                    interpretedXInput = -interpretedXInput;
+                }
+                if (yAxisInput < 0)
+                {
+                    interpretedYInput = -interpretedYInput;
+                }
 
-            Transform transform1;
-            (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
-            var q = transform1.rotation;
-            q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
-            transform1.rotation = q;
+                Transform transform1;
+                (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
+                var q = transform1.rotation;
+                q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
+                transform1.rotation = q;
+            }   
+
         }
 
         var transform2 = transform;
