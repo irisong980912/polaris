@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
 
 /// <summary>
@@ -13,7 +11,6 @@ public class PlayerIcon : MonoBehaviour
     public Transform player;
     private static bool _isoActive;
     private static bool _mapActive;
-    private bool _onSlingShot;
 
     private void Start()
     {
@@ -25,9 +22,8 @@ public class PlayerIcon : MonoBehaviour
 
     }
 
-    private void OnSlingShot(bool onSlingShot, Transform _starToGo)
+    private void OnSlingShot(Transform starToGo)
     {
-        _onSlingShot = onSlingShot;
         _isoActive = false;
         GetComponent<Image>().enabled = false;
     }
