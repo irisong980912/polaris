@@ -97,6 +97,7 @@ public class IsometricStarPosManager : MonoBehaviour
         var isoIdealPos = _starPos + normalDir * _dirMultiplierCam;
         isoStarViewPos.position = isoIdealPos;
         
+        // // TODO: figure out player orbit angle or change the planet positions
         // put the player on the plane
         var planeDir  = Vector3.Cross(normalDir, dirB).normalized;
         var playerIsoStartPos = _starPos + planeDir * _dirMultiplierPlayer;

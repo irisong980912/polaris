@@ -85,6 +85,7 @@ public class Orbit : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // TODO: figure out player orbit angle or change the planet positions
         _self.Rotate(_self.up * _planetSpeed, Space.World);
 
         if (gameObject.tag.Contains("|GravityCore|"))

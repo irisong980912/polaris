@@ -5987,12 +5987,12 @@ PrefabInstance:
     - target: {fileID: 589749673504191691, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 589749674768338260, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 709718701999009986, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6049,12 +6049,12 @@ PrefabInstance:
     - target: {fileID: 795658768294750697, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 795658768421738765, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1160283701480255169, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6165,6 +6165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isCreated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937265242888510824, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2231866505750997495, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6321,6 +6326,11 @@ PrefabInstance:
       propertyPath: planetAnimationController.Array.data[3]
       value: 
       objectReference: {fileID: 1333648124}
+    - target: {fileID: 2498051949606760502, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2529986653663696876, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6406,6 +6416,11 @@ PrefabInstance:
       propertyPath: planetAnimationController.Array.data[3]
       value: 
       objectReference: {fileID: 1333648124}
+    - target: {fileID: 3372478994793760743, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3606804555888694164, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6479,7 +6494,7 @@ PrefabInstance:
     - target: {fileID: 4324936824151556897, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4324936824670403914, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6489,12 +6504,12 @@ PrefabInstance:
     - target: {fileID: 4324936824670403914, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.543
+      value: 0.612
       objectReference: {fileID: 0}
     - target: {fileID: 4324936824670403914, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.176
+      value: -0.327
       objectReference: {fileID: 0}
     - target: {fileID: 4324936824670403914, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6551,15 +6566,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6535d9a7a14314f86bbfe25f6227956b, type: 2}
+    - target: {fileID: 4436349221744600074, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4446115765225204110, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4583968242426415298, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4714535820886980301, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4714535820886980301, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6579,12 +6604,12 @@ PrefabInstance:
     - target: {fileID: 4714535821525508295, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4896251170072099824, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4925612619688956826, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -6861,6 +6886,21 @@ PrefabInstance:
       propertyPath: slingshotAction.m_Name
       value: Slingshot
       objectReference: {fileID: 0}
+    - target: {fileID: 5815385671659067279, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: planetLitStarSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815385671659067279, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: playerLitStarSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815385671659067279, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: playerDarkStarSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5815385673472288393, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: slingshotAction.m_Id
@@ -6875,6 +6915,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cassiopeia
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817275788712143866, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7327750580774086897, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -7021,6 +7066,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.41723734
       objectReference: {fileID: 0}
+    - target: {fileID: 7543412784610748921, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7548059171089032962, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_IsActive
@@ -7029,12 +7079,17 @@ PrefabInstance:
     - target: {fileID: 7653390305753496630, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7732111751939690060, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_Radius
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933826994023778222, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8040258168462685743, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -7326,6 +7381,11 @@ PrefabInstance:
       propertyPath: interact.m_Name
       value: Interact
       objectReference: {fileID: 0}
+    - target: {fileID: 8518676043083095126, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8590119864901243604, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_IsActive
@@ -7334,12 +7394,12 @@ PrefabInstance:
     - target: {fileID: 8772460517708342481, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8772460518040938622, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8772460518336782932, guid: 36af554bcc57e4a61a46eb296aa28465,
         type: 3}
@@ -7581,6 +7641,11 @@ PrefabInstance:
       propertyPath: planetAnimationController.Array.data[1]
       value: 
       objectReference: {fileID: 1333648138}
+    - target: {fileID: 9040954341925286276, guid: 36af554bcc57e4a61a46eb296aa28465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36af554bcc57e4a61a46eb296aa28465, type: 3}
 --- !u!4 &1333648113 stripped
@@ -8957,108 +9022,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2c6606fc250840f79dc854ac85ef8b3, type: 3}
---- !u!1 &1827741618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1827741619}
-  - component: {fileID: 1827741623}
-  - component: {fileID: 1827741622}
-  - component: {fileID: 1827741621}
-  - component: {fileID: 1827741620}
-  m_Layer: 0
-  m_Name: GravityCoreForPlayer
-  m_TagString: '|GravityCore|'
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1827741619
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827741618}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1333648116}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1827741620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827741618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f60be9a18b349afba507a455a0448b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isoStarViewPos: {fileID: 901102768}
-  player: {fileID: 5137222418490447973}
-  yDisToStar: 500
-  xDisToStar: 90
-  zDisToStar: 90
-  planetList: []
---- !u!114 &1827741621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827741618}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba091f1123d1a1f499bbf192b652a296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
-  cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
-  slingshotAction:
-    m_Name: Slingshot
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 99db2996-039e-4238-908e-a21b48cd6824
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
---- !u!114 &1827741622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827741618}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db20a0893a120c488f8fb6f372f4983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityRadius: 180
-  gravityStrength: 70
-  disToPlayer: 0
---- !u!135 &1827741623
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827741618}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 6
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1832082100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 296602364630685510, guid: 36af554bcc57e4a61a46eb296aa28465,

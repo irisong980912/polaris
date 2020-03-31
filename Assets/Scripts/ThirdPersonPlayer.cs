@@ -119,7 +119,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         if (_enableIsoViewMovement)
         {
-            // TODO: move the player in a 2D perspective
+            // TODO: move the player relative to the plane and the star positions (2D)
             if (_firstTimeIso)
             {
                 transform.position = playerIsoStartPos;
