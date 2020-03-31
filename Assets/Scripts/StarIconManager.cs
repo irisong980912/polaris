@@ -1,63 +1,43 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
 
 public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    
-    private Image _buttonImg;
-    
     public Sprite litStarImage;
     public Sprite litStarImageSelected;
     public Sprite darkStarImage;
     public Sprite darkStarImageSelected;
-
-    public bool _isLit;
-
-    public Transform starToGo;
-    
+   
     public TextMeshProUGUI starBtnText;
 
     public Transform player;
+    public Transform starToGo;
     public static event Action<Transform> OnHoverStart;
-    
     public static event Action<Transform> OnHoverStop;
-    
     public static event Action<Transform> OnSelectStar;
-
     //Event systems
-    public EventSystem ES;
-    public GameObject defaultbuttonSelected;
+    public EventSystem es;
+    public GameObject defaultButtonSelected;
+    
+    private Image _buttonImg;
     private GameObject _storeSelected;
 
+    private PlayerInputActions _inputAction;
 
-    PlayerInputActions _inputAction;
-
-    void Awake()
+    private void Awake()
     {
         _inputAction = new PlayerInputActions();
     }
 
     private void Start()
     {
-        ES.SetSelectedGameObject(defaultbuttonSelected);
+        es.SetSelectedGameObject(defaultButtonSelected);
         _buttonImg = GetComponent<Image>();
         
-        if (starToGo.GetComponent<Star>().isCreated)
-        {
-            _buttonImg.sprite = litStarImage; 
-        }
-        else
-        {
-            _buttonImg.sprite = darkStarImage; 
-        }
-        
-        
+        _buttonImg.sprite = starToGo.GetComponent<Star>().isCreated ? litStarImage : darkStarImage;
     }
     
     // OnPointerEnter
@@ -65,18 +45,9 @@ public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         if (!starToGo) return;
         
-        if (starToGo.GetComponent<Star>().isCreated)
-        {
-            _buttonImg.sprite = litStarImageSelected; 
-        }
-        else
-        {
-            _buttonImg.sprite = darkStarImageSelected; 
-        }
+        _buttonImg.sprite = starToGo.GetComponent<Star>().isCreated ? litStarImageSelected : darkStarImageSelected;
         
-        Debug.Log("mouse hover enter");
         OnHoverStart?.Invoke(starToGo);
-        
     }
     
     // OnPointerExit
@@ -84,39 +55,20 @@ public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         if (!starToGo) return;
         
-        if (starToGo.GetComponent<Star>().isCreated)
-        {
-            _buttonImg.sprite = litStarImage; 
-        }
-        else
-        {
-            _buttonImg.sprite = darkStarImage; 
-        }
+        _buttonImg.sprite = starToGo.GetComponent<Star>().isCreated ? litStarImage : darkStarImage;
         
-        Debug.Log("mouse hover exit");
         OnHoverStop?.Invoke(starToGo);
-        
     }
     
     public void SelectStarToSlingShot()
     {
-        print("!!!!!!!!!!!!!mouse onclick -- SelectStarToSlingShot");
         if (!starToGo) return;
         OnSelectStar?.Invoke(starToGo);
     }
 
     //for controller selection, add star image switches
-    public void OnSelect(BaseEventData eventData)
-    {
-        
-    }
-
-    public void OnDeselect(BaseEventData eventData)
-    {
-
-    }
-
-
+    public void OnSelect(BaseEventData eventData) { }
+    public void OnDeselect(BaseEventData eventData) { }
 
     private void Update()
     {
@@ -126,17 +78,16 @@ public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
         disToStar = (float) Math.Round(disToStar, 0);
         starBtnText.text = disToStar + "m";
 
-        if (ES.currentSelectedGameObject != _storeSelected)
+        if (es.currentSelectedGameObject == _storeSelected) return;
+        if (es.currentSelectedGameObject is null)
         {
-            if (ES.currentSelectedGameObject == null)
-            {
-                ES.SetSelectedGameObject(_storeSelected);
-            }
-            else
-            {
-                _storeSelected = ES.currentSelectedGameObject;
-            }
+            es.SetSelectedGameObject(_storeSelected);
         }
+        else
+        {
+            _storeSelected = es.currentSelectedGameObject;
+        }
+        
     }
 
     //InputActions
@@ -151,4 +102,5 @@ public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         _inputAction.UI.Disable();
     }
+    
 }
