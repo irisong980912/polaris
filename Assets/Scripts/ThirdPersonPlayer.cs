@@ -46,7 +46,13 @@ public class ThirdPersonPlayer : MonoBehaviour
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         Orbit.OnSlingShot += OnSlingShot;
+        CreateStar.OnStarCreation += ConsumeStardust;
         // transform.LookAt(firstStar);
+    }
+
+    private void ConsumeStardust()
+    {
+        stardust--;
     }
 
     private void OnSlingShot(bool onSlingShot, Transform starToGo)
