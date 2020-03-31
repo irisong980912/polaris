@@ -11,21 +11,13 @@ public class ThirdPersonCamera : MonoBehaviour
     private float _distanceFromPlanet;
     public float onOrbitDistanceRatio = 8.0f;
     
-    public float maximumRotationSpeed = 1.8f;
     public float cameraFollowDelay = 0.2f;
 
     private Transform _cameraTarget;
     private Vector3 _currentCameraVelocity = Vector3.zero;
-    
-    // public Transform firstStar;
-
 
     //InputActions
     private PlayerInputActions _inputAction;
-    private readonly Vector2 _cameraRotationInput;
-
-
-    Vector2 cameraRotationInput;
 
     private bool _enableIsometricView;
     private bool _levelCleared;
@@ -34,21 +26,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform constellationViewPos;
     public Transform isometricStarViewPos;
     
-    private bool _returnToPlayer;
-    private bool _rotateToTopView;
-    private bool _onOrbit;
     private bool _onIso;
-
-    /// <summary>
-    /// Camera Starting Position, creating a zoom in effect
-    /// </summary>
-    /// 
-
-
-    public ThirdPersonCamera(Vector2 cameraRotationInput)
-    {
-        _cameraRotationInput = cameraRotationInput;
-    }
 
     private void Awake()
     {
@@ -67,7 +45,6 @@ public class ThirdPersonCamera : MonoBehaviour
         Orbit.OnOrbitStart += OnOrbitStart;
         Orbit.OnOrbitStop += OnOrbitStop;
         ClearLevel.OnLevelClear += OnLevelClear;
-        // IsometricStarView.OnIsometricStarView += OnIsometricStarView;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
 
         var dir = new Vector3(-10.0f, 0, 0f);
@@ -78,20 +55,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-     
-        
-        // if ((_levelCleared || (_enableIsometricView && _onOrbit)))
-
-
-        if ((_levelCleared || _enableIsometricView))
+        if (_levelCleared || _enableIsometricView)
         {
-            
             var desiredPosition = _viewPos.position ;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
 
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
         }
+        
         if (_enableIsometricView)
         {
             _mainCamera.LookAt(_cameraTarget);
@@ -100,9 +72,6 @@ public class ThirdPersonCamera : MonoBehaviour
         else
         {
             // TODO: make the camera rotate faster to follow player rotation
-
-            var xAxisInput = _cameraRotationInput.x;
-            var yAxisInput = _cameraRotationInput.y;
 
             var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
             if (Math.Abs(distanceToTarget - _minimumDistanceFromTarget) > 0.1f * _minimumDistanceFromTarget)
@@ -120,28 +89,6 @@ public class ThirdPersonCamera : MonoBehaviour
                     cameraFollowDelay);
             }
             
-            if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
-            {
-                var mainCameraPos = _mainCamera.position;
-                var cameraTargetPos = _cameraTarget.position;
-                distanceToTarget = Vector3.Distance(mainCameraPos, cameraTargetPos);
-                _mainCamera.LookAt(_cameraTarget);
-                
-                var xRotationMagnitude = xAxisInput * maximumRotationSpeed;
-                var yRotationMagnitude = yAxisInput * maximumRotationSpeed;
-                
-                // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
-                // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
-                _mainCamera.Rotate(yRotationMagnitude, xRotationMagnitude, 0, Space.Self);
-            
-                // After rotating the camera, it will no longer be pointing at the player.
-                // By translating the camera as follows, it will be adjusted to point at the player again.
-                var lookingAtPosition = mainCameraPos + _mainCamera.forward * distanceToTarget;
-                var correctivePath = cameraTargetPos - lookingAtPosition;
-                
-                _mainCamera.Translate(correctivePath, Space.World);
-            }
-            
             _mainCamera.LookAt(_cameraTarget);
         }
         
@@ -149,26 +96,18 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void OnOrbitStart()
     {
-        _onOrbit = true;
-        Debug.Log("camera --- OnOrbitStart");
-
         _cameraTarget = player.parent;
         _minimumDistanceFromTarget = _distanceFromPlanet;
     }
 
     private void OnOrbitStop()
     {
-        _onOrbit = false;
-        Debug.Log("camera --- OnOrbitStop");
-
         _cameraTarget = player;
         _minimumDistanceFromTarget = distanceFromPlayer;
     }
     
     private void OnLevelClear()
     {
-        print("clear level ------ camera !~@#@#@#@#$#$å");
-        _rotateToTopView = true;
         _viewPos = constellationViewPos;
         _levelCleared = true;
     }
@@ -183,39 +122,32 @@ public class ThirdPersonCamera : MonoBehaviour
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
-
         _inputAction.Player.Disable();
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
         Orbit.OnOrbitStart -= OnOrbitStart;
         Orbit.OnOrbitStop -= OnOrbitStop;
         ClearLevel.OnLevelClear -= OnLevelClear;
-        // IsometricStarView.OnIsometricStarView -= OnIsometricStarView;
         IsometricStarPosManager.OnIsometricStarView -= OnIsometricStarView;
     }
     
-
-
     private void OnIsometricStarView(bool onIso, Transform star)
     {
         if (_levelCleared) return;
-        Debug.Log("camera -- OnIsometricStarView");
         _onIso = onIso;
 
         if (_onIso)
         {
             _viewPos = isometricStarViewPos;
             _enableIsometricView = true;
-            _returnToPlayer = false;
-            _rotateToTopView = true;
             _cameraTarget = star;
         }
 
         else
         {
             _enableIsometricView = false;
-            _returnToPlayer = true;
             _cameraTarget = player;
         }
+        
     }
 
 }
