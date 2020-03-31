@@ -2,20 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// apply  this script to star gravityCore
-/// 
-/// Attached to an object that would be the epicentre of the orbit,
-/// and forces provided |GravityObject| to orbit around it.
-/// The speed of the orbit is determined by the speed variable.
-/// </summary>
-/// <remarks>
-/// Orbits are achieved by attaching orbiting objects as children to transform, and then rotating transform.
-/// </remarks>
-/// <param>
-/// speed: determines how quickly the attached objects rotate.
-/// cam: the main camera of the scene.
-/// </param>
 public class Orbit : MonoBehaviour
 {
     public float planetLitStarSpeed;
