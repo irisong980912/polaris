@@ -49,6 +49,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         StarIconManager.OnSelectStar += OnSlingShot;
         CreateStar.OnStarCreation += ConsumeStardust;
+        DestroyStar.OnStarDestruction += AcquireStardust;
     }
 
     private void Update()
@@ -143,6 +144,11 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void ConsumeStardust()
     {
         stardust--;
+    }
+    
+    private void AcquireStardust()
+    {
+        stardust++;
     }
 
     private void OnSlingShot(Transform starToGo)
