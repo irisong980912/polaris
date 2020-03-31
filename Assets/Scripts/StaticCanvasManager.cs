@@ -1,20 +1,18 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
 
 /// <summary>
 /// Manages star content
-/// 
 /// </summary>
 public class StaticCanvasManager : MonoBehaviour
 {
-    public GameObject StardustCountText;
+    public GameObject stardustCountText;
     private void Start()
     {
-        foreach(Transform child in transform){
-            if(child.gameObject.tag == "|StarButton|"){
+        foreach (Transform child in transform) {
+            if (child.gameObject.tag.Contains("|StarButton|")) {
                 child.gameObject.SetActive(false);
             }
+            
         }
         
         IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
@@ -22,16 +20,17 @@ public class StaticCanvasManager : MonoBehaviour
 
     private void SetIsometricActive(bool isIsometricActive, Transform star)
     {
-        //var StardustCountText = transform.Find("StardustCountText").gameObject;
-        StardustCountText.SetActive(!isIsometricActive);
+        stardustCountText.SetActive(!isIsometricActive);
         
-        foreach(Transform child in transform){
-            if(child.gameObject.tag == "|StarButton|"){
+        foreach (Transform child in transform) {
+            if (child.gameObject.tag.Contains("|StarButton|")) {
                 child.gameObject.SetActive(isIsometricActive);
             }
+            
         }
 
     }
+    
     private void OnDisable()
     {
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.

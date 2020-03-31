@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /// <summary>
 /// on enter the gravity core, immediately turn the player to the isometric starview
-///
 /// 
 /// attach to the star gravity core
 /// 1. on trigger enter find all the planet inside the star (start)
@@ -14,7 +12,6 @@ using UnityEngine;
 /// </summary>
 public class IsometricStarPosManager : MonoBehaviour
 {
-    
     // TODO: change the naming to enter planet orbit
     // star view pos to planet view pos
     public Transform isoStarViewPos;
@@ -24,9 +21,9 @@ public class IsometricStarPosManager : MonoBehaviour
     public float xDisToStar = 90.0f;
     public float zDisToStar = 90.0f;
 
-    private readonly float _dirMultiplierCam = 500.0f;
-    private readonly float _dirMultiplierPlayer = 50.0f;
-    
+    private const float DirMultiplierCam = 500.0f;
+    private const float DirMultiplierPlayer = 50.0f;
+
     private int _planetNum;
     public List<GameObject> planetList = new List<GameObject>();
 
@@ -37,26 +34,27 @@ public class IsometricStarPosManager : MonoBehaviour
 
     private void Start()
     {
-        if (!transform.parent.CompareTag("|Star|")) return;
+        if (!transform.parent.tag.Contains("|Star|")) return;
         _starPos = transform.parent.position;
         print("Iso beginning parent -- "+ transform.parent.name);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
         // find all the planet inside the star
         if (other.gameObject.tag.Contains("|Planet|"))
         {
             _planetNum++;
             planetList.Add(other.gameObject);
             print(other.gameObject.name);
-        } else if (other.gameObject.tag.Contains("|Player|"))
+        } 
+        else if (other.gameObject.tag.Contains("|Player|"))
         {
             // notify camera to turn to isoview
             _isIsometricStarView = true;
             OnIsometricStarView?.Invoke(_isIsometricStarView, transform.parent);
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -81,43 +79,27 @@ public class IsometricStarPosManager : MonoBehaviour
             var planetTwoPos = _planetNum == 1 ? new Vector3(
                     planetOnePos.x + 50.0f, planetOnePos.y, planetOnePos.z + 50.0f) 
                         : planetList[1].transform.position;
-            calculatePerpendicularDir(planetOnePos, planetTwoPos);
+            CalculatePerpendicularDir(planetOnePos, planetTwoPos);
             
         }
 
     }
 
-    private void calculatePerpendicularDir(Vector3 planetOnePos, Vector3 planetTwoPos)
+    private void CalculatePerpendicularDir(Vector3 planetOnePos, Vector3 planetTwoPos)
     {
         var dirA = planetOnePos - _starPos;
         var dirB = planetTwoPos - _starPos;
 
         var normalDir = Vector3.Cross(dirA, dirB).normalized;
 
-        var isoIdealPos = _starPos + normalDir * _dirMultiplierCam;
+        var isoIdealPos = _starPos + normalDir * DirMultiplierCam;
         isoStarViewPos.position = isoIdealPos;
         
         // // TODO: figure out player orbit angle or change the planet positions
         // put the player on the plane
         var planeDir  = Vector3.Cross(normalDir, dirB).normalized;
-        var playerIsoStartPos = _starPos + planeDir * _dirMultiplierPlayer;
+        var playerIsoStartPos = _starPos + planeDir * DirMultiplierPlayer;
         player.GetComponent<ThirdPersonPlayer>().playerIsoStartPos = playerIsoStartPos;
     }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
