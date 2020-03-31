@@ -19,8 +19,6 @@ public class ThirdPersonPlayer : MonoBehaviour
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
 
-    // public Transform firstStar;
-
     //InputActions
     private PlayerInputActions _inputAction;
     
@@ -38,34 +36,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public Vector3 playerIsoStartPos;
     private bool _firstTimeIso;
-    private Transform curStar;
-
-
-    private void Start()
-    {
-        CameraSwitch.OnMapSwitch += SetMapActive;
-        IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
-        Orbit.OnSlingShot += OnSlingShot;
-        CreateStar.OnStarCreation += ConsumeStardust;
-        // transform.LookAt(firstStar);
-    }
-
-    private void ConsumeStardust()
-    {
-        stardust--;
-    }
-
-    private void OnSlingShot(bool onSlingShot, Transform starToGo)
-    {
-        print("+++++++++++++  player is on slingshot");
-        _onSlingShot = onSlingShot;
-        _starToGo = starToGo;
-    }
-
-    private static void SetMapActive(bool mapActive)
-    {
-        _mapActive = mapActive;
-    }
+    private Transform _curStar;
 
     private void Awake()
     {
@@ -75,36 +46,29 @@ public class ThirdPersonPlayer : MonoBehaviour
         collectDustSound = collectDustSoundContainer.GetComponent<AudioSource>();
     }
 
-    public void OnTriggerEnter(Collider collision)
+    private void Start()
     {
-        // TODO: Move me to the collect stardust script.
-        if (collision.tag.Contains("|Dust|"))
-        {
-            collectDustSound.Play();
-        }     
+        CameraSwitch.OnMapSwitch += SetMapActive;
+        IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
+        Orbit.OnSlingShot += OnSlingShot;
+        CreateStar.OnStarCreation += ConsumeStardust;
     }
 
     private void Update()
     {
+        //TODO: move me to where stardust gets added or removed.
         stardustCount.text = "Stardust: " + stardust;
     }
     
-    private void endSlingshot()
-    {
-        _beginSlingshot = false;
-        EndSlingShot?.Invoke(_beginSlingshot);
-    }
-
     private void FixedUpdate()
     {
-        if (_levelCleared) return;
-
-        if (_mapActive) return;
+        if (_levelCleared || _mapActive) return;
 
         // when on slingshot, make the player move towards the target 
         if (_onSlingShot)
         {
             var desiredPosition = _starToGo.position + disFromGoalStar;
+            //TODO: There's no need for fixedDeltaTime when called in FixedUpdate()
             transform.position = Vector3.Lerp(transform.position, desiredPosition, speed * 2 * Time.fixedDeltaTime);
 
             // TODO: disable all the figure when slingshot
@@ -112,7 +76,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             if (Vector3.Distance(desiredPosition, transform.position) < 10.0f)
             {
                 _onSlingShot = false;
-                endSlingshot();
+                EndSlingshot();
             }
             
         }
@@ -134,17 +98,11 @@ public class ThirdPersonPlayer : MonoBehaviour
             
             // move player in the direction of the star
             var playerPos = transform.position;
-            var starPos = curStar.position;
-
+            var starPos = _curStar.position;
             var dir = (starPos - playerPos).normalized;
-            
-            // playerPos.x += xAxisInput;
-            // playerPos.z += yAxisInput;
             transform.position = playerPos + dir * xAxisInput;
             
             transform.LookAt(cam.transform);
-            
-
         }
         else
         {
@@ -170,12 +128,42 @@ public class ThirdPersonPlayer : MonoBehaviour
                 q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
                 transform1.rotation = q;
             }   
+            
             var transform2 = transform;
             transform2.position += transform2.forward * speed;
         }
+        
+    }
+    
+    public void OnTriggerEnter(Collider collision)
+    {
+        // TODO: Move me to the collect stardust script.
+        if (collision.tag.Contains("|Dust|"))
+        {
+            collectDustSound.Play();
+        }     
+    }
+    
+    private void ConsumeStardust()
+    {
+        stardust--;
+    }
 
-        // var transform2 = transform;
-        // transform2.position += transform2.forward * speed;
+    private void OnSlingShot(bool onSlingShot, Transform starToGo)
+    {
+        _onSlingShot = onSlingShot;
+        _starToGo = starToGo;
+    }
+    
+    private void EndSlingshot()
+    {
+        _beginSlingshot = false;
+        EndSlingShot?.Invoke(_beginSlingshot);
+    }
+
+    private static void SetMapActive(bool mapActive)
+    {
+        _mapActive = mapActive;
     }
 
     //InputActions
@@ -193,11 +181,10 @@ public class ThirdPersonPlayer : MonoBehaviour
     
     private void OnIsometricStarView(bool onIso, Transform star)
     {
-        Debug.Log("camera -- OnIsometricStarView");
         if (_levelCleared) return;
         _enableIsoViewMovement = onIso;
         _firstTimeIso = true;
-        curStar = star;
-
+        _curStar = star;
     }
+    
 }
