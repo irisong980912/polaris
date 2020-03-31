@@ -29,7 +29,6 @@ public class Orbit : MonoBehaviour
     private Transform _self;
     public static event Action OnOrbitStart;
     public static event Action OnOrbitStop;
-    public static event Action<Transform> OnSlingShot;
 
     //InputActions
     private PlayerInputActions _inputAction;
@@ -123,7 +122,6 @@ public class Orbit : MonoBehaviour
 
     private void Slingshot(Transform starToGo)
     {
-        OnSlingShot?.Invoke(starToGo);
         _player.gameObject.transform.SetParent(null);
         _player = null;
     }

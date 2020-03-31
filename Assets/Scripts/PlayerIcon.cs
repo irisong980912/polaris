@@ -14,10 +14,9 @@ public class PlayerIcon : MonoBehaviour
 
     private void Start()
     {
-        
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
-        Orbit.OnSlingShot += OnSlingShot;
+        StarIconManager.OnSelectStar += OnSlingShot;
         GetComponent<Image>().enabled = false;
 
     }
@@ -69,7 +68,7 @@ public class PlayerIcon : MonoBehaviour
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
         CameraSwitch.OnMapSwitch -= SetMapActive;
         IsometricStarPosManager.OnIsometricStarView -= SetIsometricActive;
-        Orbit.OnSlingShot -= OnSlingShot;
+        StarIconManager.OnSelectStar -= OnSlingShot;
     }
 
 }
