@@ -24,34 +24,34 @@ public class Orbit : MonoBehaviour
     public float playerDarkStarSpeed;
     public float playerLitStarSpeed;
     private float _playerSpeed;
-    
-    // public float speed;
-    // public float playerOrbitSpeed;
-    
+
     public Camera cam;
-    private float _normalSpeed;
     private Collider _player;
     private Transform _self;
+    
     private bool _launchBegan;
-    public static event Action OnOrbitStart;
+    public static event Action OnOrbitStart; 
     public static event Action OnOrbitStop;
     public static event Action<bool, Transform> OnSlingShot;
-
-    //InputActions
-    PlayerInputActions inputAction;
-
-    public InputAction slingshotAction;
-    private Transform _starToGo;
+    
     private bool _onSlingShot;
     private bool _beginSlingShot;
-    public Transform coreForPlayer;
+
+    //InputActions
+    private PlayerInputActions _inputAction;
+    public InputAction slingshotAction;
+    
     private bool _isLit;
+    
+    private Transform _starToGo;
+    public Transform coreForPlayer;
+    
 
     void Awake()
     {
         //InputActions
-        inputAction = new PlayerInputActions();
-        slingshotAction = inputAction.Player.Slingshot;
+        _inputAction = new PlayerInputActions();
+        slingshotAction = _inputAction.Player.Slingshot;
     }
 
     private void Start()
@@ -60,27 +60,13 @@ public class Orbit : MonoBehaviour
         _playerSpeed = playerDarkStarSpeed;
         
         StarIconManager.OnSelectStar += OnSelectStar;
+        // listen for player movement to stop the slingshot when arriving at designated location
         ThirdPersonPlayer.EndSlingShot += EndSlingShot;
+        
         CreateStar.OnStarCreation += OnStarCreation;
         DestroyStar.OnStarDestruction += OnStarDestruction;
         _self = transform;
-        // Store the normal rotation speed so it can be restored after a slingshot.
-        _normalSpeed = _planetSpeed;
-        
-    }
 
-    private void OnStarDestruction()
-    {
-        _isLit = false;
-        _planetSpeed = 0;
-        _playerSpeed = playerDarkStarSpeed;
-    }
-
-    private void OnStarCreation()
-    {
-        _isLit = true;
-        _planetSpeed = planetLitStarSpeed;
-        _playerSpeed = playerLitStarSpeed;
     }
 
     private void FixedUpdate()
@@ -95,33 +81,12 @@ public class Orbit : MonoBehaviour
         
         
         if (_player is null) return;
-
         if (!_isLit) return;
-        //if (!Input.GetButton("Fire2") || _player.transform.parent != _self) return;
-        
-        // haven't selected a star
         if (!_starToGo  || _player.transform.parent != _self) return;
-        ////InputAction replaces "Input.GetButton("Example") and holds a bool
-        // if (!slingshotAction.triggered || _player.transform.parent != _self) return;
-
         if (!_beginSlingShot) return;
-
         if (_launchBegan) return;
-        //InputAction replaces "Input.GetButton("Example") and calls function
-        //inputAction.Player.Interact.performed += ctx => SlingshotStart();
         print("orbit --- launch begin" + _launchBegan);
         SlingshotStart();
-    }
-
-    /// <summary>
-    /// Sometimes the player will not orbit cleanly around the planet, instead circling a "halo" path around it.
-    /// This method will adjust the spinning planet core to realign the player's orbit around the planet.
-    /// </summary>
-    private void AdjustRotation()
-    {
-        _player.gameObject.transform.SetParent(null);
-        _self.forward = _player.transform.position - _self.position;
-        _player.gameObject.transform.SetParent(_self);
     }
 
     //TODO: mark these comments as a TODO item, add them to documentation, or delete them.
@@ -138,8 +103,6 @@ public class Orbit : MonoBehaviour
     {
         if (gameObject.tag.Contains("|GravityCore|"))
         {
-            
-            // if (other.gameObject.tag.Contains("|Planet|"))
             if (other.gameObject.tag.Contains("|Planet|"))
             {
                 other.gameObject.transform.SetParent(transform);
@@ -151,21 +114,21 @@ public class Orbit : MonoBehaviour
                 print("orbit ----- set player to core");
                 other.gameObject.transform.SetParent(coreForPlayer);
             }
-            
         }
         else if (gameObject.tag.Contains("|PlanetCore|"))
         {
             if (!other.gameObject.tag.Contains("|Player|")) return;
             
-            print("clide with a plabet! " + gameObject.transform.parent.name);
-            // player can orbit only if the star is lit
-            if (!_self.parent.parent.GetComponent<Star>().isCreated) return;
-
+            print("collide with a planet! " + gameObject.transform.parent.name);
+            
+            // player can orbit the planet only if the star is lit
+            if (Math.Abs(_planetSpeed) < 0.01) return;
             _player = other;
             _self.LookAt(other.transform.position);
             other.gameObject.transform.SetParent(transform);
             
             OnOrbitStart?.Invoke();
+            // TODO: remove adjust rotation
             InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
         }
         
@@ -177,14 +140,35 @@ public class Orbit : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         other.gameObject.transform.SetParent(null);
+        _player = null;
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
-
-
-        print("slingshot - trigger onOxrbitStop");
+        print("slingshot - trigger onOrbitStop");
         OnOrbitStop?.Invoke();
-
         CancelInvoke(nameof(AdjustRotation));
+    }
+    
+    /// <summary>
+    /// Sometimes the player will not orbit cleanly around the planet, instead circling a "halo" path around it.
+    /// This method will adjust the spinning planet core to realign the player's orbit around the planet.
+    /// </summary>
+    private void AdjustRotation()
+    {
+        _player.gameObject.transform.SetParent(null);
+        _self.forward = _player.transform.position - _self.position;
+        _player.gameObject.transform.SetParent(_self);
+    }
+    
+    private void OnStarDestruction()
+    {
+        _planetSpeed = 0;
+        _playerSpeed = playerDarkStarSpeed;
+    }
+
+    private void OnStarCreation()
+    {
+        _planetSpeed = planetLitStarSpeed;
+        _playerSpeed = playerLitStarSpeed;
     }
 
     /// <summary>
@@ -214,15 +198,9 @@ public class Orbit : MonoBehaviour
         print("|||||||||| orbit --- slngshot ||||||||||");
         _onSlingShot = true;
         OnSlingShot?.Invoke(_onSlingShot, _starToGo);
-        
         _launchBegan = false;
         _player.gameObject.transform.SetParent(null);
-        
         _onSlingShot = false;
-
-        // speed = _normalSpeed;
-        // _player.gameObject.GetComponent<Rigidbody>().AddForce(_player.transform.forward.normalized * 50000, ForceMode.Force);
-        //
     }
     
     private void OnSelectStar(Transform starToGo)
@@ -237,21 +215,19 @@ public class Orbit : MonoBehaviour
         _beginSlingShot = false;
     }
     
-    
-
     //InputActions
     //Activates all actions in Player action maps (action maps are Player and UI)
     private void OnEnable()
     {
         slingshotAction.Enable();
-        inputAction.Player.Enable();
+        _inputAction.Player.Enable();
     }
 
     //Disables all actions in Player action maps (action maps are Player and UI)
     private void OnDisable()
     {
         slingshotAction.Disable();
-        inputAction.Player.Disable();
+        _inputAction.Player.Disable();
     }
 
 }

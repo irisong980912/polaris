@@ -46,7 +46,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         Orbit.OnSlingShot += OnSlingShot;
-        // transform.LookAt(firstStar);
     }
 
     private void OnSlingShot(bool onSlingShot, Transform starToGo)
@@ -132,13 +131,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             var dir = (starPos - playerPos).normalized;
             
-            // playerPos.x += xAxisInput;
-            // playerPos.z += yAxisInput;
             transform.position = playerPos + dir * xAxisInput;
-            
             transform.LookAt(cam.transform);
-            
-
         }
         else
         {
@@ -167,9 +161,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             var transform2 = transform;
             transform2.position += transform2.forward * speed;
         }
-
-        // var transform2 = transform;
-        // transform2.position += transform2.forward * speed;
     }
 
     //InputActions
