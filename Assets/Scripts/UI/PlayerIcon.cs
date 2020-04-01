@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class PlayerIcon : MonoBehaviour
 {
     public Transform player;
-    private static bool _isoActive;
     private static bool _mapActive;
     private bool _onSlingShot;
 
@@ -27,8 +26,6 @@ public class PlayerIcon : MonoBehaviour
 
     private void OnSlingShot(bool onSlingShot, Transform _starToGo)
     {
-        _onSlingShot = onSlingShot;
-        _isoActive = false;
         GetComponent<Image>().enabled = false;
     }
 
@@ -41,29 +38,38 @@ public class PlayerIcon : MonoBehaviour
     {
         _mapActive = mapActive;
 
-        HandleImageEnable();
-        
+        if (!mapActive)
+        {
+            print("player icon -- hide");
+            GetComponent<Image>().enabled = false;
+        }
+        else
+        {
+            Invoke(nameof(EnableImage), 2.0f);
+        }
     }
     
     private void SetIsometricActive(bool isoActive, Transform star)
     {
         print("player icon iso view");
-        _isoActive = isoActive;
-        Invoke(nameof(HandleImageEnable), 2.0f);
-    }
 
-    private void HandleImageEnable()
-    {
-        if (_mapActive || _isoActive)
-        {
-            GetComponent<Image>().enabled = true;
-            GetComponent<Image>().rectTransform.sizeDelta = _mapActive ? new Vector2(2000, 2000) : new Vector2(200, 200);
-        }
-        else
+        if (!isoActive)
         {
             print("player icon -- hide");
             GetComponent<Image>().enabled = false;
         }
+        else
+        {
+            Invoke(nameof(EnableImage), 2.0f);
+        }
+        
+    }
+
+    private void EnableImage()
+    {
+        GetComponent<Image>().enabled = true;
+        GetComponent<Image>().rectTransform.sizeDelta = _mapActive ? new Vector2(2000, 2000) : new Vector2(200, 200);
+
     }
 
     private void OnDisable()
