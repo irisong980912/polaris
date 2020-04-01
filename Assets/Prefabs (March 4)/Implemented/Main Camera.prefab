@@ -478,7 +478,10 @@ MonoBehaviour:
   onOrbitDistanceRatio: 8
   maximumRotationSpeed: 1.8
   cameraFollowDelay: 0.1
-  topViewCamPos: {fileID: 0}
+  constellationViewPos: {fileID: 1965121661485291902, guid: cc10f5a2562604e3084e6f3ee57641c8,
+    type: 3}
+  isometricStarViewPos: {fileID: 8327685571993725930, guid: ab2fb9011921b45dba5e739354890f8c,
+    type: 3}
 --- !u!135 &4943265309136642250
 SphereCollider:
   m_ObjectHideFlags: 0

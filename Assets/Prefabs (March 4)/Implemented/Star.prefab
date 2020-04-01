@@ -156,7 +156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8240559358194348407}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &3858300112085188832
 AudioSource:
@@ -489,8 +489,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5528136462605301698}
   - component: {fileID: 231935842724485122}
-  - component: {fileID: 9193212617543460157}
   - component: {fileID: 4515238664515866747}
+  - component: {fileID: 6766230585818882590}
   m_Layer: 0
   m_Name: GravityCore
   m_TagString: '|GravityCore|'
@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8240559358194348407}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &231935842724485122
 SphereCollider:
@@ -525,21 +525,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9193212617543460157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769666023076319719}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db20a0893a120c488f8fb6f372f4983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityRadius: 180
-  gravityStrength: 70
-  disToPlayer: 0
 --- !u!114 &4515238664515866747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,9 +537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba091f1123d1a1f499bbf192b652a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetLitStarSpeed: 5
-  playerDarkStarSpeed: 2
-  playerLitStarSpeed: 8
+  planetLitStarSpeed: 0.5
+  playerDarkStarSpeed: 1
+  playerLitStarSpeed: 2
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
   slingshotAction:
     m_Name: Slingshot
@@ -565,6 +550,26 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
   coreForPlayer: {fileID: 2148772901552218}
+--- !u!114 &6766230585818882590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769666023076319719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f60be9a18b349afba507a455a0448b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isoStarViewPos: {fileID: 8327685571993725930, guid: ab2fb9011921b45dba5e739354890f8c,
+    type: 3}
+  player: {fileID: 1402579469393235699, guid: 2aaa38457410ac14d9b7bbab39151b8a, type: 3}
+  camera: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  yDisToStar: 500
+  xDisToStar: 90
+  zDisToStar: 90
+  planetList: []
 --- !u!1 &7531728700848219579
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,10 +925,10 @@ Transform:
   - {fileID: 8430654565550250652}
   - {fileID: 1399163469416773232}
   - {fileID: 4670316473449136147}
-  - {fileID: 6020234962431353854}
-  - {fileID: 2148772901552218}
   - {fileID: 5528136462605301698}
+  - {fileID: 2148772901552218}
   - {fileID: 5872897348888088374}
+  - {fileID: 6020234962431353854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1035,7 +1040,6 @@ MonoBehaviour:
   disperseDustSound: {fileID: 3858300112085188832}
   disperseDustSoundContainer: {fileID: 4007785412229968600}
   onTrigger: 0
-  usedStardust: []
   starAnimationController: {fileID: 3040263607613523733}
   starVfx: {fileID: 8832363041328108432}
   ringAnimationController: []
@@ -1075,7 +1079,7 @@ MonoBehaviour:
   planetAnimationController: []
   activationSpeedMultiplier: 1
   interact:
-    m_Name: 
+    m_Name: Interact
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 11e17873-c79a-4c56-96ce-97eacf8318ad
@@ -1141,7 +1145,7 @@ PrefabInstance:
     - target: {fileID: 4730448755969866321, guid: 358356bbd09fd0042916b8a5adaa5d3e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4730448755969866321, guid: 358356bbd09fd0042916b8a5adaa5d3e,
         type: 3}

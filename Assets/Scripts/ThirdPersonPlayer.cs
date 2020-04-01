@@ -18,9 +18,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public AudioSource collectDustSound;
     public GameObject collectDustSoundContainer;
-
-    // public Transform firstStar;
-
+    
     //InputActions
     private PlayerInputActions _inputAction;
     
@@ -40,12 +38,17 @@ public class ThirdPersonPlayer : MonoBehaviour
     private bool _firstTimeIso;
     private Transform curStar;
 
+    // player need to face the first star when game started
+    public Transform firstStar;
+
 
     private void Start()
     {
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         Orbit.OnSlingShot += OnSlingShot;
+        
+        transform.LookAt(firstStar);
     }
 
     private void OnSlingShot(bool onSlingShot, Transform starToGo)
@@ -91,17 +94,17 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         if (_levelCleared) return;
-
+    
         if (_mapActive) return;
-
+    
         // when on slingshot, make the player move towards the target 
         if (_onSlingShot)
         {
             var desiredPosition = _starToGo.position + disFromGoalStar;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, speed * 2 * Time.fixedDeltaTime);
-
+    
             // TODO: disable all the figure when slingshot
-
+    
             if (Vector3.Distance(desiredPosition, transform.position) < 10.0f)
             {
                 _onSlingShot = false;
@@ -112,10 +115,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
-
+    
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
-
+    
         if (_enableIsoViewMovement)
         {
             // TODO: move the player relative to the plane and the star positions (2D)
@@ -128,7 +131,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             // move player in the direction of the star
             var playerPos = transform.position;
             var starPos = curStar.position;
-
+    
             var dir = (starPos - playerPos).normalized;
             
             transform.position = playerPos + dir * xAxisInput;
@@ -151,7 +154,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 {
                     interpretedYInput = -interpretedYInput;
                 }
-
+    
                 Transform transform1;
                 (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
                 var q = transform1.rotation;

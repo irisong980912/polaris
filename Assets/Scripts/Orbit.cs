@@ -72,7 +72,12 @@ public class Orbit : MonoBehaviour
     private void FixedUpdate()
     {
         // TODO: figure out player orbit angle or change the planet positions
-        _self.Rotate(_self.up * _planetSpeed, Space.World);
+        
+        // check if the parent star is lit  to prevent all the planets in the scene from orbiting
+        if (transform.parent.GetComponent<Star>().isCreated)
+        {
+            _self.Rotate(_self.up * _planetSpeed, Space.World);
+        }
 
         if (gameObject.tag.Contains("|GravityCore|"))
         {
@@ -161,12 +166,14 @@ public class Orbit : MonoBehaviour
     
     private void OnStarDestruction()
     {
+        _isLit = false;
         _planetSpeed = 0;
         _playerSpeed = playerDarkStarSpeed;
     }
 
     private void OnStarCreation()
     {
+        _isLit = true;
         _planetSpeed = planetLitStarSpeed;
         _playerSpeed = playerLitStarSpeed;
     }

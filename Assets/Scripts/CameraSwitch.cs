@@ -41,21 +41,10 @@ public class CameraSwitch : MonoBehaviour {
     //Change Camera
     private void SwitchCamera()
     {
-        //InputAction replaces "Input.GetButton("Example") and calls function
-        //inputAction.Player.Map.performed += ctx => CameraChangeCounter();
-
-        //InputAction replaces "Input.GetButton("Example") and holds a bool
         if (mapAction.triggered)
         {
             CameraChangeCounter();
         }
-
-        /*
-        if (Input.GetButtonDown("Fire3"))
-        {
-            CameraChangeCounter();
-        }
-        */
 
     }
 

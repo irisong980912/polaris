@@ -42,16 +42,14 @@ public class PlayerIcon : MonoBehaviour
         _mapActive = mapActive;
 
         HandleImageEnable();
-
-
+        
     }
     
     private void SetIsometricActive(bool isoActive, Transform star)
     {
+        print("player icon iso view");
         _isoActive = isoActive;
-        
-        Invoke(nameof(HandleImageEnable), 4.0f);
-        // HandleImageEnable();
+        Invoke(nameof(HandleImageEnable), 2.0f);
     }
 
     private void HandleImageEnable()

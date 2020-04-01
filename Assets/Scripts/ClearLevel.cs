@@ -60,12 +60,7 @@ public class ClearLevel : MonoBehaviour
         // and so that the player has enough time to see the constellation.
         Invoke(nameof(ShowClearMenu), 9);
     }
-    /*
-    private static void OnStarDestruction()
-    {
-        _numStarsLit--;
-    }
-    */
+
     private void OnStarDestruction()
     {
         if (_numStarsLit > 0)

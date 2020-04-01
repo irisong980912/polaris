@@ -16,7 +16,6 @@ public class Gravity : MonoBehaviour
         if (!c.gameObject.tag.Contains("|Player|")) return;
         _player = c.gameObject;
         disToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-        //Debug.Log("disToPlayer is: " + disToPlayer);
         _withinGravityRadius = true;
     }
 

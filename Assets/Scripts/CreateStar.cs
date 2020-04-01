@@ -93,18 +93,12 @@ public class CreateStar : MonoBehaviour
         {
             createSound.Play();
             gravitySound.Play();
-
-            // update stardust num and the lit star num
-            // var stardust = player.inventory[player.stardustSelection];
-            // GetComponent<DestroyStar>().usedStardust.Add(stardust);
-            // player.inventory.RemoveAt(player.stardustSelection);
+            
             player.stardust -= 1;
 
             // transform.Find("GravityCore").GetComponent<Orbit>().enabled = true;
             // transform.Find("GravityCore").GetComponent<Gravity>().enabled = true;
             GetComponent<Star>().isCreated = true;
-            // enable the orbit script of all planets of the star 
-            
             GetComponent<CreateStar>().enabled = false;
             
             OnStarCreation?.Invoke();
@@ -130,7 +124,7 @@ public class CreateStar : MonoBehaviour
     private void StartDestroy()
     {
         Debug.Log("StartDestroy");
-        // OnStarCreation?.Invoke();
+
         GetComponent<DestroyStar>().enabled = true;
     }
 
@@ -158,11 +152,8 @@ public class CreateStar : MonoBehaviour
     {
         if (onTrigger && _other)
         {
-
             FormStar();
-
         }
-
     }
 
     //InputActions

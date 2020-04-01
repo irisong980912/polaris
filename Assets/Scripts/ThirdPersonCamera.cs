@@ -34,6 +34,8 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _onOrbit;
     private bool _onIso;
 
+    public Transform firstStar;
+
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
     /// </summary>
@@ -66,8 +68,6 @@ public class ThirdPersonCamera : MonoBehaviour
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
 
         // camera position when game starts
-        var dir = new Vector3(-10.0f, 0, 0f);
-        transform.position = player.position + dir;
         _mainCamera.LookAt(_cameraTarget);
     }
 
@@ -79,8 +79,12 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             
             var desiredPosition = _viewPos.position ;
+            
+            // print("desired position -- camera  " + desiredPosition);
+            // print("iso position -- camera  " + isometricStarViewPos.position);
+            //
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
-
+    
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
         }
@@ -88,12 +92,12 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             _mainCamera.LookAt(_cameraTarget);
         }
-
+    
         else
         {
             var xAxisInput = _cameraRotationInput.x;
             var yAxisInput = _cameraRotationInput.y;
-
+    
             var distanceToTarget = Vector3.Distance(_mainCamera.position, _cameraTarget.position);
             if (Math.Abs(distanceToTarget - _minimumDistanceFromTarget) > 0.1f * _minimumDistanceFromTarget)
             {
