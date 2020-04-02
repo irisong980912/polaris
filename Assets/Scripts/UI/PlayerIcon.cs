@@ -55,7 +55,7 @@ public class PlayerIcon : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(EnableImage), 0.0f);
+            Invoke(nameof(EnableImage), 1.0f);
         }
     }
     
@@ -70,7 +70,7 @@ public class PlayerIcon : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(EnableImage), 0.0f);
+            Invoke(nameof(EnableImage), 1.0f);
         }
         
     }
