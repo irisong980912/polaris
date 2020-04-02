@@ -23,6 +23,9 @@ public class PlayerIcon : MonoBehaviour
         IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
         RidePlanetSlingshot.OnSlingShot += OnSlingShot;
         GetComponent<Image>().enabled = false;
+        
+        RidePlanetSlingshot.OnRidePlanet += OnRidePlanet;
+        CreateStar.OnStarCreation += OnStarCreation;
 
     }
     
@@ -31,6 +34,33 @@ public class PlayerIcon : MonoBehaviour
         
         transform.position = player.position;
         transform.LookAt(cam);
+    }
+    
+    // disable when on cutscene
+    private void OnStarCreation()
+    {
+        GetComponent<Image>().enabled = false;
+        Invoke(nameof(FinishStarCreationAnimation), 6.0f);
+    }
+
+    private void FinishStarCreationAnimation()
+    {
+        EnableImage();
+    }
+
+    
+    private void OnRidePlanet(bool isOnPlanet)
+    {
+        if (isOnPlanet)
+        {
+            GetComponent<Image>().enabled = false;
+            Invoke(nameof(FinishPlanetAnimation), 6.0f);
+        }
+    }
+    
+    private void FinishPlanetAnimation()
+    {
+        EnableImage();
     }
     
     private void OnSlingShot(bool onSlingShot, Transform _starToGo)
