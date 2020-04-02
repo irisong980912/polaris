@@ -75,10 +75,17 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         
         // TODO: camera pans when stars are lit and show a small cutscene when player ride the planet 
-        if ((_levelCleared || _enableIsometricView))
+        if (_levelCleared )
         {
             
-            var desiredPosition = _viewPos.position ;
+            var desiredPosition = constellationViewPos.position ;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
+            var newRot = Quaternion.Euler(90, -45, -500); 
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
+        }
+        if (_enableIsometricView)
+        {
+            var desiredPosition = isometricStarViewPos.position ;
             
             // print("desired position -- camera  " + desiredPosition);
             // print("iso position -- camera  " + isometricStarViewPos.position);
@@ -87,9 +94,7 @@ public class ThirdPersonCamera : MonoBehaviour
     
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
-        }
-        if (_enableIsometricView)
-        {
+            
             _mainCamera.LookAt(_cameraTarget);
         }
     

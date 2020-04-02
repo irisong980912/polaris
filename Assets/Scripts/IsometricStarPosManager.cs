@@ -28,7 +28,7 @@ public class IsometricStarPosManager : MonoBehaviour
     public float zDisToStar = 90.0f;
 
     private readonly float _dirMultiplierCam = 500.0f;
-    private readonly float _dirMultiplierPlayer = 50.0f;
+    private readonly float _dirMultiplierPlayer = 120.0f;
     
     private int _planetNum;
     public List<GameObject> planetList = new List<GameObject>();
@@ -36,6 +36,7 @@ public class IsometricStarPosManager : MonoBehaviour
     private Vector3 _starPos;
     private bool _isIsometricStarView;
     private bool _isExitingField;
+    private bool _firstEnter;
 
     public static event Action<bool, Transform> OnIsometricStarView;
 
@@ -48,8 +49,8 @@ public class IsometricStarPosManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (_isExitingField) return;
+        // handles player first enter position change
+        _firstEnter = true;
         
         // find all the planet inside the star
         if (other.gameObject.tag.Contains("|Planet|"))
@@ -67,30 +68,34 @@ public class IsometricStarPosManager : MonoBehaviour
                 handleZeroPlanetIsoView();
             }
             
-            OnIsometricStarView?.Invoke(_isIsometricStarView, transform.parent);
+            OnIsometricStarView?.Invoke(_isIsometricStarView, transform);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
 
-        _isExitingField = true;
+        // _isExitingField = true;
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
         print("player EXIT gravity field -- "+ transform.parent.name);
         _isIsometricStarView = false;
-        OnIsometricStarView?.Invoke(_isIsometricStarView, transform.parent);
-        
-        Invoke(nameof(HandleGravityEdge), 2f);
+        OnIsometricStarView?.Invoke(_isIsometricStarView, transform);
+
+        HandleGravityEdgeWhenExit();
+        //Invoke(nameof(HandleGravityEdgeWhenExit), 2f);
     }
 
     /// <summary>
     /// prevent camera from panning repeatedly when going near the gravity field edge 
     /// 
     /// </summary>
-    private void HandleGravityEdge()
+    private void HandleGravityEdgeWhenExit()
     {
-        _isExitingField = false;
+        // move player a little bit further from the gravity field edge
+        var dirA = (player.position - _starPos).normalized;
+        player.GetComponent<ThirdPersonPlayer>().playerIsoExitPos = player.position + dirA * 80.0f;
+
     }
     
     private void handleZeroPlanetIsoView()
@@ -98,25 +103,37 @@ public class IsometricStarPosManager : MonoBehaviour
         if (_planetNum != 0) return;
         print("planet is 0");
         var dir = new Vector3(xDisToStar, yDisToStar, zDisToStar);
-        var isoIdealPos = _starPos + dir;
+        var isoIdealPos = _starPos + dir * _dirMultiplierCam;
         isoStarViewPos.position = isoIdealPos;
         camera.GetComponent<ThirdPersonCamera>().isometricStarViewPos.position = isoIdealPos;
         
         print("iso position  " + isoIdealPos);
         // move player a little bit closer to the star when first enter iso view
         var dirA = (player.position - _starPos).normalized;
-        player.GetComponent<ThirdPersonPlayer>().playerIsoStartPos = player.position - dirA * 50.0f;
+        var playerIsoStartPos = transform.position - dirA * _dirMultiplierPlayer;
+        
+        var playerToStarDist = Vector3.Distance(playerIsoStartPos, _starPos);
+        if (playerToStarDist > 180)
+        {
+            playerIsoStartPos  = transform.position + dirA * _dirMultiplierPlayer;
+        }
+        
+        print("playerToStarDist --- " + playerToStarDist);
+        
+        player.GetComponent<ThirdPersonPlayer>().playerIsoEnterPos = playerIsoStartPos;
     }
 
+    // constantly update the lookat angle
     private void Update()
     {
         if (!_isIsometricStarView) return;
         if (_planetNum == 0) return;
-        print("planet is not 0");
         var planetOnePos = planetList[0].transform.position;
         var planetTwoPos = _planetNum == 1 ? new Vector3(
                 planetOnePos.x + 50.0f, planetOnePos.y, planetOnePos.z + 50.0f) 
             : planetList[1].transform.position;
+        print(planetList[0].name);
+        print(planetList[1].name);
         calculatePerpendicularDir(planetOnePos, planetTwoPos);
 
     }
@@ -133,10 +150,28 @@ public class IsometricStarPosManager : MonoBehaviour
         camera.GetComponent<ThirdPersonCamera>().isometricStarViewPos.position = isoIdealPos;
         
         // // TODO: figure out player orbit angle or change the planet positions
+        /// done
         // put the player on the plane
-        var planeDir1  = Vector3.Cross(normalDir, dirB).normalized;
-        var playerIsoStartPos = _starPos + planeDir1 * _dirMultiplierPlayer;
-        player.GetComponent<ThirdPersonPlayer>().playerIsoStartPos = playerIsoStartPos;
+
+        if (_firstEnter)
+        {
+            var playerToStar = Vector3.Distance(player.position, _starPos);
+            print("playerToStarDist --- " + playerToStar);
+            
+            var planeDir1  = Vector3.Cross(normalDir, dirB).normalized;
+            
+            var playerIsoStartPos = transform.position + dirB.normalized * _dirMultiplierPlayer;
+            var playerToStarDist = Vector3.Distance(playerIsoStartPos, _starPos);
+            if (playerToStarDist > 180)
+            {
+                playerIsoStartPos  = transform.position - dirB.normalized * _dirMultiplierPlayer;
+            }
+            
+            // print("playerToStarDist --- " + playerToStarDist);
+            player.GetComponent<ThirdPersonPlayer>().playerIsoEnterPos = playerIsoStartPos;
+
+            _firstEnter = false;
+        }
         
     }
     

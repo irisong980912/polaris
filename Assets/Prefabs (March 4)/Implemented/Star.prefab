@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8240559358194348407}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &231935842724485122
 SphereCollider:
@@ -725,7 +725,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8240559358194348407}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8619516870928191434
 GameObject:
@@ -925,8 +925,8 @@ Transform:
   - {fileID: 8430654565550250652}
   - {fileID: 1399163469416773232}
   - {fileID: 4670316473449136147}
-  - {fileID: 5528136462605301698}
   - {fileID: 2148772901552218}
+  - {fileID: 5528136462605301698}
   - {fileID: 5872897348888088374}
   - {fileID: 6020234962431353854}
   m_Father: {fileID: 0}

@@ -34,12 +34,17 @@ public class ThirdPersonPlayer : MonoBehaviour
     private bool _beginSlingshot;
     public static event Action<bool> EndSlingShot;
 
-    public Vector3 playerIsoStartPos;
-    private bool _firstTimeIso;
+    public Vector3 playerIsoEnterPos;
+    private bool _firstTimeEnterIso;
+    public Vector3 playerIsoExitPos;
+    private bool _firstTimeExitIso;
+    
+    
     private Transform curStar;
 
     // player need to face the first star when game started
     public Transform firstStar;
+    
 
 
     private void Start()
@@ -122,10 +127,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         if (_enableIsoViewMovement)
         {
             // TODO: move the player relative to the plane and the star positions (2D)
-            if (_firstTimeIso)
+            if (_firstTimeEnterIso)
             {
-                transform.position = playerIsoStartPos;
-                _firstTimeIso = false;
+                transform.position = playerIsoEnterPos;
+                _firstTimeEnterIso = false;
             }
             
             // move player in the direction of the star
@@ -133,12 +138,25 @@ public class ThirdPersonPlayer : MonoBehaviour
             var starPos = curStar.position;
     
             var dir = (starPos - playerPos).normalized;
-            
+
             transform.position = playerPos + dir * xAxisInput;
-            transform.LookAt(cam.transform);
-        }
-        else
+            
+            transform.LookAt(curStar);
+            // var newRot = Quaternion.Euler(90, 0, 90); 
+            // transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
+        } else
         {
+            if (_firstTimeExitIso)
+            {
+                transform.position = playerIsoExitPos;
+                // make the player look at the edge of the gravitational field to have a sense of direction
+                Vector3 starDirToPlayer = transform.position - curStar.position;
+                starDirToPlayer.x += 200.0f;
+                Vector3 edge = curStar.position + starDirToPlayer.normalized * 180;
+                transform.LookAt(edge);
+                _firstTimeExitIso = false;
+            }
+            
             if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
             {
                 // Squaring the inputs makes finer movements easier.
@@ -184,8 +202,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         Debug.Log("camera -- OnIsometricStarView");
         if (_levelCleared) return;
         _enableIsoViewMovement = onIso;
-        _firstTimeIso = true;
+        _firstTimeEnterIso = true;
+        _firstTimeExitIso = true;
         curStar = star;
-
+        
+        print("OnIsometricStarView -- " + onIso);
     }
 }
