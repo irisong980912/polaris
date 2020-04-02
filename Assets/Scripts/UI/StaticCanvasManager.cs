@@ -38,26 +38,29 @@ public class StaticCanvasManager : MonoBehaviour
     {
         StardustCountText.SetActive(false);
 
-        if (isOnPlanet)
-        {
-            Invoke(nameof(SetStarBtnActive), 6.0f);
-        }
-        else
-        {
-            int count = 0;
-            foreach(Transform child in transform){
-                if(child.gameObject.tag == "|StarButton|")
+        int count = 0;
+        foreach(Transform child in transform){
+            if(child.gameObject.tag == "|StarButton|")
+            {
+                count++;
+                if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
                 {
-                    count++;
-                    if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
-                    {
-                        child.gameObject.SetActive(false);
-                    }
-                
+                    child.gameObject.SetActive(isOnPlanet);
                 }
+                
             }
         }
-        
+        // if (isOnPlanet)
+        // {
+        //     Invoke(nameof(SetStarBtnActive), 6.0f);
+        // }
+        // else
+        // {
+        //     Invoke(nameof(SetStarBtnInactive), 0f);
+        //     
+        //     Invoke(nameof(SetStarBtnInactive), 6.0f);
+        // }
+        //
     }
 
     private void SetStarBtnActive()
@@ -70,6 +73,22 @@ public class StaticCanvasManager : MonoBehaviour
                 if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
                 {
                     child.gameObject.SetActive(true);
+                }
+                
+            }
+        }
+    }
+    
+    private void SetStarBtnInactive()
+    {
+        int count = 0;
+        foreach(Transform child in transform){
+            if(child.gameObject.tag == "|StarButton|")
+            {
+                count++;
+                if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
+                {
+                    child.gameObject.SetActive(false);
                 }
                 
             }
