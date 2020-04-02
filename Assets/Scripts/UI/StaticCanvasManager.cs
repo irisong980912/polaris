@@ -7,6 +7,8 @@ using UnityEngine;
 public class StaticCanvasManager : MonoBehaviour
 {
     public GameObject StardustCountText;
+    private bool _isEnd;
+
     private void Start()
     {
         foreach(Transform child in transform){
@@ -19,6 +21,13 @@ public class StaticCanvasManager : MonoBehaviour
         RidePlanetSlingshot.OnRidePlanet += OnRidePlanet;
         IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
         CameraSwitch.OnMapSwitch += SetMapActive;
+        ThirdPersonPlayer.EndSlingShot += EndSlingShot;
+    }
+
+    private void EndSlingShot(bool obj)
+    {
+        _isEnd = true;
+        SetStarBtnInactive();
     }
 
     private void DisableAllUI(bool onAction)
@@ -52,15 +61,33 @@ public class StaticCanvasManager : MonoBehaviour
         }
         // if (isOnPlanet)
         // {
-        //     Invoke(nameof(SetStarBtnActive), 6.0f);
+        //     Invoke(nameof(SetStarBtnActive), 4.0f);
         // }
         // else
         // {
         //     Invoke(nameof(SetStarBtnInactive), 0f);
+        //     //
         //     
-        //     Invoke(nameof(SetStarBtnInactive), 6.0f);
-        // }
+        //     Invoke(nameof(SetStarBtnInactive), 1.0f);
+        //     
+        //     Invoke(nameof(SetStarBtnInactive), 2.0f);
+        //     
+        //     Invoke(nameof(SetStarBtnInactive), 3.0f);
         //
+        //     if (_isEnd)
+        //     {
+        //         Invoke(nameof(SetStarBtnInactive), 4.0f);
+        //         Invoke(nameof(SetStarBtnInactive), 4.5f);       
+        //         Invoke(nameof(SetStarBtnInactive), 5.0f);
+        //         Invoke(nameof(SetStarBtnInactive), 5.5f);
+        //         Invoke(nameof(SetStarBtnInactive), 6.0f);
+        //         Invoke(nameof(SetStarBtnInactive), 6.5f);
+        //         _isEnd = false;
+        //     }
+        //     //
+        //     
+        // }
+        
     }
 
     private void SetStarBtnActive()
