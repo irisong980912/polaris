@@ -541,15 +541,8 @@ MonoBehaviour:
   playerDarkStarSpeed: 1
   playerLitStarSpeed: 2
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
-  slingshotAction:
-    m_Name: Slingshot
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4a2207b8-a1b5-4ef6-87e6-dcd100a10250
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
   coreForPlayer: {fileID: 2148772901552218}
+  normalVector: {x: 0, y: 0, z: 0}
 --- !u!114 &6766230585818882590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,10 +555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f60be9a18b349afba507a455a0448b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isoStarViewPos: {fileID: 8327685571993725930, guid: ab2fb9011921b45dba5e739354890f8c,
-    type: 3}
-  player: {fileID: 1402579469393235699, guid: 2aaa38457410ac14d9b7bbab39151b8a, type: 3}
-  camera: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  isoStarViewPos: {fileID: 0}
+  player: {fileID: 0}
+  camera: {fileID: 0}
   yDisToStar: 500
   xDisToStar: 90
   zDisToStar: 90
