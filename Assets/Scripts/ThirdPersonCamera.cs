@@ -146,7 +146,10 @@ public class ThirdPersonCamera : MonoBehaviour
                 
                 var xRotationMagnitude = xAxisInput * maximumRotationSpeed;
                 var yRotationMagnitude = yAxisInput * maximumRotationSpeed;
+
                 
+                // yRotationMagnitude = Mathf.Clamp(yRotationMagnitude, -80, 80);
+                // xRotationMagnitude = Mathf.Clamp(xRotationMagnitude, -80, 80);
                 // An upwards rotation (from the Mouse Y Axis) is a rotation about the X Axis.
                 // Similarly, a sideways rotation (from Mouse X) is a rotation about the Y Axis.
                 _mainCamera.Rotate(yRotationMagnitude, xRotationMagnitude, 0, Space.Self);

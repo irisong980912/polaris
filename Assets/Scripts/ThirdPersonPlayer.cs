@@ -122,7 +122,26 @@ public class ThirdPersonPlayer : MonoBehaviour
     
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
-    
+        
+        // limit the degree of player rotation
+        float minRotation = -80;
+        float maxRotation = 80;
+        Vector3 currentRotation = transform.eulerAngles;
+        
+        // unity is behaving weird. 0 is -360
+        var curRotationTmpX = currentRotation.x - 360;
+        
+        if (currentRotation.x >= 80 && currentRotation.x <=89)
+        {
+            currentRotation.x = 80;
+            transform.eulerAngles = currentRotation;
+        }
+        else if (curRotationTmpX <= -80 && curRotationTmpX >= -90)
+        {
+            currentRotation.x = -80 + 360;
+            transform.eulerAngles = currentRotation;
+        }
+  
         if (_enableIsoViewMovement)
         {
             // TODO: move the player relative to the plane and the star positions (2D)
@@ -163,6 +182,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 transform.LookAt(edge);
                 _firstTimeExitIso = false;
             }
+            
             
             if (Math.Abs(xAxisInput) > 0.1f || Math.Abs(yAxisInput) > 0.1f)
             {
