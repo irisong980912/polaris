@@ -36,7 +36,6 @@ public class StaticCanvasManager : MonoBehaviour
     /// </summary>
     private void OnRidePlanet(bool isOnPlanet)
     {
-        print("OnRidePlanet --- revealGUI？？？ " + isOnPlanet);
         StardustCountText.SetActive(false);
 
         int count = 0;

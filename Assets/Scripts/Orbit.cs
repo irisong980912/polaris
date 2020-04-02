@@ -76,9 +76,9 @@ public class Orbit : MonoBehaviour
             if (transform.parent.GetComponent<Star>().isCreated)
             {
                 // star self-rotate
-                _self.Rotate(coreForPlayer.up * _planetSpeed, Space.World);
+                _self.Rotate(_self.up * _planetSpeed, Space.World);
             }
-            coreForPlayer.Rotate(coreForPlayer.up * _playerSpeed, Space.World);
+            coreForPlayer.Rotate(_self.up * _playerSpeed, Space.World);
         }
         // else if (gameObject.tag.Contains("|PlanetCore|"))
         // {

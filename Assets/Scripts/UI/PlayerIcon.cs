@@ -11,8 +11,10 @@ using UnityEngine.UI;
 public class PlayerIcon : MonoBehaviour
 {
     public Transform player;
+    public Transform cam;
     private static bool _mapActive;
     private bool _onSlingShot;
+    private bool _isoActive;
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerIcon : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = player.position;
+        transform.LookAt(cam);
     }
     
     private void OnSlingShot(bool onSlingShot, Transform _starToGo)
@@ -43,17 +46,21 @@ public class PlayerIcon : MonoBehaviour
         {
             print("player icon -- hide");
             GetComponent<Image>().enabled = false;
+            if (_isoActive)
+            {
+                EnableImage();
+            }
         }
         else
         {
-            Invoke(nameof(EnableImage), 2.0f);
+            Invoke(nameof(EnableImage), 0.0f);
         }
     }
     
     private void SetIsometricActive(bool isoActive, Transform star)
     {
         print("player icon iso view");
-
+        _isoActive = isoActive;
         if (!isoActive)
         {
             print("player icon -- hide");
@@ -61,7 +68,7 @@ public class PlayerIcon : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(EnableImage), 2.0f);
+            Invoke(nameof(EnableImage), 0.0f);
         }
         
     }
