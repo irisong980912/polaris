@@ -56,9 +56,11 @@ public class ThirdPersonPlayer : MonoBehaviour
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         RidePlanetSlingshot.OnSlingShot += OnSlingShot;
         RidePlanetSlingshot.OnExitPlanetOrbit += OnExitPlanetOrbit;
-        
+
         transform.LookAt(firstStar);
     }
+
+
 
     private void Awake()
     {
@@ -128,15 +130,28 @@ public class ThirdPersonPlayer : MonoBehaviour
                 transform.position = playerIsoEnterPos;
                 _firstTimeEnterIso = false;
             }
+            
             // move player in the direction of the star
             var playerPos = transform.position;
 
             var playerIconPos = playerIcon.position;
             var starPos = curStar.position;
-            // var dir = (starPos - playerPos).normalized;
             var dir = (starPos - playerIconPos).normalized;
-            transform.position = playerPos + dir * yAxisInput;
+            
+            // do not let player get too close to star
+            if (Vector3.Distance(starPos, playerPos + dir * yAxisInput) <= 20)
+            {
+                transform.position = playerPos;
+            }
+            else
+            {
+                // var dir = (starPos - playerPos).normalized;
+                
+                transform.position = playerPos + dir * yAxisInput;
+                            
+            }
             transform.LookAt(curStar);
+            
         } else
         {
             if (_firstTimeExitIso)
