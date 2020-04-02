@@ -22,9 +22,18 @@ using UnityEngine.UI;
 public class FindAdjacentStars : MonoBehaviour
 {
     
-    public Transform currStar;
+    // within 2000 units. At most 4 buttons 
+    // within 180 units, no, self.
+    
+    public Transform curStarGravityCore;
 
-    private List<GameObject> AdjacentStarList;
+    private List<GameObject> adjacentStarList;
+
+    public int adjacentStarNum;
+
+    public float gravityRadius = 180.0f;
+
+    public float adjacentDis = 2000.0f;
 
     private void Start()
     {
@@ -34,72 +43,106 @@ public class FindAdjacentStars : MonoBehaviour
     }
     
     // start find adjacent stars when enter the star gravity field
-    private void OnIsometricStarView(bool isIso, Transform star)
+    private void OnIsometricStarView(bool isIso, Transform starGravityCore)
     {
         // TODO: find the star that player is in 
-        currStar = star;
-        FindTwoAdjacentStars();
-        PopulateChildList();
+        curStarGravityCore = starGravityCore;
+        PopulateAdjacentStarList();
+        PopulateStarBtns();
     }
 
-    private void PopulateChildList()
+    private void PopulateStarBtns()
     {
         foreach (Transform child in transform)
         {
             if (child.name == "StarButton1")
             {
-                print("StarButton1");
-                child.GetComponent<StarIconManager>().starToGo = AdjacentStarList[0].transform;
+                if (adjacentStarNum < 1) return;
+                child.GetComponent<StarSelectButtonManager>().starToGo = adjacentStarList[0].transform;
             } else if (child.name == "StarButton2")
             {
-                print("StarButton2");
-                child.GetComponent<StarIconManager>().starToGo = AdjacentStarList[1].transform;
+                if (adjacentStarNum < 2) return;
+                child.GetComponent<StarSelectButtonManager>().starToGo = adjacentStarList[1].transform;
+            } else if (child.name == "StarButton3")
+            {
+                if (adjacentStarNum < 3) return;
+                child.GetComponent<StarSelectButtonManager>().starToGo = adjacentStarList[2].transform;
+            } else if (child.name == "StarButton4")
+            {
+                if (adjacentStarNum < 4) return;
+                child.GetComponent<StarSelectButtonManager>().starToGo = adjacentStarList[3].transform;
             }
         }
     }
 
-    private void FindTwoAdjacentStars()
+    private void PopulateAdjacentStarList()
     {
+        
         print("FindTwoAdjacentStars");
-        AdjacentStarList = new List<GameObject>();
+        adjacentStarList = new List<GameObject>();
         var empty = new GameObject();
-        AdjacentStarList.Add(empty);
-        AdjacentStarList.Add(empty);
-        var minDis1 = double.PositiveInfinity;;
-        var minDis2 = double.PositiveInfinity;;
-        // select the two adjacent stars
+        adjacentStarList.Add(empty);
+        adjacentStarList.Add(empty);
+        adjacentStarList.Add(empty);
+        adjacentStarList.Add(empty);
+
         try
         {
             foreach (var o in FindObjectsOfType(typeof(GameObject)))
             {
+                if (adjacentStarNum >= 4) break;
                 var go = (GameObject) o;
                 if (!go.tag.Contains("|Star|")) continue;
-                if (go.name == currStar.name) continue;
-                var distanceToStar = Vector3.Distance(go.transform.position, currStar.position);
-                if (!(distanceToStar < Math.Max(minDis1, minDis2))) continue;
-                if (distanceToStar < minDis1)
-                {
-                    minDis2 = minDis1;
-                    AdjacentStarList[1] = AdjacentStarList[0];
-                        
-                    minDis1 = distanceToStar;
-                    AdjacentStarList[0] = go;
-
-                }
-                else
-                {
-                    minDis2 = distanceToStar;
-                    AdjacentStarList[1] = go;
-                }
+                var distanceToStar = Vector3.Distance(go.transform.position, curStarGravityCore.position);
+                // self
+                if (distanceToStar <= gravityRadius) continue;
+                if (distanceToStar > adjacentDis) continue;
+                
+                adjacentStarList[adjacentStarNum] = go;
+                adjacentStarNum++;
             }
         } catch (UnityException)
         {
             print("No such tag");
         }
         
-        print(AdjacentStarList[0].name);
-        print(AdjacentStarList[1].name);
-    
+        
+        
+        // var empty = new GameObject();
+        // adjacentStarList.Add(empty);
+        // adjacentStarList.Add(empty);
+        // var minDis1 = double.PositiveInfinity;;
+        // var minDis2 = double.PositiveInfinity;;
+        // // select the two adjacent stars
+        // try
+        // {
+        //     foreach (var o in FindObjectsOfType(typeof(GameObject)))
+        //     {
+        //         var go = (GameObject) o;
+        //         if (!go.tag.Contains("|Star|")) continue;
+        //         if (go.name == currStar.name) continue;
+        //         var distanceToStar = Vector3.Distance(go.transform.position, currStar.position);
+        //         if (!(distanceToStar < Math.Max(minDis1, minDis2))) continue;
+        //         if (distanceToStar < minDis1)
+        //         {
+        //             minDis2 = minDis1;
+        //             adjacentStarList[1] = adjacentStarList[0];
+        //                 
+        //             minDis1 = distanceToStar;
+        //             adjacentStarList[0] = go;
+        //
+        //         }
+        //         else
+        //         {
+        //             minDis2 = distanceToStar;
+        //             adjacentStarList[1] = go;
+        //         }
+        //     }
+        // } catch (UnityException)
+        // {
+        //     print("No such tag");
+        // }
+
     }
 
     private void OnDisable()

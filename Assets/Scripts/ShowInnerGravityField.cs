@@ -28,7 +28,6 @@ public class ShowInnerGravityField : MonoBehaviour
         if (mapAction.triggered)
         {
             _renderInside.enabled = false;
-            Debug.Log("disabled");
         }
     }
 
@@ -36,14 +35,12 @@ public class ShowInnerGravityField : MonoBehaviour
     {
         if (!player.CompareTag("MainCamera")) return;
         _renderInside.enabled = true;
-        Debug.Log("enabled");
     }
 
     private void OnTriggerExit(Collider player)
     {
         if (!player.CompareTag("MainCamera")) return;
         _renderInside.enabled = false;
-        Debug.Log("disabled");
     }
 
     //InputActions

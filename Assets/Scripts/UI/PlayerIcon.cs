@@ -19,20 +19,21 @@ public class PlayerIcon : MonoBehaviour
         
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
-        Orbit.OnSlingShot += OnSlingShot;
+        RidePlanetSlingshot.OnSlingShot += OnSlingShot;
         GetComponent<Image>().enabled = false;
 
     }
-
+    
+    private void FixedUpdate()
+    {
+        transform.position = player.position;
+    }
+    
     private void OnSlingShot(bool onSlingShot, Transform _starToGo)
     {
         GetComponent<Image>().enabled = false;
     }
 
-    private void FixedUpdate()
-    {
-        transform.position = player.position;
-    }
 
     private void SetMapActive(bool mapActive)
     {
@@ -77,7 +78,7 @@ public class PlayerIcon : MonoBehaviour
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
         CameraSwitch.OnMapSwitch -= SetMapActive;
         IsometricStarPosManager.OnIsometricStarView -= SetIsometricActive;
-        Orbit.OnSlingShot -= OnSlingShot;
+        RidePlanetSlingshot.OnSlingShot -= OnSlingShot;
     }
 
 }

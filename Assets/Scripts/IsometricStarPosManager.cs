@@ -132,8 +132,6 @@ public class IsometricStarPosManager : MonoBehaviour
         var planetTwoPos = _planetNum == 1 ? new Vector3(
                 planetOnePos.x + 50.0f, planetOnePos.y, planetOnePos.z + 50.0f) 
             : planetList[1].transform.position;
-        print(planetList[0].name);
-        print(planetList[1].name);
         calculatePerpendicularDir(planetOnePos, planetTwoPos);
 
     }
@@ -148,31 +146,21 @@ public class IsometricStarPosManager : MonoBehaviour
         var isoIdealPos = _starPos + normalDir * _dirMultiplierCam;
         isoStarViewPos.position = isoIdealPos;
         camera.GetComponent<ThirdPersonCamera>().isometricStarViewPos.position = isoIdealPos;
-        
-        // // TODO: figure out player orbit angle or change the planet positions
-        /// done
-        // put the player on the plane
 
-        if (_firstEnter)
+        if (!_firstEnter) return;
+        var playerToStar = Vector3.Distance(player.position, _starPos);
+        print("playerToStarDist --- " + playerToStar);
+            
+        var playerIsoStartPos = transform.position + dirB.normalized * _dirMultiplierPlayer;
+        var playerToStarDist = Vector3.Distance(playerIsoStartPos, _starPos);
+        if (playerToStarDist > 180)
         {
-            var playerToStar = Vector3.Distance(player.position, _starPos);
-            print("playerToStarDist --- " + playerToStar);
-            
-            var planeDir1  = Vector3.Cross(normalDir, dirB).normalized;
-            
-            var playerIsoStartPos = transform.position + dirB.normalized * _dirMultiplierPlayer;
-            var playerToStarDist = Vector3.Distance(playerIsoStartPos, _starPos);
-            if (playerToStarDist > 180)
-            {
-                playerIsoStartPos  = transform.position - dirB.normalized * _dirMultiplierPlayer;
-            }
-            
-            // print("playerToStarDist --- " + playerToStarDist);
-            player.GetComponent<ThirdPersonPlayer>().playerIsoEnterPos = playerIsoStartPos;
-
-            _firstEnter = false;
+            playerIsoStartPos  = transform.position - dirB.normalized * _dirMultiplierPlayer;
         }
-        
+        player.GetComponent<ThirdPersonPlayer>().playerIsoEnterPos = playerIsoStartPos;
+
+        _firstEnter = false;
+
     }
     
 }

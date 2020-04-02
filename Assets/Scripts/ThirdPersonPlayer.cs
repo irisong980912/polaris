@@ -51,21 +51,9 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
-        Orbit.OnSlingShot += OnSlingShot;
+        RidePlanetSlingshot.OnSlingShot += OnSlingShot;
         
         transform.LookAt(firstStar);
-    }
-
-    private void OnSlingShot(bool onSlingShot, Transform starToGo)
-    {
-        print("+++++++++++++  player is on slingshot");
-        _onSlingShot = onSlingShot;
-        _starToGo = starToGo;
-    }
-
-    private static void SetMapActive(bool mapActive)
-    {
-        _mapActive = mapActive;
     }
 
     private void Awake()
@@ -89,12 +77,6 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         stardustCount.text = "Stardust: " + stardust;
     }
-    
-    private void endSlingshot()
-    {
-        _beginSlingshot = false;
-        EndSlingShot?.Invoke(_beginSlingshot);
-    }
 
     private void FixedUpdate()
     {
@@ -110,7 +92,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     
             // TODO: disable all the figure when slingshot
     
-            if (Vector3.Distance(desiredPosition, transform.position) < 10.0f)
+            if (Vector3.Distance(desiredPosition, transform.position) < 100.0f)
             {
                 _onSlingShot = false;
                 endSlingshot();
@@ -132,18 +114,12 @@ public class ThirdPersonPlayer : MonoBehaviour
                 transform.position = playerIsoEnterPos;
                 _firstTimeEnterIso = false;
             }
-            
             // move player in the direction of the star
             var playerPos = transform.position;
             var starPos = curStar.position;
-    
             var dir = (starPos - playerPos).normalized;
-
             transform.position = playerPos + dir * xAxisInput;
-            
             transform.LookAt(curStar);
-            // var newRot = Quaternion.Euler(90, 0, 90); 
-            // transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
         } else
         {
             if (_firstTimeExitIso)
@@ -183,18 +159,23 @@ public class ThirdPersonPlayer : MonoBehaviour
             transform2.position += transform2.forward * speed;
         }
     }
-
-    //InputActions
-    //Activates all actions in Player action maps (action maps are Player and UI)
-    private void OnEnable()
+    
+    private void endSlingshot()
     {
-        _inputAction.Player.Enable();
+        _beginSlingshot = false;
+        EndSlingShot?.Invoke(_beginSlingshot);
+    }
+    
+    private void OnSlingShot(bool onSlingShot, Transform starToGo)
+    {
+        print("+++++++++++++  player is on slingshot");
+        _onSlingShot = onSlingShot;
+        _starToGo = starToGo;
     }
 
-    //Disables all actions in Player action maps (action maps are Player and UI)
-    private void OnDisable()
+    private static void SetMapActive(bool mapActive)
     {
-        _inputAction.Player.Disable();
+        _mapActive = mapActive;
     }
     
     private void OnIsometricStarView(bool onIso, Transform star)
@@ -208,4 +189,23 @@ public class ThirdPersonPlayer : MonoBehaviour
         
         print("OnIsometricStarView -- " + onIso);
     }
+    
+    
+
+    //InputActions
+    //Activates all actions in Player action maps (action maps are Player and UI)
+    private void OnEnable()
+    {
+        _inputAction.Player.Enable();
+    }
+
+    //Disables all actions in Player action maps (action maps are Player and UI)
+    private void OnDisable()
+    {
+        _inputAction.Player.Disable();
+        CameraSwitch.OnMapSwitch -= SetMapActive;
+        IsometricStarPosManager.OnIsometricStarView -= OnIsometricStarView;
+        RidePlanetSlingshot.OnSlingShot -= OnSlingShot;
+    }
+    
 }

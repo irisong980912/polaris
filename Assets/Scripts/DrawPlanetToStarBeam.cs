@@ -27,9 +27,9 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StarIconManager.OnHoverStart += OnHoverStart;
-        StarIconManager.OnHoverStop += OnHoverStop;
-        StarIconManager.OnSelectStar += OnSelectStar;
+        StarSelectButtonManager.OnHoverStart += OnHoverStart;
+        StarSelectButtonManager.OnHoverStop += OnHoverStop;
+        StarSelectButtonManager.OnSelectStar += OnSelectStar;
         _connectBeam = false;
         player = transform.parent;
 
@@ -122,8 +122,8 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     private void OnDisable()
     {
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
-        StarIconManager.OnHoverStart -= OnHoverStart;
-        StarIconManager.OnHoverStop -= OnHoverStop;
-        StarIconManager.OnSelectStar -= OnSelectStar;
+        StarSelectButtonManager.OnHoverStart -= OnHoverStart;
+        StarSelectButtonManager.OnHoverStop -= OnHoverStop;
+        StarSelectButtonManager.OnSelectStar -= OnSelectStar;
     }
 }

@@ -8,9 +8,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private float _minimumDistanceFromTarget;
     public float distanceFromPlayer = 4;
-    private float _distanceFromPlanet;
-    public float onOrbitDistanceRatio = 8.0f;
-    
+
     public float maximumRotationSpeed = 1.8f;
     public float cameraFollowDelay = 0.2f;
 
@@ -26,22 +24,19 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool _enableIsometricView;
     private bool _levelCleared;
-
-    private Transform _viewPos;
+    
     public Transform constellationViewPos;
     public Transform isometricStarViewPos;
     
-    private bool _onOrbit;
+    private bool _onRidePlanet;
     private bool _onIso;
-
-    public Transform firstStar;
+    
+    private Transform _curStar;
 
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
     /// </summary>
     /// 
-
-
     public ThirdPersonCamera(Vector2 cameraRotationInput)
     {
         _cameraRotationInput = cameraRotationInput;
@@ -57,20 +52,18 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         // TODO: change to focus on planet in the same angle
         _minimumDistanceFromTarget = distanceFromPlayer;
-        _distanceFromPlanet = distanceFromPlayer * onOrbitDistanceRatio;
-            
+
         _cameraTarget = player;
         _mainCamera = transform;
         
-        Orbit.OnOrbitStart += OnOrbitStart;
-        Orbit.OnOrbitStop += OnOrbitStop;
+        RidePlanetSlingshot.OnRidePlanet += OnRidePlanet;
         ClearLevel.OnLevelClear += OnLevelClear;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
 
         // camera position when game starts
         _mainCamera.LookAt(_cameraTarget);
     }
-
+    
     private void FixedUpdate()
     {
         
@@ -85,11 +78,9 @@ public class ThirdPersonCamera : MonoBehaviour
         }
         if (_enableIsometricView)
         {
+            // please do not change, isometricStarViewPos position changes constantly
+            // needed to be checked at every time frame
             var desiredPosition = isometricStarViewPos.position ;
-            
-            // print("desired position -- camera  " + desiredPosition);
-            // print("iso position -- camera  " + isometricStarViewPos.position);
-            //
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
     
             var newRot = Quaternion.Euler(90, -45, -500); 
@@ -146,29 +137,39 @@ public class ThirdPersonCamera : MonoBehaviour
         
     }
 
-    private void OnOrbitStart()
+    
+    private void OnRidePlanet(bool isOnPlanet)
     {
-        _onOrbit = true;
-        Debug.Log("camera --- OnOrbitStart");
 
-        
-        _cameraTarget = player.parent;
-        _minimumDistanceFromTarget = _distanceFromPlanet;
+        if (isOnPlanet)
+        {
+            Debug.Log("camera --- OnRidePlanetStart");
+            _cameraTarget = player.parent;
+        }
+        else
+        {
+            Debug.Log("camera --- OnRidePlanetStop");
+            _cameraTarget = _curStar;
+            _minimumDistanceFromTarget = distanceFromPlayer;
+        }
     }
 
-    private void OnOrbitStop()
-    {
-        _onOrbit = false;
-        Debug.Log("camera --- OnOrbitStop");
-        _cameraTarget = player;
-        _minimumDistanceFromTarget = distanceFromPlayer;
-    }
     
     private void OnLevelClear()
     {
         print("clear level ------ camera !~@#@#@#@#$#$å");
-        _viewPos = constellationViewPos;
         _levelCleared = true;
+    }
+    
+    private void OnIsometricStarView(bool onIso, Transform star)
+    {
+        if (_levelCleared) return;
+        Debug.Log("camera -- OnIsometricStarView");
+        _enableIsometricView = onIso;
+
+        _curStar = star;
+        
+        _cameraTarget = onIso ? star : player;
     }
 
     //InputActions
@@ -184,30 +185,10 @@ public class ThirdPersonCamera : MonoBehaviour
 
         _inputAction.Player.Disable();
         //Prevent event from looking for prescribed object that is removed on Reload of scene, by unsubscribing.
-        Orbit.OnOrbitStart -= OnOrbitStart;
-        Orbit.OnOrbitStop -= OnOrbitStop;
+        RidePlanetSlingshot.OnRidePlanet -= OnRidePlanet;
         ClearLevel.OnLevelClear -= OnLevelClear;
         IsometricStarPosManager.OnIsometricStarView -= OnIsometricStarView;
     }
     
-
-
-    private void OnIsometricStarView(bool onIso, Transform star)
-    {
-        if (_levelCleared) return;
-        Debug.Log("camera -- OnIsometricStarView");
-        _enableIsometricView = onIso;
-        
-        if (onIso)
-        {
-            _viewPos = isometricStarViewPos;
-            _cameraTarget = star;
-        }
-
-        else
-        {
-            _cameraTarget = player;
-        }
-    }
 
 }

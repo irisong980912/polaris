@@ -17,29 +17,22 @@ public class PlanetTopView : MonoBehaviour
     public float xDisToPlanet = 100.0f;
     public float zDisToPlanet = 20.0f;
 
-    private bool _startOrbit;
+    private bool _startRidePlanet;
     
     // when player is orbiting the planet
     private void Start()
     {
-        _startOrbit = false;
-        Orbit.OnOrbitStart += OnOrbitStart;
-        Orbit.OnOrbitStop += OnOrbitStop;
+        RidePlanetSlingshot.OnRidePlanet += OnRidePlanet;
     }
 
-    private void OnOrbitStart()
+    private void OnRidePlanet(bool isOnPlanet)
     {
-        _startOrbit = true;
+        _startRidePlanet = isOnPlanet;
     }
-    
-    private void OnOrbitStop()
-    {
-        _startOrbit = false;
-    }
-    
+
     private void FixedUpdate()
     {
-        if (!_startOrbit) return;
+        if (!_startRidePlanet) return;
         if (!player.parent) return;
         if (!player.parent.tag.Contains("|PlanetCore|")) return;
         planetToTarget = player.parent;
