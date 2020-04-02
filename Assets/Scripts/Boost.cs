@@ -26,7 +26,7 @@ public class Boost : MonoBehaviour
 
     private void Start()
     {
-        _playerScript = GameObject.FindWithTag("|Player|").GetComponent<ThirdPersonPlayer>();
+        _playerScript = GetComponent<ThirdPersonPlayer>();
         _normalSpeed = _playerScript.speed;
         _boostSpeed = _normalSpeed * 3;
     }

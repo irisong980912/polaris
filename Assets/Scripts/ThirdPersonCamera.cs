@@ -36,6 +36,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _finishAnimation;
     private bool _isOnPlanet;
     private bool _isPlanetAnimation;
+    private bool _onSlingShot;
 
 
     //TODO: listening to create star event, when stars are created, pan the camera to 
@@ -105,8 +106,9 @@ public class ThirdPersonCamera : MonoBehaviour
             _mainCamera.LookAt(_curStar);
         }
         
-        else if (_isPlanetAnimation && _isOnPlanet)
+        else if (_isPlanetAnimation && _isOnPlanet && !_onSlingShot)
         {
+            if (!player.parent) return;
             var dir = new Vector3(1, 0, 1);
             var desiredPosition = player.parent.position + dir * 30;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.03f);

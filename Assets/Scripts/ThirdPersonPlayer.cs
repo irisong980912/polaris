@@ -29,7 +29,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private bool _onSlingShot;
     private Transform _starToGo;
-    public Vector3 disFromGoalStar = new Vector3(50, 0,50);
+    public Vector3 disFromGoalStar = new Vector3(1, 0,1);
 
     private bool _beginSlingshot;
     public static event Action<bool> EndSlingShot;
@@ -112,6 +112,8 @@ public class ThirdPersonPlayer : MonoBehaviour
                     endSlingshot();
                 }
             }
+            
+            transform.LookAt(_starToGo);
 
         }
         

@@ -51,7 +51,7 @@ public class IsometricStarPosManager : MonoBehaviour
     {
         // handles player first enter position change
         _firstEnter = true;
-        
+
         // find all the planet inside the star
         if (other.gameObject.tag.Contains("|Planet|"))
         {
@@ -160,7 +160,7 @@ public class IsometricStarPosManager : MonoBehaviour
             
         var playerIsoStartPos = transform.position + dirB.normalized * _dirMultiplierPlayer;
         var playerToStarDist = Vector3.Distance(playerIsoStartPos, _starPos);
-        if (playerToStarDist > 180)
+        if (playerToStarDist > 250)
         {
             playerIsoStartPos  = transform.position - dirB.normalized * _dirMultiplierPlayer;
         }
