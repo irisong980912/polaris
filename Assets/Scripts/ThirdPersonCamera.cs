@@ -32,9 +32,12 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _onIso;
     
     private Transform _curStar;
+    private bool _isCreating;
+    private bool _finishAnimation;
+    private bool _isOnPlanet;
+    private bool _isPlanetAnimation;
 
-    
-    
+
     //TODO: listening to create star event, when stars are created, pan the camera to 
     // show the star animation
     
@@ -64,11 +67,12 @@ public class ThirdPersonCamera : MonoBehaviour
         RidePlanetSlingshot.OnRidePlanet += OnRidePlanet;
         ClearLevel.OnLevelClear += OnLevelClear;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
+        CreateStar.OnStarCreation += OnStarCreation;
 
         // camera position when game starts
         _mainCamera.LookAt(_cameraTarget);
     }
-    
+
     private void FixedUpdate()
     {
         
@@ -81,11 +85,11 @@ public class ThirdPersonCamera : MonoBehaviour
             var newRot = Quaternion.Euler(90, -45, -500); 
             transform.rotation = Quaternion.Slerp(transform.rotation, newRot, 0.0125f);
         }
-        if (_enableIsometricView)
+        else if (_enableIsometricView)
         {
             // please do not change, isometricStarViewPos position changes constantly
             // needed to be checked at every time frame
-            var desiredPosition = isometricStarViewPos.position ;
+            var desiredPosition = isometricStarViewPos.position;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.0125f);
     
             var newRot = Quaternion.Euler(90, -45, -500); 
@@ -93,7 +97,23 @@ public class ThirdPersonCamera : MonoBehaviour
             
             _mainCamera.LookAt(_cameraTarget);
         }
-    
+        else if (_isCreating)
+        {
+            var dir = new Vector3(1, 0, 1);
+            var desiredPosition = _curStar.position + dir * 30;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.03f);
+            _mainCamera.LookAt(_curStar);
+        }
+        
+        else if (_isPlanetAnimation && _isOnPlanet)
+        {
+            var dir = new Vector3(1, 0, 1);
+            var desiredPosition = player.parent.position + dir * 30;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.03f);
+            // look at the planet core
+            _mainCamera.LookAt(player.parent);
+        }
+        
         else
         {
             var xAxisInput = _cameraRotationInput.x;
@@ -141,15 +161,32 @@ public class ThirdPersonCamera : MonoBehaviour
         }
         
     }
+    
+    private void OnStarCreation()
+    {
+        _isCreating = true;
+        _enableIsometricView = false; // temperorially disable 
+        Invoke(nameof(FinishStarCreationAnimation), 6.0f);
+    }
+
+    private void FinishStarCreationAnimation()
+    {
+        _isCreating = false;
+        _enableIsometricView = true;
+    }
 
     
     private void OnRidePlanet(bool isOnPlanet)
     {
-
+        _isOnPlanet = isOnPlanet;
+        
         if (isOnPlanet)
         {
             Debug.Log("camera --- OnRidePlanetStart");
             _cameraTarget = player.parent;
+            _isPlanetAnimation = true;
+            _enableIsometricView = false; // temperorially disable 
+            Invoke(nameof(FinishPlanetAnimation), 4.0f);
         }
         else
         {
@@ -157,6 +194,12 @@ public class ThirdPersonCamera : MonoBehaviour
             _cameraTarget = _curStar;
             _minimumDistanceFromTarget = distanceFromPlayer;
         }
+    }
+    
+    private void FinishPlanetAnimation()
+    {
+        _isPlanetAnimation = false;
+        _enableIsometricView = true;
     }
 
     

@@ -38,6 +38,30 @@ public class StaticCanvasManager : MonoBehaviour
     {
         StardustCountText.SetActive(false);
 
+        if (isOnPlanet)
+        {
+            Invoke(nameof(SetStarBtnActive), 6.0f);
+        }
+        else
+        {
+            int count = 0;
+            foreach(Transform child in transform){
+                if(child.gameObject.tag == "|StarButton|")
+                {
+                    count++;
+                    if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                
+                }
+            }
+        }
+        
+    }
+
+    private void SetStarBtnActive()
+    {
         int count = 0;
         foreach(Transform child in transform){
             if(child.gameObject.tag == "|StarButton|")
@@ -45,7 +69,7 @@ public class StaticCanvasManager : MonoBehaviour
                 count++;
                 if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
                 {
-                    child.gameObject.SetActive(isOnPlanet);
+                    child.gameObject.SetActive(true);
                 }
                 
             }
