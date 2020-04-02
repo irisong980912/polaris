@@ -112,8 +112,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     endSlingshot();
                 }
             }
-            
-            
+
         }
         
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
@@ -145,8 +144,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             }
             else
             {
-                // var dir = (starPos - playerPos).normalized;
-                
                 transform.position = playerPos + dir * yAxisInput;
                             
             }
