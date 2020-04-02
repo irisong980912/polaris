@@ -43,6 +43,7 @@ public class DrawPlanetToStarBeam : MonoBehaviour
     
     private void OnHoverStart(Transform targetStar)
     {
+        counter = 0;
         _endDraw = false;
         print("on hover star -- draw planet to star beam");
         print(targetStar.name);
@@ -58,6 +59,7 @@ public class DrawPlanetToStarBeam : MonoBehaviour
         if (!player.parent.parent.CompareTag("|Planet|")) return;
         print("on hover star -- draw planet to star beam -- find planet");
         curPlanet = player.parent.parent;
+        print(curPlanet.name);
         
         beam = gameObject.GetComponent<LineRenderer>();
         beam.startWidth = normalBeamWidth;

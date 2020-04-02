@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 5683594934562571769}
   - component: {fileID: 5683594934562571775}
   - component: {fileID: 5683594934562571774}
+  - component: {fileID: 1632996708}
   m_Layer: 0
   m_Name: Character (shadeless) Floating
   m_TagString: '|Player|'
@@ -385,9 +386,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2678990044075031776}
-  m_LocalRotation: {x: 0, y: 0.718816, z: 0, w: 0.6952004}
+  m_LocalRotation: {x: 0, y: 0.71881825, z: 0, w: 0.6951981}
   m_LocalPosition: {x: 54.171394, y: -261.15866, z: 1228.9463}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.09999997, y: 0.1, z: 0.09999997}
   m_Children:
   - {fileID: 5683594934701444354}
   - {fileID: 5216504814797893322}
@@ -396,7 +397,7 @@ Transform:
   - {fileID: 1731963573888516036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 144.211, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.914, z: 0}
 --- !u!95 &9078400711680861065
 Animator:
   serializedVersion: 3
@@ -553,15 +554,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc5d47244b46a64fb17a6654ab9defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  cam: {fileID: 0}
+  speed: 0.6
+  maximumTurnRate: 0.7
   stardust: 0
   stardustCount: {fileID: 0}
   inventory: []
-  cam: {fileID: 0}
-  stardustSelection: 0
   collectDustSound: {fileID: 5683594934701444365}
   collectDustSoundContainer: {fileID: 5683594934701444355}
   disFromGoalStar: {x: 50, y: 0, z: 50}
+  playerIsoEnterPos: {x: 0, y: 0, z: 0}
+  playerIsoExitPos: {x: 0, y: 0, z: 0}
+  playerIcon: {fileID: 0}
+  firstStar: {fileID: 0}
+--- !u!114 &1632996708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678990044075031776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e866688eeb3c34f90bdbf03cfc5649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAction:
+    m_Name: Boost
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 24756e37-2b66-4d24-9aa3-0c79d97deeb4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!1 &3413051759394477941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,16 +1303,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beam (Planet & Star)
       objectReference: {fileID: 0}
-    - target: {fileID: 8241725926889027295, guid: 10afeb099090947678d8d82ea13822e8,
-        type: 3}
-      propertyPath: originStar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241725926889027295, guid: 10afeb099090947678d8d82ea13822e8,
-        type: 3}
-      propertyPath: destinStar
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8668507837727708005, guid: 10afeb099090947678d8d82ea13822e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1358,8 +1373,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8241725926889027295, guid: 10afeb099090947678d8d82ea13822e8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10afeb099090947678d8d82ea13822e8, type: 3}
 --- !u!1 &4805843541125404883 stripped
 GameObject:

@@ -28,12 +28,14 @@ public class PlayerIcon : MonoBehaviour
     
     private void FixedUpdate()
     {
+        
         transform.position = player.position;
         transform.LookAt(cam);
     }
     
     private void OnSlingShot(bool onSlingShot, Transform _starToGo)
     {
+        print("player icon OnSlingShot -- hide");
         GetComponent<Image>().enabled = false;
     }
 
@@ -44,7 +46,7 @@ public class PlayerIcon : MonoBehaviour
 
         if (!mapActive)
         {
-            print("player icon -- hide");
+            print("player icon SetMapActive -- hide");
             GetComponent<Image>().enabled = false;
             if (_isoActive)
             {
@@ -63,7 +65,7 @@ public class PlayerIcon : MonoBehaviour
         _isoActive = isoActive;
         if (!isoActive)
         {
-            print("player icon -- hide");
+            print("player icon SetIsometricActive -- hide");
             GetComponent<Image>().enabled = false;
         }
         else
@@ -78,7 +80,7 @@ public class PlayerIcon : MonoBehaviour
         print("player icon -- show");
         GetComponent<Image>().enabled = true;
         GetComponent<Image>().rectTransform.sizeDelta = _mapActive ? new Vector2(2000, 2000) : new Vector2(200, 200);
-
+        transform.LookAt(cam);
     }
 
     private void OnDisable()

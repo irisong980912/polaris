@@ -38,6 +38,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     private bool _firstTimeEnterIso;
     public Vector3 playerIsoExitPos;
     private bool _firstTimeExitIso;
+
+    public Transform playerIcon;
     
     
     private Transform curStar;
@@ -99,12 +101,16 @@ public class ThirdPersonPlayer : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, desiredPosition, speed * 2 * Time.fixedDeltaTime);
     
             // TODO: disable all the figure when slingshot
-    
-            if (Vector3.Distance(desiredPosition, transform.position) < 100.0f)
+
+            if (Vector3.Distance(desiredPosition, transform.position) < 200.0f)
             {
-                _onSlingShot = false;
-                endSlingshot();
+                if (_enableIsoViewMovement)
+                {
+                    _onSlingShot = false;
+                    endSlingshot();
+                }
             }
+            
             
         }
         
@@ -124,8 +130,11 @@ public class ThirdPersonPlayer : MonoBehaviour
             }
             // move player in the direction of the star
             var playerPos = transform.position;
+
+            var playerIconPos = playerIcon.position;
             var starPos = curStar.position;
-            var dir = (starPos - playerPos).normalized;
+            // var dir = (starPos - playerPos).normalized;
+            var dir = (starPos - playerIconPos).normalized;
             transform.position = playerPos + dir * yAxisInput;
             transform.LookAt(curStar);
         } else

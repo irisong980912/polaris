@@ -23,7 +23,7 @@ public class IsometricStarPosManager : MonoBehaviour
     public Transform player;
     public Transform camera;
     
-    public float yDisToStar = 500.0f;
+    public float yDisToStar = 0.0f;
     public float xDisToStar = 90.0f;
     public float zDisToStar = 90.0f;
 
@@ -61,11 +61,13 @@ public class IsometricStarPosManager : MonoBehaviour
         } else if (other.gameObject.tag.Contains("|Player|"))
         {
             // notify camera to turn to isoview
-            
+
             if (_planetNum == 0)
             {
                 handleZeroPlanetIsoView();
             }
+            
+            print("player ENTER gravity field -- "+ transform.parent.name);
             
             _isIsometricStarView = true;
             OnIsometricStarView?.Invoke(_isIsometricStarView, transform);
@@ -104,7 +106,7 @@ public class IsometricStarPosManager : MonoBehaviour
     {
         if (_planetNum != 0) return;
         print("planet is 0");
-        var dir = new Vector3(xDisToStar, yDisToStar, zDisToStar);
+        var dir = new Vector3(xDisToStar, yDisToStar, zDisToStar).normalized;
         var isoIdealPos = _starPos + dir * _dirMultiplierCam;
         isoStarViewPos.position = isoIdealPos;
         camera.GetComponent<ThirdPersonCamera>().isometricStarViewPos.position = isoIdealPos;
@@ -119,6 +121,7 @@ public class IsometricStarPosManager : MonoBehaviour
         {
             playerIsoStartPos  = transform.position + dirA * _dirMultiplierPlayer;
         }
+        
         
         print("playerToStarDist --- " + playerToStarDist);
         
@@ -144,6 +147,8 @@ public class IsometricStarPosManager : MonoBehaviour
         var dirB = planetTwoPos - _starPos;
 
         var normalDir = Vector3.Cross(dirA, dirB).normalized;
+
+        GetComponent<Orbit>().normalVector = normalDir;
 
         var isoIdealPos = _starPos + normalDir * _dirMultiplierCam;
         isoStarViewPos.position = isoIdealPos;

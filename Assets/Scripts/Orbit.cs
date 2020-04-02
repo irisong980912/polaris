@@ -42,7 +42,7 @@ public class Orbit : MonoBehaviour
     private Transform _starToGo;
     public Transform coreForPlayer;
     
-
+    public Vector3 normalVector;
     void Awake()
     {
         //InputActions
@@ -72,13 +72,19 @@ public class Orbit : MonoBehaviour
 
         if (gameObject.tag.Contains("|GravityCore|"))
         {
+
+            // planet number is 0
+            if ((normalVector == new Vector3(0, 0, 0)))
+            {
+                normalVector = _self.up;
+            }
             // check if the parent star is lit  to prevent all the planets in the scene from orbiting
             if (transform.parent.GetComponent<Star>().isCreated)
             {
                 // star self-rotate
-                _self.Rotate(_self.up * _planetSpeed, Space.World);
+                _self.Rotate(normalVector * _planetSpeed, Space.World);
             }
-            coreForPlayer.Rotate(_self.up * _playerSpeed, Space.World);
+            coreForPlayer.Rotate(normalVector * _playerSpeed, Space.World);
         }
         // else if (gameObject.tag.Contains("|PlanetCore|"))
         // {
@@ -109,7 +115,7 @@ public class Orbit : MonoBehaviour
             // TODO: make player orbit in the same direction as the planet but at a faster speed
             else if (other.gameObject.tag.Contains("|Player|"))
             {
-                print("orbit ----- set player to core");
+                print("orbit ----- set player to core " + transform.parent.name);
                 other.gameObject.transform.SetParent(coreForPlayer);
             }
         }
