@@ -123,9 +123,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
         
+        // print("x is   " + xAxisInput);
+        // print("y is   " + yAxisInput);
+        
         // limit the degree of player rotation
-        float minRotation = -80;
-        float maxRotation = 80;
         Vector3 currentRotation = transform.eulerAngles;
         
         // unity is behaving weird. 0 is -360
