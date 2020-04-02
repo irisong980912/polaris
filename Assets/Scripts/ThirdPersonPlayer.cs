@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonPlayer : MonoBehaviour
 
@@ -116,16 +117,18 @@ public class ThirdPersonPlayer : MonoBehaviour
             transform.LookAt(_starToGo);
 
         }
+        var gamepad = Gamepad.current;
+        _movementInput = gamepad.leftStick.ReadValue();
         
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
-    
+        
+
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
         
-        // print("x is   " + xAxisInput);
-        // print("y is   " + yAxisInput);
-        
+        print(_movementInput);
+
         // limit the degree of player rotation
         Vector3 currentRotation = transform.eulerAngles;
         

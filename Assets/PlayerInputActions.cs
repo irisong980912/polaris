@@ -22,7 +22,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""cc8b9856-a160-49fd-885b-9b32f9e89c00"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
