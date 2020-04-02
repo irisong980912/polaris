@@ -36,6 +36,9 @@ public class RidePlanetSlingshot : MonoBehaviour
     private Transform _self;
 
     public float rotateSpeed;
+    
+    // reposition the player when exit the planet orbit
+    public static event Action<Vector3> OnExitPlanetOrbit;
 
 
     void Awake()
@@ -120,13 +123,15 @@ public class RidePlanetSlingshot : MonoBehaviour
     {
         if (!other.gameObject.tag.Contains("|Player|")) return;
         print("EXIT planet collide! " + gameObject.transform.parent.name);
+        
         other.transform.SetParent(_playerOriginalParent);
         // when exit, reposition player
+        if (!_isLit) return;
         RepositionPlayer(other.transform.position);
-        _player = null;
+        // _player = null;
         
         if (!other.gameObject.tag.Contains("|Player|")) return;
-        print("slingshot - trigger onOrbitStop");
+        print("exit planet when star lit");
         //
         _isOnPlanet = false;
         OnRidePlanet?.Invoke(_isOnPlanet);
@@ -138,18 +143,20 @@ public class RidePlanetSlingshot : MonoBehaviour
         var playerStarDis = Vector3.Distance(playerPos, transform.parent.parent.position);
         var planetStarDis = Vector3.Distance(transform.position, transform.parent.parent.position);
 
-        var dir = transform.parent.parent.position - transform.position;
-        
+        var dir = (transform.parent.parent.position - transform.position).normalized;
+
+        Vector3 newPos;
         if (playerStarDis < planetStarDis)
         {
             print("player is closer to star than riding planet");
-            var newPos = transform.position + dir * 5;
+            newPos = transform.position + dir * 40;
         }
         else
         {
             print("player is further from star than riding planet");
-            var newPos = transform.position - dir * 5;
+            newPos = transform.position - dir * 40;
         }
+        OnExitPlanetOrbit?.Invoke(newPos);
     }
 
 
@@ -177,8 +184,8 @@ public class RidePlanetSlingshot : MonoBehaviour
         print("slingshot start");
         _launchBegan = true;
         CancelInvoke(nameof(AdjustRotation));
-        _player.gameObject.transform.SetParent(null); ;
-        _player.gameObject.transform.SetParent(_self);
+        _player.gameObject.transform.SetParent(null); 
+        // _player.gameObject.transform.SetParent(_self);
 
         Invoke(nameof(Slingshot), 1.5f);
     }
@@ -210,6 +217,7 @@ public class RidePlanetSlingshot : MonoBehaviour
     /// <param name="obj"></param>
     private void EndSlingShot(bool obj)
     {
+        print("slingshot end");
         _beginSlingShot = false;
     }
     

@@ -75,6 +75,7 @@ public class PlayerIcon : MonoBehaviour
 
     private void EnableImage()
     {
+        print("player icon -- show");
         GetComponent<Image>().enabled = true;
         GetComponent<Image>().rectTransform.sizeDelta = _mapActive ? new Vector2(2000, 2000) : new Vector2(200, 200);
 

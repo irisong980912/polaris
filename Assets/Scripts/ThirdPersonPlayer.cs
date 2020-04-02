@@ -44,7 +44,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     // player need to face the first star when game started
     public Transform firstStar;
-    
+    private bool _isExitPlanetOrbit;
+    private Vector3 _exitPlanetOrbitPos;
 
 
     private void Start()
@@ -52,6 +53,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         CameraSwitch.OnMapSwitch += SetMapActive;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         RidePlanetSlingshot.OnSlingShot += OnSlingShot;
+        RidePlanetSlingshot.OnExitPlanetOrbit += OnExitPlanetOrbit;
         
         transform.LookAt(firstStar);
     }
@@ -83,7 +85,13 @@ public class ThirdPersonPlayer : MonoBehaviour
         if (_levelCleared) return;
     
         if (_mapActive) return;
-    
+
+        if (_isExitPlanetOrbit)
+        {
+            transform.position = _exitPlanetOrbitPos;
+            _isExitPlanetOrbit = false;
+        }
+
         // when on slingshot, make the player move towards the target 
         if (_onSlingShot)
         {
@@ -118,7 +126,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             var playerPos = transform.position;
             var starPos = curStar.position;
             var dir = (starPos - playerPos).normalized;
-            transform.position = playerPos + dir * xAxisInput;
+            transform.position = playerPos + dir * yAxisInput;
             transform.LookAt(curStar);
         } else
         {
@@ -190,6 +198,11 @@ public class ThirdPersonPlayer : MonoBehaviour
         print("OnIsometricStarView -- " + onIso);
     }
     
+    private void OnExitPlanetOrbit(Vector3 newPos)
+    {
+        _isExitPlanetOrbit = true;
+        _exitPlanetOrbitPos = newPos;
+    }
     
 
     //InputActions

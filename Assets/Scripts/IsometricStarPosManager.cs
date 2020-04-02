@@ -61,14 +61,17 @@ public class IsometricStarPosManager : MonoBehaviour
         } else if (other.gameObject.tag.Contains("|Player|"))
         {
             // notify camera to turn to isoview
-            _isIsometricStarView = true;
-
+            
             if (_planetNum == 0)
             {
                 handleZeroPlanetIsoView();
             }
             
+            _isIsometricStarView = true;
             OnIsometricStarView?.Invoke(_isIsometricStarView, transform);
+            
+            
+            
         }
     }
 
@@ -83,7 +86,6 @@ public class IsometricStarPosManager : MonoBehaviour
         OnIsometricStarView?.Invoke(_isIsometricStarView, transform);
 
         HandleGravityEdgeWhenExit();
-        //Invoke(nameof(HandleGravityEdgeWhenExit), 2f);
     }
 
     /// <summary>

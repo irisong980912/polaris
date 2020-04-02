@@ -47,6 +47,7 @@ public class FindAdjacentStars : MonoBehaviour
     {
         // TODO: find the star that player is in 
         curStarGravityCore = starGravityCore;
+        print("FindAdjacentStars ---- OnIsometricStarView populate curStarGravityCore: " + curStarGravityCore.name);
         PopulateAdjacentStarList();
         PopulateStarBtns();
     }
@@ -59,6 +60,7 @@ public class FindAdjacentStars : MonoBehaviour
             {
                 if (adjacentStarNum < 1) return;
                 child.GetComponent<StarSelectButtonManager>().starToGo = adjacentStarList[0].transform;
+                
             } else if (child.name == "StarButton2")
             {
                 if (adjacentStarNum < 2) return;
@@ -85,6 +87,8 @@ public class FindAdjacentStars : MonoBehaviour
         adjacentStarList.Add(empty);
         adjacentStarList.Add(empty);
         adjacentStarList.Add(empty);
+
+        adjacentStarNum = 0;
 
         try
         {
