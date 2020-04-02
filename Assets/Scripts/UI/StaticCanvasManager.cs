@@ -21,14 +21,14 @@ public class StaticCanvasManager : MonoBehaviour
         RidePlanetSlingshot.OnRidePlanet += OnRidePlanet;
         IsometricStarPosManager.OnIsometricStarView += SetIsometricActive;
         CameraSwitch.OnMapSwitch += SetMapActive;
-        ThirdPersonPlayer.EndSlingShot += EndSlingShot;
+        // ThirdPersonPlayer.EndSlingShot += EndSlingShot;
     }
 
-    private void EndSlingShot(bool obj)
-    {
-        _isEnd = true;
-        SetStarBtnInactive();
-    }
+    // private void EndSlingShot(bool obj)
+    // {
+    //     _isEnd = true;
+    //     SetStarBtnInactive();
+    // }
 
     private void DisableAllUI(bool onAction)
     {
@@ -90,37 +90,37 @@ public class StaticCanvasManager : MonoBehaviour
         
     }
 
-    private void SetStarBtnActive()
-    {
-        int count = 0;
-        foreach(Transform child in transform){
-            if(child.gameObject.tag == "|StarButton|")
-            {
-                count++;
-                if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
-                {
-                    child.gameObject.SetActive(true);
-                }
-                
-            }
-        }
-    }
-    
-    private void SetStarBtnInactive()
-    {
-        int count = 0;
-        foreach(Transform child in transform){
-            if(child.gameObject.tag == "|StarButton|")
-            {
-                count++;
-                if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
-                {
-                    child.gameObject.SetActive(false);
-                }
-                
-            }
-        }
-    }
+    // private void SetStarBtnActive()
+    // {
+    //     int count = 0;
+    //     foreach(Transform child in transform){
+    //         if(child.gameObject.tag == "|StarButton|")
+    //         {
+    //             count++;
+    //             if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
+    //             {
+    //                 child.gameObject.SetActive(true);
+    //             }
+    //             
+    //         }
+    //     }
+    // }
+    //
+    // private void SetStarBtnInactive()
+    // {
+    //     int count = 0;
+    //     foreach(Transform child in transform){
+    //         if(child.gameObject.tag == "|StarButton|")
+    //         {
+    //             count++;
+    //             if (transform.GetComponent<FindAdjacentStars>().adjacentStarNum >= count)
+    //             {
+    //                 child.gameObject.SetActive(false);
+    //             }
+    //             
+    //         }
+    //     }
+    // }
 
     /// <summary>
     /// When on the map view, disable all the UI
