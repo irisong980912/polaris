@@ -54,7 +54,7 @@ public class PlayerIcon : MonoBehaviour
         if (isOnPlanet)
         {
             GetComponent<Image>().enabled = false;
-            Invoke(nameof(FinishPlanetAnimation), 6.0f);
+            Invoke(nameof(FinishPlanetAnimation), 4.0f);
         }
     }
     

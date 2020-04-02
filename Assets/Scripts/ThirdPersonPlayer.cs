@@ -165,7 +165,8 @@ public class ThirdPersonPlayer : MonoBehaviour
             // do not let player get too close to star
             if (Vector3.Distance(starPos, playerPos + dir * yAxisInput) <= 20)
             {
-                transform.position = playerPos;
+                var dirStar = (playerPos - starPos).normalized;
+                transform.position = starPos + dirStar * 20;
             }
             else
             {

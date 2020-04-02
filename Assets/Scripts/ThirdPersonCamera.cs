@@ -191,7 +191,7 @@ public class ThirdPersonCamera : MonoBehaviour
             _cameraTarget = player.parent;
             _isPlanetAnimation = true;
             _enableIsometricView = false; // temperorially disable 
-            Invoke(nameof(FinishPlanetAnimation), 6.0f);
+            Invoke(nameof(FinishPlanetAnimation), 4.0f);
         }
         else
         {
