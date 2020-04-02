@@ -33,6 +33,11 @@ public class ThirdPersonCamera : MonoBehaviour
     
     private Transform _curStar;
 
+    
+    
+    //TODO: listening to create star event, when stars are created, pan the camera to 
+    // show the star animation
+    
     /// <summary>
     /// Camera Starting Position, creating a zoom in effect
     /// </summary>

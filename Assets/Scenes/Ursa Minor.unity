@@ -7298,7 +7298,7 @@ MonoBehaviour:
   _isLit: 0
   starToGo: {fileID: 0}
   starBtnText: {fileID: 345931593}
-  player: {fileID: 0}
+  player: {fileID: 1637143730}
   ES: {fileID: 1541477656}
   defaultbuttonSelected: {fileID: 0}
 --- !u!114 &1072272354
@@ -8046,7 +8046,7 @@ MonoBehaviour:
   _isLit: 0
   starToGo: {fileID: 0}
   starBtnText: {fileID: 1921620680}
-  player: {fileID: 0}
+  player: {fileID: 1637143730}
   ES: {fileID: 1541477656}
   defaultbuttonSelected: {fileID: 0}
 --- !u!114 &1133216312
@@ -8806,7 +8806,7 @@ MonoBehaviour:
   _isLit: 0
   starToGo: {fileID: 0}
   starBtnText: {fileID: 1887991808}
-  player: {fileID: 0}
+  player: {fileID: 1637143730}
   ES: {fileID: 1541477656}
   defaultbuttonSelected: {fileID: 0}
 --- !u!114 &1235666977
@@ -13472,7 +13472,7 @@ MonoBehaviour:
   _isLit: 0
   starToGo: {fileID: 0}
   starBtnText: {fileID: 936666349}
-  player: {fileID: 0}
+  player: {fileID: 1637143730}
   ES: {fileID: 1541477656}
   defaultbuttonSelected: {fileID: 0}
 --- !u!114 &1679598039
