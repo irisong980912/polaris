@@ -1,0 +1,1435 @@
+fileFormatVersion: 2
+guid: 74e879f7ff7ea3c43b74e74140ad318e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3417456362091963166
+    second: Deactivate Star PS4 Tut Sprite Sheet_0
+  - first:
+      213: -492412308795988988
+    second: Deactivate Star PS4 Tut Sprite Sheet_1
+  - first:
+      213: 137013695153638768
+    second: Deactivate Star PS4 Tut Sprite Sheet_2
+  - first:
+      213: -4086152268652995798
+    second: Deactivate Star PS4 Tut Sprite Sheet_3
+  - first:
+      213: -1409094913435767404
+    second: Deactivate Star PS4 Tut Sprite Sheet_4
+  - first:
+      213: 6838445564971475355
+    second: Deactivate Star PS4 Tut Sprite Sheet_5
+  - first:
+      213: 1357213616520115154
+    second: Deactivate Star PS4 Tut Sprite Sheet_6
+  - first:
+      213: 8923244616064610810
+    second: Deactivate Star PS4 Tut Sprite Sheet_7
+  - first:
+      213: 6661566215523807142
+    second: Deactivate Star PS4 Tut Sprite Sheet_8
+  - first:
+      213: 5676628641941475478
+    second: Deactivate Star PS4 Tut Sprite Sheet_9
+  - first:
+      213: -4158592780306848696
+    second: Deactivate Star PS4 Tut Sprite Sheet_10
+  - first:
+      213: 8328610651383221566
+    second: Deactivate Star PS4 Tut Sprite Sheet_11
+  - first:
+      213: 1588750065270942568
+    second: Deactivate Star PS4 Tut Sprite Sheet_12
+  - first:
+      213: 4902252619691519333
+    second: Deactivate Star PS4 Tut Sprite Sheet_13
+  - first:
+      213: 1818814302186275642
+    second: Deactivate Star PS4 Tut Sprite Sheet_14
+  - first:
+      213: 4761409552077817944
+    second: Deactivate Star PS4 Tut Sprite Sheet_15
+  - first:
+      213: 7486787800814347268
+    second: Deactivate Star PS4 Tut Sprite Sheet_16
+  - first:
+      213: 8522647410075356756
+    second: Deactivate Star PS4 Tut Sprite Sheet_17
+  - first:
+      213: -7194023420180709961
+    second: Deactivate Star PS4 Tut Sprite Sheet_18
+  - first:
+      213: 6366035391620789700
+    second: Deactivate Star PS4 Tut Sprite Sheet_19
+  - first:
+      213: 7885065498901018132
+    second: Deactivate Star PS4 Tut Sprite Sheet_20
+  - first:
+      213: 6343106805751056466
+    second: Deactivate Star PS4 Tut Sprite Sheet_21
+  - first:
+      213: 3394068756234041547
+    second: Deactivate Star PS4 Tut Sprite Sheet_22
+  - first:
+      213: -6660929782077760886
+    second: Deactivate Star PS4 Tut Sprite Sheet_23
+  - first:
+      213: 2499123973469255046
+    second: Deactivate Star PS4 Tut Sprite Sheet_24
+  - first:
+      213: 3288812609121968555
+    second: Deactivate Star PS4 Tut Sprite Sheet_25
+  - first:
+      213: -5578440585149335413
+    second: Deactivate Star PS4 Tut Sprite Sheet_26
+  - first:
+      213: -8264715197133114555
+    second: Deactivate Star PS4 Tut Sprite Sheet_27
+  - first:
+      213: -7048648451817743723
+    second: Deactivate Star PS4 Tut Sprite Sheet_28
+  - first:
+      213: 6097092510662228267
+    second: Deactivate Star PS4 Tut Sprite Sheet_29
+  - first:
+      213: 678243118980312909
+    second: Deactivate Star PS4 Tut Sprite Sheet_30
+  - first:
+      213: -8244646649081686558
+    second: Deactivate Star PS4 Tut Sprite Sheet_31
+  - first:
+      213: 7000662169166316027
+    second: Deactivate Star PS4 Tut Sprite Sheet_32
+  - first:
+      213: -7655870588733050712
+    second: Deactivate Star PS4 Tut Sprite Sheet_33
+  - first:
+      213: -6332555040614515372
+    second: Deactivate Star PS4 Tut Sprite Sheet_34
+  - first:
+      213: 7979170848178300191
+    second: Deactivate Star PS4 Tut Sprite Sheet_35
+  - first:
+      213: 8168637469103621287
+    second: Deactivate Star PS4 Tut Sprite Sheet_36
+  - first:
+      213: -8349352975296050210
+    second: Deactivate Star PS4 Tut Sprite Sheet_37
+  - first:
+      213: -5715689287127158889
+    second: Deactivate Star PS4 Tut Sprite Sheet_38
+  - first:
+      213: 8457328095056266940
+    second: Deactivate Star PS4 Tut Sprite Sheet_39
+  - first:
+      213: -5401123310000466694
+    second: Deactivate Star PS4 Tut Sprite Sheet_40
+  - first:
+      213: 6968094833110875460
+    second: Deactivate Star PS4 Tut Sprite Sheet_41
+  - first:
+      213: -6117585681430081629
+    second: Deactivate Star PS4 Tut Sprite Sheet_42
+  - first:
+      213: 6240335355888746628
+    second: Deactivate Star PS4 Tut Sprite Sheet_43
+  - first:
+      213: 6992427159591855396
+    second: Deactivate Star PS4 Tut Sprite Sheet_44
+  - first:
+      213: -4686858565673055429
+    second: Deactivate Star PS4 Tut Sprite Sheet_45
+  - first:
+      213: -3498076641929140633
+    second: Deactivate Star PS4 Tut Sprite Sheet_46
+  - first:
+      213: -1514429603510304019
+    second: Deactivate Star PS4 Tut Sprite Sheet_47
+  - first:
+      213: 5006446938644346892
+    second: Deactivate Star PS4 Tut Sprite Sheet_48
+  - first:
+      213: 3406366149671046895
+    second: Deactivate Star PS4 Tut Sprite Sheet_49
+  - first:
+      213: -4840665619868195124
+    second: Deactivate Star PS4 Tut Sprite Sheet_50
+  - first:
+      213: 8542166804722267498
+    second: Deactivate Star PS4 Tut Sprite Sheet_51
+  - first:
+      213: -2547238965837535925
+    second: Deactivate Star PS4 Tut Sprite Sheet_52
+  - first:
+      213: 918737161443326746
+    second: Deactivate Star PS4 Tut Sprite Sheet_53
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 016a4e5a4da45324cb83a89794137c09
+      internalID: 3417456362091963166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a53d49c8068ec4fb7269611a66c877
+      internalID: -492412308795988988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae488a69aaa8bf8498954b2d7eb7f3e3
+      internalID: 137013695153638768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c71fd050d4498a4a9fc1ab35a2a0785
+      internalID: -4086152268652995798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9523d62da30d9fd4bac56dbe103bfbb4
+      internalID: -1409094913435767404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559868b753fc447478e1b2912aa76c82
+      internalID: 6838445564971475355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79104e5e60322f48a0c6dea31ee784e
+      internalID: 1357213616520115154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c65bbc64c6c643242b38d0936480f9fe
+      internalID: 8923244616064610810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a2e632415a364478052e6a77efc78f
+      internalID: 6661566215523807142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d65deb2fe469cf4fb2f79c4dbf000b9
+      internalID: 5676628641941475478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4781b747ccbb12749bdef3e34142e31a
+      internalID: -4158592780306848696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 4000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e88178f2d390e41a60e6984d44bc82
+      internalID: 8328610651383221566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c44f18b74c25464498e95793313e6a2
+      internalID: 1588750065270942568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a5c4565a5e2b34d8088d8492c80e61
+      internalID: 4902252619691519333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8365c4c6cf82844e87a65ad9b1167eb
+      internalID: 1818814302186275642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9bccec71f7c450489b173f36ff2d4b9
+      internalID: 4761409552077817944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a88ebfa8a4e8a41bbe1f294b34c798
+      internalID: 7486787800814347268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a175d88ce158e3740ad6c543a910000a
+      internalID: 8522647410075356756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a53cb95e1a425e4cb531da8bee15110
+      internalID: -7194023420180709961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeaf3347f805cd845b47a5a19e4ac9ce
+      internalID: 6366035391620789700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0573b03674b9574f8e2f409242a5174
+      internalID: 7885065498901018132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a31ae011235f864469d38d1583efb155
+      internalID: 6343106805751056466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be10d300f2a7ae644993450933a2faaf
+      internalID: 3394068756234041547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 3000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e268b163753e98488725403de75f240
+      internalID: -6660929782077760886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8884cf6dad1d3d46957d11444e3c384
+      internalID: 2499123973469255046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f37d628b08b4d42ad3d2614faeee69
+      internalID: 3288812609121968555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f22322295763fd54fb8ffb137e4f6c4e
+      internalID: -5578440585149335413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61af6e54f53e57040acbea94d0ac776e
+      internalID: -8264715197133114555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748a17b69518a6747a8a4bcffd2df5a1
+      internalID: -7048648451817743723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba75bd6d3f7cb7b419290a1c1241e385
+      internalID: 6097092510662228267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f608c73db2c48f045857d4557c59098c
+      internalID: 678243118980312909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18ce3107857ac64a927b642d46c66a8
+      internalID: -8244646649081686558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b73623c4e990c4e9ebf9161e0eff38
+      internalID: 7000662169166316027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b92cf64a6668640bde80b19a36da6c
+      internalID: -7655870588733050712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de832401d5038614194314abe023fe16
+      internalID: -6332555040614515372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7902e5e425955ea44927528e8dc82029
+      internalID: 7979170848178300191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7772725319b49479265d43f0d87b9d
+      internalID: 8168637469103621287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f144c41e30ea254c9cb380e5bdf00e0
+      internalID: -8349352975296050210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a1209f92d28014ebea83b2043cf687
+      internalID: -5715689287127158889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a53cccb709f4c3647bb74c128e66716b
+      internalID: 8457328095056266940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9959c3cd2e81d464697e276ac85e9740
+      internalID: -5401123310000466694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e78f240facd3740a8d08a561c32bdd
+      internalID: 6968094833110875460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe28853dab752ec4aa121f3db20b2753
+      internalID: -6117585681430081629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b79fe7a9e63c93b4e9acc2fa6f6b805c
+      internalID: 6240335355888746628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e66363d10fd5b469cb37a89a040494
+      internalID: 6992427159591855396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b190e544306e6643bed19b17ebc9c60
+      internalID: -4686858565673055429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80bb1c6e63af36440bf6c4a01ffc654b
+      internalID: -3498076641929140633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994270e4387949d439c47f692b6acb28
+      internalID: -1514429603510304019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e15419b7727eb2488b2fd2eb51c8a48
+      internalID: 5006446938644346892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49a286f965559e4f92ae2296dec87ef
+      internalID: 3406366149671046895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659b541707ca3d149b02982751b46648
+      internalID: -4840665619868195124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28adacfc2f6f82d4882694745145b9ff
+      internalID: 8542166804722267498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ff35ce1fe92fc41bc8dab06d166e2d
+      internalID: -2547238965837535925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deactivate Star PS4 Tut Sprite Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a5c516b2a88c2458f5874dbcf5c978
+      internalID: 918737161443326746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
