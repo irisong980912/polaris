@@ -111,6 +111,7 @@ public class TutorialAnimationManager : MonoBehaviour
     
     private void OnStarCreation()
     {
+        // tutorialtext.text = "Star";
         animActivatePS4.GetComponent<RawImage>().enabled = false;
     }
     private void OnStarDestruction()
@@ -159,7 +160,7 @@ public class TutorialAnimationManager : MonoBehaviour
         
         print("tutorial animate --- ShowSlingText" + _onPlanet);
         if (!_onPlanet) return;
-        tutorialtext.text = "Select a star to slingshot";
+        tutorialtext.text = "Select a star using Dpad to slingshot";
         
     }
 
