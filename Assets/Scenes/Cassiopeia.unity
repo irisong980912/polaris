@@ -58241,7 +58241,7 @@ MonoBehaviour:
   tutorialZoneText: {fileID: 2046581982917514377}
   ES: {fileID: 9205680690666298864}
   defaultButtonSelected: {fileID: 7182826124621462511}
-  totalStarNum: 4
+  totalStarNum: 10
   _numStarsLit: 0
 --- !u!224 &9205680689902133954
 RectTransform:

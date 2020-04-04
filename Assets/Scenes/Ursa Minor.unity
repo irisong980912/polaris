@@ -12578,7 +12578,7 @@ MonoBehaviour:
   tutorialZoneText: {fileID: 1709612835}
   ES: {fileID: 1541477656}
   defaultButtonSelected: {fileID: 358285638}
-  totalStarNum: 4
+  totalStarNum: 7
   _numStarsLit: 0
 --- !u!1 &1598426264 stripped
 GameObject:
