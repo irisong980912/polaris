@@ -19,7 +19,7 @@ public class RidePlanetSlingshot : MonoBehaviour
     
     public static event Action<bool, Transform> OnSlingShot;
     private bool _onSlingShot;
-    
+
     // inform whether the slingshot ends
     private bool _beginSlingShot;
 
@@ -39,10 +39,7 @@ public class RidePlanetSlingshot : MonoBehaviour
     
     // reposition the player when exit the planet orbit
     public static event Action<Vector3> OnExitPlanetOrbit;
-
-    public Vector3 normalVector;
-
-
+    
     void Awake()
     {
         //InputActions
@@ -108,10 +105,9 @@ public class RidePlanetSlingshot : MonoBehaviour
         _self.LookAt(other.transform.position);
         other.gameObject.transform.SetParent(transform);
         
-        // riding planet
         _isOnPlanet = true;
         OnRidePlanet?.Invoke(_isOnPlanet);
-        
+
         // TODO: remove adjust rotation
         InvokeRepeating(nameof(AdjustRotation), 1.0f, 1.0f);
     
@@ -129,9 +125,7 @@ public class RidePlanetSlingshot : MonoBehaviour
         other.transform.SetParent(_playerOriginalParent);
         // when exit, reposition player
         if (!_isLit) return;
-        // RepositionPlayer(other.transform.position);
-        // _player = null;
-        
+
         if (!other.gameObject.tag.Contains("|Player|")) return;
         print("exit planet when star lit");
         //

@@ -118,7 +118,11 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         }
         var gamepad = Gamepad.current;
-        _movementInput = gamepad.leftStick.ReadValue();
+        if (gamepad != null)
+        {
+            _movementInput = gamepad.leftStick.ReadValue();
+        }
+        
         
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
@@ -127,7 +131,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
         
-        print(_movementInput);
 
         // limit the degree of player rotation
         Vector3 currentRotation = transform.eulerAngles;
