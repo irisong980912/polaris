@@ -32,7 +32,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool _onIso;
     
     private Transform _curStar;
-    private bool _isCreating;
+    private bool _isStarAnimating;
     private bool _finishAnimation;
     private bool _isOnPlanet;
     private bool _isPlanetAnimation;
@@ -69,7 +69,7 @@ public class ThirdPersonCamera : MonoBehaviour
         ClearLevel.OnLevelClear += OnLevelClear;
         IsometricStarPosManager.OnIsometricStarView += OnIsometricStarView;
         CreateStar.OnStarCreation += OnStarCreation;
-
+        DestroyStar.OnStarDestruction += OnStarDestruction;
         // camera position when game starts
         _mainCamera.LookAt(_cameraTarget);
     }
@@ -98,7 +98,7 @@ public class ThirdPersonCamera : MonoBehaviour
             
             _mainCamera.LookAt(_cameraTarget);
         }
-        else if (_isCreating)
+        else if (_isStarAnimating)
         {
             var dir = new Vector3(1, 0, 1);
             var desiredPosition = _curStar.position + dir * 30;
@@ -169,14 +169,21 @@ public class ThirdPersonCamera : MonoBehaviour
     
     private void OnStarCreation()
     {
-        _isCreating = true;
+        _isStarAnimating = true;
         _enableIsometricView = false; // temperorially disable 
-        Invoke(nameof(FinishStarCreationAnimation), 6.0f);
+        Invoke(nameof(FinishStarAnimation), 6.0f);
+    }
+    
+    private void OnStarDestruction()
+    {
+        _isStarAnimating = true;
+        _enableIsometricView = false; // temperorially disable 
+        Invoke(nameof(FinishStarAnimation), 6.0f);
     }
 
-    private void FinishStarCreationAnimation()
+    private void FinishStarAnimation()
     {
-        _isCreating = false;
+        _isStarAnimating = false;
         _enableIsometricView = true;
     }
 
