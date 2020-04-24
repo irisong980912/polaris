@@ -63,11 +63,11 @@ public class BgmLayers : MonoBehaviour
         //foreach (var layer in _allLayers)
            foreach (var layer in _allLayers.Where(layer => !(layer.volume > 0.1)))
 
-            {
+           {
            
-                layer.volume = 1;
-                break;
-            }
+               layer.volume = 1;
+               break;
+           }
             
        
     }

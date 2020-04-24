@@ -18,20 +18,6 @@ public class ButtonImageSwitch : MonoBehaviour, ISelectHandler, IDeselectHandler
         _buttonImg = GetComponent<Image>();
         
     }
-    
-    /*
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _buttonImg.sprite = newButtonImage; 
-        Debug.Log("Mouse Enter");
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _buttonImg.sprite = originalButtonImage; 
-        Debug.Log("Mouse Exit");
-    }
-    */
 
     public void OnSelect(BaseEventData eventData)
     {

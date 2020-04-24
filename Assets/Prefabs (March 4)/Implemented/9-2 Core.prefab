@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6618773917264259664}
   - component: {fileID: 2132469653272885155}
   - component: {fileID: 3272921595837260951}
-  - component: {fileID: 6243291335927182353}
   m_Layer: 0
   m_Name: 9-2 Core
   m_TagString: '|PlanetCore|'
@@ -106,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba091f1123d1a1f499bbf192b652a296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  planetLitStarSpeed: 0
+  playerDarkStarSpeed: 0
+  playerLitStarSpeed: 0
   cam: {fileID: 8377187791607531542, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
   slingshotAction:
     m_Name: Slingshot
@@ -116,18 +117,4 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
---- !u!114 &6243291335927182353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4115516336858612095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baed164ab7b34100baeac51d97ddbebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isometricStarViewPos: {fileID: 4523817905625292698, guid: ab2fb9011921b45dba5e739354890f8c,
-    type: 3}
-  cam: {fileID: 8377187791607531543, guid: 5af2148d413b4438e81dae883bf23173, type: 3}
+  coreForPlayer: {fileID: 0}

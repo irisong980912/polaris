@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class StarSelectButtonManager : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     
     private Image _buttonImg;
@@ -47,6 +47,8 @@ public class StarIconManager : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         ES.SetSelectedGameObject(defaultbuttonSelected);
         _buttonImg = GetComponent<Image>();
+
+        if (!starToGo) return;
         
         if (starToGo.GetComponent<Star>().isCreated)
         {

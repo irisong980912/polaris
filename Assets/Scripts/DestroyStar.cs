@@ -15,8 +15,6 @@ public class DestroyStar : MonoBehaviour
 
     public bool onTrigger;
 
-    public List<GameObject> usedStardust = new List<GameObject>();
-
     [SerializeField] private Animator starAnimationController;
     [SerializeField] private Animator starVfx;
     [SerializeField] private Animator[] ringAnimationController;
@@ -74,8 +72,6 @@ public class DestroyStar : MonoBehaviour
     // OnTriggerStay is called every physics update a GameObject that has a RigidBody is in the collider.
     private void OnTriggerStay(Collider other)
     {
-        //if (!Input.GetButton("Fire2") || !enabled) return;
-
         //InputAction replaces "Input.GetButton("Example") and holds a bool
         if (!Interact.triggered || !enabled) return;
 
@@ -92,16 +88,14 @@ public class DestroyStar : MonoBehaviour
         disperseDustSound.Play();
         var player = _other.GetComponent<ThirdPersonPlayer>();
         player.stardust += 1;
-        // var stardust = usedStardust[0];
-        // stardust.SetActive(true);
-        // usedStardust.RemoveAt(0);
 
-        transform.Find("GravityCore").GetComponent<Orbit>().enabled = false;
-        transform.Find("GravityCore").GetComponent<Gravity>().enabled = false;
-
+        // transform.Find("GravityCore").GetComponent<Orbit>().enabled = false;
+        // transform.Find("GravityCore").GetComponent<Gravity>().enabled = false;
         GetComponent<Star>().isCreated = false;
 
         GetComponent<DestroyStar>().enabled = false;
+        
+        OnStarDestruction?.Invoke();
 
         onTrigger = false;
 
@@ -116,7 +110,7 @@ public class DestroyStar : MonoBehaviour
     private void StartCreate()
     {
         Debug.Log("StartCreate");
-        OnStarDestruction?.Invoke();
+        // OnStarDestruction?.Invoke();
         GetComponent<CreateStar>().enabled = true;
     }
 
