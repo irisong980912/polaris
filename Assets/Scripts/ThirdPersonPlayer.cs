@@ -4,36 +4,43 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.InputSystem;
 
+/*
+ * This is a long class, violates SRP! Currently, it handles:
+ *  - interpretation of movement inputs
+ *  - slingshot mechanic
+ *  - the collection of stardust
+ */
+
+// Use the strategy interface (design pattern) to handle movement.
+
 public class ThirdPersonPlayer : MonoBehaviour
 
 {
-    public Transform cam;
     public float speed;
     public float maximumTurnRate;
-
-    public int stardust;
-    public TextMeshProUGUI stardustCount;
-    public List<GameObject> inventory = new List<GameObject>();
-
-    private static bool _mapActive;
-
-    public AudioSource collectDustSound;
-    public GameObject collectDustSoundContainer;
     
     //InputActions
     private PlayerInputActions _inputAction;
     
     //Movement
     private Vector2 _movementInput;
-    private bool _levelCleared;
     private bool _enableIsoViewMovement;
+
+    public int stardust;
+    public TextMeshProUGUI stardustCount;
+    public List<GameObject> inventory = new List<GameObject>();
+    
+    public AudioSource collectDustSound;
+    public GameObject collectDustSoundContainer;
+
+    private static bool _mapActive;
 
     private bool _onSlingShot;
     private Transform _starToGo;
     public Vector3 disFromGoalStar = new Vector3(1, 0,1);
 
     private bool _beginSlingshot;
-    public static event Action<bool> EndSlingShot;
+    public static event Action<bool> OnEndSlingShot;
 
     public Vector3 playerIsoEnterPos;
     private bool _firstTimeEnterIso;
@@ -41,15 +48,13 @@ public class ThirdPersonPlayer : MonoBehaviour
     private bool _firstTimeExitIso;
 
     public Transform playerIcon;
-    
-    
-    private Transform curStar;
+
+    private Transform _curStar;
 
     // player need to face the first star when game started
     public Transform firstStar;
     private bool _isExitPlanetOrbit;
     private Vector3 _exitPlanetOrbitPos;
-
 
     private void Start()
     {
@@ -60,7 +65,6 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         transform.LookAt(firstStar);
     }
-
 
 
     private void Awake()
@@ -87,8 +91,6 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_levelCleared) return;
-    
         if (_mapActive) return;
 
         if (_isExitPlanetOrbit)
@@ -110,7 +112,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 if (_enableIsoViewMovement)
                 {
                     _onSlingShot = false;
-                    endSlingshot();
+                    EndSlingshot();
                 }
             }
             
@@ -122,18 +124,15 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             _movementInput = gamepad.leftStick.ReadValue();
         }
-        
-        
+
         _inputAction.Player.Move.performed += ctx => _movementInput = ctx.ReadValue<Vector2>();
         _inputAction.Player.Move.canceled += ctx => _movementInput = Vector2.zero;
-        
 
         var xAxisInput = _movementInput.x;
         var yAxisInput = -1 * _movementInput.y;
-        
 
         // limit the degree of player rotation
-        Vector3 currentRotation = transform.eulerAngles;
+        var currentRotation = transform.eulerAngles;
         
         // unity is behaving weird. 0 is -360
         var curRotationTmpX = currentRotation.x - 360;
@@ -162,7 +161,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             var playerPos = transform.position;
 
             var playerIconPos = playerIcon.position;
-            var starPos = curStar.position;
+            var starPos = _curStar.position;
             var dir = (starPos - playerIconPos).normalized;
             
             // do not let player get too close to star
@@ -176,7 +175,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 transform.position = playerPos + dir * yAxisInput;
                             
             }
-            transform.LookAt(curStar);
+            transform.LookAt(_curStar);
             
         } else
         {
@@ -184,9 +183,9 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 transform.position = playerIsoExitPos;
                 // make the player look at the edge of the gravitational field to have a sense of direction
-                Vector3 starDirToPlayer = transform.position - curStar.position;
+                var starDirToPlayer = transform.position - _curStar.position;
                 starDirToPlayer.x += 200.0f;
-                Vector3 edge = curStar.position + starDirToPlayer.normalized * 180;
+                var edge = _curStar.position + starDirToPlayer.normalized * 180;
                 transform.LookAt(edge);
                 _firstTimeExitIso = false;
             }
@@ -208,21 +207,17 @@ public class ThirdPersonPlayer : MonoBehaviour
                     interpretedYInput = -interpretedYInput;
                 }
     
-                Transform transform1;
-                (transform1 = transform).Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
-                var q = transform1.rotation;
-                q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
-                transform1.rotation = q;
+                transform.Rotate(interpretedYInput, interpretedXInput, 0, Space.Self);
             }   
             var transform2 = transform;
             transform2.position += transform2.forward * speed;
         }
     }
     
-    private void endSlingshot()
+    private void EndSlingshot()
     {
         _beginSlingshot = false;
-        EndSlingShot?.Invoke(_beginSlingshot);
+        OnEndSlingShot?.Invoke(_beginSlingshot);
     }
     
     private void OnSlingShot(bool onSlingShot, Transform starToGo)
@@ -240,11 +235,10 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void OnIsometricStarView(bool onIso, Transform star)
     {
         Debug.Log("camera -- OnIsometricStarView");
-        if (_levelCleared) return;
         _enableIsoViewMovement = onIso;
         _firstTimeEnterIso = true;
         _firstTimeExitIso = true;
-        curStar = star;
+        _curStar = star;
         
         print("OnIsometricStarView -- " + onIso);
     }

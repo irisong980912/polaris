@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 /// <summary>
 /// Attach to planet core
@@ -39,8 +37,8 @@ public class RidePlanetSlingshot : MonoBehaviour
     
     // reposition the player when exit the planet orbit
     public static event Action<Vector3> OnExitPlanetOrbit;
-    
-    void Awake()
+
+    private void Awake()
     {
         //InputActions
         _inputAction = new PlayerInputActions();
@@ -52,7 +50,7 @@ public class RidePlanetSlingshot : MonoBehaviour
         _self = transform;
         StarSelectButtonManager.OnSelectStar += OnSelectStar;
         // listen for player movement to stop the slingshot when arriving at designated location
-        ThirdPersonPlayer.EndSlingShot += EndSlingShot;
+        ThirdPersonPlayer.OnEndSlingShot += EndSlingShot;
     }
 
     private void Update()
@@ -233,7 +231,7 @@ public class RidePlanetSlingshot : MonoBehaviour
         _inputAction.Player.Disable();
         StarSelectButtonManager.OnSelectStar -= OnSelectStar;
         // listen for player movement to stop the slingshot when arriving at designated location
-        ThirdPersonPlayer.EndSlingShot -= EndSlingShot;
+        ThirdPersonPlayer.OnEndSlingShot -= EndSlingShot;
 
     }
 
